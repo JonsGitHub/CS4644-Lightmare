@@ -1,17 +1,15 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LoadingScreenController : MonoBehaviour
 {
     public GameObject Background;
-    
     private CanvasGroup LoadingScreen;
 
     void Awake()
     {
+        // Persist between scenes
         DontDestroyOnLoad(gameObject);
 
         LoadingScreen = GetComponent<CanvasGroup>();
@@ -37,6 +35,9 @@ public class LoadingScreenController : MonoBehaviour
             // Add updating progress bar here
             yield return null;
         }
+
+        // Load Level Data - may async step?
+        LevelManager.PostLoadingStep();
 
         yield return StartCoroutine(FadeLoadingScreen(0, 1));
 
