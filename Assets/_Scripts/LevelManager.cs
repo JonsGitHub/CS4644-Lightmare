@@ -1,6 +1,5 @@
 ﻿using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,16 +33,7 @@ public static class LevelManager
         var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
         if (controller)
         {
-            SurrogateSelector surrogateSelector = new SurrogateSelector();
-            var vector3SS = new Vector3SerializationSurrogate();
-            var quaternionSS = new QuaternionSerializationSurrogate();
-            surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), vector3SS);
-            surrogateSelector.AddSurrogate(typeof(Quaternion), new StreamingContext(StreamingContextStates.All), quaternionSS);
-
-            var formatter = new BinaryFormatter()
-            {
-                SurrogateSelector = surrogateSelector
-            };
+            var formatter = new UnityBinaryFormatter();
 
             var file = File.OpenWrite(CurrentSceneFilePath);
             var data = controller.Save();
@@ -58,16 +48,7 @@ public static class LevelManager
         var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
         if (controller && File.Exists(CurrentSceneFilePath))
         {
-            SurrogateSelector surrogateSelector = new SurrogateSelector();
-            var vector3SS = new Vector3SerializationSurrogate();
-            var quaternionSS = new QuaternionSerializationSurrogate();
-            surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), vector3SS);
-            surrogateSelector.AddSurrogate(typeof(Quaternion), new StreamingContext(StreamingContextStates.All), quaternionSS);
-
-            var formatter = new BinaryFormatter()
-            {
-                SurrogateSelector = surrogateSelector
-            };
+            var formatter = new UnityBinaryFormatter();
 
             Debug.Log("Loading Data at: " + CurrentSceneFilePath);
             var file = File.OpenRead(CurrentSceneFilePath);
