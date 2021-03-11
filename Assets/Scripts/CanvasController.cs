@@ -11,14 +11,11 @@ public class CanvasController : MonoBehaviour
     }
     
     private MouseState CurrentState;
-    private GameObject Fade;
     private GameObject PauseMenu;
 
     void Awake()
     {
-        Fade = transform.Find("Fade").gameObject;
         PauseMenu = transform.Find("Pause_Menu").gameObject;
-        
         Unpause();
     }
 
@@ -37,15 +34,20 @@ public class CanvasController : MonoBehaviour
         }
     }
 
-    public void OnContinuePressed()
+    public void OnContinueClicked()
     {
         Unpause();
+    }
+
+    public void OnSaveAndExitClicked()
+    {
+        Time.timeScale = 1;
+        LevelManager.Load("MainMenu");
     }
 
     private void Unpause()
     {
         PauseMenu.SetActive(false);
-        Fade.SetActive(false);
 
         CurrentState = MouseState.Locked;
         Cursor.lockState = CursorLockMode.Locked;
@@ -57,7 +59,6 @@ public class CanvasController : MonoBehaviour
     private void Pause()
     {
         PauseMenu.SetActive(true);
-        Fade.SetActive(true);
 
         CurrentState = MouseState.Unlocked;
         Cursor.lockState = CursorLockMode.None;
@@ -65,6 +66,4 @@ public class CanvasController : MonoBehaviour
         
         Time.timeScale = 0;
     }
-
-    
 }
