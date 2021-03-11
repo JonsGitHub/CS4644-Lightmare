@@ -36,12 +36,13 @@ public class LoadingScreenController : MonoBehaviour
             yield return null;
         }
 
+        // Load Level Data - may async step?
+        LevelManager.PostLoadingStep();
+
         yield return StartCoroutine(FadeLoadingScreen(0, 1));
 
         // End Loading and clean up
         EndLoading();
-
-        LevelManager.PostLoadingStep();
     }
 
     public void UpdateLoading(float progress)
