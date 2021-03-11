@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ThirdPersonController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     // Public Properties
+    [Header("Camera Settings")]
+    [Tooltip("Amount of scrolling per mouse wheel rotation."), Range(0.001f, 1f)]
+    public float ScrollSpeed = 0.1f;
+    
+    [Header("Movement Settings")]
     public float Speed = 6f;
     public float TurnSmoothing = 0.1f;
-    public float ScrollSpeed = 0.1f;
     public float JumpHeight = 1.0f;
 
     // Private Properties

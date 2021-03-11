@@ -1,17 +1,15 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LoadingScreenController : MonoBehaviour
 {
     public GameObject Background;
-    
     private CanvasGroup LoadingScreen;
 
     void Awake()
     {
+        // Persist between scenes
         DontDestroyOnLoad(gameObject);
 
         LoadingScreen = GetComponent<CanvasGroup>();
@@ -42,6 +40,8 @@ public class LoadingScreenController : MonoBehaviour
 
         // End Loading and clean up
         EndLoading();
+
+        LevelManager.PostLoadingStep();
     }
 
     public void UpdateLoading(float progress)
