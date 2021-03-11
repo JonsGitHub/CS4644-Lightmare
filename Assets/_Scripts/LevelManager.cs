@@ -26,8 +26,12 @@ public static class LevelManager
 
     public static void Quit()
     {
-        // Check for saving data
+        // Check for saving data here
 
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
         Application.Quit();
+    #endif
     }
 }
