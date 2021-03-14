@@ -15,10 +15,6 @@ public class EnemyController : EntityController
     private void Start()
     {
         Animator = GetComponentInChildren<Animator>();
-
-        Agent.speed = Speed;
-        Agent.stoppingDistance = StoppingDistance;
-        Agent.updateRotation = true;
     }
 
     /// <summary>

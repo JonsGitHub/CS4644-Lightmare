@@ -6,10 +6,15 @@
 public class InteractorController : MonoBehaviour
 {
     #region Private Fields
-    
-    private Transform CurrentObject;
-    private Transform HeldObject;
+
+    private CanvasController Canvas;
     private Transform HoldPosition;
+    private Interaction Interaction;
+    private InteractionType Current = InteractionType.None;
+
+    private Rigidbody CurrentBody => Interaction.Body;
+    private Conversation CurrentConversation => Interaction.Conversation;
+    private GameObject CurrentObject => Interaction.Object;
 
     #endregion
 
@@ -18,39 +23,34 @@ public class InteractorController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        Canvas = FindObjectOfType<CanvasController>();
         HoldPosition = transform.Find("Hold");
-        CurrentObject = null;
-        HeldObject = null;
     }
 
     /// <summary>
-    /// Update called every physics frame
+    /// Update called every frame
     /// </summary>
-    private void FixedUpdate()
+    private void Update()
     {
-        if (CurrentObject && Input.GetButton("Interact"))
+        if (Current == InteractionType.Conversation && Input.GetButtonDown("Interact"))
         {
-            if (HeldObject == null)
-                HeldObject = CurrentObject;
-
-            HeldObject.position = HoldPosition.position;
-            HeldObject.rotation = HoldPosition.rotation;
-            var rigid = HeldObject.GetComponent<Rigidbody>();
-            if (rigid)
-            {
-                rigid.velocity = Vector3.zero;
-                rigid.useGravity = false;
-            }
+            Debug.Log(CurrentConversation.Line1);
         }
-        else if (HeldObject && !Input.GetButton("Interact"))
+
+        if (Current == InteractionType.Grab)
         {
-            var rigid = HeldObject.GetComponent<Rigidbody>();
-            if (rigid)
+            if (Input.GetButton("Interact"))
             {
-                rigid.velocity = Vector3.zero;
-                rigid.useGravity = true;
+                CurrentBody.transform.position = HoldPosition.position;
+                CurrentBody.transform.rotation = HoldPosition.rotation;
+
+                CurrentBody.velocity = Vector3.zero;
+                CurrentBody.useGravity = false;
             }
-            HeldObject = null;
+            else
+            {
+                CurrentBody.useGravity = true;
+            }
         }
     }
 
@@ -60,9 +60,10 @@ public class InteractorController : MonoBehaviour
     /// <param name="other">The collider that has entered the trigger</param>
     private void OnTriggerEnter(Collider other)
     {
-        if (CurrentObject == null && !other.CompareTag("Player"))
+        if (!CurrentObject && other.GetComponent<IInteractable>() is IInteractable interactable)
         {
-            CurrentObject = other.transform;
+            Canvas?.SetMessage("'E' to Interact");
+            Current = interactable.Interact(ref Interaction);
         }
     }
 
@@ -72,9 +73,11 @@ public class InteractorController : MonoBehaviour
     /// <param name="other">The collider that has exited the trigger</param>
     private void OnTriggerExit(Collider other)
     {
-        if (CurrentObject && other.gameObject.Equals(CurrentObject.gameObject))
+        if (CurrentObject && other.gameObject.Equals(CurrentObject))
         {
-            CurrentObject = null;
+            Canvas?.ClearMessage();
+            Current = InteractionType.None;
+            Interaction.Clear();
         }
     }
 }

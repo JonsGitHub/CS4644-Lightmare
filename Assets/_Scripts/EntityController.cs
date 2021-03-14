@@ -24,6 +24,10 @@ public abstract class EntityController : MonoBehaviour
     {
         Agent = GetComponent<NavMeshAgent>();
         Assert.IsNotNull(Agent, "EntityController must contain a NavMeshAgent Component.");
+
+        Agent.speed = Speed;
+        Agent.stoppingDistance = StoppingDistance;
+        Agent.updateRotation = true;
     }
 
     /// <summary>
