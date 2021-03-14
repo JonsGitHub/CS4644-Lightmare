@@ -3,10 +3,17 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+/// <summary>
+/// Binary formatter with attached serialization surrogates
+/// for Unity based data serialization.
+/// </summary>
 public class UnityBinaryFormatter
 {
     private BinaryFormatter Formatter;
 
+    /// <summary>
+    /// Initializes an instance of <see cref="UnityBinaryFormatter"/>
+    /// </summary>
     public UnityBinaryFormatter()
     {
         SurrogateSelector surrogateSelector = new SurrogateSelector();
@@ -21,38 +28,50 @@ public class UnityBinaryFormatter
         };
     }
 
+    /// <summary>
+    /// Serializes the passed data into the filestream.
+    /// </summary>
+    /// <param name="stream">The file stream to write to</param>
+    /// <param name="obj">The data to serialize</param>
     public void Serialize(FileStream stream, object obj) => Formatter.Serialize(stream, obj);
 
+    /// <summary>
+    /// Deserializes the data from the passed filestream.
+    /// </summary>
+    /// <param name="stream">The file stream to read from</param>
+    /// <returns>The deserialized data</returns>
     public object Deserialize(FileStream stream) => Formatter.Deserialize(stream);
 }
 
-// Move Later?
+/// <summary>
+/// Unity Vector3 serialization surrogate
+/// </summary>
 public class Vector3SerializationSurrogate : ISerializationSurrogate
 {
+    /// <inheritdoc/>
     public void GetObjectData(object obj, SerializationInfo info, StreamingContext context)
     {
-
-        Vector3 v3 = (Vector3)obj;
-        info.AddValue("x", v3.x);
-        info.AddValue("y", v3.y);
-        info.AddValue("z", v3.z);
+        var vector3 = (Vector3)obj;
+        info.AddValue("x", vector3.x);
+        info.AddValue("y", vector3.y);
+        info.AddValue("z", vector3.z);
     }
 
-    public object SetObjectData(object obj, SerializationInfo info,
-                                       StreamingContext context, ISurrogateSelector selector)
+    /// <inheritdoc/>
+    public object SetObjectData(object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
     {
-
-        Vector3 v3 = (Vector3)obj;
-        v3.x = (float)info.GetValue("x", typeof(float));
-        v3.y = (float)info.GetValue("y", typeof(float));
-        v3.z = (float)info.GetValue("z", typeof(float));
-        obj = v3;
+        var vector3 = (Vector3)obj;
+        vector3.x = (float)info.GetValue("x", typeof(float));
+        vector3.y = (float)info.GetValue("y", typeof(float));
+        vector3.z = (float)info.GetValue("z", typeof(float));
+        obj = vector3;
         return obj;
     }
 }
 
 public class QuaternionSerializationSurrogate : ISerializationSurrogate
 {
+    /// <inheritdoc/>
     public void GetObjectData(object obj, SerializationInfo info, StreamingContext context)
     {
 
@@ -63,8 +82,8 @@ public class QuaternionSerializationSurrogate : ISerializationSurrogate
         info.AddValue("w", quat.w);
     }
 
-    public object SetObjectData(object obj, SerializationInfo info,
-                                       StreamingContext context, ISurrogateSelector selector)
+    /// <inheritdoc/>
+    public object SetObjectData(object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
     {
         Quaternion quat = (Quaternion)obj;
         quat.x = (float)info.GetValue("x", typeof(float));

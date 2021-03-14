@@ -1,10 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
+/// <summary>
+/// Canvas Controller containing methods relevant to main
+/// GUI behaviour.
+/// </summary>
 public class CanvasController : MonoBehaviour
 {
+    /// <summary>
+    /// Enum representing the current mouse state
+    /// </summary>
     private enum MouseState
     {
         Locked, Unlocked
@@ -13,12 +17,18 @@ public class CanvasController : MonoBehaviour
     private MouseState CurrentState;
     private GameObject PauseMenu;
 
+    /// <summary>
+    /// Awake called before Start of class
+    /// </summary>
     void Awake()
     {
         PauseMenu = transform.Find("Pause_Menu").gameObject;
         Unpause();
     }
 
+    /// <summary>
+    /// Update called every frame
+    /// </summary>
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -34,17 +44,26 @@ public class CanvasController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// On Continue Button clicked callback method.
+    /// </summary>
     public void OnContinueClicked()
     {
         Unpause();
     }
 
+    /// <summary>
+    /// On Save and Exit Button clicked callback method.
+    /// </summary>
     public void OnSaveAndExitClicked()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1; // Un pause the game without relocking the mouse
         LevelManager.Load("MainMenu");
     }
 
+    /// <summary>
+    /// Helper method that resumes the normal operation of the game.
+    /// </summary>
     private void Unpause()
     {
         PauseMenu.SetActive(false);
@@ -56,6 +75,9 @@ public class CanvasController : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    /// <summary>
+    /// Helper method that pauses the normal operation of the game.
+    /// </summary>
     private void Pause()
     {
         PauseMenu.SetActive(true);

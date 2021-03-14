@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Runtime.Serialization;
-using UnityEngine;
 
+/// <summary>
+/// Abstract class representing Scene Data
+/// </summary>
 [Serializable]
 public abstract class SceneData
 {

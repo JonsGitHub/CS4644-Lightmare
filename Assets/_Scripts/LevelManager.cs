@@ -1,12 +1,22 @@
 ﻿using System.IO;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Static class containing all of the methodology for scene
+/// management and scene switching
+/// </summary>
 public static class LevelManager
 {
+    /// <summary>
+    /// The current scene file path
+    /// </summary>
     private static string CurrentSceneFilePath => Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name.Replace(' ', '_') + ".dat";
 
+    /// <summary>
+    /// Loads the scene based on the passed scene name.
+    /// </summary>
+    /// <param name="sceneName">The scene name to load</param>
     public static void Load(string sceneName)
     {
         Save(); // Save the current scene before loading new scene
@@ -28,13 +38,15 @@ public static class LevelManager
         }
     }
 
+    /// <summary>
+    /// Saves the current scene.
+    /// </summary>
     public static void Save()
     {
         var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
         if (controller)
         {
             var formatter = new UnityBinaryFormatter();
-
             var file = File.OpenWrite(CurrentSceneFilePath);
             var data = controller.Save();
             formatter.Serialize(file, data);
@@ -42,25 +54,31 @@ public static class LevelManager
         }
     }
 
-    // Currently called at the end of the loading screen @line 44 - should be self contained to Level Manager (fix)
+    /// <summary>
+    /// Loading Step checking for save data of the current and loading 
+    /// when applicable.
+    /// </summary>
     public static void PostLoadingStep()
     {
+        // TODO: Currently called at the end of the loading screen @line 44 - should be self contained to Level Manager (fix)
+        
         var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
         if (controller && File.Exists(CurrentSceneFilePath))
         {
-            var formatter = new UnityBinaryFormatter();
-
             Debug.Log("Loading Data at: " + CurrentSceneFilePath);
+            
+            var formatter = new UnityBinaryFormatter();
             var file = File.OpenRead(CurrentSceneFilePath);
             controller.Load(formatter.Deserialize(file));
             file.Close();
         }
     }
 
+    /// <summary>
+    /// Exits the application.
+    /// </summary>
     public static void Quit()
     {
-        // Check for saving data here
-
     #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
     #else

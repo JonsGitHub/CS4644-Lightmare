@@ -1,11 +1,21 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Controller containing the behaviour relating to interactors.
+/// </summary>
 public class InteractorController : MonoBehaviour
 {
+    #region Private Fields
+    
     private Transform CurrentObject;
     private Transform HeldObject;
     private Transform HoldPosition;
 
+    #endregion
+
+    /// <summary>
+    /// Awake called before Start of class
+    /// </summary>
     private void Awake()
     {
         HoldPosition = transform.Find("Hold");
@@ -13,6 +23,9 @@ public class InteractorController : MonoBehaviour
         HeldObject = null;
     }
 
+    /// <summary>
+    /// Update called every physics frame
+    /// </summary>
     private void FixedUpdate()
     {
         if (CurrentObject && Input.GetButton("Interact"))
@@ -41,6 +54,10 @@ public class InteractorController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// On trigger enter callback method.
+    /// </summary>
+    /// <param name="other">The collider that has entered the trigger</param>
     private void OnTriggerEnter(Collider other)
     {
         if (CurrentObject == null && !other.CompareTag("Player"))
@@ -49,6 +66,10 @@ public class InteractorController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// On trigger exit callback method.
+    /// </summary>
+    /// <param name="other">The collider that has exited the trigger</param>
     private void OnTriggerExit(Collider other)
     {
         if (CurrentObject && other.gameObject.Equals(CurrentObject.gameObject))
