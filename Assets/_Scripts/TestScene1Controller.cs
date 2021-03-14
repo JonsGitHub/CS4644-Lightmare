@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Scene Data relevant to TestScene1
+/// </summary>
 [Serializable]
 public class TestScene1Data : SceneData
 {
@@ -17,13 +20,20 @@ public class TestScene1Data : SceneData
     public Vector3    Box3Scale;
 }
 
+/// <summary>
+/// Test Scene 1 Controller implementing a scene controller
+/// </summary>
 public class TestScene1Controller : SceneController
 {
+    /// <summary>
+    /// Awake called before Start of class
+    /// </summary>
     new void Awake()
     {
         base.Awake();
     }
 
+    /// <inheritdoc/>
     public override void Load(object data)
     {
         var testData = (TestScene1Data)data;
@@ -44,6 +54,7 @@ public class TestScene1Controller : SceneController
         cube3.localScale =  testData.Box3Scale;
     }
 
+    /// <inheritdoc/>
     public override SceneData Save()
     {
         TestScene1Data test = new TestScene1Data()

@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Controller class containing behaviour for player input and interaction
+/// with the world.
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
-    // Public Properties
+    #region Public Properties
+    
     [Header("Camera Settings")]
     [Tooltip("Amount of scrolling per mouse wheel rotation."), Range(0.001f, 1f)]
     public float ScrollSpeed = 0.1f;
@@ -12,20 +17,28 @@ public class PlayerController : MonoBehaviour
     public float TurnSmoothing = 0.1f;
     public float JumpHeight = 1.0f;
 
-    // Private Properties
-    private Transform Camera;
-    private Cinemachine.CinemachineFreeLook FreeLook;
+    #endregion
+
+    #region Private Fields
+
     private CharacterController Controller;
     private Animator Animator;
-    private float SmoothVelocity;
 
     private Vector3 PlayerVelocity = Vector3.zero;
+    private float SmoothVelocity;
     private bool Grounded = false;
     private float Gravity = -9.81f;
 
+    private Transform Camera;
+    private Cinemachine.CinemachineFreeLook FreeLook;
     private Vector3 DefaultOrbitRingValues;
     private float CurrentScroll = 1.0f;
 
+    #endregion Private Fields
+
+    /// <summary>
+    /// Awake called before Start of class
+    /// </summary>
     private void Awake()
     {
         Camera = GameObject.FindGameObjectWithTag("MainCamera")?.transform;
@@ -39,6 +52,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update called every physics frame
+    /// </summary>
     private void FixedUpdate()
     {
         Grounded = Controller.isGrounded;
@@ -68,15 +84,19 @@ public class PlayerController : MonoBehaviour
             Animator.SetFloat("velocity", -1.0f);
         }
 
-        if (Input.GetButtonDown("Jump") && Grounded)
+        // Check if the user is trying to jump and is currently grounded
+        if (Grounded && Input.GetButton("Jump"))
         {
+            Grounded = false;
             Animator.SetTrigger("jump");
             PlayerVelocity.y += Mathf.Sqrt(JumpHeight * -3.0f * Gravity);
         }
-
+        
+        // Apply the vertical movement
         PlayerVelocity.y += Gravity * Time.deltaTime;
         Controller.Move(PlayerVelocity * Time.deltaTime);
 
+        // Check for scroll input
         var scrollDelta = Input.mouseScrollDelta;
         if (scrollDelta.magnitude >= 0.01f)
         {
@@ -84,6 +104,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Helper method that will check scroll delta and adjust the cinemachine orbit
+    /// rings accordingly.
+    /// </summary>
+    /// <param name="scrollDelta">The change in scrolling</param>
     private void CheckScroll(Vector2 scrollDelta)
     {
         CurrentScroll = Mathf.Clamp(CurrentScroll - (ScrollSpeed * scrollDelta.y), 0.3f, 1.0f);
