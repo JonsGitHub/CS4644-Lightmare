@@ -7,6 +7,7 @@ TagManager:
   - CinemachineCamera
   - SceneController
   - TestTag
+  - Enemy
   layers:
   - Default
   - TransparentFX
