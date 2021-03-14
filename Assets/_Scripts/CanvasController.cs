@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// Canvas Controller containing methods relevant to main
@@ -16,13 +17,16 @@ public class CanvasController : MonoBehaviour
     
     private MouseState CurrentState;
     private GameObject PauseMenu;
+    private TextMeshProUGUI MessageBox;
 
     /// <summary>
     /// Awake called before Start of class
     /// </summary>
-    void Awake()
+    private void Awake()
     {
         PauseMenu = transform.Find("Pause_Menu").gameObject;
+        MessageBox = transform.Find("Message").GetComponent<TextMeshProUGUI>();
+        MessageBox.gameObject.SetActive(false);
         Unpause();
     }
 
@@ -42,6 +46,24 @@ public class CanvasController : MonoBehaviour
                 Pause();
             }
         }
+    }
+
+    /// <summary>
+    /// Sets the message box to the passed string.
+    /// </summary>
+    /// <param name="text">The string to display</param>
+    public void SetMessage(string text)
+    {
+        MessageBox.gameObject.SetActive(true);
+        MessageBox.text = text;
+    }
+
+    /// <summary>
+    /// Clears the message box.
+    /// </summary>
+    public void ClearMessage()
+    {
+        MessageBox.gameObject.SetActive(false);
     }
 
     /// <summary>
