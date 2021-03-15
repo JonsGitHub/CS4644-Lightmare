@@ -36,6 +36,9 @@ public struct Interaction
 /// </summary>
 public class Conversation
 {
+    /// <summary>
+    /// Gets or sets the first line used in the conversation.
+    /// </summary>
     public string Line1 { get; set; }
 }
 
