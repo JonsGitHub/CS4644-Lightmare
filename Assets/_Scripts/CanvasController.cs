@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
 
 /// <summary>
@@ -18,6 +19,8 @@ public class CanvasController : MonoBehaviour
     private MouseState CurrentState;
     private GameObject PauseMenu;
     private TextMeshProUGUI MessageBox;
+
+    private List<Ui3D> Uis = new List<Ui3D>();
 
     /// <summary>
     /// Awake called before Start of class
@@ -49,6 +52,17 @@ public class CanvasController : MonoBehaviour
     }
 
     /// <summary>
+    /// Last update called every frame
+    /// </summary>
+    private void LateUpdate()
+    {
+        foreach (var ui in Uis)
+        {
+            ui.UpdateUI();
+        }
+    }
+
+    /// <summary>
     /// Sets the message box to the passed string.
     /// </summary>
     /// <param name="text">The string to display</param>
@@ -64,6 +78,26 @@ public class CanvasController : MonoBehaviour
     public void ClearMessage()
     {
         MessageBox.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Adds a Ui3D to be rendered on the canvas
+    /// </summary>
+    /// <param name="ui">The Ui3D to be added</param>
+    public void AddLabel(Ui3D ui)
+    {
+        ui.AttachTo(transform);
+        Uis.Add(ui);
+    }
+
+    /// <summary>
+    /// Removes a Ui3D from the canvas and destroys the instance.
+    /// </summary>
+    /// <param name="ui">The Ui3D to be removed</param>
+    public void RemoveLabel(Ui3D ui)
+    {
+        Destroy(ui);
+        Uis.Remove(ui);
     }
 
     /// <summary>
