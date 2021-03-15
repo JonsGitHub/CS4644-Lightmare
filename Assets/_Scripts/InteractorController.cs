@@ -75,6 +75,11 @@ public class InteractorController : MonoBehaviour
     {
         if (CurrentObject && other.gameObject.Equals(CurrentObject))
         {
+            // Re-activate gravity - in case clipped out of user's hand
+            if (Current == InteractionType.Grab)
+            {
+                CurrentBody.useGravity = true;
+            }
             Canvas?.ClearMessage();
             Current = InteractionType.None;
             Interaction.Clear();
