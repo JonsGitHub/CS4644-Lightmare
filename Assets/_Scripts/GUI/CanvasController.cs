@@ -18,6 +18,7 @@ public class CanvasController : MonoBehaviour
     
     private MouseState CurrentState;
     private GameObject PauseMenu;
+    private GameObject SettingsMenu;
     private TextMeshProUGUI MessageBox;
 
     private List<Ui3D> Uis = new List<Ui3D>();
@@ -28,6 +29,9 @@ public class CanvasController : MonoBehaviour
     private void Awake()
     {
         PauseMenu = transform.Find("Pause_Menu").gameObject;
+        SettingsMenu = transform.Find("Settings_Menu").gameObject;
+        SettingsMenu.SetActive(false);
+
         MessageBox = transform.Find("Message").GetComponent<TextMeshProUGUI>();
         MessageBox.gameObject.SetActive(false);
         Unpause();
@@ -100,6 +104,8 @@ public class CanvasController : MonoBehaviour
         Uis.Remove(ui);
     }
 
+    #region Callbacks
+
     /// <summary>
     /// On Continue Button clicked callback method.
     /// </summary>
@@ -116,6 +122,19 @@ public class CanvasController : MonoBehaviour
         Time.timeScale = 1; // Un pause the game without relocking the mouse
         LevelManager.Load("MainMenu");
     }
+
+    /// <summary>
+    /// On Settings Button clicked callback method.
+    /// </summary>
+    public void OnSettingsClicked()
+    {
+        PauseMenu.SetActive(false);
+        SettingsMenu.SetActive(true);
+    }
+
+    #endregion Callbacks
+
+    #region Private Methods
 
     /// <summary>
     /// Helper method that resumes the normal operation of the game.
@@ -144,4 +163,6 @@ public class CanvasController : MonoBehaviour
         
         Time.timeScale = 0;
     }
+
+    #endregion
 }

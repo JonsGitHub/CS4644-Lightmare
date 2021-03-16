@@ -8,10 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     #region Public Properties
     
-    [Header("Camera Settings")]
-    [Tooltip("Amount of scrolling per mouse wheel rotation."), Range(0.001f, 1f)]
-    public float ScrollSpeed = 0.1f;
-    
     [Header("Movement Settings")]
     public float Speed = 6f;
     public float TurnSmoothing = 0.1f;
@@ -105,13 +101,25 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
+    /// Last update called every frame
+    /// </summary>
+    private void LateUpdate()
+    {
+        FreeLook.m_YAxis.m_InvertInput = Settings.Instance.InvertedYAxis;
+        FreeLook.m_XAxis.m_InvertInput = Settings.Instance.InvertedXAxis;
+
+        FreeLook.m_XAxis.m_MaxSpeed = 600 * (Settings.Instance.MouseSensitivity / 10.0f);
+        FreeLook.m_YAxis.m_MaxSpeed = 4 * (Settings.Instance.MouseSensitivity / 10.0f);
+    }
+
+    /// <summary>
     /// Helper method that will check scroll delta and adjust the cinemachine orbit
     /// rings accordingly.
     /// </summary>
     /// <param name="scrollDelta">The change in scrolling</param>
     private void CheckScroll(Vector2 scrollDelta)
     {
-        CurrentScroll = Mathf.Clamp(CurrentScroll - (ScrollSpeed * scrollDelta.y), 0.3f, 1.0f);
+        CurrentScroll = Mathf.Clamp(CurrentScroll - ((Settings.Instance.ScrollSensitivity / 50.0f) * scrollDelta.y), 0.3f, 1.0f);
 
         for (var i = 0; i < 3; ++i)
         {
