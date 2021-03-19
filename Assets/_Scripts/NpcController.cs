@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Npc controller outlining the behaviors relating
@@ -35,10 +36,11 @@ public class NpcController : EntityController, IInteractable
     public InteractionType Interact(ref Interaction interaction)
     {
         interaction.Object = gameObject;
-        interaction.Conversation = new Conversation()
-        {
-            Line1 = "Hello I am " + Name
-        };
+
+        var dialogues = new Stack<Dialogue>();
+        dialogues.Push(new Dialogue() { Speaker = Name, Speech = "Hello I am " + Name });
+        var conversation = new Conversation(dialogues);
+        interaction.Conversation = conversation;
         return InteractionType.Conversation;
     }
 }

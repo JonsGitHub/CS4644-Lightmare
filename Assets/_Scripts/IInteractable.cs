@@ -32,17 +32,6 @@ public struct Interaction
 }
 
 /// <summary>
-/// Very primative conversation struct.
-/// </summary>
-public class Conversation
-{
-    /// <summary>
-    /// Gets or sets the first line used in the conversation.
-    /// </summary>
-    public string Line1 { get; set; }
-}
-
-/// <summary>
 /// Interface representing the required methods for an
 /// interactable object.
 /// </summary>

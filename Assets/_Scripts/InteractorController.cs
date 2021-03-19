@@ -34,7 +34,7 @@ public class InteractorController : MonoBehaviour
     {
         if (Current == InteractionType.Conversation && Input.GetButtonDown("Interact"))
         {
-            Debug.Log(CurrentConversation.Line1);
+            Canvas?.StartConversation(CurrentConversation);
         }
 
         if (Current == InteractionType.Grab)

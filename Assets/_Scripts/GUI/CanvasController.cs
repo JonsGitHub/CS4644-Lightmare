@@ -15,11 +15,12 @@ public class CanvasController : MonoBehaviour
     {
         Locked, Unlocked
     }
-    
+
     private MouseState CurrentState;
     private GameObject PauseMenu;
     private GameObject SettingsMenu;
     private TextMeshProUGUI MessageBox;
+    private DialogueController DialogueController;
 
     private List<Ui3D> Uis = new List<Ui3D>();
 
@@ -28,12 +29,17 @@ public class CanvasController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+
         PauseMenu = transform.Find("Pause_Menu").gameObject;
         SettingsMenu = transform.Find("Settings_Menu").gameObject;
         SettingsMenu.SetActive(false);
 
         MessageBox = transform.Find("Message").GetComponent<TextMeshProUGUI>();
         MessageBox.gameObject.SetActive(false);
+
+        DialogueController = transform.Find("Dialogue_Box").GetComponent<DialogueController>();
+        DialogueController.gameObject.SetActive(false);
+
         Unpause();
     }
 
@@ -65,6 +71,8 @@ public class CanvasController : MonoBehaviour
             ui.UpdateUI();
         }
     }
+
+    public void StartConversation(Conversation conversation) => DialogueController?.StartConversation(conversation);
 
     /// <summary>
     /// Sets the message box to the passed string.
