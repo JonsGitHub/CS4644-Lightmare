@@ -8,6 +8,7 @@ TagManager:
   - SceneController
   - TestTag
   - Enemy
+  - SpawnLocation
   layers:
   - Default
   - TransparentFX
