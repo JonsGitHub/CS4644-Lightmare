@@ -14,12 +14,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _previousMovementInput;
 
-    [Header("Movement Settings")]
-    public float Speed = 6f;
-    public float TurnSmoothing = 0.1f;
-
     #endregion
 
+    //These fields are read and manipulated by the StateMachine actions
     [NonSerialized] public bool jumpInput;
     [NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
     [NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
