@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: ExampleScene1
     m_Metadata:
       m_Items: []
+  - m_Id: 373286615126016
+    m_Key: ExampleScene2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

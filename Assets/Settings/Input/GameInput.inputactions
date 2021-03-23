@@ -62,14 +62,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MouseControlCamera",
-                    "type": "Button",
-                    "id": "3172ea7f-84a3-4236-b03d-2beae11fa2e0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Run",
                     "type": "Button",
                     "id": "495f7a0f-88a3-4e91-92ce-2666f3f4c85e",
@@ -444,17 +436,6 @@
                 },
                 {
                     "name": "",
-                    "id": "55713f13-8452-439f-b87e-76d9f2839d7e",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardOrGamepad",
-                    "action": "MouseControlCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "effcfcac-ef7a-475b-8b36-fba0eae0c360",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -516,7 +497,7 @@
                 {
                     "name": "Unpause",
                     "type": "Button",
-                    "id": "a33f8309-65f3-4f8a-8671-c7cb90ef798e",
+                    "id": "a54fdafd-248d-42e0-a6c4-c5f26d8e70fc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -822,7 +803,18 @@
                 },
                 {
                     "name": "",
-                    "id": "10a96123-fa2f-43f5-b596-4ed4c93fd4b3",
+                    "id": "23583bb1-6dd5-4287-94bd-3028199fc088",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;KeyboardOrGamepad",
+                    "action": "MouseMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fdb2ab68-0ea3-4e35-96b9-c96ad3f17c82",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
@@ -833,23 +825,12 @@
                 },
                 {
                     "name": "",
-                    "id": "b8857ec1-9a5c-4cd2-af29-276683c9151e",
+                    "id": "c6b5532a-8c70-43ed-aa81-63a8c47f857f",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
                     "action": "Unpause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "23583bb1-6dd5-4287-94bd-3028199fc088",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse;KeyboardOrGamepad",
-                    "action": "MouseMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

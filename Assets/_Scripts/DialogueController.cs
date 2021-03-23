@@ -60,6 +60,8 @@ public class DialogueController : MonoBehaviour
 
     private void Close()
     {
+        Debug.Log("Closing");
+
         PlayerController.SetInputStatus(PlayerController.InputStatus.Default);
         gameObject.SetActive(false);
     }

@@ -111,21 +111,15 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public void OnPause(InputAction.CallbackContext context)
 	{
 		if (context.phase == InputActionPhase.Performed)
+        {
 			pauseEvent.Invoke();
+			disableMouseControlCameraEvent();
+        }
 	}
 
 	public void OnRotateCamera(InputAction.CallbackContext context)
 	{
 		cameraMoveEvent.Invoke(context.ReadValue<Vector2>(), IsDeviceMouse(context));
-	}
-
-	public void OnMouseControlCamera(InputAction.CallbackContext context)
-	{
-		if (context.phase == InputActionPhase.Performed)
-			enableMouseControlCameraEvent.Invoke();
-
-		if (context.phase == InputActionPhase.Canceled)
-			disableMouseControlCameraEvent.Invoke();
 	}
 
 	private bool IsDeviceMouse(InputAction.CallbackContext context) => context.control.device.name == "Mouse";
@@ -163,16 +157,25 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public void OnUnpause(InputAction.CallbackContext context)
 	{
 		if (context.phase == InputActionPhase.Performed)
+        {
 			menuUnpauseEvent();
+			enableMouseControlCameraEvent();
+        }
 	}
 
-	//public void EnableDialogueInput()
-	//{
-	//	gameInput.Menus.Disable();
-	//	gameInput.Gameplay.Disable();
+	public void ManualUnpause()
+    {
+		menuUnpauseEvent();
+		enableMouseControlCameraEvent();
+	}
 
-	//	gameInput.Dialogues.Enable();
-	//}
+	public void EnableDialogueInput()
+	{
+		gameInput.Menus.Disable();
+		gameInput.Gameplay.Disable();
+
+		gameInput.Dialogues.Enable();
+	}
 
 	public void EnableGameplayInput()
 	{
@@ -182,13 +185,13 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 		gameInput.Gameplay.Enable();
 	}
 
-	//public void EnableMenuInput()
-	//{
-	//	gameInput.Dialogues.Disable();
-	//	gameInput.Gameplay.Disable();
+	public void EnableMenuInput()
+	{
+		gameInput.Dialogues.Disable();
+		gameInput.Gameplay.Disable();
 
-	//	gameInput.Menus.Enable();
-	//}
+		gameInput.Menus.Enable();
+	}
 
 	public void DisableAllInput()
 	{

@@ -22,5 +22,9 @@ MonoBehaviour:
     m_Localized: ExampleScene1
     m_Metadata:
       m_Items: []
+  - m_Id: 373286615126016
+    m_Localized: ExampleScene2
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
