@@ -113,7 +113,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 		if (context.phase == InputActionPhase.Performed)
         {
 			pauseEvent.Invoke();
-			disableMouseControlCameraEvent();
+			DisableMouseCameraControlInput();
         }
 	}
 
@@ -159,14 +159,23 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 		if (context.phase == InputActionPhase.Performed)
         {
 			menuUnpauseEvent();
-			enableMouseControlCameraEvent();
         }
 	}
 
 	public void ManualUnpause()
     {
 		menuUnpauseEvent();
-		enableMouseControlCameraEvent();
+		EnableMouseCameraControlInput();
+	}
+
+	public void EnableMouseCameraControlInput()
+    {
+		enableMouseControlCameraEvent?.Invoke();
+    }
+
+	public void DisableMouseCameraControlInput()
+    {
+		disableMouseControlCameraEvent?.Invoke();
 	}
 
 	public void EnableDialogueInput()

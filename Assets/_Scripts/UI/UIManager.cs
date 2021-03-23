@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Localization;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,6 +25,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private LoadEventChannelSO _loadMenu = default;
 
 	private List<Ui3D> Uis = new List<Ui3D>();
+	private Stack<GameObject> ViewStack = new Stack<GameObject>();
 
 	private void OnEnable()
 	{
@@ -45,9 +44,11 @@ public class UIManager : MonoBehaviour
 
 		_inputReader.pauseEvent += Pause;
 		_inputReader.menuUnpauseEvent += Unpause;
+
+		_inputReader.EnableGameplayInput();
 	}
 
-    private void OnDisable()
+	private void OnDisable()
     {
 		if (_openUIDialogueEvent)
 		{
@@ -90,21 +91,45 @@ public class UIManager : MonoBehaviour
 		_interactionPanel.gameObject.SetActive(isOpenEvent);
 	}
 
-	/// <summary>
-	/// On Continue Button clicked callback method.
-	/// </summary>
-	public void OnContinueClicked()
-	{
-		_inputReader.ManualUnpause();
-	}
+	public void AddToViewStack(GameObject layer)
+    {
+		// Set the top of the viewstack to inactive if it exists
+		if (ViewStack.Count > 0)
+			ViewStack.Peek().SetActive(false);
+
+		layer.SetActive(true);
+		ViewStack.Push(layer);
+    }
+
+	public void RemoveTopFromViewStack()
+    {
+		if (ViewStack.Count == 0)
+			return;
+
+		var obj = ViewStack.Pop();
+		obj.SetActive(false);
+		if (obj == PauseMenu)
+        {
+			_inputReader.EnableGameplayInput();
+			_inputReader.EnableMouseCameraControlInput();
+			Time.timeScale = 1;
+			return;
+		}
+
+		if (ViewStack.Count != 0)
+        {
+			ViewStack.Peek().SetActive(true);
+        }
+    }
 
 	/// <summary>
 	/// On Save and Exit Button clicked callback method.
 	/// </summary>
 	public void OnSaveAndExitClicked()
 	{
-		Time.timeScale = 1; // Un pause the game without relocking the mouse
-		Unpause();
+		Time.timeScale = 1;
+		_inputReader.EnableMenuInput();
+		ViewStack.Pop().SetActive(false); // Set Pause Menu to inactive
 		_loadMenu.RaiseEvent(_menuToLoad, true);
 	}
 
@@ -113,8 +138,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnSettingsClicked()
 	{
-		PauseMenu.SetActive(false);
-		SettingsMenu.SetActive(true);
+		AddToViewStack(SettingsMenu);
 	}
 
 	/// <summary>
@@ -153,10 +177,7 @@ public class UIManager : MonoBehaviour
 	/// </summary>
 	private void Unpause()
 	{
-		_inputReader.EnableGameplayInput();
-
-		PauseMenu.SetActive(false);
-		Time.timeScale = 1;
+		RemoveTopFromViewStack();
 	}
 
 	/// <summary>
@@ -165,8 +186,7 @@ public class UIManager : MonoBehaviour
 	private void Pause()
 	{
 		_inputReader.EnableMenuInput();
-
-		PauseMenu.SetActive(true);
+		AddToViewStack(PauseMenu);
 		Time.timeScale = 0;
 	}
 }

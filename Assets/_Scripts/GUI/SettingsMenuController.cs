@@ -6,15 +6,11 @@ using UnityEngine.UI;
 /// </summary>
 public class SettingsMenuController : MonoBehaviour
 {
-    private GameObject pauseMenu;
-
     /// <summary>
     /// Awake called before Start of class
     /// </summary>
     private void Awake()
     {
-        pauseMenu = transform.parent.Find("Pause_Menu").gameObject;
-
         var background = transform.Find("Background");
         background.Find("Mouse_Sensitivity").GetComponentInChildren<Slider>().value = Settings.Instance.MouseSensitivity;
         background.Find("Scroll_Sensitivity").GetComponentInChildren<Slider>().value = Settings.Instance.ScrollSensitivity;
@@ -30,9 +26,6 @@ public class SettingsMenuController : MonoBehaviour
     /// </summary>
     public void OnBackClicked()
     {
-        pauseMenu.SetActive(true);
-        gameObject.SetActive(false);
-
         Settings.Instance.Save();
     }
 

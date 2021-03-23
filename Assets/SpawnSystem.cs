@@ -68,7 +68,17 @@ public class SpawnSystem : MonoBehaviour
 		Transform spawnLocation = GetSpawnLocation(spawnIndex, _spawnLocations);
 		PlayerController playerInstance = InstantiatePlayer(_playerPrefab, spawnLocation);
 
-		_playerInstantiatedChannel.RaiseEvent(playerInstance.transform); // The CameraSystem will pick this up to frame the player
+		var lookAtTransform = playerInstance.transform;
+		foreach (Transform child in playerInstance.transform)
+		{
+			if (child.CompareTag("CameraTarget"))
+            {
+				lookAtTransform = child;
+				break;
+            }
+		}
+
+		_playerInstantiatedChannel.RaiseEvent(lookAtTransform); // The CameraSystem will pick this up to frame the player
 		_playerTransformAnchor.Transform = playerInstance.transform;
 	}
 

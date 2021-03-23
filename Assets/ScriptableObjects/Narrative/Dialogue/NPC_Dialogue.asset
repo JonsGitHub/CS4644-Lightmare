@@ -20,4 +20,16 @@ MonoBehaviour:
       m_KeyId: 6850875392
       m_Key: 
     m_FallbackState: 0
+  - m_TableReference:
+      m_TableCollectionName: GUID:eacc8970391531d4aac420b7e1262334
+    m_TableEntryReference:
+      m_KeyId: 158472311672832
+      m_Key: 
+    m_FallbackState: 0
+  - m_TableReference:
+      m_TableCollectionName: GUID:eacc8970391531d4aac420b7e1262334
+    m_TableEntryReference:
+      m_KeyId: 158588229652480
+      m_Key: 
+    m_FallbackState: 0
   _dialogueType: 0

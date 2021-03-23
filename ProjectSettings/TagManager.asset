@@ -10,6 +10,7 @@ TagManager:
   - SpawnLocation
   - NPC
   - Grabbable
+  - CameraTarget
   layers:
   - Default
   - TransparentFX

@@ -19,7 +19,15 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 6850875392
-    m_Localized: This is a dialogue.
+    m_Localized: Hi! I am an example NPC.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 158472311672832
+    m_Localized: This is a sample dialogue line.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 158588229652480
+    m_Localized: This si the last sample dialogue line.
     m_Metadata:
       m_Items: []
   references:
