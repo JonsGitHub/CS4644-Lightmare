@@ -129,61 +129,6 @@ public class PlayerController : MonoBehaviour
     private void OnStartedRunning() => isRunning = true;
 
     /// <summary>
-    /// Update called every physics frame
-    /// </summary>
-    private void FixedUpdate()
-    {
-        //if (Status != InputStatus.Blocked)
-        //{
-        //    Grounded = Controller.isGrounded;
-        //    if (Grounded && PlayerVelocity.y < 0)
-        //    {
-        //        PlayerVelocity.y = 0;
-        //    }
-
-        //    //float horizontal = Input.GetAxisRaw("Horizontal");    
-        //    //float vertical = Input.GetAxisRaw("Vertical");
-
-        //    //Vector3 direction = new Vector3(horizontal, 0f, vertical);
-        //    //direction.Normalize();
-        
-        //    //if (direction.magnitude >= 0.1f)
-        //    //{
-        //    //    Animator.SetFloat("velocity", direction.magnitude);
-        //    //    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.eulerAngles.y;
-        //    //    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref SmoothVelocity, TurnSmoothing);
-        //    //    transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-        //    //    Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        //    //    Controller.Move(moveDirection.normalized * Speed * (Grounded ? 1.0f : 0.5f) * Time.deltaTime);
-        //    //}
-        //    //else
-        //    //{
-        //    //    Animator.SetFloat("velocity", -1.0f);
-        //    //}
-
-        //    //// Check if the user is trying to jump and is currently grounded
-        //    //if (Grounded && Input.GetButton("Jump"))
-        //    //{
-        //    //    Grounded = false;
-        //    //    Animator.SetTrigger("jump");
-        //    //    PlayerVelocity.y += Mathf.Sqrt(JumpHeight * -3.0f * Gravity);
-        //    //}
-        
-        //    //// Apply the vertical movement
-        //    //PlayerVelocity.y += Gravity * Time.deltaTime;
-        //    //Controller.Move(PlayerVelocity * Time.deltaTime);
-
-        //    //// Check for scroll input
-        //    //var scrollDelta = Input.mouseScrollDelta;
-        //    //if (scrollDelta.magnitude >= 0.01f)
-        //    //{
-        //    //    CheckScroll(scrollDelta);
-        //    //}
-        //}
-    }
-
-    /// <summary>
     /// Last update called every frame
     /// </summary>
     private void LateUpdate()
@@ -195,17 +140,6 @@ public class PlayerController : MonoBehaviour
         //FreeLook.m_YAxis.m_MaxSpeed = 4 * (Settings.Instance.MouseSensitivity / 10.0f);
     }
 
-    public void SetInputStatus(InputStatus status)
-    {
-        //if (Status == InputStatus.Blocked)
-        //{
-        //    FreeLook.enabled =  false;
-        //}
-        //else
-        //{
-        //    FreeLook.enabled =  true;
-        //}
-    }
     /// <summary>
     /// Helper method that will check scroll delta and adjust the cinemachine orbit
     /// rings accordingly.

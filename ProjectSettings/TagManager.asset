@@ -9,6 +9,7 @@ TagManager:
   - TestTag
   - Enemy
   - SpawnLocation
+  - NPC
   layers:
   - Default
   - TransparentFX

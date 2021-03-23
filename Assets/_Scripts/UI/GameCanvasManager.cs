@@ -9,7 +9,7 @@ public class GameCanvasManager : MonoBehaviour
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject SettingsMenu;
     [SerializeField] private TextMeshProUGUI MessageBox;
-    [SerializeField] private DialogueController DialogueBox;
+    //[SerializeField] private DialogueController DialogueBox;
 
     private List<Ui3D> Uis = new List<Ui3D>();
 

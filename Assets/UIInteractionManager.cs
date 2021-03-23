@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class UIInteractionManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField]
+	private List<InteractionSO> _listInteractions = default;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[SerializeField]
+	private UIInteractionItemFiller _interactionItem = default;
+
+	public void FillInteractionPanel(InteractionType interactionType)
+	{
+		if ((_listInteractions != null) && (_interactionItem != null))
+			if (_listInteractions.Exists(o => o.InteractionType == interactionType))
+
+			{
+				_interactionItem.FillInteractionPanel(_listInteractions.Find(o => o.InteractionType == interactionType));
+			}
+	}
+
 }

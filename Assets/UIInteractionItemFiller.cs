@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Components;
+using TMPro;
 
 public class UIInteractionItemFiller : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] LocalizeStringEvent _interactionName = default;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[SerializeField] TextMeshProUGUI _interactionKeyButton = default;
+
+
+	public void FillInteractionPanel(InteractionSO interactionItem)
+	{
+		_interactionName.StringReference = interactionItem.InteractionName;
+		_interactionKeyButton.text = KeyCode.E.ToString(); // this keycode will be modified later on 
+
+	}
 }
