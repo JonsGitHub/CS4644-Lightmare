@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b0c7f07aac19c45b5d2b772336a080, type: 3}
+  m_Name: JumpDescending
+  m_EditorClassIdentifier: 
+  _actions:
+  - {fileID: 11400000, guid: 5130213862973dc4c88b20504f51740e, type: 2}
+  - {fileID: 11400000, guid: 096ce9ccdf5c7bd4596354d7cce1aaf2, type: 2}
+  - {fileID: 11400000, guid: e01a243361277d747a999021d5f9d9a6, type: 2}
+  - {fileID: 11400000, guid: 2a45f38f3eb04f142a4a6933291c906b, type: 2}
+  - {fileID: 11400000, guid: d180cf13d270cc444a4134e71cab518f, type: 2}

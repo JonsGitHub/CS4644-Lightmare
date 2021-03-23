@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a7bae5f88e2e24365bdf768f42df85c5
+  m_SerializeEntries:
+  - m_GUID: dc82a0ac6a848e944bf085763b7441ad
+    m_Address: Assets/ScriptableObjects/EventChannels/LoadLocation_Channel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 6a62cdf6a877a954ea66b66afbde8799
+    m_Address: Assets/ScriptableObjects/EventChannels/LoadMenu_Channel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: da8f518d9a6e7f84ea0fc57e31f0c7e6
+    m_Address: Assets/_Scenes/Managers/PersistentManagers.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 992484dd7205d4044887a601cda6b1fc
+    m_Address: Assets/_Scenes/Managers/Gameplay.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7aca65d3476fedf488250f1969f65178
+    m_Address: Assets/_Scenes/Initialization.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: fb6f0de1fdb53d041a1b0826177fc4af
+    m_Address: Assets/_Scenes/Examples/ExampleScene1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 527fed42e41a6454dac6a7ea515ba177
+    m_Address: Assets/_Scenes/Menus/Main.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d076b32a2c9951b4ea3cae65e729a858
+    m_Address: Assets/Audio/Music/Music_MainTheme.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 82629644050ceae428edb914afa701cb
+    m_Address: Assets/_Scenes/Examples/ExampleScene2.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 81c41411a9b214411963dec0c0183584, type: 2}
+    - {fileID: 11400000, guid: cdf282b96e9d146628b5b9170c09dc45, type: 2}

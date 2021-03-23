@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cba847e2b684114d98dd47a2179e042, type: 3}
+  m_Name: Initialization
+  m_EditorClassIdentifier: 
+  _guid: fb6d36a15ffee284198c326f1c312081
+  description: The scene from where the game starts and it is responsible for loading
+    PersistentManagers scene and raises the event to load the main menu.
+  sceneType: 2
+  sceneReference:
+    m_AssetGUID: 7aca65d3476fedf488250f1969f65178
+    m_SubObjectName: 
+    m_SubObjectType: 
+  musicTrack: {fileID: 0}
