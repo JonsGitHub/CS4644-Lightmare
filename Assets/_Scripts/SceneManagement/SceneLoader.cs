@@ -107,6 +107,16 @@ public class SceneLoader : MonoBehaviour
 	/// </summary>
 	private void UnloadPreviousScenes()
 	{
+		var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
+		if (controller)
+		{
+			var formatter = new UnityBinaryFormatter();
+			var file = File.OpenWrite(CurrentSceneFilePath);
+			var data = controller.Save();
+			formatter.Serialize(file, data);
+			file.Close();
+		}
+
 		for (int i = 0; i < _currentlyLoadedScenes.Length; i++)
 		{
 			_currentlyLoadedScenes[i].sceneReference.UnLoadScene();
@@ -185,19 +195,19 @@ public class SceneLoader : MonoBehaviour
 		Scene s = ((SceneInstance)_loadingOperationHandles[0].Result).Scene;
 		SceneManager.SetActiveScene(s);
 
-		// Load Saved Data for this scene if it exists
-		//var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
-		//if (controller && File.Exists(CurrentSceneFilePath))
-		//{
-		//	Debug.Log("Loading Data at: " + CurrentSceneFilePath);
+        // Load Saved Data for this scene if it exists
+        var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
+        if (controller && File.Exists(CurrentSceneFilePath))
+        {
+            Debug.Log("Loading Data at: " + CurrentSceneFilePath);
 
-		//	var formatter = new UnityBinaryFormatter();
-		//	var file = File.OpenRead(CurrentSceneFilePath);
-		//	controller.Load(formatter.Deserialize(file));
-		//	file.Close();
-		//}
+            var formatter = new UnityBinaryFormatter();
+            var file = File.OpenRead(CurrentSceneFilePath);
+            controller.Load(formatter.Deserialize(file));
+            file.Close();
+        }
 
-		LightProbes.TetrahedralizeAsync();
+        LightProbes.TetrahedralizeAsync();
 
 		_onSceneReady.RaiseEvent(); //Spawn system will spawn the player
 	}
