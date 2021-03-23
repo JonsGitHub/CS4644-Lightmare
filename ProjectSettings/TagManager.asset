@@ -6,10 +6,10 @@ TagManager:
   tags:
   - CinemachineCamera
   - SceneController
-  - TestTag
   - Enemy
   - SpawnLocation
   - NPC
+  - Grabbable
   layers:
   - Default
   - TransparentFX

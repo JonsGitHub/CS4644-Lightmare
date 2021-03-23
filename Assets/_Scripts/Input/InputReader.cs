@@ -30,7 +30,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public event UnityAction advanceDialogueEvent = delegate { };
 
 	// Menus
-	public event UnityAction menuMouseMoveEvent = delegate { };
+	public event UnityAction<Vector2> menuMouseMoveEvent = delegate { };
 	public event UnityAction menuConfirmEvent = delegate { };
 	public event UnityAction menuCancelEvent = delegate { };
 	public event UnityAction menuUnpauseEvent = delegate { };
@@ -151,7 +151,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public void OnMouseMove(InputAction.CallbackContext context)
 	{
 		if (context.phase == InputActionPhase.Performed)
-			menuMouseMoveEvent();
+			menuMouseMoveEvent(context.ReadValue<Vector2>());
 	}
 
 	public void OnUnpause(InputAction.CallbackContext context)

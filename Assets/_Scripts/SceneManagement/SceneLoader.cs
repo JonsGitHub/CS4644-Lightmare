@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -12,6 +13,11 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneLoader : MonoBehaviour
 {
+	/// <summary>
+	/// The current scene file path
+	/// </summary>
+	private string CurrentSceneFilePath => Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name.Replace(' ', '_') + ".dat";
+
 	[SerializeField] private GameSceneSO _gameplayScene = default;
 
 	[Header("Load Events")]
@@ -133,7 +139,7 @@ public class SceneLoader : MonoBehaviour
 	{
 		bool done = _loadingOperationHandles.Count == 0;
 
-		//This while will exit when all scenes requested have been unloaded
+		//This while will exit when all scenes requested have been loaded
 		while (!done)
 		{
 			for (int i = 0; i < _loadingOperationHandles.Count; ++i)
@@ -179,9 +185,21 @@ public class SceneLoader : MonoBehaviour
 		Scene s = ((SceneInstance)_loadingOperationHandles[0].Result).Scene;
 		SceneManager.SetActiveScene(s);
 
+		// Load Saved Data for this scene if it exists
+		//var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
+		//if (controller && File.Exists(CurrentSceneFilePath))
+		//{
+		//	Debug.Log("Loading Data at: " + CurrentSceneFilePath);
+
+		//	var formatter = new UnityBinaryFormatter();
+		//	var file = File.OpenRead(CurrentSceneFilePath);
+		//	controller.Load(formatter.Deserialize(file));
+		//	file.Close();
+		//}
+
 		LightProbes.TetrahedralizeAsync();
 
-		_onSceneReady.RaiseEvent(); //Spawn system will spawn the PigChef
+		_onSceneReady.RaiseEvent(); //Spawn system will spawn the player
 	}
 
 	public void ExitGame()

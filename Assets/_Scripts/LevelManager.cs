@@ -24,13 +24,13 @@ public static class LevelManager
         int index = SceneUtility.GetBuildIndexByScenePath(sceneName);
         if (index >= 0)
         {
-            var loadingScreen = Resources.Load<LoadingScreenController>("Prefabs/LoadingScreen");
+            //var loadingScreen = Resources.Load<LoadingScreenController>("Prefabs/LoadingScreen");
 
-            // Add to the current scene
-            loadingScreen = Object.Instantiate(loadingScreen);
+            //// Add to the current scene
+            //loadingScreen = Object.Instantiate(loadingScreen);
 
-            // Start Load sceen and scene loading
-            loadingScreen.StartLoading(index);
+            //// Start Load sceen and scene loading
+            //loadingScreen.StartLoading(index);
         }
         else
         {

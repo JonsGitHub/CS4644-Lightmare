@@ -15,5 +15,4 @@ public class InteractionUIEventChannelSO : ScriptableObject
 		if (OnEventRaised != null)
 			OnEventRaised.Invoke(state, interactionType);
 	}
-
 }

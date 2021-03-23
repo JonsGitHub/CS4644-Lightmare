@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public enum InteractionType { None = 0, Talk, Grab };
+public enum InteractionType { None = 0, Talk, Grab, Drop };
 
 public class InteractionManager : MonoBehaviour
 {
 	[HideInInspector] public InteractionType currentInteractionType; //This is checked by conditions in the StateMachine
 	[SerializeField] private InputReader _inputReader = default;
+
+	[SerializeField] private Transform _holdPosition = default;
+
 	//To store the object we are currently interacting with
 	private LinkedList<Interaction> _potentialInteractions = new LinkedList<Interaction>();
 
@@ -18,6 +21,8 @@ public class InteractionManager : MonoBehaviour
 
 	[Header("Listening to")]
 	[SerializeField] private VoidEventChannelSO _onInteractionEnded = default;
+
+	private GameObject grabbed;
 
 	private void OnEnable()
 	{
@@ -31,34 +36,45 @@ public class InteractionManager : MonoBehaviour
 		_onInteractionEnded.OnEventRaised -= OnInteractionEnd;
 	}
 
-	// Called mid-way through the AnimationClip of collecting
-	//private void Collect()
-	//{
-	//	GameObject itemObject = _potentialInteractions.First.Value.interactableObject;
-	//	_potentialInteractions.RemoveFirst();
+    private void FixedUpdate()
+    {
+		// TODO: Move into player controller by listenting to grab interaction event
+        if (grabbed)
+        {
+			var rigid = grabbed.GetComponent<Rigidbody>();
+			if (rigid)
+			{
+				rigid.velocity = Vector3.zero;
+				rigid.useGravity = false;
+			}
+			grabbed.transform.position = _holdPosition.position;
+			grabbed.transform.rotation = _holdPosition.rotation;
+		}
+    }
 
-	//	if (_onObjectPickUp != null)
-	//	{
-	//		Item currentItem = itemObject.GetComponent<CollectibleItem>().GetItem();
-	//		_onObjectPickUp.RaiseEvent(currentItem);
-	//	}
-
-	//	Destroy(itemObject); //TODO: maybe move this destruction in a more general manger, to implement a removal SFX
-
-	//	RequestUpdateUI(false);
-	//}
-
-	private void OnInteractionButtonPress()
+    private void OnInteractionButtonPress()
 	{
 		if (_potentialInteractions.Count == 0)
 			return;
 
-		currentInteractionType = _potentialInteractions.First.Value.type;
+		if (grabbed)
+        {
+			var rigid = grabbed.GetComponent<Rigidbody>();
+			if (rigid)
+			{
+				rigid.useGravity = true;
+			}
+			grabbed = null;
+			RequestUpdateUI(true);
+			return;
+        }
 
-		switch (_potentialInteractions.First.Value.type)
+		currentInteractionType = _potentialInteractions.First.Value.type;
+		switch (currentInteractionType)
 		{
 			case InteractionType.Grab:
-				
+				grabbed = _potentialInteractions.First.Value.interactableObject;
+				RequestUpdateUI(true);
 				break;
 			case InteractionType.Talk:
 				if (_startTalking != null)
@@ -83,18 +99,13 @@ public class InteractionManager : MonoBehaviour
 	{
 		Interaction newPotentialInteraction = new Interaction(InteractionType.None, obj);
 
-		//if (obj.CompareTag("Pickable"))
-		//{
-		//	newPotentialInteraction.type = InteractionType.PickUp;
-		//}
-		//else if (obj.CompareTag("CookingPot"))
-		//{
-		//	newPotentialInteraction.type = InteractionType.Cook;
-		//}
-		//else 
 		if (obj.CompareTag("NPC"))
 		{
 			newPotentialInteraction.type = InteractionType.Talk;
+		}
+		else if (obj.CompareTag("Grabbable"))
+		{
+			newPotentialInteraction.type = InteractionType.Grab;
 		}
 
 		if (newPotentialInteraction.type != InteractionType.None)
@@ -123,7 +134,7 @@ public class InteractionManager : MonoBehaviour
 	private void RequestUpdateUI(bool visible)
 	{
 		if (visible)
-			_toggleInteractionUI.RaiseEvent(true, _potentialInteractions.First.Value.type);
+			_toggleInteractionUI.RaiseEvent(true, grabbed ? InteractionType.Drop : _potentialInteractions.First.Value.type);
 		else
 			_toggleInteractionUI.RaiseEvent(false, InteractionType.None);
 	}
@@ -132,7 +143,6 @@ public class InteractionManager : MonoBehaviour
 	{
 		switch (currentInteractionType)
 		{
-			//case InteractionType.Cook:
 			case InteractionType.Talk:
 				//We show the UI after cooking or talking, in case player wants to interact again
 				RequestUpdateUI(true);

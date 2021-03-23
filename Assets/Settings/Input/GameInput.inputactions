@@ -892,6 +892,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "645c95df-731f-46d5-815b-2e00d7b7b7d8",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardOrGamepad",
+                    "action": "AdvanceDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "Gamepad Left Stick",
                     "id": "e394ce70-6a98-45cb-98ee-3b20d27a398a",
                     "path": "2DVector(mode=1)",

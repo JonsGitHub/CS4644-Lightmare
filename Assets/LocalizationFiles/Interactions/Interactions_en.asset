@@ -22,5 +22,13 @@ MonoBehaviour:
     m_Localized: Talk
     m_Metadata:
       m_Items: []
+  - m_Id: 25694505013248
+    m_Localized: Grab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28500817350656
+    m_Localized: Drop
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
