@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
-//this script needs to be put on the actor, and takes care of the current step to accomplish.
-//the step contains a dialogue and maybe an event.
 
+/// <summary>
+/// this script needs to be put on the actor, and takes care of the current step to accomplish.
+/// the step contains a dialogue and maybe an event.
+/// </summary>
 public class StepController : MonoBehaviour
 {
 	[Header("Data")]
@@ -10,32 +12,29 @@ public class StepController : MonoBehaviour
 	[SerializeField] private QuestAnchorSO _questAnchor = default;
 
 	[Header("Listening to channels")]
-	//[SerializeField] private StepChannelSO _startStepEvent = default;
-	//[SerializeField] private DialogueDataChannelSO _endDialogueEvent = default;
 	[SerializeField] private DialogueActorChannelSO _interactionEvent = default;
-	//[SerializeField] private DialogueActorChannelSO _PlayDefaultEvent = default;
 	[SerializeField] private VoidEventChannelSO _winDialogueEvent = default;
 	[SerializeField] private VoidEventChannelSO _loseDialogueEvent = default;
-	//[SerializeField] private VoidEventChannelSO _continueWithStep = default;
-	//[SerializeField] private VoidEventChannelSO _endStepEvent = default;
 
 	[Header("Broadcasting on channels")]
-	//[SerializeField] private VoidEventChannelSO _checkStepValidityEvent = default;
 	[SerializeField] private DialogueDataChannelSO _startDialogueEvent = default;
-
-	//check if character is actif. An actif character is the character concerned by the step.
 
 	private DialogueDataSO _currentDialogue;
 
 	private void Start()
 	{
-
-		if (_winDialogueEvent != null)
-		{ _winDialogueEvent.OnEventRaised += PlayWinDialogue; }
-		if (_loseDialogueEvent != null)
-		{ _loseDialogueEvent.OnEventRaised += PlayLoseDialogue; }
-
-
+		if (_winDialogueEvent)
+		{ 
+			_winDialogueEvent.OnEventRaised += PlayWinDialogue; 
+		}
+		if (_loseDialogueEvent)
+		{ 
+			_loseDialogueEvent.OnEventRaised += PlayLoseDialogue; 
+		}
+		if (_interactionEvent)
+        {
+			_interactionEvent.OnEventRaised += PlayInteractionEvent;
+        }
 	}
 
 	void PlayDefaultDialogue()
@@ -49,9 +48,10 @@ public class StepController : MonoBehaviour
 
 	}
 
-	//start a dialogue when interaction
-	//some Steps need to be instantanious. And do not need the interact button.
-	//when interaction again, restart same dialogue.
+	/// <summary>
+	/// start a dialogue when interaction some Steps need to be instantanious. 
+	/// And do not need the interact button. When interaction again, restart same dialogue.
+	/// </summary>
 	public void InteractWithCharacter()
 	{
 		DialogueDataSO displayDialogue = _questAnchor.InteractWithCharacter(_actor, false, false);
@@ -74,7 +74,7 @@ public class StepController : MonoBehaviour
 		}
 	}
 
-	void PlayLoseDialogue()
+	private void PlayLoseDialogue()
 	{
 		if (_questAnchor != null)
 		{
@@ -88,7 +88,7 @@ public class StepController : MonoBehaviour
 		}
 	}
 
-	void PlayWinDialogue()
+	private void PlayWinDialogue()
 	{
 		if (_questAnchor != null)
 		{
@@ -101,4 +101,8 @@ public class StepController : MonoBehaviour
 		}
 	}
 
+	private void PlayInteractionEvent(ActorSO actorSO)
+    {
+		// TODO: determine if this should be implemented here
+    }
 }

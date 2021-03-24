@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private VoidEventChannelSO _closeUIDialogueEvent = default;
 
 	[Header("Interaction Events")]
-	[SerializeField] private VoidEventChannelSO _onInteractionEndedEvent = default;
+	//[SerializeField] private VoidEventChannelSO _onInteractionEndedEvent = default; //TODO: Do we need?
 	[SerializeField] private InteractionUIEventChannelSO _setInteractionEvent = default;
 
 	[Header("Main Menu Loading")]

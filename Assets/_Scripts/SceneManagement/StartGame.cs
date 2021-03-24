@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 /// <summary>
 /// This class contains the function to call when play button is pressed
@@ -12,10 +11,6 @@ public class StartGame : MonoBehaviour
 	public LoadEventChannelSO onPlayButtonPress;
 	public GameSceneSO[] locationsToLoad;
 	public bool showLoadScreen;
-
-	public TextMeshProUGUI startText;
-
-	private bool _hasSaveData = false;
 
     private void Awake()
     {
