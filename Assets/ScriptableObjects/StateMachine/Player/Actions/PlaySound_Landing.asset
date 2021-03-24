@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96845f49f72aa5744ac314de379b0c4c, type: 3}
+  m_Name: PlaySound_Landing
+  m_EditorClassIdentifier: 
+  audioCue: {fileID: 11400000, guid: 83decac9f52c1074687a285878e3b76c, type: 2}
+  audioCueEventChannel: {fileID: 11400000, guid: 04e74dc28ea6f0d449161042ae401aac,
+    type: 2}
+  audioConfiguration: {fileID: 11400000, guid: 3b9db16ec839a7d41966c9d92768328e, type: 2}

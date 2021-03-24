@@ -11,7 +11,7 @@ public class PlayLandParticlesAction : StateAction
 	private PlayerEffectController _dustController;
 	private Transform _transform;
 
-	private float _coolDown = 0.3f;
+	private float _coolDown = 0.5f;
 	private float t = 0f;
 
 	private float _fallStartY = 0f;
@@ -33,6 +33,11 @@ public class PlayLandParticlesAction : StateAction
 	{
 		_fallEndY = _transform.position.y;
 		float dY = Mathf.Abs(_fallStartY - _fallEndY);
+		if (dY < 0.01f)
+        {
+			return;
+        }
+
 		float fallIntensity = Mathf.InverseLerp(0, _maxFallDistance, dY);
 
 		if (Time.time >= t + _coolDown)

@@ -11,7 +11,7 @@ public class IsMovingConditionSO : StateConditionSO<IsMovingCondition>
 public class IsMovingCondition : Condition
 {
 	private PlayerController _player;
-	private new IsMovingConditionSO OriginSO => (IsMovingConditionSO)base.OriginSO; // The SO this Condition spawned from
+	private new IsMovingConditionSO OriginSO => (IsMovingConditionSO)base.OriginSO;
 
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
