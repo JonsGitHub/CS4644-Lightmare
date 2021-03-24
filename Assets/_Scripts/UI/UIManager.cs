@@ -11,10 +11,14 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private UIInteractionManager _interactionPanel = default;
 	
 	[SerializeField] private InputReader _inputReader = default;
+
 	[Header("Listening on channels")]
 	[Header("Dialogue Events")]
 	[SerializeField] private DialogueLineChannelSO _openUIDialogueEvent = default;
 	[SerializeField] private VoidEventChannelSO _closeUIDialogueEvent = default;
+
+	[Header("Visual Indicators Events")]
+	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
 
 	[Header("Interaction Events")]
 	//[SerializeField] private VoidEventChannelSO _onInteractionEndedEvent = default; //TODO: Do we need?
@@ -40,6 +44,10 @@ public class UIManager : MonoBehaviour
 		if (_setInteractionEvent)
 		{
 			_setInteractionEvent.OnEventRaised += SetInteractionPanel;
+		}
+		if (_3dUIChannelEvent)
+        {
+			_3dUIChannelEvent.OnEventRaised += Update3DUIs;
 		}
 
 		_inputReader.pauseEvent += Pause;
@@ -152,25 +160,19 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
-	/// <summary>
-	/// Adds a Ui3D to be rendered on the canvas
-	/// </summary>
-	/// <param name="ui">The Ui3D to be added</param>
-	public void AddLabel(Ui3D ui)
-	{
-		ui.AttachTo(transform);
-		Uis.Add(ui);
-	}
-
-	/// <summary>
-	/// Removes a Ui3D from the canvas and destroys the instance.
-	/// </summary>
-	/// <param name="ui">The Ui3D to be removed</param>
-	public void RemoveLabel(Ui3D ui)
-	{
-		Destroy(ui);
-		Uis.Remove(ui);
-	}
+	private void Update3DUIs(Ui3D ui, bool remove)
+    {
+		if (!remove)
+        {
+			ui.AttachTo(transform);
+			Uis.Add(ui);
+		}
+		else
+        {
+			Destroy(ui);
+			Uis.Remove(ui);
+		}
+    }
 
 	/// <summary>
 	/// Helper method that resumes the normal operation of the game.

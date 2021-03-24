@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -175,7 +175,6 @@ MonoBehaviour:
   _openUIDialogueEvent: {fileID: 11400000, guid: 4969c4e8aa8d1bd42a832aa49d6b3dcf,
     type: 2}
   _endDialogue: {fileID: 11400000, guid: cff6c08c893ca814f8bc67b35c136453, type: 2}
-  _continueWithStep: {fileID: 11400000, guid: 0d3f39aa1296ac34ab86ee09e33b206f, type: 2}
   _closeDialogueUIEvent: {fileID: 11400000, guid: 2f9e404d5ffede148bf44440326df9fc,
     type: 2}
 --- !u!1 &422171999
@@ -957,6 +956,12 @@ PrefabInstance:
       propertyPath: m_EventSystem
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3997910353585808495, guid: d4678e2d9a7094b4da97b565ff3b51b8,
+        type: 3}
+      propertyPath: _3dUIChannelEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637,
+        type: 2}
     - target: {fileID: 3997910353585808495, guid: d4678e2d9a7094b4da97b565ff3b51b8,
         type: 3}
       propertyPath: _dialogueController
