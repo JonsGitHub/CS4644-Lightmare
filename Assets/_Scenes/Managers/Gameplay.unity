@@ -2605,7 +2605,6 @@ MonoBehaviour:
   SettingsMenu: {fileID: 8103206826956033434}
   _dialogueController: {fileID: 1383441730}
   _interactionPanel: {fileID: 6801858167747782733}
-  _canvas: {fileID: 1635074577}
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
   _openUIDialogueEvent: {fileID: 11400000, guid: 4969c4e8aa8d1bd42a832aa49d6b3dcf,
     type: 2}
