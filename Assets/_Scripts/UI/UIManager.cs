@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private UIDialogueManager _dialogueController = default;
 	[SerializeField] private UIInteractionManager _interactionPanel = default;
-	
+
 	[SerializeField] private InputReader _inputReader = default;
 
 	[Header("Listening on channels")]
@@ -27,6 +27,19 @@ public class UIManager : MonoBehaviour
 	[Header("Main Menu Loading")]
 	[SerializeField] private GameSceneSO[] _menuToLoad = default;
 	[SerializeField] private LoadEventChannelSO _loadMenu = default;
+
+	private Canvas _canvas;
+	private Canvas Canvas
+    {
+		get
+        {
+			if (_canvas == null)
+            {
+				_canvas = FindObjectOfType<Canvas>();
+            }
+			return _canvas;
+        }
+    }
 
 	private List<Ui3D> Uis = new List<Ui3D>();
 	private Stack<GameObject> ViewStack = new Stack<GameObject>();
@@ -164,7 +177,8 @@ public class UIManager : MonoBehaviour
     {
 		if (!remove)
         {
-			ui.AttachTo(transform);
+			ui.transform.SetParent(Canvas.transform);
+			ui.transform.SetAsFirstSibling();
 			Uis.Add(ui);
 		}
 		else

@@ -19,16 +19,6 @@ public abstract class Ui3D : MonoBehaviour
     }
 
     /// <summary>
-    /// Attaches the Ui3D to the passed parent.
-    /// </summary>
-    /// <param name="parent">The parent to attach to</param>
-    public void AttachTo(Transform parent)
-    {
-        transform.SetParent(parent);
-        transform.SetAsFirstSibling();
-    }
-
-    /// <summary>
     /// Updates the Ui3D position on the screen.
     /// </summary>
     public void UpdateUI()
