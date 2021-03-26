@@ -1,38 +1,29 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class UnlockingDoor : UnlockingBase
 {
-    [SerializeField] private Transform OpenPosition;
-    [SerializeField] private Transform ClosedPosition;
-    [SerializeField] private float transitionDuration = 1.5f;
-
-    private Vector3 openPos;
-    private Vector3 closedPos;
-
-    private void Awake()
-    {
-        openPos = OpenPosition.position;
-        closedPos = ClosedPosition.position;
-    }
+    [Tooltip("Movement Config of the path to lock/unlock door position. Where the first is the locked position and second is the unlocked position.")]
+    [SerializeField] private PathwayConfigSO _movementConfig;
 
     public override void Lock()
     {
-        StartCoroutine(LerpPosition(closedPos));
+        StartCoroutine(LerpPosition(_movementConfig.Waypoints.First().waypoint));
     }
 
     public override void Unlock()
     {
-        StartCoroutine(LerpPosition(openPos));
+        StartCoroutine(LerpPosition(_movementConfig.Waypoints.Last().waypoint));
     }
 
     IEnumerator LerpPosition(Vector3 endPosition)
     {
         float timeElapsed = 0;
         var startPosition = transform.position;
-        while (timeElapsed < transitionDuration)
+        while (timeElapsed < _movementConfig.Speed)
         {
-            transform.position = Vector3.Lerp(startPosition, endPosition, timeElapsed / transitionDuration);
+            transform.position = Vector3.Lerp(startPosition, endPosition, timeElapsed / _movementConfig.Speed);
             timeElapsed += Time.deltaTime;
 
             yield return null;

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f86caf1e52264b438ff60fc0601c4e4, type: 3}
-  m_Name: Tutorial
+  m_Name: Level_Tutorial
   m_EditorClassIdentifier: 
   _guid: 992d0aecafdeb4f489b9c82393b08f63
   description: The tutorial level of the game.

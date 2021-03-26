@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
     public TransformAnchor gameplayCameraTransform;
 
+    private CharacterController _characterController;
     private Vector2 _previousMovementInput;
 
     #endregion
@@ -29,11 +30,7 @@ public class PlayerController : MonoBehaviour
     public const float GRAVITY_DIVIDER = .6f;
     public const float AIR_RESISTANCE = 5f;
 
-    public enum InputStatus
-    {
-        Default,
-        Blocked,
-    }
+    private bool _onPlatform;
 
     #region Private Fields
 
@@ -49,6 +46,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        _characterController = GetComponent<CharacterController>();
         //FreeLook = GameObject.FindGameObjectWithTag("CinemachineCamera").GetComponent<Cinemachine.CinemachineFreeLook>();
         //for (var i = 0; i < 3; ++i)
         //{
@@ -79,6 +77,32 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         RecalculateMovement();
+    }
+
+    private void FixedUpdate()
+    {
+        // Add "sticky" feet to dynamic environments (eg. moving platforms)
+        // TODO: Look into better method rather than parenting
+        if (!_characterController.isGrounded)
+            return;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, 1 << 11))
+        {
+            if (!_onPlatform)
+            {
+                _onPlatform = true;
+                transform.SetParent(hit.transform);
+            }
+        }
+        else
+        {
+            if (_onPlatform)
+            {
+                _onPlatform = false;
+                transform.SetParent(null);
+            }
+        }
     }
 
     private void RecalculateMovement()
