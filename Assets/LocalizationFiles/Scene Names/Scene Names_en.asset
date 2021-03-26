@@ -26,5 +26,9 @@ MonoBehaviour:
     m_Localized: ExampleScene2
     m_Metadata:
       m_Items: []
+  - m_Id: 1443415792816128
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

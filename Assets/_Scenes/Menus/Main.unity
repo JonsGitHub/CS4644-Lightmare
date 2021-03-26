@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -986,9 +986,8 @@ MonoBehaviour:
   _onSceneReady: {fileID: 11400000, guid: b21a2030c4a5dc54ca1ff8c0369bf78c, type: 2}
   onPlayButtonPress: {fileID: 11400000, guid: dc82a0ac6a848e944bf085763b7441ad, type: 2}
   locationsToLoad:
-  - {fileID: 11400000, guid: 138f8bd4b93f78748aa0a18b79b02da6, type: 2}
+  - {fileID: 11400000, guid: 992d0aecafdeb4f489b9c82393b08f63, type: 2}
   showLoadScreen: 1
-  startText: {fileID: 895573094}
 --- !u!1 &1360861067
 GameObject:
   m_ObjectHideFlags: 0
