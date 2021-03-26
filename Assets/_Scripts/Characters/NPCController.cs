@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+/// TODO: Remove this class and related dependencies and convert to new SO model.
 public class NPCController : EntityController
 {
     [Tooltip("The name of the NPC.")]
