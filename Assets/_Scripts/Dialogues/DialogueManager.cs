@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
 	[Header("BoradCasting on channels")]
 	[SerializeField] private DialogueLineChannelSO _openUIDialogueEvent = default;
 	[SerializeField] private DialogueDataChannelSO _endDialogue = default;
-	[SerializeField] private VoidEventChannelSO _continueWithStep = default;
+	//[SerializeField] private VoidEventChannelSO _continueWithStep = default; // For choice dialogues
 	[SerializeField] private VoidEventChannelSO _closeDialogueUIEvent = default;
 
 	private DialogueDataSO _currentDialogue = default;

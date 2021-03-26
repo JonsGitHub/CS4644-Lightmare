@@ -23,7 +23,7 @@ MonoBehaviour:
   SpatialBlend: 1
   RolloffMode: 0
   MinDistance: 0.1
-  MaxDistance: 50
+  MaxDistance: 150
   Spread: 0
   DopplerLevel: 1
   BypassEffects: 0
