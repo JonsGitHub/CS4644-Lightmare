@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: plateL
+  m_Name: GreenToonMaterial
   m_Shader: {fileID: -6465566751694194690, guid: b0e31f73b3d65a846b75f32b3e21c96c,
     type: 3}
   m_ShaderKeywords: 
