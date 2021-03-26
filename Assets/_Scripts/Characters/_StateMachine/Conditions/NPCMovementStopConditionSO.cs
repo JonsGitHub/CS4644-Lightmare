@@ -11,11 +11,11 @@ public class NPCMovementStopConditionSO : StateConditionSO<NPCMovementStopCondit
 public class NPCMovementStopCondition : Condition
 {
 	private float _startTime;
-	private NPCMovement _npcMovement;
+	private NPCController _npcMovement;
 
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
-		_npcMovement = stateMachine.GetComponent<NPCMovement>();
+		_npcMovement = stateMachine.GetComponent<NPCController>();
 	}
 
 	public override void OnStateEnter()

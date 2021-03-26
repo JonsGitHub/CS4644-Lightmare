@@ -1,30 +1,54 @@
 ﻿using UnityEngine;
 
-/// TODO: Remove this class and related dependencies and convert to new SO model.
-public class NPCController : EntityController
+public class NPCController : MonoBehaviour
 {
-    [Tooltip("The name of the NPC.")]
-    [SerializeField] private string Name;
+	[SerializeField] private NPCMovementConfigSO _npcMovementConfig;
+	[SerializeField] private NPCMovementEventChannelSO _channel;
 
-    [Header("Broadcasting on channels")]
-    [SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
 
-    private Panel3D label;
-    
-    [Tooltip("The location of the overhead label.")]
-    [SerializeField] private Transform LabelPosition = default;
+	[Header("Broadcasting on channels")]
+	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
 
-    private void Start()
-    {
-        label = Instantiate(Resources.Load<Panel3D>("Prefabs/Panel3D"));
-        label.Text = Name;
-        label.Transform = LabelPosition ? LabelPosition : transform;
+	private Panel3D label;
 
-        _3dUIChannelEvent?.RaiseEvent(label, false);
-    }
+	[Header("Label Properties")]
+	[Tooltip("Flag whether to create a label.")]
+	[SerializeField] private bool _createLabel;
+	[Tooltip("The name of the NPC.")]
+	[SerializeField] private string Name;
+	[Tooltip("The location of the overhead label.")]
+	[SerializeField] private Transform LabelPosition = default;
 
-    private void OnDestroy()
-    {
-        _3dUIChannelEvent?.RaiseEvent(label, true);
-    }
+	public NPCMovementConfigSO NPCMovementConfig => _npcMovementConfig;
+
+	private void Start()
+	{
+		if (_createLabel)
+        {
+			label = Instantiate(Resources.Load<Panel3D>("Prefabs/Panel3D"));
+			label.Text = Name;
+			label.Transform = LabelPosition ? LabelPosition : transform;
+
+			_3dUIChannelEvent?.RaiseEvent(label, false);
+        }
+	}
+
+	private void OnDestroy()
+	{
+		if (_3dUIChannelEvent && label)
+        {
+			_3dUIChannelEvent.RaiseEvent(label, true);
+        }
+	}
+
+	private void OnEnable()
+	{
+		if (_channel != null)
+			_channel.OnEventRaised += Respond;
+	}
+
+	private void Respond(NPCMovementConfigSO value)
+	{
+		_npcMovementConfig = value;
+	}
 }

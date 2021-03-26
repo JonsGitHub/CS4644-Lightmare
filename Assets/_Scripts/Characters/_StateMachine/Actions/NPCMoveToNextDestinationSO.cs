@@ -11,7 +11,7 @@ public class NPCMoveToNextDestinationSO : StateActionSO
 
 public class NPCMoveToNextDestination : StateAction
 {
-	private NPCMovement _npcMovement;
+	private NPCController _npcMovement;
 	private NPCMovementConfigSO _config;
 	private NPCMovementAction _action;
 	private NavMeshAgent _agent;
@@ -19,7 +19,7 @@ public class NPCMoveToNextDestination : StateAction
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
 		_agent = stateMachine.GetComponent<NavMeshAgent>();
-		_npcMovement = stateMachine.GetComponent<NPCMovement>();
+		_npcMovement = stateMachine.GetComponent<NPCController>();
 		InitMovementStrategy(_npcMovement.NPCMovementConfig);
 	}
 
