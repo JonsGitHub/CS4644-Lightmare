@@ -13,6 +13,7 @@ public class Damageable : MonoBehaviour
 
 	[Header("Broadcasting on channels")]
 	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
+	[SerializeField] private BoolEventChannelSO _destroyedChannelEvent = default;
 
 	private HealthBar3D healthbar;
 
@@ -60,7 +61,14 @@ public class Damageable : MonoBehaviour
 		if (_currentHealth <= 0)
 		{
 			IsDead = true;
-			OnDie?.Invoke();
+			if (OnDie != null)
+			{
+				OnDie.Invoke();
+			}
+			else
+            {
+				Destroy(gameObject);
+            }
 		}
 	}
 
@@ -70,5 +78,9 @@ public class Damageable : MonoBehaviour
 		{
 			_3dUIChannelEvent.RaiseEvent(healthbar, true);
 		}
+		if (_destroyedChannelEvent)
+        {
+			_destroyedChannelEvent.RaiseEvent(true);
+        }
 	}
 }
