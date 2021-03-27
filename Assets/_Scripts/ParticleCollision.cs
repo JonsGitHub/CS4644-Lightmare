@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleCollision : MonoBehaviour
 {
-    public ParticleSystem part;
+    private ParticleSystem part;
     public List<ParticleCollisionEvent> collisionEvents;
 
     // Start is called before the first frame update

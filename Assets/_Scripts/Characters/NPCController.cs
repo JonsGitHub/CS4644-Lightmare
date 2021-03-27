@@ -5,7 +5,6 @@ public class NPCController : MonoBehaviour
 	[SerializeField] private NPCMovementConfigSO _npcMovementConfig;
 	[SerializeField] private NPCMovementEventChannelSO _channel;
 
-
 	[Header("Broadcasting on channels")]
 	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
 
@@ -24,21 +23,21 @@ public class NPCController : MonoBehaviour
 	private void Start()
 	{
 		if (_createLabel)
-        {
+		{
 			label = Instantiate(Resources.Load<Panel3D>("Prefabs/Panel3D"));
 			label.Text = Name;
 			label.Transform = LabelPosition ? LabelPosition : transform;
 
 			_3dUIChannelEvent?.RaiseEvent(label, false);
-        }
+		}
 	}
 
 	private void OnDestroy()
 	{
 		if (_3dUIChannelEvent && label)
-        {
+		{
 			_3dUIChannelEvent.RaiseEvent(label, true);
-        }
+		}
 	}
 
 	private void OnEnable()

@@ -2606,6 +2606,8 @@ MonoBehaviour:
   _dialogueController: {fileID: 1383441730}
   _interactionPanel: {fileID: 6801858167747782733}
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
+  _playerTransformAnchor: {fileID: 11400000, guid: bb65bb1ce94fefe4a841fba31a6f9162,
+    type: 2}
   _openUIDialogueEvent: {fileID: 11400000, guid: 4969c4e8aa8d1bd42a832aa49d6b3dcf,
     type: 2}
   _closeUIDialogueEvent: {fileID: 11400000, guid: 2f9e404d5ffede148bf44440326df9fc,

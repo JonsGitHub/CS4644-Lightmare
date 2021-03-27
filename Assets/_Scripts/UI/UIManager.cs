@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private InputReader _inputReader = default;
 
+	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
+
 	[Header("Listening on channels")]
 	[Header("Dialogue Events")]
 	[SerializeField] private DialogueLineChannelSO _openUIDialogueEvent = default;
@@ -169,7 +171,15 @@ public class UIManager : MonoBehaviour
 	{
 		foreach (var ui in Uis)
 		{
-			ui.UpdateUI();
+			if (_playerTransformAnchor.Transform && Vector3.Distance(ui.Transform.position, _playerTransformAnchor.Transform.position) > 10)
+            {
+				ui.SetActive(false);
+            }
+			else
+            {
+				ui.SetActive(true);
+				ui.UpdateUI();
+            }
 		}
 	}
 

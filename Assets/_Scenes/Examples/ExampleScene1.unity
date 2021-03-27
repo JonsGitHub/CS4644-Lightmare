@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &429389426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1630,7 +1630,7 @@ PlayableDirector:
     - 158fce121cc7f714fa93e7d86b391f97: {fileID: 1945608424}
     - c2c103ec85c052a489ecf534290a9ef0: {fileID: 4184016652115781393}
     - 209b1e41f94a25640a687f1f9b20c047: {fileID: 1945608424}
-    - fc84ffb34b41b4342bb77c587a187731: {fileID: 4184016652115781392}
+    - fc84ffb34b41b4342bb77c587a187731: {fileID: 0}
     - 09124df166e25c14883cd000d9e2a9a8: {fileID: 4184016652115781393}
     - a1d315029b3af5f41952e777c516f898: {fileID: 897049094}
 --- !u!1 &1531512742
@@ -2224,12 +2224,12 @@ PrefabInstance:
     - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017580545
+      value: -0.000000017580549
       objectReference: {fileID: 0}
     - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 9.2837643e-10
+      value: 9.2837665e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
@@ -2258,18 +2258,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f27070daca7274ea0de0e8804ffdcf, type: 3}
---- !u!114 &4184016652115781392 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4730166265948854917, guid: 49f27070daca7274ea0de0e8804ffdcf,
-    type: 3}
-  m_PrefabInstance: {fileID: 4184016652115781391}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4184016652115781393 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4184016653104664733, guid: 49f27070daca7274ea0de0e8804ffdcf,
@@ -2375,21 +2363,77 @@ PrefabInstance:
       propertyPath: _propelFactor
       value: 0.8
       objectReference: {fileID: 0}
-    - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: LabelPosition
+      value: 
+      objectReference: {fileID: 689472001}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: LabelTextColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: LabelTextColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: LabelTextColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: _createHealthBar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: _3dUIChannelEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637,
+        type: 2}
+    - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: Name
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: _createLabel
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: LabelPosition
       value: 
-      objectReference: {fileID: 689472001}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: LabelTextColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: LabelTextColor.b
+      value: 0.013520718
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: LabelTextColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: LabelTextColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: _3dUIChannelEvent

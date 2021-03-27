@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: PurpleFresnelMaterial
   m_Shader: {fileID: -6465566751694194690, guid: df5f1d8e8e6e72544b66c2b44ef89786,
     type: 3}
   m_ShaderKeywords: _FADING_ON _FLIPBOOKBLENDING_ON _SOFTPARTICLES_ON
