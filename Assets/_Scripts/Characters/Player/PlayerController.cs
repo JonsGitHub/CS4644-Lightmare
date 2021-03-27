@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     //These fields are read and manipulated by the StateMachine actions
     [NonSerialized] public bool jumpInput;
+	[NonSerialized] public bool attackInput;
     [NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
     [NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
     [NonSerialized] public bool isRunning;
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
         _inputReader.moveEvent += OnMove;
         _inputReader.startedRunning += OnStartedRunning;
         _inputReader.stoppedRunning += OnStoppedRunning;
+		_inputReader.attackEvent += OnStartedAttack;
+		_inputReader.attackCanceledEvent += OnStoppedAttack;
     }
 
     //Removes all listeners to the events coming from the InputReader script
@@ -72,6 +75,8 @@ public class PlayerController : MonoBehaviour
         _inputReader.moveEvent -= OnMove;
         _inputReader.startedRunning -= OnStartedRunning;
         _inputReader.stoppedRunning -= OnStoppedRunning;
+		_inputReader.attackEvent -= OnStartedAttack;
+		_inputReader.attackCanceledEvent -= OnStoppedAttack;
     }
 
     private void Update()
@@ -151,6 +156,10 @@ public class PlayerController : MonoBehaviour
     private void OnStoppedRunning() => isRunning = false;
 
     private void OnStartedRunning() => isRunning = true;
+
+    private void OnStartedAttack() => attackInput = true;
+    private void OnStoppedAttack() => attackInput = false;
+
 
     /// <summary>
     /// Last update called every frame

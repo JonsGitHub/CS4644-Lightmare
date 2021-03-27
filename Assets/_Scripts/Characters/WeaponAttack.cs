@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class WeaponAttack : MonoBehaviour
 {
 	[SerializeField] private AttackConfigSO _attackConfigSO;
 

@@ -52,7 +52,10 @@ public class Damageable : MonoBehaviour
 	public void ReceiveAnAttack(int damage)
 	{
 		_currentHealth -= damage;
-		healthbar.Health = _currentHealth;
+		
+		if (healthbar)
+			healthbar.Health = _currentHealth;
+		
 		GetHit = true;
 		if (_currentHealth <= 0)
 		{
