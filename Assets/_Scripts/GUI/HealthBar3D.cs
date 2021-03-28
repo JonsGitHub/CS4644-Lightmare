@@ -38,7 +38,7 @@ public class HealthBar3D : Ui3D
         set
         {
             _slider.value = value;
-            _fillImage.color = _gradient.Evaluate(value);
+            _fillImage.color = _gradient.Evaluate(value / (float)MaxHealth);
         }
     }
 
