@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1, z: -7}
+  m_FollowOffset: {x: 0, y: 0, z: -7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -168,7 +168,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4184016652448694607}
-  m_LocalRotation: {x: 0.07088901, y: 0.000000017714415, z: -0.0000000012589244, w: 0.9974842}
+  m_LocalRotation: {x: 0.07088901, y: 0.00000001822666, z: -0.0000000012953284, w: 0.9974842}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -521,9 +521,9 @@ MonoBehaviour:
   m_Orbits:
   - m_Height: 4.5
     m_Radius: 2
-  - m_Height: 1
-    m_Radius: 7
-  - m_Height: -0.5
+  - m_Height: 0
+    m_Radius: 7.5
+  - m_Height: -1
     m_Radius: 3
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
@@ -584,7 +584,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4184016653223849320}
-  m_LocalRotation: {x: 0.052733563, y: 0.000000017184936, z: -9.0748553e-10, w: 0.99860865}
+  m_LocalRotation: {x: 0.052733563, y: 0.000000017182444, z: -9.073539e-10, w: 0.99860865}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1, z: -7}
+  m_FollowOffset: {x: 0, y: 0, z: -7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -835,8 +835,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4184016653379499705}
-  m_LocalRotation: {x: 0.05273357, y: 0.000000017582986, z: -9.2850544e-10, w: 0.99860865}
-  m_LocalPosition: {x: 0, y: 1, z: -7}
+  m_LocalRotation: {x: -0.028899118, y: -0.0000000021685336, z: -6.269489e-11, w: 0.99958235}
+  m_LocalPosition: {x: 0, y: -0.15, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4184016652547918068}
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1, z: -7}
+  m_FollowOffset: {x: 0, y: 0, z: -7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
