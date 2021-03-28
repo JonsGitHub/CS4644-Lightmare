@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class SpawnSystem : MonoBehaviour
 {
-	[Header("Settings")]
-	[SerializeField] private int _defaultSpawnIndex = 0;
-
 	[Header("Asset References")]
 	[SerializeField] private PlayerController _playerPrefab = default;
 	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
@@ -18,6 +15,8 @@ public class SpawnSystem : MonoBehaviour
 
 	[Header("Scene Ready Event")]
 	[SerializeField] private VoidEventChannelSO _OnSceneReady = default; //Raised when the scene is loaded and set active
+	
+	private int _defaultSpawnIndex = 0;
 
 	private void OnEnable()
 	{
@@ -38,6 +37,7 @@ public class SpawnSystem : MonoBehaviour
 	private void SpawnPlayer()
 	{
 		GameObject[] spawnLocationsGO = GameObject.FindGameObjectsWithTag("SpawnLocation");
+
 		_spawnLocations = new Transform[spawnLocationsGO.Length];
 		for (int i = 0; i < spawnLocationsGO.Length; ++i)
 		{
@@ -94,7 +94,13 @@ public class SpawnSystem : MonoBehaviour
 	private int FindSpawnIndex(PathSO pathTaken)
 	{
 		if (pathTaken == null)
+        {
+			if (!_spawnLocations[_defaultSpawnIndex].name.Equals("DefaultLocation"))
+			{
+				_defaultSpawnIndex = Array.FindIndex(_spawnLocations, element => element.name.Equals("DefaultLocation"));
+			}
 			return _defaultSpawnIndex;
+        }
 
 		int index = Array.FindIndex(_spawnLocations, element =>
 			element?.GetComponent<LocationEntrance>()?.EntrancePath == pathTaken

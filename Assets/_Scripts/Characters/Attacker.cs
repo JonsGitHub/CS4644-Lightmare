@@ -1,16 +1,7 @@
 ﻿using UnityEngine;
 
-public class Attacker : MonoBehaviour
+public abstract class Attacker : MonoBehaviour
 {
-	[SerializeField] private GameObject _attackCollider;
-
-	public void EnableWeapon()
-	{
-		_attackCollider.SetActive(true);
-	}
-
-	public void DisableWeapon()
-	{
-		_attackCollider.SetActive(false);
-	}
+	public abstract void EnableWeapon();
+	public abstract void DisableWeapon();
 }

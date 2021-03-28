@@ -64,6 +64,7 @@ public class InteractionManager : MonoBehaviour
 			{
 				rigid.useGravity = true;
 			}
+
 			grabbed = null;
 			RequestUpdateUI(true);
 			return;

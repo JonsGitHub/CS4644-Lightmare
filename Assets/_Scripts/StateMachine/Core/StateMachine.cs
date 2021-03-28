@@ -44,10 +44,7 @@ namespace StateMachine
 		}
 #endif
 
-		private void Start()
-		{
-			_currentState.OnStateEnter();
-		}
+		private void Start() => _currentState.OnStateEnter();
 
 		public new bool TryGetComponent<T>(out T component) where T : Component
 		{

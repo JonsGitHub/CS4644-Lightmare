@@ -1,27 +1,34 @@
-﻿using TMPro;
+﻿using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// A 3d panel UI.
 /// </summary>
 public class Panel3D : Ui3D
 {
-    private string text;
-    private TextMeshProUGUI textBox;
+    private string _text;
+    private TextMeshProUGUI _textBox;
 
     /// <summary>
     /// Gets or sets the text of the panel
     /// </summary>
     public string Text
     {
-        get => text;
+        get => _text;
         set
         {
-            text = value;
-            if (textBox)
+            _text = value;
+            if (_textBox)
             {
-                textBox.text = text;
+                _textBox.text = _text;
             }
         }
+    }
+
+    public Color TextColor
+    {
+        get => _textBox.color;
+        set => _textBox.color = value;
     }
 
     /// <summary>
@@ -30,6 +37,6 @@ public class Panel3D : Ui3D
     private new void Awake()
     {
         base.Awake();
-        textBox = GetComponentInChildren<TextMeshProUGUI>();
+        _textBox = GetComponentInChildren<TextMeshProUGUI>();
     }
 }

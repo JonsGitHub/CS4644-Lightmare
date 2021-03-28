@@ -38,6 +38,11 @@ public abstract class Ui3D : MonoBehaviour
         }
     }
 
+    public void SetActive(bool state)
+    {
+        gameObject.SetActive(state);
+    }
+
     /// <summary>
     /// Destroys the game object
     /// </summary>

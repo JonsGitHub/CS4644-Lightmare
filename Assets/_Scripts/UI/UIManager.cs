@@ -12,6 +12,12 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private InputReader _inputReader = default;
 
+	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
+
+	[Tooltip("The Distance of occlusion of UI3D Objects")]
+	[Range(0, 200)]
+	[SerializeField] private int Ui3DOccludingDistance = 25;
+
 	[Header("Listening on channels")]
 	[Header("Dialogue Events")]
 	[SerializeField] private DialogueLineChannelSO _openUIDialogueEvent = default;
@@ -169,7 +175,15 @@ public class UIManager : MonoBehaviour
 	{
 		foreach (var ui in Uis)
 		{
-			ui.UpdateUI();
+			if (_playerTransformAnchor.isSet && Vector3.Distance(ui.Transform.position, _playerTransformAnchor.Transform.position) > Ui3DOccludingDistance)
+            {
+				ui.SetActive(false);
+            }
+			else
+            {
+				ui.SetActive(true);
+				ui.UpdateUI();
+            }
 		}
 	}
 
