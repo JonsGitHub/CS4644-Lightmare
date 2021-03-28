@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
-using UnityEditor.Localization;
 
 public enum DialogueType
 {

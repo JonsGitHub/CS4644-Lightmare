@@ -41,8 +41,8 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 7aca65d3476fedf488250f1969f65178
-    m_Address: Assets/_Scenes/Initialization.unity
+  - m_GUID: b21a2030c4a5dc54ca1ff8c0369bf78c
+    m_Address: Assets/ScriptableObjects/EventChannels/OnSceneReady.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -73,6 +73,42 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 09e419f8c10a7364bbfc0107abee6e52
     m_Address: Assets/_Scenes/Levels/Tutorial.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 0113a096983be924caf0a18b80ab8c5b
+    m_Address: Assets/ScriptableObjects/EventChannels/NPCMovementChannel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: c6b0a2988d16c1c40997a911a8630fa8
+    m_Address: Assets/ScriptableObjects/EventChannels/OnGameExit.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e9aa3ce5e19bf8c469dd03b06e5d7b48
+    m_Address: Assets/ScriptableObjects/EventChannels/OnInteractionEnded_Channel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: dbc0918073e991347bc905606953dfaf
+    m_Address: Assets/ScriptableObjects/EventChannels/PlayerInstantiated_Channel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: cba6c80c135c5f94cade518b50ac8abe
+    m_Address: Assets/ScriptableObjects/EventChannels/PlayMusic_Channel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 04e74dc28ea6f0d449161042ae401aac
+    m_Address: Assets/ScriptableObjects/EventChannels/PlaySFX_Channel.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
