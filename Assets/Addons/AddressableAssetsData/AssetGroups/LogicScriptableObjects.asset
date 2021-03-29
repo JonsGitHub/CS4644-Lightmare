@@ -17,54 +17,48 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 6c364f5beda4faf46bf22b3dabe08179
   m_SerializeEntries:
-  - m_GUID: ec166a47c510f59409ada531be5870e1
-    m_Address: Assets/ScriptableObjects/EventChannels
+  - m_GUID: 3f2ebbb84933ae54bac2073076ac6005
+    m_Address: Assets/ScriptableObjects/Interactions
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: f86c99c7648085741a0db8f8050776d8
-    m_Address: Assets/ScriptableObjects/Input
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 58c5280ba04164e4e867544e2a10f4a3
-    m_Address: Assets/ScriptableObjects/Events
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 350f007900383bb498b0b44aa6129b13
+    m_MainAsset: {fileID: 102900000, guid: 3f2ebbb84933ae54bac2073076ac6005, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 3f2ebbb84933ae54bac2073076ac6005, type: 3}
+  - m_GUID: 8982407e351697b4086fb2239414adee
     m_Address: Assets/ScriptableObjects/RuntimeAnchors
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: f78547c01850b0545bb7b094db4bef55
-    m_Address: Assets/ScriptableObjects/StateMachine
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 40023d77bd4bf4209924c5ed16d3e189
-    m_Address: Assets/ScriptableObjects/UI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 0762985c8fbb18947844f4f2761ade39
-    m_Address: Assets/ScriptableObjects/Interaction
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: e4428dec107cd4b3999c0c113b2813a4
+    m_MainAsset: {fileID: 102900000, guid: 8982407e351697b4086fb2239414adee, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 8982407e351697b4086fb2239414adee, type: 3}
+  - m_GUID: e59161ecb99d2834d95e6b91c883fd0a
     m_Address: Assets/ScriptableObjects/Paths
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 102900000, guid: e59161ecb99d2834d95e6b91c883fd0a, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: e59161ecb99d2834d95e6b91c883fd0a, type: 3}
+  - m_GUID: 4b1ce2af4bb6d0b41b5833cbe750550e
+    m_Address: Assets/ScriptableObjects/Input
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 4b1ce2af4bb6d0b41b5833cbe750550e, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 4b1ce2af4bb6d0b41b5833cbe750550e, type: 3}
+  - m_GUID: df603bba0e2632d429b88e5533445720
+    m_Address: Assets/ScriptableObjects/Events
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: df603bba0e2632d429b88e5533445720, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: df603bba0e2632d429b88e5533445720, type: 3}
+  - m_GUID: 2620d3e735ba3a94a9d30b38aede7bb2
+    m_Address: Assets/ScriptableObjects/EventChannels
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 2620d3e735ba3a94a9d30b38aede7bb2, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 2620d3e735ba3a94a9d30b38aede7bb2, type: 3}
+  - m_GUID: 679a8659c94e7f743ae954b6990b647f
+    m_Address: Assets/ScriptableObjects/StateMachine
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 679a8659c94e7f743ae954b6990b647f, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 679a8659c94e7f743ae954b6990b647f, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:
