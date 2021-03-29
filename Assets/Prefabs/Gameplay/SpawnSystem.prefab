@@ -88,8 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d62d991b3926e4ca250ed1fdeb0673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultSpawnIndex: 0
-  _playerPrefab: {fileID: 111020498712096042, guid: 5ae5387910d00a34ab46f563bfddc193,
+  _playerPrefab: {fileID: 111020498712096042, guid: e1edf0ef5dfb6f843bca8d5e16adfefc,
     type: 3}
   _playerTransformAnchor: {fileID: 11400000, guid: bb65bb1ce94fefe4a841fba31a6f9162,
     type: 2}

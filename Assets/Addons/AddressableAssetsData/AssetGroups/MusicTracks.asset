@@ -17,48 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: aeea0f42beabf4f468ce11b41d51e169
   m_SerializeEntries:
-  - m_GUID: 0d3b647e3c636ab40a6d9b48d8ffab35
-    m_Address: Assets/Audio/Music/Music_Beach.wav
+  - m_GUID: 57399b2841f98c1499247ef2894513cd
+    m_Address: Assets/Audio/Music
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: f55746203c03f2141a9e1a1649072238
-    m_Address: Assets/Audio/Music/Music_Forest.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 9871c84304b51b24c9c545454c791b2f
-    m_Address: Assets/Audio/Music/Music_Glade.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 1a61bf74a2f341b498082f54f67188b5
-    m_Address: Assets/Audio/Music/Music_MainTheme.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 18249a96d1decd241a4e0fc9bb78ebb6
-    m_Address: Assets/Audio/Music/Music_Path.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 72ef6eda0caaa744a819f1c0bcfce397
-    m_Address: Assets/Audio/Music/Music_PauseMenu.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 848739acdaf728b45a57a87160f9021e
-    m_Address: Assets/Audio/Music/Music_Town.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 102900000, guid: 57399b2841f98c1499247ef2894513cd, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 57399b2841f98c1499247ef2894513cd, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

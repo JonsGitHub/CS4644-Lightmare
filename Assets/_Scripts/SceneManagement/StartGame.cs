@@ -6,22 +6,9 @@ using UnityEngine.UI;
 /// </summary>
 public class StartGame : MonoBehaviour
 {
-	[SerializeField] private VoidEventChannelSO _onSceneReady = default;
-
 	public LoadEventChannelSO onPlayButtonPress;
 	public GameSceneSO[] locationsToLoad;
 	public bool showLoadScreen;
-
-    private void Awake()
-    {
-		GetComponent<Button>().interactable = false;
-		_onSceneReady.OnEventRaised += EnableInteraction;
-	}
-
-    private void OnDestroy()
-    {
-		_onSceneReady.OnEventRaised -= EnableInteraction;
-    }
 
 	public void OnPlayButtonPress()
 	{
@@ -31,10 +18,5 @@ public class StartGame : MonoBehaviour
 	public void OnResetSaveDataPress()
 	{
 		// TODO: Implement a Reset System
-	}
-
-	private void EnableInteraction()
-	{
-		GetComponent<Button>().interactable = true;
 	}
 }

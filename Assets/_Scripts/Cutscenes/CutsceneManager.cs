@@ -8,14 +8,14 @@ public class CutsceneManager : MonoBehaviour
 	[SerializeField] private DialogueManager _dialogueManager = default;
 
 	[Header("Listening on channels")]
-	[SerializeField] private PlayableDirectorChannelSO _playCutsceneEvent = default;
+	[SerializeField] private PlayCutsceneChannelSO _playCutsceneEvent = default;
 	[SerializeField] private DialogueLineChannelSO _playDialogueEvent = default;
 	[SerializeField] private VoidEventChannelSO _pauseTimelineEvent = default;
 
-	private PlayableDirector _activePlayableDirector;
+	private CutsceneController _activeCutscene;
 	private bool _isPaused;
 
-	bool IsCutscenePlaying => _activePlayableDirector.playableGraph.GetRootPlayable(0).GetSpeed() != 0d;
+	bool IsCutscenePlaying => _activeCutscene.Director.playableGraph.GetRootPlayable(0).GetSpeed() != 0d;
 
 	private void OnEnable()
 	{
@@ -47,21 +47,24 @@ public class CutsceneManager : MonoBehaviour
 
 		}
 	}
-	void PlayCutscene(PlayableDirector activePlayableDirector)
+	void PlayCutscene(CutsceneController activeCutscene)
 	{
 		_inputReader.EnableDialogueInput();
 
-		_activePlayableDirector = activePlayableDirector;
+		_activeCutscene = activeCutscene;
+		_activeCutscene.StartUp(); // Prepare the cutscene before playing.
 
 		_isPaused = false;
-		_activePlayableDirector.Play();
-		_activePlayableDirector.stopped += HandleDirectorStopped;
+		_activeCutscene.Director.Play();
+		_activeCutscene.Director.stopped += HandleDirectorStopped;
 	}
 
 	void CutsceneEnded()
 	{
-		if (_activePlayableDirector != null)
-			_activePlayableDirector.stopped -= HandleDirectorStopped;
+		if (_activeCutscene != null)
+			_activeCutscene.Director.stopped -= HandleDirectorStopped;
+
+		_activeCutscene.CleanUp(); // Clean up the cutscene after playing.
 
 		_inputReader.EnableGameplayInput();
 		_dialogueManager.DialogueEndedAndCloseDialogueUI();
@@ -89,12 +92,12 @@ public class CutsceneManager : MonoBehaviour
 	void PauseTimeline()
 	{
 		_isPaused = true;
-		_activePlayableDirector.playableGraph.GetRootPlayable(0).SetSpeed(0);
+		_activeCutscene.Director.playableGraph.GetRootPlayable(0).SetSpeed(0);
 	}
 
 	void ResumeTimeline()
 	{
 		_isPaused = false;
-		_activePlayableDirector.playableGraph.GetRootPlayable(0).SetSpeed(1);
+		_activeCutscene.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
 	}
 }

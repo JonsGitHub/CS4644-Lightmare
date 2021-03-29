@@ -17,18 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: eed94b0d8b931b1499294a651a4cb200
   m_SerializeEntries:
-  - m_GUID: 969b7f174e8c76843aa3fcdbade0487b
-    m_Address: Assets/Scenes/Managers/PersistentManagers.unity
+  - m_GUID: da8f518d9a6e7f84ea0fc57e31f0c7e6
+    m_Address: Assets/_Scenes/Managers/PersistentManagers.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 9a863f9bc60514821bc17f41d9f0162c
-    m_Address: Assets/Scenes/Managers/Gameplay.unity
+    m_MainAsset: {fileID: 102900000, guid: da8f518d9a6e7f84ea0fc57e31f0c7e6, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: da8f518d9a6e7f84ea0fc57e31f0c7e6, type: 3}
+  - m_GUID: 992484dd7205d4044887a601cda6b1fc
+    m_Address: Assets/_Scenes/Managers/Gameplay.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 102900000, guid: 992484dd7205d4044887a601cda6b1fc, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 992484dd7205d4044887a601cda6b1fc, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

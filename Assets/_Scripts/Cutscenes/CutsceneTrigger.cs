@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Playables;
 
 /// <summary>
 /// Class to trigger a cutscene.
@@ -7,19 +6,17 @@ using UnityEngine.Playables;
 
 public class CutsceneTrigger : MonoBehaviour
 {
-	[SerializeField] private PlayableDirector _playableDirector = default;
+	[SerializeField] private CutsceneController _playableCutscene = default;
 	[SerializeField] private bool _playOnStart = default;
 	[SerializeField] private bool _playOnce = default;
 
 	[Header("Broadcasting on channels")]
-	[SerializeField] private PlayableDirectorChannelSO _playCutsceneEvent = default;
+	[SerializeField] private PlayCutsceneChannelSO _playCutsceneEvent = default;
 
 	private void Start()
 	{
 		if (_playOnStart)
-        {
 			PlayCutScene();
-		}
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -29,11 +26,9 @@ public class CutsceneTrigger : MonoBehaviour
 
 	private void PlayCutScene()
     {
-		_playCutsceneEvent?.RaiseEvent(_playableDirector);
+		_playCutsceneEvent?.RaiseEvent(_playableCutscene);
 
 		if (_playOnce)
-		{
 			Destroy(this);
-		}
 	}
 }

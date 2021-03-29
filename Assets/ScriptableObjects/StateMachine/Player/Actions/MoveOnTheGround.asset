@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0a0da8584f1154db190c6b3a5a6504, type: 3}
   m_Name: MoveOnTheGround
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 10

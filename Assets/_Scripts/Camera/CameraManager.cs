@@ -8,8 +8,6 @@ public class CameraManager : MonoBehaviour
 	public Camera mainCamera;
 	public CinemachineFreeLook freeLookVCam;
 
-	//[SerializeField, Range(.5f, 3f)]
-	//private float _speedMultiplier = 1f; //TODO: make this modifiable in the game settings											
 	[SerializeField] private TransformAnchor _cameraTransformAnchor = default;
 
 	[Header("Listening on channels")]
@@ -22,7 +20,7 @@ public class CameraManager : MonoBehaviour
 	{
 		freeLookVCam.Follow = target;
 		freeLookVCam.LookAt = target;
-		freeLookVCam.OnTargetObjectWarped(target, target.position - freeLookVCam.transform.position - Vector3.forward);
+		//freeLookVCam.OnTargetObjectWarped(target, target.position - freeLookVCam.transform.position - Vector3.forward);
 	}
 
 	private void OnEnable()
@@ -85,8 +83,5 @@ public class CameraManager : MonoBehaviour
 		freeLookVCam.m_YAxis.m_InputAxisValue = cameraMovement.y * Time.smoothDeltaTime * speedMult;
 	}
 
-	private void OnFrameObjectEvent(Transform value)
-	{
-		SetupProtagonistVirtualCamera(value);
-	}
+	private void OnFrameObjectEvent(Transform value) => SetupProtagonistVirtualCamera(value);
 }
