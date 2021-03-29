@@ -237,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111020500025678895}
   m_Layer: 10
-  m_Name: Head
+  m_Name: Player_Head
   m_TagString: CameraTarget
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

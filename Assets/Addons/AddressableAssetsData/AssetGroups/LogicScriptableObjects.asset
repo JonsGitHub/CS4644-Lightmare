@@ -59,6 +59,42 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 102900000, guid: 679a8659c94e7f743ae954b6990b647f, type: 3}
     m_TargetAsset: {fileID: 102900000, guid: 679a8659c94e7f743ae954b6990b647f, type: 3}
+  - m_GUID: 4047a56ca1589b349a2f01b78ca5aa91
+    m_Address: Assets/ScriptableObjects/Narrative
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 4047a56ca1589b349a2f01b78ca5aa91, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 4047a56ca1589b349a2f01b78ca5aa91, type: 3}
+  - m_GUID: d91fd8046cb61b144a4038facc54a667
+    m_Address: Assets/ScriptableObjects/Quests
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: d91fd8046cb61b144a4038facc54a667, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: d91fd8046cb61b144a4038facc54a667, type: 3}
+  - m_GUID: 2d2f7c6edab83314794df43d3068ea9e
+    m_Address: Assets/ScriptableObjects/_Levels
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 2d2f7c6edab83314794df43d3068ea9e, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 2d2f7c6edab83314794df43d3068ea9e, type: 3}
+  - m_GUID: 790da185e25a4ab44a110411c667c5d2
+    m_Address: Assets/ScriptableObjects/_Scenes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 790da185e25a4ab44a110411c667c5d2, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 790da185e25a4ab44a110411c667c5d2, type: 3}
+  - m_GUID: 2ee6ecf5210400e439ee9570fc1a8d32
+    m_Address: Assets/ScriptableObjects/Locks
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 2ee6ecf5210400e439ee9570fc1a8d32, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 2ee6ecf5210400e439ee9570fc1a8d32, type: 3}
+  - m_GUID: 17a369b05c996c44e9be5a3ab7e7dff1
+    m_Address: Assets/ScriptableObjects/UI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 17a369b05c996c44e9be5a3ab7e7dff1, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 17a369b05c996c44e9be5a3ab7e7dff1, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

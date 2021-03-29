@@ -58,9 +58,7 @@ public class SpawnSystem : MonoBehaviour
 	private void AutoFill()
 	{
 		if (_spawnLocations == null || _spawnLocations.Length == 0)
-			_spawnLocations = transform.GetComponentsInChildren<Transform>(true)
-								.Where(t => t != this.transform)
-								.ToArray();
+			_spawnLocations = transform.GetComponentsInChildren<Transform>(true).Where(t => t != this.transform).ToArray();
 	}
 
 	private void Spawn(int spawnIndex)

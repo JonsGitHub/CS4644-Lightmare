@@ -172,10 +172,13 @@ public class UIManager : MonoBehaviour
 	/// Last update called every frame
 	/// </summary>
 	private void LateUpdate()
-	{
+	{	
+		if (_playerTransformAnchor.Transform == null)
+			return;
+
 		foreach (var ui in Uis)
 		{
-			if (_playerTransformAnchor.isSet && Vector3.Distance(ui.Transform.position, _playerTransformAnchor.Transform.position) > Ui3DOccludingDistance)
+			if (Vector3.Distance(ui.Transform.position, _playerTransformAnchor.Transform.position) > Ui3DOccludingDistance)
             {
 				ui.SetActive(false);
             }
