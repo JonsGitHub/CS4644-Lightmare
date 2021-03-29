@@ -10,14 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8a992b092a540a40a00241960484b30, type: 3}
-  m_Name: DoorUnlockPathConfig
+  m_Name: Cloud2PathConfig
   m_EditorClassIdentifier: 
-  _stopDuration: 3
-  _speed: 3
+  _stopDuration: 0
+  _speed: 7
   Waypoints:
-  - waypoint: {x: 0, y: 3, z: 28}
+  - waypoint: {x: -3.534761, y: 3.7457862, z: 41.627808}
     corners: []
-  - waypoint: {x: 0, y: -3, z: 28}
+  - waypoint: {x: 5.167519, y: 5.0644093, z: 42.87271}
+    corners: []
+  - waypoint: {x: -7.1622524, y: 2.710139, z: 39.535934}
+    corners: []
+  - waypoint: {x: -6.8906474, y: 6.8219767, z: 38.464684}
+    corners: []
+  - waypoint: {x: 6.4026413, y: 3.657137, z: 36.8112}
     corners: []
   _lineColor: {r: 0, g: 0.2048912, b: 1, a: 1}
   _textSize: 20

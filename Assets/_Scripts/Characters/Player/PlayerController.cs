@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
     public TransformAnchor gameplayCameraTransform;
 
+    [SerializeField] private Transform _raycastOutput = default;
+
     private CharacterController _characterController;
     private Vector2 _previousMovementInput;
 
@@ -92,21 +94,13 @@ public class PlayerController : MonoBehaviour
             return;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, 1 << 11))
+        if (Physics.Raycast(_raycastOutput.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, 1 << 11))
         {
-            if (!_onPlatform)
-            {
-                _onPlatform = true;
                 transform.SetParent(hit.transform);
-            }
         }
         else
         {
-            if (_onPlatform)
-            {
-                _onPlatform = false;
                 transform.SetParent(null);
-            }
         }
     }
 
