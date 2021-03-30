@@ -4379,6 +4379,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fb89c4d9dd84bde429ae04bfd454483b, type: 2}
   - {fileID: 11400000, guid: d00c749c6e9a63543890a912eba6cf28, type: 2}
   - {fileID: 11400000, guid: bf37b1d5c74c47b44a787d5caf56123b, type: 2}
+  - {fileID: 11400000, guid: 5c6c94f8c9013b6438aee7c23ce5e65b, type: 2}
   _interactionItem: {fileID: 6801858167747782730}
 --- !u!224 &6805293559074310892
 RectTransform:
