@@ -15,14 +15,14 @@ MonoBehaviour:
   _stopDuration: 3
   _speed: 3
   Waypoints:
-  - waypoint: {x: -2, y: 0, z: 7.5}
+  - waypoint: {x: -2, y: 0, z: 4.5}
     corners: []
-  - waypoint: {x: 2, y: 0, z: 7.5}
+  - waypoint: {x: 2, y: 0, z: 4.5}
     corners: []
   _lineColor: {r: 0, g: 0.2048912, b: 1, a: 1}
   _textSize: 20
   _textColor: {r: 1, g: 1, b: 1, a: 1}
   _probeRadius: 0.3
-  DisplayProbes: 1
+  DisplayProbes: 0
   ToggledNavMeshDisplay: 0
   RealTimeEnabled: 0
