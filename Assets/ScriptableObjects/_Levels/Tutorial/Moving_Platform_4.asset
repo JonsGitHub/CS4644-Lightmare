@@ -17,7 +17,7 @@ MonoBehaviour:
   Waypoints:
   - waypoint: {x: 15.5, y: 3.1, z: 43.5}
     corners: []
-  - waypoint: {x: 15.5, y: 0.1, z: 43.5}
+  - waypoint: {x: 15.5, y: 0.3, z: 43.5}
     corners: []
   _lineColor: {r: 0, g: 0.084089994, b: 1, a: 1}
   _textSize: 20
