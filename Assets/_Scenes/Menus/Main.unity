@@ -983,10 +983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7ba7fc717f654e841d2638674f815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onSceneReady: {fileID: 11400000, guid: b21a2030c4a5dc54ca1ff8c0369bf78c, type: 2}
   onPlayButtonPress: {fileID: 11400000, guid: dc82a0ac6a848e944bf085763b7441ad, type: 2}
   locationsToLoad:
-  - {fileID: 11400000, guid: 992d0aecafdeb4f489b9c82393b08f63, type: 2}
+  - {fileID: 11400000, guid: daaa9c9e3dd9b424ea417f678e5f18fe, type: 2}
   showLoadScreen: 1
 --- !u!1 &1360861067
 GameObject:

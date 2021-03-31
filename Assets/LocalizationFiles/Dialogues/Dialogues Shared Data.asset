@@ -27,6 +27,10 @@ MonoBehaviour:
     m_Key: NPC_Dialogue_3
     m_Metadata:
       m_Items: []
+  - m_Id: 2731540028592128
+    m_Key: OldMan_Line_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
