@@ -15,7 +15,7 @@ MonoBehaviour:
   _stopDuration: 3
   _speed: 3
   Waypoints:
-  - waypoint: {x: 15.5, y: 3.1, z: 43.5}
+  - waypoint: {x: 15.5, y: 4.5, z: 43.5}
     corners: []
   - waypoint: {x: 15.5, y: 0.3, z: 43.5}
     corners: []
