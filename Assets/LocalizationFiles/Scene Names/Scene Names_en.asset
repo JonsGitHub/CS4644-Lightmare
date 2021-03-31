@@ -30,5 +30,9 @@ MonoBehaviour:
     m_Localized: Tutorial
     m_Metadata:
       m_Items: []
+  - m_Id: 3486841858539520
+    m_Localized: ExampleSceneJ
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
