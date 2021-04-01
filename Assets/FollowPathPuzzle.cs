@@ -8,19 +8,33 @@ public class FollowPathPuzzle : MonoBehaviour
     [SerializeField] private Vector2Int _startPoint;
     [SerializeField] private Transform _restartPoint;
     [SerializeField] private float _showDelay;
-    [SerializeField] private GameObject _tileHolder;
+    [SerializeField] private GameObject _blocker;
 
     private Tile[,] _potentialPoints;
 
-    public List<Vector2Int> _path;
+    [System.Serializable]
+    public class Point
+    {
+        public List<Vector2Int> List = new List<Vector2Int>();
+    }
+
+    public List<Point> _pathes;
+
+    private int _choice = 0;
+    private List<Vector2Int> _path => _pathes[_choice].List;
+
     public List<(MeshRenderer, Color)> _currentPath = new List<(MeshRenderer, Color)>();
 
     public void Start()
     {
         _potentialPoints = new Tile[_dimensions.x, _dimensions.y];
-        
+
+        _blocker.SetActive(true);
+
         // Find all potential points based on children
         FindPoints();
+
+        _choice = Random.Range(0, _pathes.Count - 1);
 
         //var total = 0;
         //for (int i = 0; i < _dimensions.x; ++i)
@@ -43,6 +57,8 @@ public class FollowPathPuzzle : MonoBehaviour
 
     private IEnumerator LightUpPath(float delay)
     {
+        _blocker.SetActive(true);
+
         Stack<(MeshRenderer, Color)> tiles = new Stack<(MeshRenderer, Color)>();
         
         foreach(var coord in _path)
@@ -62,6 +78,8 @@ public class FollowPathPuzzle : MonoBehaviour
             (var renderer, var originalColor) = tiles.Pop();
             renderer.material.color = originalColor;
         }
+
+        _blocker.SetActive(false);
     }
 
     public void StepOnTile(Tile tile, GameObject player)
@@ -98,7 +116,7 @@ public class FollowPathPuzzle : MonoBehaviour
 
     private void FindPoints()
     {
-        foreach(Tile tile in _tileHolder.GetComponentsInChildren<Tile>())
+        foreach(Tile tile in transform.GetComponentsInChildren<Tile>())
         {
             _potentialPoints[tile.X, tile.Y] = tile;
         }
