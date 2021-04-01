@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f86caf1e52264b438ff60fc0601c4e4, type: 3}
   m_Name: Level_Tutorial
   m_EditorClassIdentifier: 
-  _guid: 992d0aecafdeb4f489b9c82393b08f63
-  description: The tutorial level of the game.
+  _guid: daaa9c9e3dd9b424ea417f678e5f18fe
+  description: 
   sceneType: 0
   sceneReference:
-    m_AssetGUID: 09e419f8c10a7364bbfc0107abee6e52
+    m_AssetGUID: b2a527f36d11f6f46863be099f7d9158
     m_SubObjectName: 
     m_SubObjectType: 
   musicTrack: {fileID: 0}

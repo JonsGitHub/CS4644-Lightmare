@@ -30,5 +30,9 @@ MonoBehaviour:
     m_Localized: This is the last sample dialogue line.
     m_Metadata:
       m_Items: []
+  - m_Id: 2731540028592128
+    m_Localized: I'm rather hungry...If only I had an apple or something...
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

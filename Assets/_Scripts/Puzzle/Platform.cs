@@ -14,10 +14,6 @@ public class Platform : MonoBehaviour
     {
 		_currentDestination = _movementConfig.Waypoints.First().waypoint;
 		_startPosition = transform.position;
-		if (Vector3.Distance(_startPosition, _currentDestination) < 0.1f)
-        {
-			_currentDestination = GetNextDestination();
-        }
 	}
 
     private void FixedUpdate()

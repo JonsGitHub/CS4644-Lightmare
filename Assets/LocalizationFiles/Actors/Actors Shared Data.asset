@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: NPC
     m_Metadata:
       m_Items: []
+  - m_Id: 2731894367588352
+    m_Key: OldMan
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

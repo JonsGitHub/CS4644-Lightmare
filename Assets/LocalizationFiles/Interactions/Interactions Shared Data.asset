@@ -27,6 +27,10 @@ MonoBehaviour:
     m_Key: Drop_Object
     m_Metadata:
       m_Items: []
+  - m_Id: 2650493756641280
+    m_Key: Interact_Object
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

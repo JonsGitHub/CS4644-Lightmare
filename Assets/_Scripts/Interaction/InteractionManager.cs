@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public enum InteractionType { None = 0, Talk, Grab, Drop };
+public enum InteractionType { None = 0, Talk, Grab, Drop, Interact };
 
 public class InteractionManager : MonoBehaviour
 {
@@ -84,6 +84,9 @@ public class InteractionManager : MonoBehaviour
 					_inputReader.EnableDialogueInput();
 				}
 				break;
+			case InteractionType.Interact:
+				_potentialInteractions.First.Value.interactableObject.GetComponent<InterfaceBase>()?.Interact();
+				break;
 		}
 	}
 
@@ -100,15 +103,19 @@ public class InteractionManager : MonoBehaviour
 	{
 		Interaction newPotentialInteraction = new Interaction(InteractionType.None, obj);
 
-		if (obj.CompareTag("NPC"))
-		{
-			newPotentialInteraction.type = InteractionType.Talk;
-		}
-		else if (obj.CompareTag("Grabbable"))
-		{
-			newPotentialInteraction.type = InteractionType.Grab;
-		}
-
+		switch (obj.tag)
+        {
+			case "NPC":
+				newPotentialInteraction.type = InteractionType.Talk;
+				break;
+			case "Grabbable":
+				newPotentialInteraction.type = InteractionType.Grab;
+				break;
+			case "Interface":
+				newPotentialInteraction.type = InteractionType.Interact;
+				break;
+        }
+		
 		if (newPotentialInteraction.type != InteractionType.None)
 		{
 			_potentialInteractions.AddFirst(newPotentialInteraction);
@@ -144,8 +151,9 @@ public class InteractionManager : MonoBehaviour
 	{
 		switch (currentInteractionType)
 		{
+			case InteractionType.Interact:
 			case InteractionType.Talk:
-				//We show the UI after cooking or talking, in case player wants to interact again
+				//We show the UI after interacting or talking, in case player wants to interact again
 				RequestUpdateUI(true);
 				break;
 		}
