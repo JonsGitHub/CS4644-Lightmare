@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public TransformAnchor gameplayCameraTransform;
 
     [SerializeField] private Transform _raycastOutput = default;
+    [SerializeField] private LayerMask _groundLayers = default;
 
     private CharacterController _characterController;
     private Vector2 _previousMovementInput;
@@ -21,9 +22,10 @@ public class PlayerController : MonoBehaviour
 
     //These fields are read and manipulated by the StateMachine actions
     [NonSerialized] public bool jumpInput;
-	[NonSerialized] public bool attackInput;
+    [NonSerialized] public bool attackInput;
     [NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
     [NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
+	[NonSerialized] public ControllerColliderHit lastHit;
     [NonSerialized] public bool isRunning;
 
     public const float GRAVITY_MULTIPLIER = 5f;
@@ -43,6 +45,11 @@ public class PlayerController : MonoBehaviour
     //private float CurrentScroll = 1.0f;
 
     #endregion Private Fields
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        lastHit = hit;
+    }
 
     /// <summary>
     /// Awake called before Start of class
@@ -65,8 +72,8 @@ public class PlayerController : MonoBehaviour
         _inputReader.moveEvent += OnMove;
         _inputReader.startedRunning += OnStartedRunning;
         _inputReader.stoppedRunning += OnStoppedRunning;
-		_inputReader.attackEvent += OnStartedAttack;
-		_inputReader.attackCanceledEvent += OnStoppedAttack;
+        _inputReader.attackEvent += OnStartedAttack;
+        _inputReader.attackCanceledEvent += OnStoppedAttack;
     }
 
     //Removes all listeners to the events coming from the InputReader script
@@ -77,8 +84,8 @@ public class PlayerController : MonoBehaviour
         _inputReader.moveEvent -= OnMove;
         _inputReader.startedRunning -= OnStartedRunning;
         _inputReader.stoppedRunning -= OnStoppedRunning;
-		_inputReader.attackEvent -= OnStartedAttack;
-		_inputReader.attackCanceledEvent -= OnStoppedAttack;
+        _inputReader.attackEvent -= OnStartedAttack;
+        _inputReader.attackCanceledEvent -= OnStoppedAttack;
     }
 
     private void Update()
@@ -86,6 +93,14 @@ public class PlayerController : MonoBehaviour
         RecalculateMovement();
     }
 
+    public bool isGrounded
+    {
+        get
+        {
+            RaycastHit hit;
+            return Physics.Raycast(_raycastOutput.position, transform.TransformDirection(Vector3.down), out hit, 1, _groundLayers);
+        }
+    }
     private void FixedUpdate()
     {
         // Add "sticky" feet to dynamic environments (eg. moving platforms)

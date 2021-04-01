@@ -22,18 +22,18 @@ public class FollowPathPuzzle : MonoBehaviour
         // Find all potential points based on children
         FindPoints();
 
-        var total = 0;
-        for (int i = 0; i < _dimensions.x; ++i)
-        {
-            for (int j = 0; j < _dimensions.y; ++j)
-            {
-                if (_potentialPoints[i,j] != null)
-                {
-                    total++;
-                }
-            }
-        }
-        Debug.Log(total);
+        //var total = 0;
+        //for (int i = 0; i < _dimensions.x; ++i)
+        //{
+        //    for (int j = 0; j < _dimensions.y; ++j)
+        //    {
+        //        if (_potentialPoints[i,j] != null)
+        //        {
+        //            total++;
+        //        }
+        //    }
+        //}
+        //Debug.Log(total);
     }
 
     public void ShowPath()

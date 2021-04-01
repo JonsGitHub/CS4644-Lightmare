@@ -76,8 +76,8 @@ CharacterController:
   m_Height: 2.4
   m_Radius: 0.4
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_StepOffset: 0.05
+  m_SkinWidth: 0.02
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.7, z: 0}
 --- !u!95 &5045829752225445741
@@ -115,6 +115,9 @@ MonoBehaviour:
   gameplayCameraTransform: {fileID: 11400000, guid: a8dd4b8408f8b924892fa2e117409890,
     type: 2}
   _raycastOutput: {fileID: 4112119521279778420}
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 2561
 --- !u!114 &111020498712096043
 MonoBehaviour:
   m_ObjectHideFlags: 0
