@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8074411184304162763}
   - component: {fileID: 4599835090077807656}
   - component: {fileID: 5211068936021017389}
+  - component: {fileID: 6734120227801524430}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -229,6 +230,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackSystem: {fileID: 8780573972832757946}
+--- !u!54 &6734120227801524430
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111020498712096047}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &111020500025678894
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175414164474619157}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: HoldPosition
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -5192,7 +5209,7 @@ GameObject:
   - component: {fileID: 7268881591893971629}
   - component: {fileID: 5719592306185994659}
   - component: {fileID: 1356815012287093618}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: InteractionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5354,6 +5371,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fc8824ffe7ab10744b691bd75641e781,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2321523695958950486, guid: fc8824ffe7ab10744b691bd75641e781,
         type: 3}
