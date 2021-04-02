@@ -8,4 +8,14 @@ public class FollowPathInterface : InterfaceBase
     {
         _puzzle.ShowPath();
     }
+
+    public void Disable()
+    {
+        tag = "Untagged";
+    }
+
+    public void Enable()
+    {
+        tag = "Interface";
+    }
 }

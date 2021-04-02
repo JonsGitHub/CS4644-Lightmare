@@ -58,6 +58,7 @@ public class FollowPathPuzzle : MonoBehaviour
     private IEnumerator LightUpPath(float delay)
     {
         _blocker.SetActive(true);
+        GetComponentInChildren<FollowPathInterface>()?.Disable();
 
         Stack<(MeshRenderer, Color)> tiles = new Stack<(MeshRenderer, Color)>();
         
@@ -79,6 +80,7 @@ public class FollowPathPuzzle : MonoBehaviour
             renderer.material.color = originalColor;
         }
 
+        GetComponentInChildren<FollowPathInterface>()?.Enable();
         _blocker.SetActive(false);
     }
 

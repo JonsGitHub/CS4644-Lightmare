@@ -17,6 +17,8 @@ public class NPCController : MonoBehaviour
 	[SerializeField] private string Name;
 	[Tooltip("The location of the overhead label.")]
 	[SerializeField] private Transform LabelPosition = default;
+	[Tooltip("The color of the text label.")]
+	[SerializeField] private Color LabelTextColor = Color.black;
 
 	public NPCMovementConfigSO NPCMovementConfig => _npcMovementConfig;
 
@@ -26,6 +28,7 @@ public class NPCController : MonoBehaviour
 		{
 			label = Instantiate(Resources.Load<Panel3D>("Prefabs/Panel3D"));
 			label.Text = Name;
+			label.TextColor = LabelTextColor;
 			label.Transform = LabelPosition ? LabelPosition : transform;
 
 			_3dUIChannelEvent?.RaiseEvent(label, false);
