@@ -5677,7 +5677,7 @@ MonoBehaviour:
   _dimensions: {x: 5, y: 5}
   _startPoint: {x: 0, y: 2}
   _restartPoint: {fileID: 1104816607}
-  _showDelay: 1.2
+  _showDelay: 0.4
   _blocker: {fileID: 2117936068}
   _pathes:
   - List:
@@ -6826,17 +6826,17 @@ PrefabInstance:
     - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0068177064
+      value: -0.006817677
       objectReference: {fileID: 0}
     - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3.641447e-12
+      value: 0.000000029801626
       objectReference: {fileID: 0}
     - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.4826893e-14
+      value: 2.0318258e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4184016652547918068, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
