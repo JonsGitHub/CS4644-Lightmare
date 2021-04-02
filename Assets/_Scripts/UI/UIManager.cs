@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
 	[Tooltip("The Distance of occlusion of UI3D Objects")]
 	[Range(0, 200)]
 	[SerializeField] private int Ui3DOccludingDistance = 25;
+	[SerializeField] private RectTransform _3dUiHolder = default;
 
 	[Header("Listening on channels")]
 	[Header("Dialogue Events")]
@@ -34,23 +35,10 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private GameSceneSO[] _menuToLoad = default;
 	[SerializeField] private LoadEventChannelSO _loadMenu = default;
 
-	private Canvas _canvas;
-	private Canvas Canvas
-    {
-		get
-        {
-			if (_canvas == null)
-            {
-				_canvas = FindObjectOfType<Canvas>();
-            }
-			return _canvas;
-        }
-    }
-
 	private List<Ui3D> Uis = new List<Ui3D>();
 	private Stack<GameObject> ViewStack = new Stack<GameObject>();
 
-	private void OnEnable()
+    private void OnEnable()
 	{
 		if (_openUIDialogueEvent)
 		{
@@ -194,7 +182,7 @@ public class UIManager : MonoBehaviour
     {
 		if (!remove)
         {
-			ui.transform.SetParent(Canvas.transform);
+			ui.transform.SetParent(_3dUiHolder);
 			ui.transform.SetAsFirstSibling();
 			Uis.Add(ui);
 		}

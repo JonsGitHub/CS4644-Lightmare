@@ -85,4 +85,12 @@ public class StoryPuzzle : MonoBehaviour
             _storyColumns[i].SetStoryText(_shuffled[i]);
         }
     }
+
+    private void OnDestroy()
+    {
+        foreach(var column in _storyColumns)
+        {
+            Destroy(column);
+        }
+    }
 }

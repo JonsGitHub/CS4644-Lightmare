@@ -36,7 +36,10 @@ public class Damageable : MonoBehaviour
 	private void Awake()
 	{
 		_currentHealth = _healthConfigSO.MaxHealth;
-		
+	}
+
+    private void OnEnable()
+    {
 		if (_createHealthBar)
 		{
 			healthbar = Instantiate(Resources.Load<HealthBar3D>("Prefabs/HealthBar3D"));
@@ -50,7 +53,7 @@ public class Damageable : MonoBehaviour
 		}
 	}
 
-	public void ReceiveAnAttack(int damage)
+    public void ReceiveAnAttack(int damage)
 	{
 		_currentHealth -= damage;
 		

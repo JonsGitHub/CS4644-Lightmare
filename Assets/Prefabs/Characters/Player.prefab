@@ -116,9 +116,9 @@ MonoBehaviour:
   gameplayCameraTransform: {fileID: 11400000, guid: a8dd4b8408f8b924892fa2e117409890,
     type: 2}
   _raycastOutput: {fileID: 4112119521279778420}
-  _groundLayers:
+  _dynamicGroundLayer:
     serializedVersion: 2
-    m_Bits: 2561
+    m_Bits: 2048
 --- !u!114 &111020498712096043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2615968841658177654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111020498712096040}

@@ -21,8 +21,8 @@ public class NPCController : MonoBehaviour
 	[SerializeField] private Color LabelTextColor = Color.black;
 
 	public NPCMovementConfigSO NPCMovementConfig => _npcMovementConfig;
-
-	private void Start()
+	
+	private void OnEnable()
 	{
 		if (_createLabel)
 		{
@@ -33,6 +33,9 @@ public class NPCController : MonoBehaviour
 
 			_3dUIChannelEvent?.RaiseEvent(label, false);
 		}
+
+		if (_channel != null)
+			_channel.OnEventRaised += Respond;
 	}
 
 	private void OnDestroy()
@@ -41,12 +44,6 @@ public class NPCController : MonoBehaviour
 		{
 			_3dUIChannelEvent.RaiseEvent(label, true);
 		}
-	}
-
-	private void OnEnable()
-	{
-		if (_channel != null)
-			_channel.OnEventRaised += Respond;
 	}
 
 	private void Respond(NPCMovementConfigSO value)

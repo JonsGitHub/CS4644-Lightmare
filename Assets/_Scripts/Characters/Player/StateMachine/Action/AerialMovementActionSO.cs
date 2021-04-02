@@ -3,7 +3,7 @@ using StateMachine;
 using StateMachine.ScriptableObjects;
 
 [CreateAssetMenu(fileName = "AerialMovementAction", menuName = "State Machines/Actions/Aerial Movement Action")]
-public class AerialMovementActionSO : StateActionSO
+public class AerialMovementActionSO : StateActionSO<AerialMovementAction>
 {
 	public float Speed => _speed;
 	public float Acceleration => _acceleration;
@@ -12,8 +12,6 @@ public class AerialMovementActionSO : StateActionSO
 	[SerializeField] [Range(0.1f, 100f)] private float _speed = 10f;
 	[Tooltip("The acceleration applied to reach the desired speed")]
 	[SerializeField] [Range(0.1f, 100f)] private float _acceleration = 20f;
-
-	protected override StateAction CreateAction() => new AerialMovementAction();
 }
 
 public class AerialMovementAction : StateAction
@@ -39,7 +37,7 @@ public class AerialMovementAction : StateAction
 		// Attempt to stop fast brake in air when moving forward and tapping back once
 		if (counter > 0)
 		{
-			input = Vector3.zero;
+			input = Vector3.zero; // Act like no input is being given so momentum will continue
 			counter--;
 		}
 		else if (Vector3.Dot(input, prevInput) <= 0) // Opposing input vectors facing opposite or far left/right direction

@@ -22,6 +22,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public event UnityAction disableMouseControlCameraEvent = delegate { };
 	public event UnityAction startedRunning = delegate { };
 	public event UnityAction stoppedRunning = delegate { };
+	public event UnityAction<float> scrollEvent = delegate { };
 
 	// Shared between menus and dialogues
 	public event UnityAction moveSelectionEvent = delegate { };
@@ -120,6 +121,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public void OnRotateCamera(InputAction.CallbackContext context)
 	{
 		cameraMoveEvent.Invoke(context.ReadValue<Vector2>(), IsDeviceMouse(context));
+	}
+
+	public void OnZoom(InputAction.CallbackContext context)
+	{
+		scrollEvent.Invoke(context.ReadValue<Vector2>().y);
 	}
 
 	private bool IsDeviceMouse(InputAction.CallbackContext context) => context.control.device.name == "Mouse";

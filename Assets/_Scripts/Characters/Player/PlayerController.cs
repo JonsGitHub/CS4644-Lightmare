@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
     public TransformAnchor gameplayCameraTransform;
 
     [SerializeField] private Transform _raycastOutput = default;
-    [SerializeField] private LayerMask _groundLayers = default;
+    [SerializeField] private LayerMask _dynamicGroundLayer = default;
 
-    private CharacterController _characterController;
     private Vector2 _previousMovementInput;
+    private RaycastHit _prevHit;
 
     #endregion
 
@@ -35,38 +35,9 @@ public class PlayerController : MonoBehaviour
     public const float GRAVITY_DIVIDER = .6f;
     public const float AIR_RESISTANCE = 5f;
 
-    private bool _onPlatform;
-
-    #region Private Fields
-
-    //private Transform Camera;
-    //private Cinemachine.CinemachineFreeLook FreeLook;
-    //private Vector3 DefaultOrbitRingValues;
-    //private float CurrentScroll = 1.0f;
-
-    #endregion Private Fields
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        lastHit = hit;
-    }
-
-    /// <summary>
-    /// Awake called before Start of class
-    /// </summary>
-    private void Awake()
-    {
-        _characterController = GetComponent<CharacterController>();
-        //FreeLook = GameObject.FindGameObjectWithTag("CinemachineCamera").GetComponent<Cinemachine.CinemachineFreeLook>();
-        //for (var i = 0; i < 3; ++i)
-        //{
-        //    DefaultOrbitRingValues[i] = FreeLook.m_Orbits[i].m_Radius;
-        //}
-    }
-
-    //Adds listeners for events being triggered in the InputReader script
     private void OnEnable()
     {
+        //Adds listeners for events being triggered in the InputReader script
         _inputReader.jumpEvent += OnJumpInitiated;
         _inputReader.jumpCanceledEvent += OnJumpCanceled;
         _inputReader.moveEvent += OnMove;
@@ -76,9 +47,9 @@ public class PlayerController : MonoBehaviour
         _inputReader.attackCanceledEvent += OnStoppedAttack;
     }
 
-    //Removes all listeners to the events coming from the InputReader script
     private void OnDisable()
     {
+        //Removes all listeners to the events coming from the InputReader script
         _inputReader.jumpEvent -= OnJumpInitiated;
         _inputReader.jumpCanceledEvent -= OnJumpCanceled;
         _inputReader.moveEvent -= OnMove;
@@ -93,30 +64,18 @@ public class PlayerController : MonoBehaviour
         RecalculateMovement();
     }
 
-    public bool isGrounded
-    {
-        get
-        {
-            RaycastHit hit;
-            return Physics.Raycast(_raycastOutput.position, transform.TransformDirection(Vector3.down), out hit, 1, _groundLayers);
-        }
-    }
     private void FixedUpdate()
     {
         // Add "sticky" feet to dynamic environments (eg. moving platforms)
-        // TODO: Look into better method rather than parenting
-        if (!_characterController.isGrounded)
-            return;
+        if (Physics.Raycast(_raycastOutput.position, transform.TransformDirection(Vector3.down), out _prevHit, 0.1f, _dynamicGroundLayer))
+        {
+            transform.position += _prevHit.collider.GetComponent<Platform>().Delta;
+        }
+    }
 
-        RaycastHit hit;
-        if (Physics.Raycast(_raycastOutput.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, 1 << 11))
-        {
-                transform.SetParent(hit.transform);
-        }
-        else
-        {
-                transform.SetParent(null);
-        }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        lastHit = hit;
     }
 
     private void RecalculateMovement()
@@ -144,56 +103,22 @@ public class PlayerController : MonoBehaviour
         // This is used to set the speed to the maximum if holding the Shift key,
         // to allow keyboard players to "run"
         if (isRunning)
+        {
             movementInput.Normalize();
+        }
     }
 
-    private void OnMove(Vector2 movement)
-    {
-        _previousMovementInput = movement;
-    }
+    private void OnMove(Vector2 movement) => _previousMovementInput = movement;
 
-    private void OnJumpInitiated()
-    {
-        jumpInput = true;
-    }
+    private void OnJumpInitiated() => jumpInput = true;
 
-    private void OnJumpCanceled()
-    {
-        jumpInput = false;
-    }
+    private void OnJumpCanceled() => jumpInput = false;
 
     private void OnStoppedRunning() => isRunning = false;
 
     private void OnStartedRunning() => isRunning = true;
 
     private void OnStartedAttack() => attackInput = true;
+
     private void OnStoppedAttack() => attackInput = false;
-
-
-    /// <summary>
-    /// Last update called every frame
-    /// </summary>
-    private void LateUpdate()
-    {
-        //FreeLook.m_YAxis.m_InvertInput = Settings.Instance.InvertedYAxis;
-        //FreeLook.m_XAxis.m_InvertInput = Settings.Instance.InvertedXAxis;
-
-        //FreeLook.m_XAxis.m_MaxSpeed = 600 * (Settings.Instance.MouseSensitivity / 10.0f);
-        //FreeLook.m_YAxis.m_MaxSpeed = 4 * (Settings.Instance.MouseSensitivity / 10.0f);
-    }
-
-    /// <summary>
-    /// Helper method that will check scroll delta and adjust the cinemachine orbit
-    /// rings accordingly.
-    /// </summary>
-    /// <param name="scrollDelta">The change in scrolling</param>
-    private void CheckScroll(Vector2 scrollDelta)
-    {
-        //CurrentScroll = Mathf.Clamp(CurrentScroll - ((Settings.Instance.ScrollSensitivity / 50.0f) * scrollDelta.y), 0.3f, 1.0f);
-
-        //for (var i = 0; i < 3; ++i)
-        //{
-        //    FreeLook.m_Orbits[i].m_Radius = DefaultOrbitRingValues[i] * CurrentScroll;
-        //}
-    }
 }
