@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private InputReader _inputReader = default;
 
 	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
+	[SerializeField] private HealthBar3D _playerHealthBar = default;
+	[SerializeField] private IntEventChannelSO _playerHitChannel = default;
 
 	[Tooltip("The Distance of occlusion of UI3D Objects")]
 	[Range(0, 200)]
@@ -30,6 +32,9 @@ public class UIManager : MonoBehaviour
 	[Header("Interaction Events")]
 	//[SerializeField] private VoidEventChannelSO _onInteractionEndedEvent = default; //TODO: Do we need?
 	[SerializeField] private InteractionUIEventChannelSO _setInteractionEvent = default;
+
+	[Header("Player Based Events")]
+	[SerializeField] private TransformEventChannelSO _playerInstantiatedChannel = default;
 
 	[Header("Main Menu Loading")]
 	[SerializeField] private GameSceneSO[] _menuToLoad = default;
@@ -56,6 +61,14 @@ public class UIManager : MonoBehaviour
         {
 			_3dUIChannelEvent.OnEventRaised += Update3DUIs;
 		}
+		if (_playerInstantiatedChannel)
+        {
+			_playerInstantiatedChannel.OnEventRaised += GatherPlayerInformation;
+        }
+		if (_playerHitChannel)
+        {
+			_playerHitChannel.OnEventRaised += UpdatePlayerHealth;
+        }
 
 		_inputReader.pauseEvent += Pause;
 		_inputReader.menuUnpauseEvent += Unpause;
@@ -77,15 +90,35 @@ public class UIManager : MonoBehaviour
 		{
 			_setInteractionEvent.OnEventRaised -= SetInteractionPanel;
 		}
+		if (_playerInstantiatedChannel)
+		{
+			_playerInstantiatedChannel.OnEventRaised += GatherPlayerInformation;
+		}
+		if (_playerHitChannel)
+		{
+			_playerHitChannel.OnEventRaised -= UpdatePlayerHealth;
+		}
 
 		_inputReader.pauseEvent -= Pause;
 		_inputReader.menuUnpauseEvent -= Unpause;
+	}
+
+	private void GatherPlayerInformation(Transform transform)
+    {
+		var playerDamageable = _playerTransformAnchor.Transform.GetComponent<Damageable>();
+		_playerHealthBar.MaxHealth = playerDamageable.MaxHealth;
+		_playerHealthBar.Health = playerDamageable.CurrentHealth;
 	}
 
 	private void Start()
 	{
 		CloseUIDialogue();
 	}
+
+	private void UpdatePlayerHealth(int current)
+    {
+		_playerHealthBar.Health = current;
+    }
 
 	public void OpenUIDialogue(LocalizedString dialogueLine, ActorSO actor)
 	{

@@ -76,8 +76,8 @@ public class SpawnSystem : MonoBehaviour
             }
 		}
 
-		_playerInstantiatedChannel.RaiseEvent(lookAtTransform); // The CameraSystem will pick this up to frame the player
 		_playerTransformAnchor.Transform = playerInstance.transform;
+		_playerInstantiatedChannel.RaiseEvent(lookAtTransform); // The CameraSystem will pick this up to frame the player
 	}
 
 	private Transform GetSpawnLocation(int index, Transform[] spawnLocations)

@@ -50,7 +50,7 @@ ModelImporter:
       name: Armature|Attack
       takeName: Armature|Attack
       internalID: 0
-      firstFrame: 0
+      firstFrame: 5
       lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0

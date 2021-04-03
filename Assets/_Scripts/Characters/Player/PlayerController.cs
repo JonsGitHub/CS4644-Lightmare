@@ -69,7 +69,15 @@ public class PlayerController : MonoBehaviour
         // Add "sticky" feet to dynamic environments (eg. moving platforms)
         if (Physics.Raycast(_raycastOutput.position, transform.TransformDirection(Vector3.down), out _prevHit, 0.1f, _dynamicGroundLayer))
         {
-            transform.position += _prevHit.collider.GetComponent<Platform>().Delta;
+            Platform platform;
+            if (_prevHit.transform.TryGetComponent(out platform))
+            {
+                transform.position += platform.Delta;
+            }
+            else if (_prevHit.transform.parent.TryGetComponent(out platform))
+            {
+                transform.position += platform.Delta;
+            }
         }
     }
 
