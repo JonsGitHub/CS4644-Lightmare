@@ -8,6 +8,9 @@ public class InteractionManager : MonoBehaviour
 	[HideInInspector] public InteractionType currentInteractionType; //This is checked by conditions in the StateMachine
 	[SerializeField] private InputReader _inputReader = default;
 
+	[SerializeField] private TransformAnchor _cameraTransformAnchor = default;
+
+	[SerializeField] private GameObject _interactorDetector = default;
 	[SerializeField] private Transform _holdPosition = default;
 
 	//To store the object we are currently interacting with
@@ -49,6 +52,12 @@ public class InteractionManager : MonoBehaviour
 			}
 			grabbed.transform.position = _holdPosition.position;
 			grabbed.transform.rotation = _holdPosition.rotation;
+		}
+
+		// Attach interactor to where the player is looking
+		if (_cameraTransformAnchor && _cameraTransformAnchor.isSet)
+        {
+			_interactorDetector.transform.rotation = _cameraTransformAnchor.Transform.rotation;
 		}
     }
 

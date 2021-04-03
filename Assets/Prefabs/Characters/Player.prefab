@@ -164,6 +164,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentInteractionType: 0
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
+  _cameraTransformAnchor: {fileID: 11400000, guid: a8dd4b8408f8b924892fa2e117409890,
+    type: 2}
+  _interactorDetector: {fileID: 8248815863480277817}
   _holdPosition: {fileID: 175414164474619157}
   _startTalking: {fileID: 11400000, guid: e673f344ee934e049b3dd20cde2d33e9, type: 2}
   _toggleInteractionUI: {fileID: 11400000, guid: e697e4dc706d1a84a94b4e99419efd85,
@@ -5512,8 +5515,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 2.25, z: 1.25}
-  m_Center: {x: 0, y: 1.7, z: 1.25}
+  m_Size: {x: 0.76361674, y: 0.7804203, z: 1.8123088}
+  m_Center: {x: -0.0068083704, y: 2.2852721, z: 1.5311544}
 --- !u!54 &5719592306185994659
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class StoryColumn : InterfaceBase
 
     public override void Interact()
     {
-        if (numberLabel.Text.Equals(""))
+        if (!numberLabel || numberLabel.Text.Equals(""))
             GetComponentInParent<StoryPuzzle>().SelectColumn(this, label.Text);
     }
 
@@ -34,6 +34,7 @@ public class StoryColumn : InterfaceBase
         }
         label.Text = text;
     }
+
     public void SetNumber(int number)
     {
         if (!numberLabel)
