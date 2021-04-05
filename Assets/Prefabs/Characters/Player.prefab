@@ -173,10 +173,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentInteractionType: 0
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
-  _interactorDetector: {fileID: 8248815863480277817}
   _holdPosition: {fileID: 175414164474619157}
   _startTalking: {fileID: 11400000, guid: e673f344ee934e049b3dd20cde2d33e9, type: 2}
   _toggleInteractionUI: {fileID: 11400000, guid: e697e4dc706d1a84a94b4e99419efd85,
+    type: 2}
+  _interactionDisplayEventChannel: {fileID: 11400000, guid: 8a534e3138e36fb428a792b27749d226,
+    type: 2}
+  _requestUpdateInteraction: {fileID: 11400000, guid: e9ac1c6d2a0d40b43a3dc65170711c9a,
     type: 2}
   _onInteractionEnded: {fileID: 11400000, guid: e9aa3ce5e19bf8c469dd03b06e5d7b48,
     type: 2}

@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
 	[Header("Interaction Events")]
 	//[SerializeField] private VoidEventChannelSO _onInteractionEndedEvent = default; //TODO: Do we need?
 	[SerializeField] private InteractionUIEventChannelSO _setInteractionEvent = default;
+	[SerializeField] private BoolEventChannelSO _requestUpdateInteraction = default;
 
 	[Header("Player Based Events")]
 	[SerializeField] private TransformEventChannelSO _playerInstantiatedChannel = default;
@@ -83,6 +84,10 @@ public class UIManager : MonoBehaviour
         {
 			_aimEventChannel.OnEventRaised += AimState;
         }
+		if (_requestUpdateInteraction)
+        {
+			_requestUpdateInteraction.OnEventRaised += UpdateInteraction;
+        }
 
 		_inputReader.pauseEvent += Pause;
 		_inputReader.menuUnpauseEvent += Unpause;
@@ -116,7 +121,10 @@ public class UIManager : MonoBehaviour
 		{
 			_aimEventChannel.OnEventRaised -= AimState;
 		}
-
+		if (_requestUpdateInteraction)
+		{
+			_requestUpdateInteraction.OnEventRaised -= UpdateInteraction;
+		}
 		_inputReader.pauseEvent -= Pause;
 		_inputReader.menuUnpauseEvent -= Unpause;
 	}
@@ -148,14 +156,16 @@ public class UIManager : MonoBehaviour
 		_dialogueController.gameObject.SetActive(false);
 	}
 
-	public void SetInteractionPanel(bool isOpenEvent, InteractionType interactionType)
+	public void SetInteractionPanel(InteractionList list)
 	{
-		if (isOpenEvent)
-		{
-			_interactionPanel.FillInteractionPanel(interactionType);
-		}
-		_interactionPanel.gameObject.SetActive(isOpenEvent);
+		_interactionPanel.FillInteractionPanel(list);
 	}
+
+	private void UpdateInteraction(bool state)
+    {
+		_interactionPanel.UpdateList(state);
+		_interactionPanel.gameObject.SetActive(state);
+    }
 
 	public void AddToViewStack(GameObject layer)
     {

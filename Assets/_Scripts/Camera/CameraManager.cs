@@ -26,9 +26,11 @@ public class CameraManager : MonoBehaviour
 	[Tooltip("The CameraManager listens to this event, fired by objects in any scene, to adapt camera position")]
 	[SerializeField] private TransformEventChannelSO _frameObjectChannel = default;
 	[SerializeField] private BoolEventChannelSO _aimEventChannel = default;
+	[SerializeField] private BoolEventChannelSO _interactionDisplayEventChannel= default;
 
 	private bool _cameraMovementLock = false;
-
+	private bool _zoomLock = false;
+	
 	public void SetupProtagonistVirtualCamera(Transform target)
 	{
 		freeLookVCam.Follow = target;
@@ -62,6 +64,8 @@ public class CameraManager : MonoBehaviour
 			_frameObjectChannel.OnEventRaised += OnFrameObjectEvent;
 		if (_aimEventChannel)
 			_aimEventChannel.OnEventRaised += AimState;
+		if (_interactionDisplayEventChannel)
+			_interactionDisplayEventChannel.OnEventRaised += BlockZooming;
 
 		_cameraTransformAnchor.Transform = mainCamera.transform;
 
@@ -79,6 +83,8 @@ public class CameraManager : MonoBehaviour
 			_frameObjectChannel.OnEventRaised -= OnFrameObjectEvent;
 		if (_aimEventChannel)
 			_aimEventChannel.OnEventRaised -= AimState;
+		if (_interactionDisplayEventChannel)
+			_interactionDisplayEventChannel.OnEventRaised += BlockZooming;
 	}
 
 	/// <summary>
@@ -131,7 +137,7 @@ public class CameraManager : MonoBehaviour
 
 	private void OnZoom(float axis)
     {
-		if (_state.Equals(CameraState.Aiming))
+		if (_state.Equals(CameraState.Aiming) || _zoomLock)
 			return;
 
 		//TODO: Add smoothing to zoom control 
@@ -141,6 +147,8 @@ public class CameraManager : MonoBehaviour
 			freeLookVCam.m_Orbits[i].m_Radius = DefaultOrbitRingValues[(int)_state][i] * CurrentScroll;
         }
     }
+
+	private void BlockZooming(bool state) => _zoomLock = state;
 
 	private void OnFrameObjectEvent(Transform value) => SetupProtagonistVirtualCamera(value);
 

@@ -173,13 +173,9 @@ public class PlayerController : MonoBehaviour
     private void AimState(bool state)
     {
         if (state)
-        {
             StartCoroutine(LerpFollowPosition(_modelOffset));
-        }
         else
-        {
             StartCoroutine(LerpFollowPosition(Vector3.zero));
-        }
     }
 
     private IEnumerator LerpFollowPosition(Vector3 endPosition)

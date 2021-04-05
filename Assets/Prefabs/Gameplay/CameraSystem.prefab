@@ -150,7 +150,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4184016652448694607}
-  m_LocalRotation: {x: -0.006249645, y: -0.000000017199133, z: -1.07490586e-10, w: 0.9999805}
+  m_LocalRotation: {x: -1e-45, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -255,6 +255,8 @@ MonoBehaviour:
   _frameObjectChannel: {fileID: 11400000, guid: dbc0918073e991347bc905606953dfaf,
     type: 2}
   _aimEventChannel: {fileID: 11400000, guid: bef0d3c4379d2ac4eb9c587038da1059, type: 2}
+  _interactionDisplayEventChannel: {fileID: 11400000, guid: 8a534e3138e36fb428a792b27749d226,
+    type: 2}
 --- !u!1 &4184016652638858792
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +281,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4184016652638858792}
-  m_LocalRotation: {x: -0.04256975, y: 0.000000017324563, z: 7.3817136e-10, w: 0.99909353}
+  m_LocalRotation: {x: -0.03632495, y: 1e-45, z: -0, w: 0.99934006}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -567,7 +569,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4184016653223849320}
-  m_LocalRotation: {x: -0.024437733, y: 1e-45, z: -0, w: 0.9997014}
+  m_LocalRotation: {x: -0.018189492, y: 0.000000001075221, z: 1.9560957e-11, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -800,8 +802,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4184016653379499705}
-  m_LocalRotation: {x: -0.024437739, y: -0.0000000018620891, z: -4.551884e-11, w: 0.9997014}
-  m_LocalPosition: {x: 0, y: -0.15, z: -12}
+  m_LocalRotation: {x: -0.018189494, y: 0.000000002150442, z: 3.912192e-11, w: 0.9998346}
+  m_LocalPosition: {x: 0, y: 0, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4184016652547918068}
