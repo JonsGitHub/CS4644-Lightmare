@@ -39,10 +39,21 @@ public class InteractionManager : MonoBehaviour
 		_inputReader.interactEvent -= OnInteractionButtonPress;
 		_onInteractionEnded.OnEventRaised -= OnInteractionEnd;
 
-		_toggleInteractionUI.RaiseEvent(null);
+		if (grabbed)
+		{
+			var rigid = grabbed.GetComponent<Rigidbody>();
+			if (rigid)
+			{
+				rigid.useGravity = true;
+			}
+
+			_potentialInteractions.IsGrabbing = false;
+			grabbed = null;
+			RequestUpdateUI(true);
+		}
 	}
 
-	private void FixedUpdate()
+    private void FixedUpdate()
     {
 		// TODO: Move into player controller by listenting to grab interaction event
         if (grabbed)
