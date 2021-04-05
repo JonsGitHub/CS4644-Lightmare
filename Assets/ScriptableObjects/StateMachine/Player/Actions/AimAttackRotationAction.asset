@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3291fd384ea3cac458ae8adf10939d33, type: 3}
+  m_Name: AimAttackRotationAction
+  m_EditorClassIdentifier: 
+  turnSmoothTime: 0.2
+  _cameraTransformAnchor: {fileID: 11400000, guid: a8dd4b8408f8b924892fa2e117409890,
+    type: 2}
+  _aimEventChannel: {fileID: 11400000, guid: bef0d3c4379d2ac4eb9c587038da1059, type: 2}
+  targetAnchor: {fileID: 11400000, guid: 58234f040023f044888e3c14646d5c2a, type: 2}

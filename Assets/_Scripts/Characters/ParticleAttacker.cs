@@ -5,7 +5,7 @@ public class ParticleAttacker : Attacker
 	[SerializeField] private ParticleSystem _attackSystem;
 	[SerializeField] private Animator _supplementalAnimation;
 
-    private void Awake()
+	private void Awake()
 	{
 		_attackSystem.Stop();
 	}

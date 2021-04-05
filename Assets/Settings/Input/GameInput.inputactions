@@ -76,6 +76,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "NormalizeVector2",
                     "interactions": ""
+                },
+                {
+                    "name": "AimAttack",
+                    "type": "Button",
+                    "id": "d6942229-bd8d-417a-81a6-22e6980cbbf7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -292,7 +300,7 @@
                     "name": "",
                     "id": "4c248131-d3fe-4545-b4dc-ba0690c01312",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
                     "action": "Attack",
@@ -472,6 +480,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b35fe14-da59-4985-ad6b-2853be1b782f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "KeyboardOrGamepad",
+                    "action": "AimAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

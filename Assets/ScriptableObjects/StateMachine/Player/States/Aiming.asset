@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8b0c7f07aac19c45b5d2b772336a080, type: 3}
-  m_Name: JumpDescending
+  m_Name: Aiming
   m_EditorClassIdentifier: 
   _actions:
-  - {fileID: 11400000, guid: 096ce9ccdf5c7bd4596354d7cce1aaf2, type: 2}
+  - {fileID: 11400000, guid: 31a229c9feeec424a8f571a68b4a047b, type: 2}
+  - {fileID: 11400000, guid: f9beda8e2a84b494b8a5c99aa3cdaaa8, type: 2}
+  - {fileID: 11400000, guid: e1c008451e02152439133804116fe3da, type: 2}
   - {fileID: 11400000, guid: e01a243361277d747a999021d5f9d9a6, type: 2}
-  - {fileID: 11400000, guid: 2a45f38f3eb04f142a4a6933291c906b, type: 2}
-  - {fileID: 11400000, guid: d180cf13d270cc444a4134e71cab518f, type: 2}
-  - {fileID: 11400000, guid: e80f1f1afb334b849a6d3e5dc4537f7f, type: 2}

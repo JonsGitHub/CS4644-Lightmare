@@ -1,9 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+	private const float _lerpSpeed = 0.23f;
+
+	private Color _reticleBaseColor = new Color(0.4716981f, 0.4716981f, 0.4716981f, 0.6862745f);
+	private Color _reticleNoColor = new Color(0.4716981f, 0.4716981f, 0.4716981f, 0f);
+
 	[SerializeField] private GameObject PauseMenu = default;
 	[SerializeField] private GameObject SettingsMenu = default;
 
@@ -15,6 +22,9 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
 	[SerializeField] private HealthBar3D _playerHealthBar = default;
 	[SerializeField] private IntEventChannelSO _playerHitChannel = default;
+
+	[SerializeField] private Image _reticleImage = default;
+	[SerializeField] private BoolEventChannelSO _aimEventChannel = default;
 
 	[Tooltip("The Distance of occlusion of UI3D Objects")]
 	[Range(0, 200)]
@@ -69,6 +79,10 @@ public class UIManager : MonoBehaviour
         {
 			_playerHitChannel.OnEventRaised += UpdatePlayerHealth;
         }
+		if (_aimEventChannel)
+        {
+			_aimEventChannel.OnEventRaised += AimState;
+        }
 
 		_inputReader.pauseEvent += Pause;
 		_inputReader.menuUnpauseEvent += Unpause;
@@ -97,6 +111,10 @@ public class UIManager : MonoBehaviour
 		if (_playerHitChannel)
 		{
 			_playerHitChannel.OnEventRaised -= UpdatePlayerHealth;
+		}
+		if (_aimEventChannel)
+		{
+			_aimEventChannel.OnEventRaised -= AimState;
 		}
 
 		_inputReader.pauseEvent -= Pause;
@@ -242,5 +260,31 @@ public class UIManager : MonoBehaviour
 		_inputReader.EnableMenuInput();
 		AddToViewStack(PauseMenu);
 		Time.timeScale = 0;
+	}
+
+	private void AimState(bool state)
+	{
+		if (state)
+		{
+			StartCoroutine(LerpColor(_reticleBaseColor));
+		}
+		else
+		{
+			StartCoroutine(LerpColor(_reticleNoColor));
+		}
+	}
+
+	private IEnumerator LerpColor(Color endColor)
+	{
+		float timeElapsed = 0;
+		var startColor = _reticleImage.color;
+		while (timeElapsed < _lerpSpeed)
+		{
+			_reticleImage.color = Color.Lerp(startColor, endColor, timeElapsed / _lerpSpeed);
+			timeElapsed += Time.deltaTime;
+
+			yield return null;
+		}
+		_reticleImage.color = endColor;
 	}
 }

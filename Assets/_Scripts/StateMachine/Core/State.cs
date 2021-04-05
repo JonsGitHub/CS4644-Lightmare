@@ -64,5 +64,10 @@ namespace StateMachine
 
 			return state != null;
 		}
-	}
+
+        public override string ToString()
+        {
+            return _originSO.name;
+        }
+    }
 }

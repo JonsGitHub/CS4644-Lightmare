@@ -2,10 +2,10 @@
 using StateMachine;
 using StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(menuName = "State Machines/Conditions/Is Holding Attack Action")]
-public class IsHoldingAttackActionConditionSO : StateConditionSO<IsHoldingAttackActionCondition> { }
+[CreateAssetMenu(menuName = "State Machines/Conditions/Is Aim Attacking")]
+public class IsAimAttackingConditionSO : StateConditionSO<IsAimAttacking> { }
 
-public class IsHoldingAttackActionCondition : Condition
+public class IsAimAttacking : Condition
 {
 	//Component references
 	private PlayerController _player;
@@ -17,6 +17,6 @@ public class IsHoldingAttackActionCondition : Condition
 
 	protected override bool Statement()
 	{
-		return _player.attackInput;
+		return _player.aimAttackInput;
 	}
 }

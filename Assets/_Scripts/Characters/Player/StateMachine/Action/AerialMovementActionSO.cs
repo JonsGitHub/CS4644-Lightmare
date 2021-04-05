@@ -19,33 +19,29 @@ public class AerialMovementAction : StateAction
 	protected new AerialMovementActionSO OriginSO => (AerialMovementActionSO)base.OriginSO;
 
 	private PlayerController _player;
+	private Vector3 _initialInput = Vector3.zero;
 
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
 		_player = stateMachine.GetComponent<PlayerController>();
 	}
 
-	private int counter = 0;
-	private Vector3 prevInput = Vector3.zero;
-	private const int numBlockingFrames = 10;
-	
-	public override void OnUpdate()
+    public override void OnStateEnter()
+    {
+		_initialInput = _player.movementInput;
+	}
+
+    public override void OnUpdate()
 	{
 		Vector3 velocity = _player.movementVector;
 		Vector3 input = _player.movementInput;
 
-		// Attempt to stop fast brake in air when moving forward and tapping back once
-		if (counter > 0)
-		{
-			input = Vector3.zero; // Act like no input is being given so momentum will continue
-			counter--;
-		}
-		else if (Vector3.Dot(input, prevInput) <= 0) // Opposing input vectors facing opposite or far left/right direction
-		{
-			counter = numBlockingFrames;
-			prevInput = input;
-		}
-
+		// Can't maneuver backwards or perform a fast brake
+		if (Vector3.Dot(_initialInput, input) <= 0.05f)
+        {
+            input = Vector3.zero;
+        }
+		
 		float speed = OriginSO.Speed;
 		float acceleration = OriginSO.Acceleration;
 

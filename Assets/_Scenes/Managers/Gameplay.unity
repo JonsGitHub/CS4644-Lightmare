@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 0.6862745}
+  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2869,6 +2869,8 @@ MonoBehaviour:
     type: 2}
   _playerHealthBar: {fileID: 1087091593}
   _playerHitChannel: {fileID: 11400000, guid: bf6257b7532562442a183c9b704963bc, type: 2}
+  _reticleImage: {fileID: 1493314425}
+  _aimEventChannel: {fileID: 11400000, guid: bef0d3c4379d2ac4eb9c587038da1059, type: 2}
   Ui3DOccludingDistance: 25
   _3dUiHolder: {fileID: 1781115982}
   _openUIDialogueEvent: {fileID: 11400000, guid: 4969c4e8aa8d1bd42a832aa49d6b3dcf,
@@ -3230,6 +3232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentInteractionType: 0
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
+  _interactorDetector: {fileID: 0}
   _holdPosition: {fileID: 0}
   _startTalking: {fileID: 11400000, guid: e673f344ee934e049b3dd20cde2d33e9, type: 2}
   _toggleInteractionUI: {fileID: 11400000, guid: e697e4dc706d1a84a94b4e99419efd85,

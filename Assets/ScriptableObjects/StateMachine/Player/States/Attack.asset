@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   _actions:
-  - {fileID: 11400000, guid: a57128b268d680f40a6623ca24149705, type: 2}
   - {fileID: 11400000, guid: d7aff748a9cbdf6418457be671e20f78, type: 2}
-  - {fileID: 11400000, guid: fc6a6d7900f495e4eb37f58173b60016, type: 2}
-  - {fileID: 11400000, guid: e1c008451e02152439133804116fe3da, type: 2}
-  - {fileID: 11400000, guid: e01a243361277d747a999021d5f9d9a6, type: 2}
+  - {fileID: 11400000, guid: 09101077b9b05f145b6bf07e000f2704, type: 2}
+  - {fileID: 11400000, guid: a57128b268d680f40a6623ca24149705, type: 2}
   - {fileID: 11400000, guid: 1b5f2c9fcd2ea2d468e3327e37177bf0, type: 2}
