@@ -72,11 +72,11 @@ Material:
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Gloss: 0.634
+    - _Gloss: 0.407
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 0.362
+    - _Metallic: 0.091
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
