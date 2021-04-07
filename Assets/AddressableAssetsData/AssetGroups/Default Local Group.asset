@@ -15,11 +15,17 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: d23468f68185b804fb5bc71b5a5b58cb
-  m_SerializeEntries: []
+  m_GUID: a7bae5f88e2e24365bdf768f42df85c5
+  m_SerializeEntries:
+  - m_GUID: 54b0379f81d0e8b479ad9405fe862f25
+    m_Address: Assets/Scenes/Examples/CutsceneExample.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 7dda71e1bc8949d4fa37787e6807c5a9, type: 2}
+  m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: baae74487cb57384e962bfd7b775f0e8, type: 2}
-    - {fileID: 11400000, guid: e488dbfc1a3582a4da3b873f97c3b3e5, type: 2}
+    - {fileID: 11400000, guid: 81c41411a9b214411963dec0c0183584, type: 2}
+    - {fileID: 11400000, guid: cdf282b96e9d146628b5b9170c09dc45, type: 2}
