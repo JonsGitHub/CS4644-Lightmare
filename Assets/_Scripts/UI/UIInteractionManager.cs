@@ -29,6 +29,9 @@ public class UIInteractionManager : MonoBehaviour
 
 	public void UpdateList(bool state)
     {
+		if (_list == null)
+			return;
+
 		foreach (Transform child in _content)
 			Destroy(child.gameObject);
 		
@@ -96,7 +99,7 @@ public class UIInteractionManager : MonoBehaviour
 
 	private void OnZoom(float axis)
 	{
-		if (_list.Count == 0 || _list.IsGrabbing)
+		if (_list == null || _list.Count == 0 || _list.IsGrabbing)
 			return;
 
 		_scrollValue += (int)axis;
