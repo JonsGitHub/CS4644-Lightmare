@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8637550621200729015, guid: 6577dd535055923458a6e78ca31d490a,
+  m_Motion: {fileID: 8476594128875293505, guid: fc8824ffe7ab10744b691bd75641e781,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -133,7 +133,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8945691123924629249, guid: 6577dd535055923458a6e78ca31d490a,
+  m_Motion: {fileID: -8945691123924629249, guid: fc8824ffe7ab10744b691bd75641e781,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -160,7 +160,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5578746458225771231, guid: 6577dd535055923458a6e78ca31d490a,
+  m_Motion: {fileID: -7646926558962178391, guid: fc8824ffe7ab10744b691bd75641e781,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -228,7 +228,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Surprised
-  m_Speed: 0.6
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2526197136214416822}
@@ -242,7 +242,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5578746458225771231, guid: 6577dd535055923458a6e78ca31d490a,
+  m_Motion: {fileID: -7646926558962178391, guid: fc8824ffe7ab10744b691bd75641e781,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -316,7 +316,7 @@ AnimatorStateMachine:
     m_Position: {x: 610, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 894395044103785606}
-    m_Position: {x: 730, y: 40, z: 0}
+    m_Position: {x: 720, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 109896826014937985}
     m_Position: {x: 120, y: -150, z: 0}
@@ -426,43 +426,43 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsWalking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsAirborne
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsAiming
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: HasFainted
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Surprised
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -526,7 +526,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1079665108409675491, guid: 6577dd535055923458a6e78ca31d490a,
+  m_Motion: {fileID: 1079665108409675491, guid: fc8824ffe7ab10744b691bd75641e781,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -688,7 +688,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8349542763059015795, guid: 6577dd535055923458a6e78ca31d490a,
+  m_Motion: {fileID: 8349542763059015795, guid: fc8824ffe7ab10744b691bd75641e781,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -734,9 +734,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.069317
+  m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.73139673
+  m_ExitTime: 0.75
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

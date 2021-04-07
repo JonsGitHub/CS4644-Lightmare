@@ -29,11 +29,8 @@ public class AimAttackRotationAction : StateAction
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
 		_transform = stateMachine.GetComponent<Transform>();
-
-		var temp = GameObject.Find("Aiming Target");
-		if (temp == null)
-			temp = new GameObject("Aiming Target");
 		
+		var temp = new GameObject("Aiming Target");
 		_aimTarget = temp.transform;
 	}
 
