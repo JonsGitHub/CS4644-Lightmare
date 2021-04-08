@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private GameObject PauseMenu = default;
 	[SerializeField] private GameObject SettingsMenu = default;
+	[SerializeField] private GameObject InGameScreen = default;
 
 	[SerializeField] private UIDialogueManager _dialogueController = default;
 	[SerializeField] private UIInteractionManager _interactionPanel = default;
@@ -46,7 +47,7 @@ public class UIManager : MonoBehaviour
 
 	[Header("Player Based Events")]
 	[SerializeField] private TransformEventChannelSO _playerInstantiatedChannel = default;
-
+	
 	[Header("Main Menu Loading")]
 	[SerializeField] private GameSceneSO[] _menuToLoad = default;
 	[SerializeField] private LoadEventChannelSO _loadMenu = default;
@@ -54,7 +55,12 @@ public class UIManager : MonoBehaviour
 	private List<Ui3D> Uis = new List<Ui3D>();
 	private Stack<GameObject> ViewStack = new Stack<GameObject>();
 
-    private void OnEnable()
+    private void Awake()
+    {
+		InGameScreen.SetActive(false);
+	}
+
+	private void OnEnable()
 	{
 		if (_openUIDialogueEvent)
 		{
@@ -131,6 +137,8 @@ public class UIManager : MonoBehaviour
 
 	private void GatherPlayerInformation(Transform transform)
     {
+		InGameScreen.SetActive(true);
+
 		var playerDamageable = _playerTransformAnchor.Transform.GetComponent<Damageable>();
 		_playerHealthBar.MaxHealth = playerDamageable.MaxHealth;
 		_playerHealthBar.Health = playerDamageable.CurrentHealth;

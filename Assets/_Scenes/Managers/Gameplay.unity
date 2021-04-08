@@ -3180,6 +3180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1547494553243450154}
   SettingsMenu: {fileID: 8103206826956033434}
+  InGameScreen: {fileID: 8943225525605134986}
   _dialogueController: {fileID: 1383441730}
   _interactionPanel: {fileID: 6801858167747782733}
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
