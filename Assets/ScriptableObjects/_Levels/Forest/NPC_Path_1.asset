@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a992b092a540a40a00241960484b30, type: 3}
   m_Name: NPC_Path_1
   m_EditorClassIdentifier: 
-  _stopDuration: 1
-  _speed: 2.1
+  _stopDuration: 3
+  _speed: 1.2
   Waypoints:
   - waypoint: {x: -95.20358, y: 13.216946, z: 78.265945}
     corners:
