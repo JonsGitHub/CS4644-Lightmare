@@ -15,7 +15,7 @@ MonoBehaviour:
   prefabs:
   - gameObject: {fileID: 188142, guid: 24b2d91aeeaf10d4186457c3595d0528, type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 100
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 124.22536, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -47,7 +47,7 @@ MonoBehaviour:
     name: BirchTree-2
   - gameObject: {fileID: 109260, guid: 3e5dcb74503b12147b1548ad6ed38875, type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 100
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -63,7 +63,7 @@ MonoBehaviour:
     name: OakTree-1
   - gameObject: {fileID: 194248, guid: 7a5f88a712b3f694ba4b9e8adf8df123, type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 100
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
