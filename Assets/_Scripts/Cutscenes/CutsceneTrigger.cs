@@ -7,6 +7,7 @@
 public class CutsceneTrigger : MonoBehaviour
 {
 	[SerializeField] private CutsceneController _playableCutscene = default;
+	[SerializeField] private LayerMask _layers = default;
 	[SerializeField] private bool _playOnStart = default;
 	[SerializeField] private bool _playOnce = default;
 
@@ -21,7 +22,10 @@ public class CutsceneTrigger : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		PlayCutScene();
+		if ((1 << other.gameObject.layer & _layers) != 0)
+		{
+			PlayCutScene();
+		}
 	}
 
 	private void PlayCutScene()

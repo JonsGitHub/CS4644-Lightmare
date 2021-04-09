@@ -11,8 +11,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	// Gameplay
 	public event UnityAction jumpEvent = delegate { };
 	public event UnityAction jumpCanceledEvent = delegate { };
+	
 	public event UnityAction attackEvent = delegate { };
-	public event UnityAction attackCanceledEvent = delegate { };
+	public event UnityAction aimAttackEvent = delegate { };
+	public event UnityAction attackEndedEvent = delegate { };
+
 	public event UnityAction interactEvent = delegate { }; // Used to talk, pickup objects, interact with tools like the cooking cauldron
 	public event UnityAction openInventoryEvent = delegate { }; // Used to bring up the inventory
 	public event UnityAction pauseEvent = delegate { };
@@ -22,6 +25,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public event UnityAction disableMouseControlCameraEvent = delegate { };
 	public event UnityAction startedRunning = delegate { };
 	public event UnityAction stoppedRunning = delegate { };
+	public event UnityAction<float> scrollEvent = delegate { };
 
 	// Shared between menus and dialogues
 	public event UnityAction moveSelectionEvent = delegate { };
@@ -63,8 +67,18 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 			case InputActionPhase.Performed:
 				attackEvent.Invoke();
 				break;
+		}
+	}
+
+	public void OnAimAttack(InputAction.CallbackContext context)
+	{
+		switch (context.phase)
+		{
+			case InputActionPhase.Performed:
+				aimAttackEvent.Invoke();
+				break;
 			case InputActionPhase.Canceled:
-				attackCanceledEvent.Invoke();
+				attackEndedEvent.Invoke();
 				break;
 		}
 	}
@@ -120,6 +134,11 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public void OnRotateCamera(InputAction.CallbackContext context)
 	{
 		cameraMoveEvent.Invoke(context.ReadValue<Vector2>(), IsDeviceMouse(context));
+	}
+
+	public void OnZoom(InputAction.CallbackContext context)
+	{
+		scrollEvent.Invoke(context.ReadValue<Vector2>().y);
 	}
 
 	private bool IsDeviceMouse(InputAction.CallbackContext context) => context.control.device.name == "Mouse";

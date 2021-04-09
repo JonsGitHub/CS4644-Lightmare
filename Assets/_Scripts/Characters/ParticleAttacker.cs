@@ -3,8 +3,9 @@
 public class ParticleAttacker : Attacker
 {
 	[SerializeField] private ParticleSystem _attackSystem;
+	[SerializeField] private Animator _supplementalAnimation;
 
-    private void Awake()
+	private void Awake()
 	{
 		_attackSystem.Stop();
 	}
@@ -18,6 +19,11 @@ public class ParticleAttacker : Attacker
 	{
 		_attackSystem.Play();
 	}
+
+	public void PlayActivation()
+    {
+		_supplementalAnimation?.Play("Activate");
+    }
 
 	public override void DisableWeapon()
 	{

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -7,23 +10,37 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+	private const float _lerpSpeed = 0.43f;
+    private Vector3 _modelOffset = new Vector3(-0.63f, 0, 0);
+
     #region Public Properties
 
     [SerializeField] private InputReader _inputReader = default;
     public TransformAnchor gameplayCameraTransform;
+    [SerializeField] private TransformAnchor _closestEnemyTransform;
 
     [SerializeField] private Transform _raycastOutput = default;
+    [SerializeField] private LayerMask _dynamicGroundLayer = default;
 
-    private CharacterController _characterController;
+    [SerializeField] private TransformAnchor _cameraTransformAnchor = default;
+    [SerializeField] private Transform _swivelTransform = default;
+    [SerializeField] private Transform _modelTransform = default;
+    [SerializeField] private BoolEventChannelSO _aimEventChannel = default;
+
     private Vector2 _previousMovementInput;
+    private RaycastHit _prevHit;
+
+    private bool _justAimed;
 
     #endregion
 
     //These fields are read and manipulated by the StateMachine actions
     [NonSerialized] public bool jumpInput;
-	[NonSerialized] public bool attackInput;
+    [NonSerialized] public bool attackInput;
+    [NonSerialized] public bool aimAttackInput;
     [NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
     [NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
+	[NonSerialized] public ControllerColliderHit lastHit;
     [NonSerialized] public bool isRunning;
 
     public const float GRAVITY_MULTIPLIER = 5f;
@@ -33,75 +50,94 @@ public class PlayerController : MonoBehaviour
     public const float GRAVITY_DIVIDER = .6f;
     public const float AIR_RESISTANCE = 5f;
 
-    private bool _onPlatform;
+    private List<Damageable> _enemies = new List<Damageable>();
 
-    #region Private Fields
-
-    //private Transform Camera;
-    //private Cinemachine.CinemachineFreeLook FreeLook;
-    //private Vector3 DefaultOrbitRingValues;
-    //private float CurrentScroll = 1.0f;
-
-    #endregion Private Fields
-
-    /// <summary>
-    /// Awake called before Start of class
-    /// </summary>
-    private void Awake()
+    public void DetectEnemy(bool enteredRange, GameObject enemy)
     {
-        _characterController = GetComponent<CharacterController>();
-        //FreeLook = GameObject.FindGameObjectWithTag("CinemachineCamera").GetComponent<Cinemachine.CinemachineFreeLook>();
-        //for (var i = 0; i < 3; ++i)
-        //{
-        //    DefaultOrbitRingValues[i] = FreeLook.m_Orbits[i].m_Radius;
-        //}
+        if (enteredRange)
+        {
+            _enemies.Add(enemy.GetComponent<Damageable>());
+        }
+        else
+        {
+            _enemies.Remove(enemy.GetComponent<Damageable>());
+        }
     }
 
-    //Adds listeners for events being triggered in the InputReader script
     private void OnEnable()
     {
+        //Adds listeners for events being triggered in the InputReader script
         _inputReader.jumpEvent += OnJumpInitiated;
         _inputReader.jumpCanceledEvent += OnJumpCanceled;
         _inputReader.moveEvent += OnMove;
         _inputReader.startedRunning += OnStartedRunning;
         _inputReader.stoppedRunning += OnStoppedRunning;
-		_inputReader.attackEvent += OnStartedAttack;
-		_inputReader.attackCanceledEvent += OnStoppedAttack;
+        _inputReader.aimAttackEvent += OnAimAttack;
+        _inputReader.attackEndedEvent += OnAttackEnded;
+
+        if (_aimEventChannel)
+            _aimEventChannel.OnEventRaised += AimState;
     }
 
-    //Removes all listeners to the events coming from the InputReader script
     private void OnDisable()
     {
+        //Removes all listeners to the events coming from the InputReader script
         _inputReader.jumpEvent -= OnJumpInitiated;
         _inputReader.jumpCanceledEvent -= OnJumpCanceled;
         _inputReader.moveEvent -= OnMove;
         _inputReader.startedRunning -= OnStartedRunning;
         _inputReader.stoppedRunning -= OnStoppedRunning;
-		_inputReader.attackEvent -= OnStartedAttack;
-		_inputReader.attackCanceledEvent -= OnStoppedAttack;
+        _inputReader.aimAttackEvent -= OnAimAttack;
+        _inputReader.attackEndedEvent -= OnAttackEnded;
+
+        if (_aimEventChannel)
+            _aimEventChannel.OnEventRaised -= AimState;
     }
 
     private void Update()
     {
+        if (!_justAimed)
+        {
+            _enemies = _enemies.Where(x => x != null).ToList(); // Destroyed enemies need to removed somehow
+            if (_enemies.Count != 0)
+            {
+                _closestEnemyTransform.Transform = _enemies.OrderBy(x => x.transform.position).First().transform;
+            }
+            else
+            {
+                _closestEnemyTransform.isSet = false;
+            }
+        }
+
         RecalculateMovement();
     }
 
     private void FixedUpdate()
     {
         // Add "sticky" feet to dynamic environments (eg. moving platforms)
-        // TODO: Look into better method rather than parenting
-        if (!_characterController.isGrounded)
-            return;
+        if (Physics.Raycast(_raycastOutput.position, transform.TransformDirection(Vector3.down), out _prevHit, 0.3f, _dynamicGroundLayer))
+        {
+            Platform platform;
+            if (_prevHit.transform.TryGetComponent(out platform))
+            {
+                transform.position += platform.Delta;
+            }
+            else if ((bool)_prevHit.transform.parent?.TryGetComponent(out platform))
+            {
+                transform.position += platform.Delta;
+            }
+        }
 
-        RaycastHit hit;
-        if (Physics.Raycast(_raycastOutput.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, 1 << 11))
+        // Attach interactor to where the player is looking
+        if (_cameraTransformAnchor && _cameraTransformAnchor.isSet)
         {
-                transform.SetParent(hit.transform);
+            _swivelTransform.transform.rotation = _cameraTransformAnchor.Transform.rotation;
         }
-        else
-        {
-                transform.SetParent(null);
-        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        lastHit = hit;
     }
 
     private void RecalculateMovement()
@@ -129,56 +165,57 @@ public class PlayerController : MonoBehaviour
         // This is used to set the speed to the maximum if holding the Shift key,
         // to allow keyboard players to "run"
         if (isRunning)
+        {
             movementInput.Normalize();
+        }
     }
 
-    private void OnMove(Vector2 movement)
+    private void AimState(bool state)
     {
-        _previousMovementInput = movement;
+        if (state)
+            StartCoroutine(LerpFollowPosition(_modelOffset));
+        else
+            StartCoroutine(LerpFollowPosition(Vector3.zero));
     }
 
-    private void OnJumpInitiated()
+    private IEnumerator LerpFollowPosition(Vector3 endPosition)
     {
-        jumpInput = true;
+        float timeElapsed = 0;
+        var startPosition = _modelTransform.localPosition;
+        while (timeElapsed < _lerpSpeed)
+        {
+            _modelTransform.localPosition = Vector3.Lerp(startPosition, endPosition, timeElapsed / _lerpSpeed);
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+        _modelTransform.localPosition = endPosition;
+
+        // Unlock aiming state and allow checking for nearest enemy auto aiming
+        _closestEnemyTransform.isSet = false;
+        _justAimed = false;
     }
 
-    private void OnJumpCanceled()
-    {
-        jumpInput = false;
-    }
+    private void OnMove(Vector2 movement) => _previousMovementInput = movement;
+
+    private void OnJumpInitiated() => jumpInput = true;
+
+    private void OnJumpCanceled() => jumpInput = false;
 
     private void OnStoppedRunning() => isRunning = false;
 
     private void OnStartedRunning() => isRunning = true;
 
-    private void OnStartedAttack() => attackInput = true;
-    private void OnStoppedAttack() => attackInput = false;
-
-
-    /// <summary>
-    /// Last update called every frame
-    /// </summary>
-    private void LateUpdate()
+    private void OnAttackEnded()
     {
-        //FreeLook.m_YAxis.m_InvertInput = Settings.Instance.InvertedYAxis;
-        //FreeLook.m_XAxis.m_InvertInput = Settings.Instance.InvertedXAxis;
+        if (aimAttackInput)
+            _justAimed = true; // Lock to aiming target and prevent auto target locking to nearest enemy
 
-        //FreeLook.m_XAxis.m_MaxSpeed = 600 * (Settings.Instance.MouseSensitivity / 10.0f);
-        //FreeLook.m_YAxis.m_MaxSpeed = 4 * (Settings.Instance.MouseSensitivity / 10.0f);
+        // Triggered when player releases attack input.
+        attackInput = true;
+        aimAttackInput = false;
     }
 
-    /// <summary>
-    /// Helper method that will check scroll delta and adjust the cinemachine orbit
-    /// rings accordingly.
-    /// </summary>
-    /// <param name="scrollDelta">The change in scrolling</param>
-    private void CheckScroll(Vector2 scrollDelta)
-    {
-        //CurrentScroll = Mathf.Clamp(CurrentScroll - ((Settings.Instance.ScrollSensitivity / 50.0f) * scrollDelta.y), 0.3f, 1.0f);
-
-        //for (var i = 0; i < 3; ++i)
-        //{
-        //    FreeLook.m_Orbits[i].m_Radius = DefaultOrbitRingValues[i] * CurrentScroll;
-        //}
-    }
+    // Triggered when player holds attack input.
+    private void OnAimAttack() => aimAttackInput = true;
 }

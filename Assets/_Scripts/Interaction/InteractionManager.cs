@@ -11,13 +11,15 @@ public class InteractionManager : MonoBehaviour
 	[SerializeField] private Transform _holdPosition = default;
 
 	//To store the object we are currently interacting with
-	private LinkedList<Interaction> _potentialInteractions = new LinkedList<Interaction>();
+	private InteractionList _potentialInteractions = new InteractionList();
 
 	//Events for the different interaction types
 	[Header("Broadcasting on")]
 	[SerializeField] private DialogueActorChannelSO _startTalking = default;
 	//UI event
 	[SerializeField] private InteractionUIEventChannelSO _toggleInteractionUI = default;
+	[SerializeField] private BoolEventChannelSO _interactionDisplayEventChannel= default;
+	[SerializeField] private BoolEventChannelSO _requestUpdateInteraction = default;
 
 	[Header("Listening to")]
 	[SerializeField] private VoidEventChannelSO _onInteractionEnded = default;
@@ -28,12 +30,27 @@ public class InteractionManager : MonoBehaviour
 	{
 		_inputReader.interactEvent += OnInteractionButtonPress;
 		_onInteractionEnded.OnEventRaised += OnInteractionEnd;
+
+		_toggleInteractionUI.RaiseEvent(_potentialInteractions);
 	}
 
 	private void OnDisable()
 	{
 		_inputReader.interactEvent -= OnInteractionButtonPress;
 		_onInteractionEnded.OnEventRaised -= OnInteractionEnd;
+
+		if (grabbed)
+		{
+			var rigid = grabbed.GetComponent<Rigidbody>();
+			if (rigid)
+			{
+				rigid.useGravity = true;
+			}
+
+			_potentialInteractions.IsGrabbing = false;
+			grabbed = null;
+			RequestUpdateUI(true);
+		}
 	}
 
     private void FixedUpdate()
@@ -65,32 +82,34 @@ public class InteractionManager : MonoBehaviour
 				rigid.useGravity = true;
 			}
 
+			_potentialInteractions.IsGrabbing = false;
 			grabbed = null;
 			RequestUpdateUI(true);
 			return;
         }
 
-		currentInteractionType = _potentialInteractions.First.Value.type;
+		currentInteractionType = _potentialInteractions.Selected.type;
 		switch (currentInteractionType)
 		{
 			case InteractionType.Grab:
-				grabbed = _potentialInteractions.First.Value.interactableObject;
+				grabbed = _potentialInteractions.Selected.interactableObject;
+				_potentialInteractions.IsGrabbing = true;
 				RequestUpdateUI(true);
 				break;
 			case InteractionType.Talk:
 				if (_startTalking != null)
 				{
-					_potentialInteractions.First.Value.interactableObject.GetComponent<StepController>().InteractWithCharacter();
+					_potentialInteractions.Selected.interactableObject.GetComponent<StepController>().InteractWithCharacter();
 					_inputReader.EnableDialogueInput();
 				}
 				break;
 			case InteractionType.Interact:
-				_potentialInteractions.First.Value.interactableObject.GetComponent<InterfaceBase>()?.Interact();
+				_potentialInteractions.Selected.interactableObject.GetComponent<InterfaceBase>()?.Interact();
 				break;
 		}
 	}
 
-	//Called by the Event on the trigger collider on the child GO called "InteractionDetector"
+	//Called by the Event on the trigger collider on the child called "InteractionDetector"
 	public void OnTriggerChangeDetected(bool entered, GameObject obj)
 	{
 		if (entered)
@@ -118,33 +137,30 @@ public class InteractionManager : MonoBehaviour
 		
 		if (newPotentialInteraction.type != InteractionType.None)
 		{
-			_potentialInteractions.AddFirst(newPotentialInteraction);
+			_potentialInteractions.Add(newPotentialInteraction);
 			RequestUpdateUI(true);
 		}
 	}
 
 	private void RemovePotentialInteraction(GameObject obj)
 	{
-		LinkedListNode<Interaction> currentNode = _potentialInteractions.First;
-		while (currentNode != null)
-		{
-			if (currentNode.Value.interactableObject == obj)
-			{
-				_potentialInteractions.Remove(currentNode);
-				break;
-			}
-			currentNode = currentNode.Next;
-		}
-
+		_potentialInteractions.Remove(obj);
 		RequestUpdateUI(_potentialInteractions.Count > 0);
 	}
 
 	private void RequestUpdateUI(bool visible)
 	{
 		if (visible)
-			_toggleInteractionUI.RaiseEvent(true, grabbed ? InteractionType.Drop : _potentialInteractions.First.Value.type);
+        {
+			// Request update
+			_requestUpdateInteraction.RaiseEvent(true);
+			_interactionDisplayEventChannel.RaiseEvent(true);
+        }
 		else
-			_toggleInteractionUI.RaiseEvent(false, InteractionType.None);
+        {
+			_requestUpdateInteraction.RaiseEvent(true);
+			_interactionDisplayEventChannel.RaiseEvent(false);
+		}
 	}
 
 	private void OnInteractionEnd()

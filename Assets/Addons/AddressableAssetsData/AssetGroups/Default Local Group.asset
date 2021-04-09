@@ -16,19 +16,9 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a7bae5f88e2e24365bdf768f42df85c5
-  m_SerializeEntries:
-  - m_GUID: b2a527f36d11f6f46863be099f7d9158
-    m_Address: Assets/_Scenes/Levels/Level_Tutorial.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: a2e6b23b13ed5d044b719104994a3eae
-    m_Address: Assets/_Scenes/ExScene_Jonathan.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+
+  m_SerializeEntries: []
+
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

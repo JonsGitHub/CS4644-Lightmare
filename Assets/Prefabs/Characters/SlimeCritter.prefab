@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6113378935803106268}
   - component: {fileID: 6113378935803106267}
   - component: {fileID: 6113378935803106266}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: TriggerZone_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,6 +74,7 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
+  _destroyOnEnter: 0
 --- !u!1 &6113378936176005350
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +86,7 @@ GameObject:
   - component: {fileID: 6113378936176005349}
   - component: {fileID: 6113378936176005348}
   - component: {fileID: 6113378936176005347}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: TriggerZone_Alert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +149,7 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
+  _destroyOnEnter: 0
 --- !u!1 &6113378936518123555
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ GameObject:
   - component: {fileID: 6113378936518123554}
   - component: {fileID: 6113378936518123553}
   - component: {fileID: 6113378936518123552}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: AttackSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378936597216801}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: legC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +256,7 @@ GameObject:
   - component: {fileID: 6113378936606230395}
   - component: {fileID: 6113378936606230394}
   - component: {fileID: 6113378936606230393}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: SlimeCritter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -385,6 +387,7 @@ MonoBehaviour:
   _createLabel: 0
   Name: 
   LabelPosition: {fileID: 0}
+  LabelTextColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &6113378936606230395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +404,8 @@ MonoBehaviour:
   _getHitEffectSO: {fileID: 11400000, guid: 29fd4b4ddcec0104cbb10d591de73d5f, type: 2}
   _mainMeshRenderer: {fileID: 6113378936542655117}
   _3dUIChannelEvent: {fileID: 0}
+  _destroyedChannelEvent: {fileID: 0}
+  _playerDamagedEvent: {fileID: 0}
   _createHealthBar: 0
   Name: 
   LabelPosition: {fileID: 0}
@@ -442,7 +447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378936610391396}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: legF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378936714733121}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: spine02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378936762155702}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378936771464942}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378937194125501}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: spine01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6113378937388438033}
   - component: {fileID: 6113378936542655117}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: SlimeCritter_Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378937481880175}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378937689804056}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: legB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6113378937725813917}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: eyelid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

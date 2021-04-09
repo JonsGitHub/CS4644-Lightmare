@@ -3,11 +3,9 @@ using StateMachine;
 using StateMachine.ScriptableObjects;
 
 [CreateAssetMenu(fileName = "FaceTarget", menuName = "State Machines/Actions/Face Protagonist")]
-public class FaceTargetSO : StateActionSO
+public class FaceTargetSO : StateActionSO<FaceTarget>
 {
 	public TransformAnchor targetAnchor;
-
-	protected override StateAction CreateAction() => new FaceTarget();
 }
 
 public class FaceTarget : StateAction
@@ -31,9 +29,5 @@ public class FaceTarget : StateAction
 			Quaternion rotation = Quaternion.LookRotation(relativePos);
 			_actor.rotation = rotation;
 		}
-	}
-
-	public override void OnStateEnter()
-	{
 	}
 }

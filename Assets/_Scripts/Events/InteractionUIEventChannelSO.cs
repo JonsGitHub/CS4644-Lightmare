@@ -6,13 +6,13 @@ using UnityEngine;
 /// Example: Dispaly or hide the interaction UI via a bool and the interaction type from the enum via int
 /// </summary>
 
-[CreateAssetMenu(menuName = "Events/Toogle Interaction UI Event Channel")]
+[CreateAssetMenu(menuName = "Events/Interaction UI Event Channel")]
 public class InteractionUIEventChannelSO : ScriptableObject
 {
-	public UnityAction<bool, InteractionType> OnEventRaised;
-	public void RaiseEvent(bool state, InteractionType interactionType)
+	public UnityAction<InteractionList> OnEventRaised;
+	public void RaiseEvent(InteractionList list)
 	{
 		if (OnEventRaised != null)
-			OnEventRaised.Invoke(state, interactionType);
+			OnEventRaised.Invoke(list);
 	}
 }

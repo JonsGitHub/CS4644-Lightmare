@@ -6,14 +6,15 @@ public class Damageable : MonoBehaviour
 	[SerializeField] private HealthConfigSO _healthConfigSO;
 	[SerializeField] private GetHitEffectConfigSO _getHitEffectSO;
 	[SerializeField] private Renderer _mainMeshRenderer;
-	//[SerializeField] private DroppableRewardConfigSO _droppableRewardSO;
-	//public DroppableRewardConfigSO DropableRewardConfig => _droppableRewardSO;
 
 	private int _currentHealth = default;
 
 	[Header("Broadcasting on channels")]
 	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
-	[SerializeField] private BoolEventChannelSO _destroyedChannelEvent = default;
+    [SerializeField] private BoolEventChannelSO _destroyedChannelEvent = default;
+
+	[Tooltip("Used primarily for communication between player and canvas.")]
+	[SerializeField] private IntEventChannelSO _playerDamagedEvent = default;
 
 	private HealthBar3D healthbar;
 
@@ -30,13 +31,17 @@ public class Damageable : MonoBehaviour
 	public Renderer MainMeshRenderer => _mainMeshRenderer;
 
 	public int CurrentHealth => _currentHealth;
+	public int MaxHealth => _healthConfigSO.MaxHealth;
 
 	public UnityAction OnDie;
 
 	private void Awake()
 	{
 		_currentHealth = _healthConfigSO.MaxHealth;
-		
+	}
+
+    private void OnEnable()
+    {
 		if (_createHealthBar)
 		{
 			healthbar = Instantiate(Resources.Load<HealthBar3D>("Prefabs/HealthBar3D"));
@@ -50,13 +55,18 @@ public class Damageable : MonoBehaviour
 		}
 	}
 
-	public void ReceiveAnAttack(int damage)
+    public void ReceiveAnAttack(int damage)
 	{
 		_currentHealth -= damage;
 		
 		if (healthbar)
 			healthbar.Health = _currentHealth;
-		
+
+		if (_playerDamagedEvent)
+        {
+			_playerDamagedEvent.RaiseEvent(_currentHealth);
+        }
+
 		GetHit = true;
 		if (_currentHealth <= 0)
 		{

@@ -3,7 +3,7 @@ using StateMachine;
 using StateMachine.ScriptableObjects;
 
 [CreateAssetMenu(fileName = "AerialMovementAction", menuName = "State Machines/Actions/Aerial Movement Action")]
-public class AerialMovementActionSO : StateActionSO
+public class AerialMovementActionSO : StateActionSO<AerialMovementAction>
 {
 	public float Speed => _speed;
 	public float Acceleration => _acceleration;
@@ -12,8 +12,6 @@ public class AerialMovementActionSO : StateActionSO
 	[SerializeField] [Range(0.1f, 100f)] private float _speed = 10f;
 	[Tooltip("The acceleration applied to reach the desired speed")]
 	[SerializeField] [Range(0.1f, 100f)] private float _acceleration = 20f;
-
-	protected override StateAction CreateAction() => new AerialMovementAction();
 }
 
 public class AerialMovementAction : StateAction
@@ -21,16 +19,29 @@ public class AerialMovementAction : StateAction
 	protected new AerialMovementActionSO OriginSO => (AerialMovementActionSO)base.OriginSO;
 
 	private PlayerController _player;
+	private Vector3 _initialInput = Vector3.zero;
 
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
 		_player = stateMachine.GetComponent<PlayerController>();
 	}
-	
-	public override void OnUpdate()
+
+    public override void OnStateEnter()
+    {
+		_initialInput = _player.movementInput;
+	}
+
+    public override void OnUpdate()
 	{
 		Vector3 velocity = _player.movementVector;
 		Vector3 input = _player.movementInput;
+
+		// Can't maneuver backwards or perform a fast brake
+		if (Vector3.Dot(_initialInput, input) <= 0.05f)
+        {
+            input = Vector3.zero;
+        }
+		
 		float speed = OriginSO.Speed;
 		float acceleration = OriginSO.Acceleration;
 

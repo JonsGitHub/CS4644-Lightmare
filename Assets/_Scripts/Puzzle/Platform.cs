@@ -9,6 +9,9 @@ public class Platform : MonoBehaviour
 	private Vector3 _currentDestination;
 	private Vector3 _startPosition;
 	private float _timeElapsed, _waitTime;
+	private Vector3 _delta;
+
+	public Vector3 Delta => _delta;
 
     private void Awake()
     {
@@ -26,11 +29,14 @@ public class Platform : MonoBehaviour
 
 		if (_timeElapsed < _movementConfig.Speed)
         {
+			var origin = transform.position;
             transform.position = Vector3.Lerp(_startPosition, _currentDestination, _timeElapsed / _movementConfig.Speed);
+			_delta = transform.position - origin;
 			_timeElapsed += Time.deltaTime;
 		}
 		else
         {
+			_delta = Vector3.zero;
 			transform.position = _currentDestination;
 			_startPosition = transform.position;
 			_currentDestination = GetNextDestination();
