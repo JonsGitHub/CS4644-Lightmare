@@ -711,9 +711,11 @@ MonoBehaviour:
   _initialSize: 10
   _SFXEventChannel: {fileID: 11400000, guid: 04e74dc28ea6f0d449161042ae401aac, type: 2}
   _musicEventChannel: {fileID: 11400000, guid: cba6c80c135c5f94cade518b50ac8abe, type: 2}
+  _voiceEventChannel: {fileID: 11400000, guid: 66af9c8966b8cd848a6fc7c5d8b90a9c, type: 2}
   audioMixer: {fileID: 24100000, guid: f6a1b46726b2de84eb3661a589a9daa0, type: 2}
   _masterVolume: 1
   _musicVolume: 0.8
+  _voiceVolume: 1
   _sfxVolume: 1
 --- !u!1 &1380561186
 GameObject:

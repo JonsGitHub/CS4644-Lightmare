@@ -23,6 +23,14 @@ MonoBehaviour:
     m_Key: OldMan
     m_Metadata:
       m_Items: []
+  - m_Id: 6827660874878976
+    m_Key: Light
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6828312648749056
+    m_Key: Misfortune
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

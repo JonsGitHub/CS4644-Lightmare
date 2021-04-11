@@ -99,9 +99,14 @@ public class PlayerController : MonoBehaviour
         if (!_justAimed)
         {
             _enemies = _enemies.Where(x => x != null).ToList(); // Destroyed enemies need to removed somehow
-            if (_enemies.Count != 0)
+            if (_enemies.Count > 1)
             {
-                _closestEnemyTransform.Transform = _enemies.OrderBy(x => x.transform.position).First().transform;
+                _closestEnemyTransform.Transform = _enemies.OrderBy(x => Vector3.Distance(transform.position, x.transform.position)).First().transform;
+                // previous -> //_closestEnemyTransform.Transform = _enemies.OrderBy(x => x.transform.position).First().transform;
+            }
+            else if(_enemies.Count == 1)
+            {
+                _closestEnemyTransform.Transform = _enemies.First().transform;
             }
             else
             {

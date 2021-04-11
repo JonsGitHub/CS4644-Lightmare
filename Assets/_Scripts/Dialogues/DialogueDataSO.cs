@@ -24,11 +24,19 @@ public enum ChoiceActionType
 public class DialogueDataSO : ScriptableObject
 {
 	[SerializeField] private ActorSO _actor = default;
-	[SerializeField] private List<LocalizedString> _dialogueLines = default;
+
+	[System.Serializable]
+	public class DialogueLine
+	{
+		[SerializeField] public LocalizedString Line = default;
+		[SerializeField] public AudioCueSO Audio = default; 
+	}
+
+	[SerializeField] private List<DialogueLine> _dialogueLines = default;
 	[SerializeField] private DialogueType _dialogueType = default;
 
 	public ActorSO Actor => _actor;
-	public List<LocalizedString> DialogueLines => _dialogueLines;
+	public List<DialogueLine> DialogueLines => _dialogueLines;
 	public DialogueType DialogueType => _dialogueType;
 
 #if UNITY_EDITOR

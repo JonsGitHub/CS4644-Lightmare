@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using TMPro;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.Localization;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 /// <summary>
 /// Takes care of all things dialogue, whether they are coming from within a Timeline or just from the interaction with a character, or by any other mean.
@@ -15,8 +11,11 @@ public class DialogueManager : MonoBehaviour
 	//	[SerializeField] private ChoiceBox _choiceBox; // TODO: Demonstration purpose only. Remove or adjust later.
 
 	[SerializeField] private InputReader _inputReader = default;
-	private int _counter;
+	private int _counter = 0;
 	private bool _reachedEndOfDialogue { get => _counter >= _currentDialogue.DialogueLines.Count; }
+	
+	[Header("Voice Audio Fields")]
+	[SerializeField] private AudioConfigurationSO _audioConfig = default;
 
 	[Header("Listening on channels")]
 	[SerializeField] private DialogueDataChannelSO _startDialogue = default;
@@ -24,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 	[Header("BoradCasting on channels")]
 	[SerializeField] private DialogueLineChannelSO _openUIDialogueEvent = default;
 	[SerializeField] private DialogueDataChannelSO _endDialogue = default;
+	[SerializeField] private AudioCueEventChannelSO _voiceEventChannel = default;
 	//[SerializeField] private VoidEventChannelSO _continueWithStep = default; // For choice dialogues
 	[SerializeField] private VoidEventChannelSO _closeDialogueUIEvent = default;
 
@@ -35,7 +35,6 @@ public class DialogueManager : MonoBehaviour
 		{
 			_startDialogue.OnEventRaised += DisplayDialogueData;
 		}
-
 	}
 
 	/// <summary>
@@ -45,7 +44,8 @@ public class DialogueManager : MonoBehaviour
 	public void DisplayDialogueData(DialogueDataSO dialogueDataSO)
 	{
 		BeginDialogueData(dialogueDataSO);
-		DisplayDialogueLine(_currentDialogue.DialogueLines[_counter], dialogueDataSO.Actor);
+		var current = _currentDialogue.DialogueLines[_counter];
+		DisplayDialogueLine(current.Line, dialogueDataSO.Actor, current.Audio);
 	}
 
 	/// <summary>
@@ -64,21 +64,28 @@ public class DialogueManager : MonoBehaviour
 	/// This function is also called by <c>DialogueBehaviour</c> from clips on Timeline during cutscenes.
 	/// </summary>
 	/// <param name="dialogueLine"></param>
-	public void DisplayDialogueLine(LocalizedString dialogueLine, ActorSO actor)
+	public void DisplayDialogueLine(LocalizedString dialogueLine, ActorSO actor, AudioCueSO audio = null)
 	{
 		if (_openUIDialogueEvent != null)
 		{
 			_openUIDialogueEvent.RaiseEvent(dialogueLine, actor);
 		}
+		if (_voiceEventChannel !=  null && audio != null)
+        {
+			_voiceEventChannel.RaisePlayEvent(audio, _audioConfig);
+        }
 	}
 
 	private void OnAdvance()
 	{
 		_counter++;
 
+		if (_voiceEventChannel != null && _currentDialogue.DialogueLines.Last().Audio is AudioCueSO audio)
+			_voiceEventChannel.RaiseStopEvent(AudioCueKey.Invalid);
+
 		if (!_reachedEndOfDialogue)
 		{
-			DisplayDialogueLine(_currentDialogue.DialogueLines[_counter], _currentDialogue.Actor);
+			DisplayDialogueLine(_currentDialogue.DialogueLines[_counter].Line, _currentDialogue.Actor);
 		}
 		else
 		{
