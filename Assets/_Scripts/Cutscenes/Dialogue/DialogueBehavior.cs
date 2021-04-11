@@ -1,17 +1,21 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.Playables;
 
 [Serializable]
 public class DialogueBehaviour : PlayableBehaviour
 {
-	[SerializeField] private LocalizedString _dialogueLine = default;
-	[SerializeField] private ActorSO _actor = default;
+	// NOTE: This Dialogue behaviour seems to only currently work consistently with one line of dialogue per clip
+
+	//[SerializeField] private LocalizedString _dialogueLine = default;
+	//[SerializeField] private ActorSO _actor = default;
+
+	[SerializeField] private DialogueDataSO _dialogueDataSO = default;
 
 	[SerializeField] private bool _pauseWhenClipEnds = default; //This won't work if the clip ends on the very last frame of the Timeline
 
-	[HideInInspector] public DialogueLineChannelSO PlayDialogueEvent;
+	[HideInInspector] public DialogueDataChannelSO _startDialogue = default;
+	//[HideInInspector] public DialogueLineChannelSO PlayDialogueEvent;
 	[HideInInspector] public VoidEventChannelSO PauseTimelineEvent;
 
 	private bool _dialoguePlayed;
@@ -30,10 +34,10 @@ public class DialogueBehaviour : PlayableBehaviour
 			if (playable.GetGraph().IsPlaying())
 			//&& cutsceneManager.IsCutscenePlaying) Need to find an alternative to this 
 			{
-				if (_dialogueLine != null && _actor != null)
+				if (_dialogueDataSO != null)
 				{
-					if (PlayDialogueEvent != null)
-						PlayDialogueEvent.RaiseEvent(_dialogueLine, _actor);
+					if (_startDialogue != null)
+						_startDialogue.RaiseEvent(_dialogueDataSO);
 					_dialoguePlayed = true;
 				}
 				else

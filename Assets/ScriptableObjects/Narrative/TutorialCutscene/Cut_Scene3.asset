@@ -14,16 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actor: {fileID: 11400000, guid: 416ea316394f3ad49be9c8deb3fee67a, type: 2}
   _dialogueLines:
-  - m_TableReference:
-      m_TableCollectionName: GUID:8e0996fa820f67547ab7cfd2737cb0ae
-    m_TableEntryReference:
-      m_KeyId: 278742437888
-      m_Key: 
-    m_FallbackState: 0
-  - m_TableReference:
-      m_TableCollectionName: GUID:8e0996fa820f67547ab7cfd2737cb0ae
-    m_TableEntryReference:
-      m_KeyId: 329040531456
-      m_Key: 
-    m_FallbackState: 0
+  - Line:
+      m_TableReference:
+        m_TableCollectionName: GUID:8e0996fa820f67547ab7cfd2737cb0ae
+      m_TableEntryReference:
+        m_KeyId: 45161648128
+        m_Key: 
+      m_FallbackState: 0
+    Audio: {fileID: 11400000, guid: 170b2afbf981a2c40af387e83727b26b, type: 2}
   _dialogueType: 0

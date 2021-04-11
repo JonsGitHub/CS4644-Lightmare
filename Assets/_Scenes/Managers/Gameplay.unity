@@ -165,10 +165,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
+  _audioConfig: {fileID: 11400000, guid: 8a59dcf0ac5aeaa439cef52b24d78d36, type: 2}
   _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
   _openUIDialogueEvent: {fileID: 11400000, guid: 4969c4e8aa8d1bd42a832aa49d6b3dcf,
     type: 2}
   _endDialogue: {fileID: 11400000, guid: cff6c08c893ca814f8bc67b35c136453, type: 2}
+  _voiceEventChannel: {fileID: 11400000, guid: 66af9c8966b8cd848a6fc7c5d8b90a9c, type: 2}
   _closeDialogueUIEvent: {fileID: 11400000, guid: 2f9e404d5ffede148bf44440326df9fc,
     type: 2}
 --- !u!1 &253843001

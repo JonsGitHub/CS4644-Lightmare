@@ -13,20 +13,12 @@ MonoBehaviour:
   m_Name: DialogueClip(Clone)(Clone)
   m_EditorClassIdentifier: 
   _template:
-    _dialogueLine:
-      m_TableReference:
-        m_TableCollectionName: GUID:8e0996fa820f67547ab7cfd2737cb0ae
-      m_TableEntryReference:
-        m_KeyId: 14490474647552
-        m_Key: 
-      m_FallbackState: 0
-    _actor: {fileID: 11400000, guid: 416ea316394f3ad49be9c8deb3fee67a, type: 2}
+    _dialogueDataSO: {fileID: 11400000, guid: 02f43e817f7fb6349b4a61a2bf5d51cb, type: 2}
     _pauseWhenClipEnds: 1
-    PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6,
-      type: 2}
+    _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
     PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
       type: 2}
-  PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6, type: 2}
+  StartDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
   PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804, type: 2}
 --- !u!114 &-5551162568704228016
 MonoBehaviour:
@@ -235,20 +227,12 @@ MonoBehaviour:
   m_Name: DialogueClip
   m_EditorClassIdentifier: 
   _template:
-    _dialogueLine:
-      m_TableReference:
-        m_TableCollectionName: GUID:8e0996fa820f67547ab7cfd2737cb0ae
-      m_TableEntryReference:
-        m_KeyId: 8281133056
-        m_Key: 
-      m_FallbackState: 0
-    _actor: {fileID: 11400000, guid: 416ea316394f3ad49be9c8deb3fee67a, type: 2}
+    _dialogueDataSO: {fileID: 11400000, guid: 718d5de2aa699d748a294a60290a4eb5, type: 2}
     _pauseWhenClipEnds: 1
-    PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6,
-      type: 2}
+    _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
     PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
       type: 2}
-  PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6, type: 2}
+  StartDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
   PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804, type: 2}
 --- !u!114 &3077953883098141449
 MonoBehaviour:
@@ -369,49 +353,13 @@ MonoBehaviour:
     m_BlendOutDuration: 1.126829268292692
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -685,20 +633,12 @@ MonoBehaviour:
   m_Name: DialogueClip(Clone)(Clone)
   m_EditorClassIdentifier: 
   _template:
-    _dialogueLine:
-      m_TableReference:
-        m_TableCollectionName: GUID:8e0996fa820f67547ab7cfd2737cb0ae
-      m_TableEntryReference:
-        m_KeyId: 26627018752
-        m_Key: 
-      m_FallbackState: 0
-    _actor: {fileID: 11400000, guid: 416ea316394f3ad49be9c8deb3fee67a, type: 2}
+    _dialogueDataSO: {fileID: 11400000, guid: 966b08167137ecf408a5c8f23546e7e9, type: 2}
     _pauseWhenClipEnds: 1
-    PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6,
-      type: 2}
+    _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
     PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
       type: 2}
-  PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6, type: 2}
+  StartDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
   PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804, type: 2}
 --- !u!114 &7340437067448481554
 MonoBehaviour:
@@ -713,20 +653,12 @@ MonoBehaviour:
   m_Name: DialogueClip(Clone)(Clone)
   m_EditorClassIdentifier: 
   _template:
-    _dialogueLine:
-      m_TableReference:
-        m_TableCollectionName: GUID:8e0996fa820f67547ab7cfd2737cb0ae
-      m_TableEntryReference:
-        m_KeyId: 14516525469696
-        m_Key: 
-      m_FallbackState: 0
-    _actor: {fileID: 11400000, guid: 416ea316394f3ad49be9c8deb3fee67a, type: 2}
+    _dialogueDataSO: {fileID: 11400000, guid: 0fbe6babf60ea414f90565f9ff0cd6a9, type: 2}
     _pauseWhenClipEnds: 1
-    PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6,
-      type: 2}
+    _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
     PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
       type: 2}
-  PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6, type: 2}
+  StartDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
   PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804, type: 2}
 --- !u!114 &7444765419332988087
 MonoBehaviour:
@@ -1049,5 +981,5 @@ MonoBehaviour:
     m_DisplayName: DialogueClip
   m_Markers:
     m_Objects: []
-  PlayDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6, type: 2}
+  StartDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
   PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804, type: 2}
