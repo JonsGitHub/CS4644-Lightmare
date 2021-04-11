@@ -23,11 +23,10 @@ public enum ChoiceActionType
 [CreateAssetMenu(fileName = "newDialogue", menuName = "Dialogues/Dialogue Data")]
 public class DialogueDataSO : ScriptableObject
 {
-	[SerializeField] private ActorSO _actor = default;
-
 	[System.Serializable]
 	public class DialogueLine
 	{
+		[SerializeField] public ActorSO Actor = default;
 		[SerializeField] public LocalizedString Line = default;
 		[SerializeField] public AudioCueSO Audio = default; 
 	}
@@ -35,7 +34,6 @@ public class DialogueDataSO : ScriptableObject
 	[SerializeField] private List<DialogueLine> _dialogueLines = default;
 	[SerializeField] private DialogueType _dialogueType = default;
 
-	public ActorSO Actor => _actor;
 	public List<DialogueLine> DialogueLines => _dialogueLines;
 	public DialogueType DialogueType => _dialogueType;
 

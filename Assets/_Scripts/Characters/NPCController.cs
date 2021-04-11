@@ -21,6 +21,7 @@ public class NPCController : MonoBehaviour
 	[SerializeField] private Color LabelTextColor = Color.black;
 
 	public NPCMovementConfigSO NPCMovementConfig => _npcMovementConfig;
+	[HideInInspector] public NPCMovementAction _currentAction = default;
 	
 	private void OnEnable()
 	{

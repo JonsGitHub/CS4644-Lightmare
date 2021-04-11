@@ -29,6 +29,8 @@ public class RoamingMovementAction : NPCMovementAction
 		_roamingDistance = config.Radius;
 	}
 
+	public override bool HasNextAction => true;
+
 	public override void OnUpdate()
 	{
 

@@ -3,10 +3,7 @@ using StateMachine;
 using StateMachine.ScriptableObjects;
 
 [CreateAssetMenu(menuName = "State Machines/Conditions/NPC Movement Stop Elapsed")]
-public class NPCMovementStopConditionSO : StateConditionSO<NPCMovementStopCondition>
-{
-
-}
+public class NPCMovementStopConditionSO : StateConditionSO<NPCMovementStopCondition> { }
 
 public class NPCMovementStopCondition : Condition
 {

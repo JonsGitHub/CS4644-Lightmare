@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1807428609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1807428610}
+  m_Layer: 12
+  m_Name: LabelPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1807428610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807428609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1596004274998901381}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6113378935803106269
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +41,7 @@ GameObject:
   - component: {fileID: 6113378935803106268}
   - component: {fileID: 6113378935803106267}
   - component: {fileID: 6113378935803106266}
-  m_Layer: 12
+  m_Layer: 1
   m_Name: TriggerZone_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +90,7 @@ MonoBehaviour:
   _enterZone:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6113378936606230392}
         m_MethodName: OnAttackTriggerChange
         m_Mode: 0
         m_Arguments:
@@ -86,7 +116,7 @@ GameObject:
   - component: {fileID: 6113378936176005349}
   - component: {fileID: 6113378936176005348}
   - component: {fileID: 6113378936176005347}
-  m_Layer: 12
+  m_Layer: 1
   m_Name: TriggerZone_Alert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +165,7 @@ MonoBehaviour:
   _enterZone:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6113378936606230392}
         m_MethodName: OnAlertTriggerChange
         m_Mode: 0
         m_Arguments:
@@ -257,7 +287,7 @@ GameObject:
   - component: {fileID: 6113378936606230394}
   - component: {fileID: 6113378936606230393}
   m_Layer: 12
-  m_Name: SlimeCritter
+  m_Name: SlimeCritter_Orange
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,14 +301,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6113378936606230397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.0821657, y: 0.05, z: -6.8278346}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 6113378936762155702}
   - {fileID: 6113378937388438033}
   - {fileID: 6113378936176005349}
   - {fileID: 6113378935803106268}
   - {fileID: 6113378936518123554}
+  - {fileID: 1807428610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -381,13 +412,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e674f0e2661e7bf44a944d844a8b9111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _npcMovementConfig: {fileID: 11400000, guid: e5efc1d6370c66947a7889fc4817b1b8, type: 2}
+  _npcMovementConfig: {fileID: 11400000, guid: 1a575350aa81afa4cb6195e90f618c59, type: 2}
   _channel: {fileID: 11400000, guid: 0113a096983be924caf0a18b80ab8c5b, type: 2}
-  _3dUIChannelEvent: {fileID: 0}
+  _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   _createLabel: 0
   Name: 
   LabelPosition: {fileID: 0}
-  LabelTextColor: {r: 0, g: 0, b: 0, a: 1}
+  LabelTextColor: {r: 0, g: 1, b: 0.013520718, a: 1}
 --- !u!114 &6113378936606230395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,13 +434,13 @@ MonoBehaviour:
   _healthConfigSO: {fileID: 11400000, guid: 5088c52f8daa3494a8e654ba3b86e133, type: 2}
   _getHitEffectSO: {fileID: 11400000, guid: 29fd4b4ddcec0104cbb10d591de73d5f, type: 2}
   _mainMeshRenderer: {fileID: 6113378936542655117}
-  _3dUIChannelEvent: {fileID: 0}
+  _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   _destroyedChannelEvent: {fileID: 0}
   _playerDamagedEvent: {fileID: 0}
-  _createHealthBar: 0
-  Name: 
-  LabelPosition: {fileID: 0}
-  LabelTextColor: {r: 0, g: 0, b: 0, a: 1}
+  _createHealthBar: 1
+  Name: Slime
+  LabelPosition: {fileID: 1807428610}
+  LabelTextColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &6113378936606230394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 11400000, guid: bb65bb1ce94fefe4a841fba31a6f9162, type: 2}
-  _propelFactor: 1
+  _propelFactor: 0.8
   _propelDuration: 0.2
 --- !u!1 &6113378936610391397
 GameObject:

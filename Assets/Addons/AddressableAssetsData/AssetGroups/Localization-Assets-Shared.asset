@@ -29,26 +29,38 @@ MonoBehaviour:
     m_Address: Scene Names Shared Data
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: e3026e2d830d92a4eae09ac3fb51e2b6, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: e3026e2d830d92a4eae09ac3fb51e2b6, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 07d98f003ee8e4d47ab08c3ccdb7a2d2
     m_Address: Interactions Shared Data
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: 07d98f003ee8e4d47ab08c3ccdb7a2d2, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 07d98f003ee8e4d47ab08c3ccdb7a2d2, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 23e63dd2ce02c9e4a9832c6ae3da5fe7
     m_Address: Actors Shared Data
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: 23e63dd2ce02c9e4a9832c6ae3da5fe7, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 23e63dd2ce02c9e4a9832c6ae3da5fe7, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: eacc8970391531d4aac420b7e1262334
     m_Address: Dialogues Shared Data
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: eacc8970391531d4aac420b7e1262334, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: eacc8970391531d4aac420b7e1262334, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8e0996fa820f67547ab7cfd2737cb0ae
+    m_Address: TutorialCutsceneLines Shared Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 3c4f47d3b547fdc488fa50b64d157e8d
+    m_Address: ForestLines Shared Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

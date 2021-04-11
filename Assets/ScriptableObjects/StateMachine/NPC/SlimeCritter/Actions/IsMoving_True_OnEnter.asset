@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parameterType: 0
   parameterName: IsMoving
-  boolValue: 0
+  boolValue: 1
   intValue: 0
   floatValue: 0
   whenToRun: 0

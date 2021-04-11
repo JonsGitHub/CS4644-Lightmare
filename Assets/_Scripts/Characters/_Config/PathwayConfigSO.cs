@@ -50,7 +50,6 @@ public class PathwayConfigSO : NPCMovementConfigSO
 	public List<bool> Hits { get => _hits; set => _hits = value; }
 
 	public bool RealTimeEnabled;
-
 #endif
 
 }

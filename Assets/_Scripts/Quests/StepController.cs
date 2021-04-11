@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Localization;
 
 /// <summary>
 /// this script needs to be put on the actor, and takes care of the current step to accomplish.
@@ -20,6 +21,8 @@ public class StepController : MonoBehaviour
 	[SerializeField] private DialogueDataChannelSO _startDialogueEvent = default;
 
 	private DialogueDataSO _currentDialogue;
+
+	public LocalizedString Name => _actor.ActorName;
 
 	private void Start()
 	{

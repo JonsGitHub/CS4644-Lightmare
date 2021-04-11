@@ -58,5 +58,6 @@ public class NPCMoveToNextDestination : StateAction
 				(PathwayConfigSO)_npcMovement.NPCMovementConfig,
 				_agent);
 		}
+		_npcMovement._currentAction = _action;
 	}
 }

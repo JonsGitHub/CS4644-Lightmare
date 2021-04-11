@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7b5a3af2e7a47f4aa60922e1447e58d, type: 3}
-  m_Name: NPC
+  m_Name: TownCrier
   m_EditorClassIdentifier: 
   _actorName:
     m_TableReference:
       m_TableCollectionName: GUID:23e63dd2ce02c9e4a9832c6ae3da5fe7
     m_TableEntryReference:
-      m_KeyId: 10164375552
+      m_KeyId: 7029441277988864
       m_Key: 
     m_FallbackState: 0

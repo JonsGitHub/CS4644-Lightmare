@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 23e63dd2ce02c9e4a9832c6ae3da5fe7
   m_Entries:
   - m_Id: 10164375552
-    m_Key: NPC
+    m_Key: Timmy
     m_Metadata:
       m_Items: []
   - m_Id: 2731894367588352
@@ -29,6 +29,66 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6828312648749056
     m_Key: Misfortune
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7027732782780416
+    m_Key: Jimmy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029332972670976
+    m_Key: Peter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029357198970880
+    m_Key: Francine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029387762864128
+    m_Key: Jeremiah
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029413260038144
+    m_Key: Barik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029441277988864
+    m_Key: TownCrier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029476350758912
+    m_Key: Natalie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029523125637120
+    m_Key: Markus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029545565163520
+    m_Key: Andy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029562753421312
+    m_Key: Sandy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029589634715648
+    m_Key: Mandy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029618839654400
+    m_Key: Ronald
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029647851655168
+    m_Key: Lumberjack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029693846392832
+    m_Key: Hunter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029714926964736
+    m_Key: GraveKeeperIsaac
     m_Metadata:
       m_Items: []
   m_Metadata:

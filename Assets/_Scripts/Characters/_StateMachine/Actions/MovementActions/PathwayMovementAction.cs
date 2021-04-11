@@ -10,7 +10,7 @@ public class PathwayMovementAction : NPCMovementAction
 	private int _wayPointIndex;
 	private float _roamingSpeed;
 
-	public PathwayMovementAction(
+    public PathwayMovementAction(
 		PathwayConfigSO config, NavMeshAgent agent)
 	{
 		_agent = agent;
@@ -19,6 +19,8 @@ public class PathwayMovementAction : NPCMovementAction
 		_roamingSpeed = config.Speed;
 		_wayppoints = config.Waypoints;
 	}
+
+	public override bool HasNextAction => _wayppoints.Count > 0;
 
 	public override void OnUpdate()
 	{
@@ -37,7 +39,6 @@ public class PathwayMovementAction : NPCMovementAction
 
 	public override void OnStateExit()
 	{
-
 	}
 
 	private Vector3 GetNextDestination()
