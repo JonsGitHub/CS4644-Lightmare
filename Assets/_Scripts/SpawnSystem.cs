@@ -9,18 +9,19 @@ public class SpawnSystem : MonoBehaviour
 	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
 	[SerializeField] private TransformEventChannelSO _playerInstantiatedChannel = default;
 	[SerializeField] private PathAnchor _pathTaken = default;
+	[SerializeField] private bool _spawnPlayer = true;
 
 	[Header("Scene References")]
 	private Transform[] _spawnLocations;
 
 	[Header("Scene Ready Event")]
 	[SerializeField] private VoidEventChannelSO _OnSceneReady = default; //Raised when the scene is loaded and set active
-	
+
 	private int _defaultSpawnIndex = 0;
 
 	private void OnEnable()
 	{
-		if (_OnSceneReady != null)
+		if (_OnSceneReady != null && _spawnPlayer)
 		{
 			_OnSceneReady.OnEventRaised += SpawnPlayer;
 		}
@@ -28,7 +29,7 @@ public class SpawnSystem : MonoBehaviour
 
 	private void OnDisable()
 	{
-		if (_OnSceneReady != null)
+		if (_OnSceneReady != null && _spawnPlayer)
 		{
 			_OnSceneReady.OnEventRaised -= SpawnPlayer;
 		}

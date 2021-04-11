@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
 	//	[SerializeField] private ChoiceBox _choiceBox; // TODO: Demonstration purpose only. Remove or adjust later.
 
 	[SerializeField] private InputReader _inputReader = default;
-	private int _counter;
+	private int _counter = 0;
 	private bool _reachedEndOfDialogue { get => _counter >= _currentDialogue.DialogueLines.Count; }
 
 	[Header("Listening on channels")]
@@ -35,7 +35,6 @@ public class DialogueManager : MonoBehaviour
 		{
 			_startDialogue.OnEventRaised += DisplayDialogueData;
 		}
-
 	}
 
 	/// <summary>

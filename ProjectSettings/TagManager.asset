@@ -26,9 +26,9 @@ TagManager:
   - Characters
   - DynamicEnvironment
   - Enemy
-  - 
-  - 
-  - 
+  - LayerMask
+  - SeeThrough
+  - PartialSeeThrough
   - 
   - 
   - 

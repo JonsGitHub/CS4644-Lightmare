@@ -8,6 +8,7 @@ public class MirrorGameplayController : MonoBehaviour
     [SerializeField] private MirrorLightController _mirrorLight;
     [SerializeField] private Animator _animator;
     [SerializeField] private List<VisualEffect> _visualEffects;
+    [SerializeField] private GameObject _blockout;
 
     public void PlayTransition(string name) => _animator.Play(name);
 

@@ -26,5 +26,13 @@ MonoBehaviour:
     m_Localized: Old Man
     m_Metadata:
       m_Items: []
+  - m_Id: 6827660874878976
+    m_Localized: Light
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6828312648749056
+    m_Localized: Misfortune
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

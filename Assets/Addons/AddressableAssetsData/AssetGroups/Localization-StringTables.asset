@@ -260,6 +260,13 @@ MonoBehaviour:
     - Locale-en
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: a31a0d0b5c3a7d64cb5e1417a984ca86
+    m_Address: TutorialCutsceneLines_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

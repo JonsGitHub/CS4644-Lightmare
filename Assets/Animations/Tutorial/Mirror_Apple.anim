@@ -1524,12 +1524,19 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 1.1166667
+  - time: 3.85
     functionName: SetMirrorWalkingState
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
+    messageOptions: 0
+  - time: 4.55
+    functionName: SetMirrorWalkingState
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
     messageOptions: 0
   - time: 6.366667
     functionName: SetMirrorPosingState
@@ -1550,7 +1557,7 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 1
     messageOptions: 0
   - time: 7.266667
     functionName: SetMirrorWalkingState
