@@ -30,10 +30,8 @@ MonoBehaviour:
     m_Localized: Tutorial
     m_Metadata:
       m_Items: []
-
-  - m_Id: 6019188042240000
-    m_Localized: Forest
-
+  - m_Id: 592342532096
+    m_Localized: Scifi
     m_Metadata:
       m_Items: []
   references:
