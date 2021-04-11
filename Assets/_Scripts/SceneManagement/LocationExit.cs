@@ -29,4 +29,10 @@ public class LocationExit : MonoBehaviour
 		if (_pathTaken != null)
 			_pathTaken.Path = _exitPath;
 	}
+
+	public void ManualTrigger()
+    {
+		UpdatePathTaken();
+		_locationExitLoadChannel.RaiseEvent(_locationsToLoad, _showLoadScreen);
+	}
 }

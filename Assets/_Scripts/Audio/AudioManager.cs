@@ -13,7 +13,8 @@ public class AudioManager : MonoBehaviour
 	[SerializeField] private AudioCueEventChannelSO _SFXEventChannel = default;
 	[Tooltip("The SoundManager listens to this event, fired by objects in any scene, to play Music")]
 	[SerializeField] private AudioCueEventChannelSO _musicEventChannel = default;
-
+	[Tooltip("The SoundManager listens to this event, fired by objects in any scene, to play Voice Clip")]
+	[SerializeField] private AudioCueEventChannelSO _voiceEventChannel = default;
 
 	[Header("Audio control")]
 	[SerializeField] private AudioMixer audioMixer = default;
@@ -22,10 +23,13 @@ public class AudioManager : MonoBehaviour
 	[Range(0f, 1f)]
 	[SerializeField] private float _musicVolume = 1f;
 	[Range(0f, 1f)]
+	[SerializeField] private float _voiceVolume = 1f;
+	[Range(0f, 1f)]
 	[SerializeField] private float _sfxVolume = 1f;
 
 	private SoundEmitterVault _soundEmitterVault;
 	private SoundEmitter _musicSoundEmitter;
+	private SoundEmitter _voiceSoundEmitter;
 
 	private void Awake()
 	{
@@ -44,6 +48,10 @@ public class AudioManager : MonoBehaviour
 
 		_musicEventChannel.OnAudioCuePlayRequested += PlayMusicTrack;
 		_musicEventChannel.OnAudioCueStopRequested += StopMusic;
+
+		_voiceEventChannel.OnAudioCuePlayRequested += PlayVoiceTrack;
+		_voiceEventChannel.OnAudioCueFinishRequested += FinishAudioCue;
+		_voiceEventChannel.OnAudioCueStopRequested += StopVoice;
 	}
 
 	private void OnDestroy()
@@ -53,6 +61,8 @@ public class AudioManager : MonoBehaviour
 		_SFXEventChannel.OnAudioCueFinishRequested -= FinishAudioCue;
 
 		_musicEventChannel.OnAudioCuePlayRequested -= PlayMusicTrack;
+
+		_voiceEventChannel.OnAudioCuePlayRequested -= PlayVoiceTrack;
 	}
 
 	/// <summary>
@@ -66,6 +76,7 @@ public class AudioManager : MonoBehaviour
 			SetGroupVolume("MasterVolume", _masterVolume);
 			SetGroupVolume("MusicVolume", _musicVolume);
 			SetGroupVolume("SFXVolume", _sfxVolume);
+			SetGroupVolume("VoiceVolume", _voiceVolume);
 		}
 	}
 
@@ -101,6 +112,35 @@ public class AudioManager : MonoBehaviour
 		// We're assuming the range [0 to 1] becomes [-80dB to 0dB]
 		// This doesn't allow values over 0dB
 		return (normalizedValue - 1f) * 80f;
+	}
+
+	private AudioCueKey PlayVoiceTrack(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace)
+	{
+		if (_voiceSoundEmitter != null && _voiceSoundEmitter.IsPlaying())
+		{
+			AudioClip songToPlay = audioCue.GetClips()[0];
+			if (_voiceSoundEmitter.GetClip() == songToPlay)
+				return AudioCueKey.Invalid;
+
+			_voiceSoundEmitter.Stop();
+		}
+
+		_voiceSoundEmitter = _pool.Request();
+		_voiceSoundEmitter.PlayAudioClip(audioCue.GetClips()[0], audioConfiguration, false, positionInSpace);
+		_voiceSoundEmitter.OnSoundFinishedPlaying += StopAndCleanEmitter;
+
+		return AudioCueKey.Invalid; //No need to return a valid key for music
+	}
+
+	private bool StopVoice(AudioCueKey key)
+	{
+		if (_voiceSoundEmitter != null && _voiceSoundEmitter.IsPlaying())
+		{
+			_voiceSoundEmitter.Stop();
+			return true;
+		}
+		else
+			return false;
 	}
 
 	private AudioCueKey PlayMusicTrack(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace)
@@ -217,6 +257,12 @@ public class AudioManager : MonoBehaviour
 	private void StopMusicEmitter(SoundEmitter soundEmitter)
 	{
 		soundEmitter.OnSoundFinishedPlaying -= StopMusicEmitter;
+		_pool.Return(soundEmitter);
+	}
+
+	private void StopVoiceEmitter(SoundEmitter soundEmitter)
+	{
+		soundEmitter.OnSoundFinishedPlaying -= StopVoiceEmitter;
 		_pool.Return(soundEmitter);
 	}
 }

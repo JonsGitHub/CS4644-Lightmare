@@ -24,12 +24,6 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614558}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661614580}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614661}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661614583}
       id: 0
       isStickyNote: 0
@@ -48,13 +42,7 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614555}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661614636}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661614619}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614640}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614720}
@@ -71,31 +59,13 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614673}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661614711}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661614676}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614698}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614701}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614703}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614706}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614732}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614707}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614715}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614726}
@@ -165,15 +135,6 @@ MonoBehaviour:
       height: 100
     contents:
     - model: {fileID: 8926484042661614875}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 0}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614909}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614911}
       id: 0
       isStickyNote: 0
   - title: Impact Glow
@@ -9341,7 +9302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -10965,7 +10926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -14250,7 +14211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -15663,7 +15624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -17962,7 +17923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
