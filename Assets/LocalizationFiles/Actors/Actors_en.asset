@@ -94,5 +94,9 @@ MonoBehaviour:
     m_Localized: Gravekeeper Isaac
     m_Metadata:
       m_Items: []
+  - m_Id: 7063018170486784
+    m_Localized: Rufus
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

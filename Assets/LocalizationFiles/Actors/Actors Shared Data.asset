@@ -91,6 +91,10 @@ MonoBehaviour:
     m_Key: GraveKeeperIsaac
     m_Metadata:
       m_Items: []
+  - m_Id: 7063018170486784
+    m_Key: Rufus
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

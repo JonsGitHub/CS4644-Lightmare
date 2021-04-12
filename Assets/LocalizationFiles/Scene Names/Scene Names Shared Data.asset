@@ -27,10 +27,8 @@ MonoBehaviour:
     m_Key: Level_Tutorial
     m_Metadata:
       m_Items: []
-
-  - m_Id: 6019188042240000
+  - m_Id: 137151123456
     m_Key: Level_Forest
-
     m_Metadata:
       m_Items: []
   m_Metadata:
@@ -43,4 +41,4 @@ MonoBehaviour:
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
         asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1616393467883
+        m_CustomEpoch: 1618190649497

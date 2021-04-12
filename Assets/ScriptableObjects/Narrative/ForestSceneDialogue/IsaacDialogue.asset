@@ -18,16 +18,16 @@ MonoBehaviour:
       m_TableReference:
         m_TableCollectionName: GUID:3c4f47d3b547fdc488fa50b64d157e8d
       m_TableEntryReference:
-        m_KeyId: 18983589253120
+        m_KeyId: 19213621661696
         m_Key: 
       m_FallbackState: 0
     Audio: {fileID: 0}
-  - Actor: {fileID: 11400000, guid: 3446b357d9142a9499925673c436a79e, type: 2}
+  - Actor: {fileID: 11400000, guid: 94052f3a962d74f4cbeb08b1e3eb4087, type: 2}
     Line:
       m_TableReference:
         m_TableCollectionName: GUID:3c4f47d3b547fdc488fa50b64d157e8d
       m_TableEntryReference:
-        m_KeyId: 19213621661696
+        m_KeyId: 37636032434176
         m_Key: 
       m_FallbackState: 0
     Audio: {fileID: 0}

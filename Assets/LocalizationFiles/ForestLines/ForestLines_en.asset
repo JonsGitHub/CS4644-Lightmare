@@ -109,8 +109,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 18266312937472
-    m_Localized: Woah be careful there. The rock slide has attracted some weird slime
-      creatures, best stay away.
+    m_Localized: Woah! Careful there. The rock slide has attracted some weird slime
+      creatures, best stay away for now.
     m_Metadata:
       m_Items: []
   - m_Id: 18529002196992
@@ -123,16 +123,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 18983589253120
-    m_Localized: You here for the crystal as well? I'd stay away, its unsettling
+    m_Localized: You here for the crystal as well? I'd stay away, it's unsettling
       the guests...
     m_Metadata:
       m_Items: []
   - m_Id: 19213621661696
-    m_Localized: But if you insist ol'Rufus can show you the way.
+    m_Localized: I'd still stay away. But if you insist ol'Rufus can show you the
+      way.
     m_Metadata:
       m_Items: []
   - m_Id: 19902166994944
     m_Localized: '*grumble* ... *grumble* ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34377095974912
+    m_Localized: But if you insist, this is the best way around them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34557203582976
+    m_Localized: If you forget ol' Rufus can show you again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37636032434176
+    m_Localized: Bark!
     m_Metadata:
       m_Items: []
   references:

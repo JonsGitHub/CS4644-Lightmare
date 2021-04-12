@@ -16,12 +16,14 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a7bae5f88e2e24365bdf768f42df85c5
-
-  m_SerializeEntries: []
-
+  m_SerializeEntries:
+  - m_GUID: 1e8029e905b11594988010220b389d26
+    m_Address: Assets/_Scenes/Levels/Level_Mausoleum.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
+  m_Settings: {fileID: 11400000, guid: 69251d1ea849110449486e1b0ae23f70, type: 2}
   m_SchemaSet:
-    m_Schemas:
-    - {fileID: 11400000, guid: 81c41411a9b214411963dec0c0183584, type: 2}
-    - {fileID: 11400000, guid: cdf282b96e9d146628b5b9170c09dc45, type: 2}
+    m_Schemas: []
