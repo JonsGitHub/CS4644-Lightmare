@@ -7,6 +7,7 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _minForce;
     [SerializeField] private float _maxForce;
     [SerializeField] private float _radius;
+    [SerializeField] private bool _explodeOnEnable = false;
 
     private void Awake()
     {
@@ -27,5 +28,11 @@ public class Exploder : MonoBehaviour
                 rigidbody.AddExplosionForce(Random.Range(_minForce, _maxForce), _epicenter.position, _radius);
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        if (_explodeOnEnable)
+            Explode();
     }
 }

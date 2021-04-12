@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum InteractionType { None = 0, Talk, Grab, Drop, Interact };
 
@@ -23,6 +22,7 @@ public class InteractionManager : MonoBehaviour
 
 	[Header("Listening to")]
 	[SerializeField] private VoidEventChannelSO _onInteractionEnded = default;
+	[SerializeField] private InterfaceBaseEventChannelSO _removeInteraction = default;
 
 	private GameObject grabbed;
 
@@ -30,6 +30,7 @@ public class InteractionManager : MonoBehaviour
 	{
 		_inputReader.interactEvent += OnInteractionButtonPress;
 		_onInteractionEnded.OnEventRaised += OnInteractionEnd;
+		_removeInteraction.OnEventRaised += RemoveInteraction;
 
 		_toggleInteractionUI.RaiseEvent(_potentialInteractions);
 	}
@@ -38,6 +39,7 @@ public class InteractionManager : MonoBehaviour
 	{
 		_inputReader.interactEvent -= OnInteractionButtonPress;
 		_onInteractionEnded.OnEventRaised -= OnInteractionEnd;
+		_removeInteraction.OnEventRaised -= RemoveInteraction;
 
 		if (grabbed)
 		{
@@ -105,6 +107,7 @@ public class InteractionManager : MonoBehaviour
 				break;
 			case InteractionType.Interact:
 				_potentialInteractions.Selected.interactableObject.GetComponent<InterfaceBase>()?.Interact();
+				RequestUpdateUI(_potentialInteractions.Count > 0);
 				break;
 		}
 	}
@@ -168,12 +171,19 @@ public class InteractionManager : MonoBehaviour
 		switch (currentInteractionType)
 		{
 			case InteractionType.Interact:
+				RequestUpdateUI(_potentialInteractions.Count > 0);
+				break;
 			case InteractionType.Talk:
-				//We show the UI after interacting or talking, in case player wants to interact again
+				//We show the UI after talking, in case player wants to interact again
 				RequestUpdateUI(true);
 				break;
 		}
 
 		_inputReader.EnableGameplayInput();
+	}
+
+	private void RemoveInteraction(InterfaceBase interfaceBase)
+    {
+		RemovePotentialInteraction(interfaceBase.gameObject);
 	}
 }

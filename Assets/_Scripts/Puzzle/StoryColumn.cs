@@ -2,6 +2,8 @@
 
 public class StoryColumn : InterfaceBase
 {
+    [SerializeField] private Animator _animator;
+
     [Header("Broadcasting on channels")]
     [SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
 
@@ -19,7 +21,9 @@ public class StoryColumn : InterfaceBase
     public override void Interact()
     {
         if (!numberLabel || numberLabel.Text.Equals(""))
+        {
             GetComponentInParent<StoryPuzzle>().SelectColumn(this, label.Text);
+        }
     }
 
     public void SetStoryText(string text)
@@ -47,6 +51,7 @@ public class StoryColumn : InterfaceBase
             _3dUIChannelEvent?.RaiseEvent(numberLabel, false);
         }
         numberLabel.Text = number == -1 ? "" : "" + number;
+         _animator?.SetBool("Active", number != -1);
     }
 
     private void OnDestroy()

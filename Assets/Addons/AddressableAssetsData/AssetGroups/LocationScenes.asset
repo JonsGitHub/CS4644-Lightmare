@@ -39,8 +39,20 @@ MonoBehaviour:
     m_Address: Assets/_Scenes/Levels/Level_FantasyForest.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: b4c38ecebbf771347aa53c004a613177, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: b4c38ecebbf771347aa53c004a613177, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1e8029e905b11594988010220b389d26
+    m_Address: Assets/_Scenes/Levels/Level_Mausoleum.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 1e8029e905b11594988010220b389d26, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 1e8029e905b11594988010220b389d26, type: 3}
+  - m_GUID: efc2cdc0a6e8fbb418645436b4caac33
+    m_Address: Assets/_Scenes/Levels/Level_Tutorial-Sub.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: efc2cdc0a6e8fbb418645436b4caac33, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: efc2cdc0a6e8fbb418645436b4caac33, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

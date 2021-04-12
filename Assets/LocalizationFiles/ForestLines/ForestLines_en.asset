@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 3c4f47d3b547fdc488fa50b64d157e8d, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - id: 0
   m_TableData:
   - m_Id: 12970364928
     m_Localized: "These darn neighbors\u2026they hear about ONE precious gem and
@@ -148,5 +149,34 @@ MonoBehaviour:
     m_Localized: Bark!
     m_Metadata:
       m_Items: []
+  - m_Id: 176347877478400
+    m_Localized: Hello There! Developers here. So you're about to collect a fragment
+      of misfortune, wonder what will happen....
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176517616766976
+    m_Localized: Well we know what will happen but that is besides the point. Anyways,
+      we hope you enjoyed this brief snippet of Lightmare.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176797087436800
+    m_Localized: If you have any suggestions or issues please let us know. In the
+      meantime...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176911004733440
+    m_Localized: A brief peek behind the scenes into what is to come. Enjoy!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177144371613696
+    m_Localized: We have other features in the works and levels but we don't want
+      to give it all away.
+    m_Metadata:
+      m_Items:
+      - id: 0
   references:
     version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 001058a31ca10000
