@@ -26687,7 +26687,7 @@ PrefabInstance:
     - target: {fileID: 8849864914362890586, guid: 03ab07cfdcebcf0439549cc80e1e839e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8849864914362890588, guid: 03ab07cfdcebcf0439549cc80e1e839e,
         type: 3}
@@ -26749,6 +26749,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8849864914362890591, guid: 03ab07cfdcebcf0439549cc80e1e839e,
+        type: 3}
+      propertyPath: _exitPath
+      value: 
+      objectReference: {fileID: 11400000, guid: 26756fd10ac19884cb74399bb1803d66,
+        type: 2}
+    - target: {fileID: 8849864914362890591, guid: 03ab07cfdcebcf0439549cc80e1e839e,
+        type: 3}
+      propertyPath: _showLoadScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849864914362890591, guid: 03ab07cfdcebcf0439549cc80e1e839e,
+        type: 3}
+      propertyPath: _locationsToLoad.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d45d561c694da784fb9376d3698bf0c1,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03ab07cfdcebcf0439549cc80e1e839e, type: 3}
 --- !u!4 &895832515 stripped
@@ -54833,7 +54850,7 @@ PrefabInstance:
     - target: {fileID: 8849864914362890586, guid: 03ab07cfdcebcf0439549cc80e1e839e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8849864914362890588, guid: 03ab07cfdcebcf0439549cc80e1e839e,
         type: 3}
@@ -54905,6 +54922,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8849864914362890591, guid: 03ab07cfdcebcf0439549cc80e1e839e,
+        type: 3}
+      propertyPath: _exitPath
+      value: 
+      objectReference: {fileID: 11400000, guid: 5366298510921a5479f3e28f3da3863c,
+        type: 2}
+    - target: {fileID: 8849864914362890591, guid: 03ab07cfdcebcf0439549cc80e1e839e,
+        type: 3}
+      propertyPath: _showLoadScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849864914362890591, guid: 03ab07cfdcebcf0439549cc80e1e839e,
+        type: 3}
+      propertyPath: _locationsToLoad.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f1a7ddb72a64152419cc85f386b4f10b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03ab07cfdcebcf0439549cc80e1e839e, type: 3}
 --- !u!4 &1920851771 stripped
