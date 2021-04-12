@@ -10,6 +10,12 @@ public class SkyboxManager : MonoBehaviour
 
     private const float _lerpSpeed = 0.41f;
 
+    private void Awake()
+    {
+        _blendedSkybox.SetFloat("_Blend", 0);
+        DynamicGI.UpdateEnvironment();
+    }
+
     public void SwitchToSecondSkybox()
     {
         StartCoroutine(SwitchingSkybox(0, 1));
