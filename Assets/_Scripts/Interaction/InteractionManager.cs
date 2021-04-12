@@ -65,6 +65,12 @@ public class InteractionManager : MonoBehaviour
 			{
 				rigid.velocity = Vector3.zero;
 				rigid.useGravity = false;
+
+				var col = grabbed.GetComponent<Collider>();
+				if (col)
+				{
+					col.enabled = false;
+				}
 			}
 			grabbed.transform.position = _holdPosition.position;
 			grabbed.transform.rotation = _holdPosition.rotation;
@@ -73,28 +79,21 @@ public class InteractionManager : MonoBehaviour
 
     private void OnInteractionButtonPress()
 	{
-		if (_potentialInteractions.Count == 0)
-			return;
-
 		if (grabbed)
         {
-			var rigid = grabbed.GetComponent<Rigidbody>();
-			if (rigid)
-			{
-				rigid.useGravity = true;
-			}
-
-			_potentialInteractions.IsGrabbing = false;
-			grabbed = null;
-			RequestUpdateUI(true);
+			ForceDrop();
 			return;
         }
+
+		if (_potentialInteractions.Count == 0)
+			return;
 
 		currentInteractionType = _potentialInteractions.Selected.type;
 		switch (currentInteractionType)
 		{
 			case InteractionType.Grab:
 				grabbed = _potentialInteractions.Selected.interactableObject;
+				RemovePotentialInteraction(_potentialInteractions.Selected.interactableObject);
 				_potentialInteractions.IsGrabbing = true;
 				RequestUpdateUI(true);
 				break;
@@ -119,6 +118,27 @@ public class InteractionManager : MonoBehaviour
 			AddPotentialInteraction(obj);
 		else
 			RemovePotentialInteraction(obj);
+	}
+
+	public void ForceDrop()
+    {
+		if (grabbed)
+        {
+			var rigid = grabbed.GetComponent<Rigidbody>();
+			if (rigid)
+			{
+				rigid.useGravity = true;
+			}
+			var col = grabbed.GetComponent<Collider>();
+			if (col)
+            {
+				col.enabled = true;
+            }
+
+			_potentialInteractions.IsGrabbing = false;
+			grabbed = null;
+			RequestUpdateUI(true);
+        }
 	}
 
 	private void AddPotentialInteraction(GameObject obj)

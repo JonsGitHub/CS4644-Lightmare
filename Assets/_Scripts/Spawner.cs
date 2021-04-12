@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private float _spawnRate = default;
     [SerializeField] private float _spawnRadius = default;
     [SerializeField] private int _maxEnemy = default;
-    [SerializeField] private GameObject _enemy = default;
+    [SerializeField] private AssetReference _entityReference;
+    [SerializeField] private string _overrideName = default;
 
     private bool _alive = true;
+    private GameObject _prefab;
+
+    private void Awake()
+    {
+        Addressables.LoadAssetAsync<GameObject>(_entityReference).Completed += OnLoadDone;
+    }
 
     private void Start()
     {
-        SpawnEnemy();
+        if (transform.childCount < _maxEnemy)
+            SpawnEnemy();
 
         StartCoroutine(Spawning());
     }
@@ -34,8 +43,19 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        var newEnemy = Instantiate(_enemy, GetPositionAroundPoint(transform.position), Quaternion.identity);
+        if (_prefab == null) // Asset isn't ready yet
+            return;
+
+        var newEnemy = Instantiate(_prefab, GetPositionAroundPoint(transform.position), Quaternion.identity);
         newEnemy.transform.SetParent(transform); // Keep the Scene tree clean
+
+        if (_overrideName != null && _overrideName.Length > 0)
+            newEnemy.name = _overrideName;
+    }
+
+    private void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj)
+    {
+        _prefab = obj.Result;
     }
 
     // Compute a random target position around the starting position.

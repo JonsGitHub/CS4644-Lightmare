@@ -67,5 +67,13 @@ MonoBehaviour:
     m_Localized: Am I fading?
     m_Metadata:
       m_Items: []
+  - m_Id: 598250052128768
+    m_Localized: I'm not quite that hungry...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 598410001911808
+    m_Localized: I'm rather hungry...If only I had an apple or something...
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

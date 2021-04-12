@@ -7,18 +7,27 @@ public class PressurePlate : MonoBehaviour
 
     [Header("Broadcasting on")]
     [SerializeField] private BoolEventChannelSO _unlockChannel = default;
+    [SerializeField] private VoidEventChannelSO _incorrectEventChannel = default;
 
     private int _currentAmount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
         Key key;
-        if (other.TryGetComponent(out key) && key.ID == _unlockId)
+        if (other.TryGetComponent(out key))
         {
-            _currentAmount++;
-            if (_currentAmount == _requiredAmount)
+            if (key.ID == _unlockId)
             {
-                _unlockChannel.RaiseEvent(_currentAmount >= _requiredAmount);
+                _currentAmount++;
+                if (_currentAmount == _requiredAmount)
+                {
+                    _unlockChannel.RaiseEvent(_currentAmount >= _requiredAmount);
+                }
+            }
+            else
+            {
+                if (_incorrectEventChannel)
+                    _incorrectEventChannel.RaiseEvent();
             }
         }
     }

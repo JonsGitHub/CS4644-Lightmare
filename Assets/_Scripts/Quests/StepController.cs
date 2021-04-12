@@ -24,7 +24,7 @@ public class StepController : MonoBehaviour
 
 	public LocalizedString Name => _actor.ActorName;
 
-	private void Start()
+	private void OnEnable()
 	{
 		if (_winDialogueEvent)
 		{ 
@@ -38,6 +38,22 @@ public class StepController : MonoBehaviour
         {
 			_interactionEvent.OnEventRaised += PlayInteractionEvent;
         }
+	}
+
+	private void OnDisable()
+	{
+		if (_winDialogueEvent)
+		{
+			_winDialogueEvent.OnEventRaised -= PlayWinDialogue;
+		}
+		if (_loseDialogueEvent)
+		{
+			_loseDialogueEvent.OnEventRaised -= PlayLoseDialogue;
+		}
+		if (_interactionEvent)
+		{
+			_interactionEvent.OnEventRaised -= PlayInteractionEvent;
+		}
 	}
 
 	void PlayDefaultDialogue()

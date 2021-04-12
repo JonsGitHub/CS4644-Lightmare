@@ -27,8 +27,14 @@ MonoBehaviour:
     m_Address: Assets/Audio/Voice
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: 921896d00e6e1804f8768fb58813a2e1, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: 921896d00e6e1804f8768fb58813a2e1, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: a923f686d278e874a8799a7deb4a3ce3
+    m_Address: Assets/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: a923f686d278e874a8799a7deb4a3ce3, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: a923f686d278e874a8799a7deb4a3ce3, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 6113378936606230397, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: m_Name
-      value: SlimeCritter_Green
+      value: Slime
       objectReference: {fileID: 0}
     - target: {fileID: 6113378936606230397, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
