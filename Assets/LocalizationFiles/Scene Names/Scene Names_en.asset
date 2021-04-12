@@ -34,5 +34,13 @@ MonoBehaviour:
     m_Localized: Forest
     m_Metadata:
       m_Items: []
+  - m_Id: 137965788991488
+    m_Localized: Sci-fi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138145028378624
+    m_Localized: Colosseum
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

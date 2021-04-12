@@ -21,8 +21,8 @@ MonoBehaviour:
     m_Address: Assets/_Scenes/Examples/ExampleScene2.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: 82629644050ceae428edb914afa701cb, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: 82629644050ceae428edb914afa701cb, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: fb6f0de1fdb53d041a1b0826177fc4af
     m_Address: Assets/_Scenes/Examples/ExampleScene1.unity
     m_ReadOnly: 0
@@ -39,20 +39,32 @@ MonoBehaviour:
     m_Address: Assets/_Scenes/Levels/Level_Forest.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: b4c38ecebbf771347aa53c004a613177, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: b4c38ecebbf771347aa53c004a613177, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 1e8029e905b11594988010220b389d26
     m_Address: Assets/_Scenes/Levels/Level_Mausoleum.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: 1e8029e905b11594988010220b389d26, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: 1e8029e905b11594988010220b389d26, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: efc2cdc0a6e8fbb418645436b4caac33
     m_Address: Assets/_Scenes/Levels/Level_Tutorial-Sub.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: efc2cdc0a6e8fbb418645436b4caac33, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: efc2cdc0a6e8fbb418645436b4caac33, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5e669cd66ed24974a86bbb5cb9837ade
+    m_Address: Assets/_Scenes/Levels/Level_Colosseum.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 5e669cd66ed24974a86bbb5cb9837ade, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 5e669cd66ed24974a86bbb5cb9837ade, type: 3}
+  - m_GUID: 6f04e1e1dbb634986abc08c64384ad1b
+    m_Address: Assets/_Scenes/Levels/Level_Sci-fi.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 6f04e1e1dbb634986abc08c64384ad1b, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 6f04e1e1dbb634986abc08c64384ad1b, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:
