@@ -2,5 +2,7 @@
 
 public class Key : MonoBehaviour
 {
-    [SerializeField] public int ID;
+    [SerializeField] private int _Id;
+
+    public int ID => _Id;
 }

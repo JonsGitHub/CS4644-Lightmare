@@ -18,11 +18,15 @@ public class SafetyNet : MonoBehaviour
         PlayerController _player;
         if (state && obj.TryGetComponent(out _player))
         {
+            // Drop anything in their hand
+            _player.GetComponent<InteractionManager>().ForceDrop();
+
             // Prevent application of movement to interrupt teleport
-            _player.GetComponent<CharacterController>().enabled = false;
+            var controller = _player.GetComponent<CharacterController>();
+            controller.enabled = false;
             _player.transform.position = _currentCheckpoint.position;
             _player.transform.rotation = _currentCheckpoint.rotation;
-            _player.GetComponent<CharacterController>().enabled = true;
+            controller.enabled = true;
         }
     }
 

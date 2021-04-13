@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d479c7edfe59d1449046411ea27361d, type: 3}
   m_Name: NPC_Dialogue
   m_EditorClassIdentifier: 
-  _actor: {fileID: 11400000, guid: 40b998c29a501514a801a86199f05935, type: 2}
   _dialogueLines:
-  - Line:
+  - Actor: {fileID: 11400000, guid: 40b998c29a501514a801a86199f05935, type: 2}
+    Line:
       m_TableReference:
         m_TableCollectionName: GUID:eacc8970391531d4aac420b7e1262334
       m_TableEntryReference:
@@ -22,7 +22,8 @@ MonoBehaviour:
         m_Key: 
       m_FallbackState: 0
     Audio: {fileID: 0}
-  - Line:
+  - Actor: {fileID: 11400000, guid: e3658477d4aaaf64dbf0823a14c6dbd9, type: 2}
+    Line:
       m_TableReference:
         m_TableCollectionName: GUID:eacc8970391531d4aac420b7e1262334
       m_TableEntryReference:
@@ -30,7 +31,8 @@ MonoBehaviour:
         m_Key: 
       m_FallbackState: 0
     Audio: {fileID: 0}
-  - Line:
+  - Actor: {fileID: 11400000, guid: 40b998c29a501514a801a86199f05935, type: 2}
+    Line:
       m_TableReference:
         m_TableCollectionName: GUID:eacc8970391531d4aac420b7e1262334
       m_TableEntryReference:

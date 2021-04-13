@@ -8,15 +8,30 @@ public class CutsceneTrigger : MonoBehaviour
 {
 	[SerializeField] private CutsceneController _playableCutscene = default;
 	[SerializeField] private LayerMask _layers = default;
-	[SerializeField] private bool _playOnStart = default;
+	[SerializeField] private bool _playOnSceneStart = default;
 	[SerializeField] private bool _playOnce = default;
+
+	[Header("Listening on channels")]
+	[SerializeField] private VoidEventChannelSO _sceneReadyEventChannel = default;
 
 	[Header("Broadcasting on channels")]
 	[SerializeField] private PlayCutsceneChannelSO _playCutsceneEvent = default;
 
-	private void Start()
-	{
-		if (_playOnStart)
+    private void OnEnable()
+    {
+		if (_sceneReadyEventChannel)
+			_sceneReadyEventChannel.OnEventRaised += SceneReady;
+    }
+
+    private void OnDisable()
+    {
+		if (_sceneReadyEventChannel)
+			_sceneReadyEventChannel.OnEventRaised -= SceneReady;
+	}
+
+	private void SceneReady()
+    {
+		if (_playOnSceneStart)
 			PlayCutScene();
 	}
 

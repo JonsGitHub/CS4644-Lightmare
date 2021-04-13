@@ -26,6 +26,13 @@ public class UIInteractionItemFiller : MonoBehaviour
         _interactionIcon.sprite = interactionItem.InteractionIcon;
     }
 
+    public void FillInteractionPanel(InteractionSO interactionItem, LocalizedString nameOverride)
+    {
+        SetSelected(false);
+        _interactionName.StringReference = nameOverride;
+        _interactionIcon.sprite = interactionItem.InteractionIcon;
+    }
+
     public void SetSelected(bool state)
     {
         _keySelected.SetActive(state);

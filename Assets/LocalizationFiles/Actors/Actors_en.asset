@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 10164375552
-    m_Localized: NPC
+    m_Localized: Timmy
     m_Metadata:
       m_Items: []
   - m_Id: 2731894367588352
@@ -32,6 +32,74 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6828312648749056
     m_Localized: Misfortune
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7027732782780416
+    m_Localized: Jimmy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029332972670976
+    m_Localized: Peter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029357198970880
+    m_Localized: Francine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029387762864128
+    m_Localized: Jeremiah
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029413260038144
+    m_Localized: Barik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029441277988864
+    m_Localized: Town Crier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029476350758912
+    m_Localized: Natalie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029523125637120
+    m_Localized: Markus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029545565163520
+    m_Localized: Andy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029562753421312
+    m_Localized: Sandy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029589634715648
+    m_Localized: Mandy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029618839654400
+    m_Localized: Ronald
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029647851655168
+    m_Localized: Lumberjack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029693846392832
+    m_Localized: Hunter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029714926964736
+    m_Localized: Gravekeeper Isaac
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7063018170486784
+    m_Localized: Rufus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7201541502537728
+    m_Localized: Developers
     m_Metadata:
       m_Items: []
   references:

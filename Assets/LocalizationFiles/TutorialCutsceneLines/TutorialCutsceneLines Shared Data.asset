@@ -63,6 +63,14 @@ MonoBehaviour:
     m_Key: PreLine_2
     m_Metadata:
       m_Items: []
+  - m_Id: 598250052128768
+    m_Key: OldMan_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 598410001911808
+    m_Key: OldMan_Line_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

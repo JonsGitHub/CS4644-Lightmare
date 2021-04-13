@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Localization;
 
 /// <summary>
 /// this script needs to be put on the actor, and takes care of the current step to accomplish.
@@ -21,7 +22,9 @@ public class StepController : MonoBehaviour
 
 	private DialogueDataSO _currentDialogue;
 
-	private void Start()
+	public LocalizedString Name => _actor.ActorName;
+
+	private void OnEnable()
 	{
 		if (_winDialogueEvent)
 		{ 
@@ -35,6 +38,22 @@ public class StepController : MonoBehaviour
         {
 			_interactionEvent.OnEventRaised += PlayInteractionEvent;
         }
+	}
+
+	private void OnDisable()
+	{
+		if (_winDialogueEvent)
+		{
+			_winDialogueEvent.OnEventRaised -= PlayWinDialogue;
+		}
+		if (_loseDialogueEvent)
+		{
+			_loseDialogueEvent.OnEventRaised -= PlayLoseDialogue;
+		}
+		if (_interactionEvent)
+		{
+			_interactionEvent.OnEventRaised -= PlayInteractionEvent;
+		}
 	}
 
 	void PlayDefaultDialogue()

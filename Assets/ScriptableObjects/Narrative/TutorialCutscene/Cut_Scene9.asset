@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d479c7edfe59d1449046411ea27361d, type: 3}
   m_Name: Cut_Scene9
   m_EditorClassIdentifier: 
-  _actor: {fileID: 11400000, guid: 416ea316394f3ad49be9c8deb3fee67a, type: 2}
   _dialogueLines:
-  - Line:
+  - Actor: {fileID: 11400000, guid: 416ea316394f3ad49be9c8deb3fee67a, type: 2}
+    Line:
       m_TableReference:
         m_TableCollectionName: GUID:8e0996fa820f67547ab7cfd2737cb0ae
       m_TableEntryReference:

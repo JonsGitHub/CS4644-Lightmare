@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: ForestLines_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 3c4f47d3b547fdc488fa50b64d157e8d, type: 2}
+  m_Metadata:
+    m_Items:
+    - id: 0
+  m_TableData:
+  - m_Id: 12970364928
+    m_Localized: "These darn neighbors\u2026they hear about ONE precious gem and
+      suddenly everyone\u2019s an adventurer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99809234944
+    m_Localized: "Oh dear, I hope Natalie and Markus aren\u2019t playing too far
+      away."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171259203584
+    m_Localized: "I told them to stay away from the edge of the village, it\u2019s
+      too dangerous."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 213135134720
+    m_Localized: "Barik! Barik! Did you catch wind of the news? Some are saying that
+      there\u2019s a gem hidden within these very lands!\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 490571567104
+    m_Localized: "Jeremiah, I caught wind of your stench before I even heard you
+      coming. You smell like you belong with the rest of those ghouls at the graveyard.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 557697208320
+    m_Localized: "Oh, come on man! Adventure waits for NO man! I must be ready to
+      heed their call at a moment\u2019s notice!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 612881666048
+    m_Localized: Hmph. You may want to reconsider your priorities just a tad...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 678648352768
+    m_Localized: The sun has risen, so come and listen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 774421090304
+    m_Localized: Advise the notice board, for these tasks shall merit reward! Take
+      a look~
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825742594048
+    m_Localized: "Hehehe, do you think anyone noticed us sneaking out here?\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887373697024
+    m_Localized: "Natalie, hush yourself. We haven\u2019t even left the village."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 976339079168
+    m_Localized: How do you expect us to go searching for the crystal in the graveyard
+      if we get caught?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1024141561856
+    m_Localized: "Alright, let\u2019s go over the plan once more.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1105511059456
+    m_Localized: "Good, good. Hey, keep your voice down. I think one of the other
+      townsfolk can hear us\u2026. We\u2019ll set out at twilight."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1279612424192
+    m_Localized: Step one, brave the dusted path.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1323732307968
+    m_Localized: Step three, approach our forefathers for everlasting wealth.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363121016832
+    m_Localized: Step two, mind the fallen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1398600634368
+    m_Localized: "Do you ever think about the glittered skies at night?\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1578322366464
+    m_Localized: "What if they used to be the size of the sun?\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1607908986880
+    m_Localized: But then they got into several fights and split up? Weird how stars
+      can struggle for 9 episodes and still not end their wars...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18266312937472
+    m_Localized: Woah! Careful there. The rock slide has attracted some weird slime
+      creatures, best stay away for now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18529002196992
+    m_Localized: Oh great, another one...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18831667367936
+    m_Localized: Yes yes! As you can clearly see I am still working on clearing the
+      path. Come back later.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18983589253120
+    m_Localized: You here for the crystal as well? I'd stay away, it's unsettling
+      the guests...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19213621661696
+    m_Localized: I'd still stay away. But if you insist ol'Rufus can show you the
+      way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19902166994944
+    m_Localized: '*grumble* ... *grumble* ...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34377095974912
+    m_Localized: But if you insist, this is the best way around them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34557203582976
+    m_Localized: If you forget ol' Rufus can show you again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37636032434176
+    m_Localized: Bark!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176347877478400
+    m_Localized: Hello There! Developers here. So you're about to collect a fragment
+      of misfortune, wonder what will happen....
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176517616766976
+    m_Localized: Well we know what will happen but that is besides the point. Anyways,
+      we hope you enjoyed this brief snippet of Lightmare.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176797087436800
+    m_Localized: If you have any suggestions or issues please let us know. In the
+      meantime...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176911004733440
+    m_Localized: A brief peek behind the scenes into what is to come. Enjoy!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177144371613696
+    m_Localized: We have other features in the works and levels but we don't want
+      to give it all away.
+    m_Metadata:
+      m_Items:
+      - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 001058a31ca10000

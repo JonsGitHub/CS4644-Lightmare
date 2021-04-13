@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d479c7edfe59d1449046411ea27361d, type: 3}
+  m_Name: RonaldDialogue
+  m_EditorClassIdentifier: 
+  _dialogueLines:
+  - Actor: {fileID: 11400000, guid: 4629ed72a4f8ac146954d9728d46ff59, type: 2}
+    Line:
+      m_TableReference:
+        m_TableCollectionName: GUID:3c4f47d3b547fdc488fa50b64d157e8d
+      m_TableEntryReference:
+        m_KeyId: 1398600634368
+        m_Key: 
+      m_FallbackState: 0
+    Audio: {fileID: 0}
+  - Actor: {fileID: 11400000, guid: 4629ed72a4f8ac146954d9728d46ff59, type: 2}
+    Line:
+      m_TableReference:
+        m_TableCollectionName: GUID:3c4f47d3b547fdc488fa50b64d157e8d
+      m_TableEntryReference:
+        m_KeyId: 1578322366464
+        m_Key: 
+      m_FallbackState: 0
+    Audio: {fileID: 0}
+  - Actor: {fileID: 11400000, guid: 4629ed72a4f8ac146954d9728d46ff59, type: 2}
+    Line:
+      m_TableReference:
+        m_TableCollectionName: GUID:3c4f47d3b547fdc488fa50b64d157e8d
+      m_TableEntryReference:
+        m_KeyId: 1607908986880
+        m_Key: 
+      m_FallbackState: 0
+    Audio: {fileID: 0}
+  _dialogueType: 0

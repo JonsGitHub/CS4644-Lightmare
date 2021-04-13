@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: ForestLines Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: ForestLines
+  m_TableCollectionNameGuidString: 3c4f47d3b547fdc488fa50b64d157e8d
+  m_Entries:
+  - m_Id: 774421090304
+    m_Key: Town_Crier_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 678648352768
+    m_Key: Town_Crier_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1323732307968
+    m_Key: Sandy_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1279612424192
+    m_Key: Sandy_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1607908986880
+    m_Key: Ronald_Line_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1578322366464
+    m_Key: Ronald_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1398600634368
+    m_Key: Ronald_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12970364928
+    m_Key: Peter_Line
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34557203582976
+    m_Key: Gravekeeper_Line_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825742594048
+    m_Key: Natalie_Line
+    m_Metadata:
+      m_Items: []
+  - m_Id: 976339079168
+    m_Key: Markus_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887373697024
+    m_Key: Markus_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363121016832
+    m_Key: Mandy_Line
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19902166994944
+    m_Key: Lumberjack_Line_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18831667367936
+    m_Key: Lumberjack_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18529002196992
+    m_Key: Lumberjack_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 557697208320
+    m_Key: Jeremiah_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 213135134720
+    m_Key: Jeremiah_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18266312937472
+    m_Key: Hunter_Line
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34377095974912
+    m_Key: Gravekeeper_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19213621661696
+    m_Key: Gravekeeper_Line_Extra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18983589253120
+    m_Key: Gravekeeper_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171259203584
+    m_Key: Francine_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99809234944
+    m_Key: Francine_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 612881666048
+    m_Key: Barik_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 490571567104
+    m_Key: Barik_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1105511059456
+    m_Key: Andy_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1024141561856
+    m_Key: Andy_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37636032434176
+    m_Key: Rufus_Line
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176347877478400
+    m_Key: Developer_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176517616766976
+    m_Key: Developer_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176797087436800
+    m_Key: Developer_Line_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176911004733440
+    m_Key: Developer_Line_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177144371613696
+    m_Key: Developer_Line_3
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1618164959467

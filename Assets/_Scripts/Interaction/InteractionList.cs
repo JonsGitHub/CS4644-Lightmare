@@ -36,4 +36,24 @@ public class InteractionList
     public void Remove(Interaction interaction) => _interactions.Remove(interaction);
 
     public void Remove(GameObject gameObject) => _interactions.RemoveAll(x => x.interactableObject == gameObject);
+
+    public void CleanNull()
+    {
+        Debug.Log("Cleaning Null");
+
+        foreach(var asd in _interactions)
+        {
+            if (asd.interactableObject == null)
+            {
+                Debug.Log("Found a null");
+            }
+            else
+            {
+                Debug.Log("Found " + asd.interactableObject.name);
+            }
+        }
+
+
+        _interactions = _interactions.Where(x => x.interactableObject != null).ToList();
+    }
 }

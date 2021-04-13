@@ -45,7 +45,7 @@ public class DialogueManager : MonoBehaviour
 	{
 		BeginDialogueData(dialogueDataSO);
 		var current = _currentDialogue.DialogueLines[_counter];
-		DisplayDialogueLine(current.Line, dialogueDataSO.Actor, current.Audio);
+		DisplayDialogueLine(current.Line, current.Actor, current.Audio);
 	}
 
 	/// <summary>
@@ -85,7 +85,8 @@ public class DialogueManager : MonoBehaviour
 
 		if (!_reachedEndOfDialogue)
 		{
-			DisplayDialogueLine(_currentDialogue.DialogueLines[_counter].Line, _currentDialogue.Actor);
+			var current = _currentDialogue.DialogueLines[_counter];
+			DisplayDialogueLine(current.Line, current.Actor);
 		}
 		else
 		{

@@ -7,12 +7,16 @@ public class StoryPuzzle : MonoBehaviour
 {
     private List<StoryColumn> _storyColumns;
 
+    [Header("Broadcasting on channels")]
+    [SerializeField] private BoolEventChannelSO _unlockingChannel = default;
+
     [System.Serializable]
     public class Story
     {
         public List<string> List = new List<string>();
     }
 
+    [Header("Story Data")]
     public List<Story> _stories;
 
     private int _choice = 0;
@@ -43,23 +47,29 @@ public class StoryPuzzle : MonoBehaviour
     public void SelectColumn(StoryColumn column, string text)
     {
         _currentSelection.Add(text);
-        column.SetNumber(_currentSelection.Count);
 
         if (_currentSelection.Count == 4)
         {
             if (_story.SequenceEqual(_currentSelection))
             {
                 // Correct
-                Debug.Log("Correct!");
-                GetComponentInChildren<StoryResetColumn>().Disable(); // Disable resetting column
+                GetComponentInChildren<StoryResetColumn>()?.Disable(); // Disable resetting column
+                _unlockingChannel.RaiseEvent(true);
+
+                // Disable all of the story columns
+                foreach (var col in _storyColumns)
+                {
+                    col.tag = "Untagged";
+                }
             }
             else
             {
                 // Incorrect
-                Debug.Log("Incorrect!");
                 ResetPuzzle();
+                return;
             }
         }
+        column.SetNumber(_currentSelection.Count);
     }
 
     private void SetupPuzzle()

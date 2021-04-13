@@ -56,6 +56,10 @@ public class UIInteractionManager : MonoBehaviour
                     {
 						item.FillInteractionPanel(_listInteractions.Find(x => x.InteractionType == type), _list[i].interactableObject.name);
                     }
+					else if (_list[i].type.Equals(InteractionType.Talk))
+                    {
+						item.FillInteractionPanel(_listInteractions.Find(x => x.InteractionType == type), _list[i].interactableObject.GetComponent<StepController>().Name);
+                    }
 					else
                     {
 						item.FillInteractionPanel(_listInteractions.Find(x => x.InteractionType == type));

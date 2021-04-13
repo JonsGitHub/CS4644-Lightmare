@@ -182,6 +182,7 @@ MonoBehaviour:
     type: 2}
   _onInteractionEnded: {fileID: 11400000, guid: e9aa3ce5e19bf8c469dd03b06e5d7b48,
     type: 2}
+  _removeInteraction: {fileID: 11400000, guid: 9502d5421cc23234481b6197f1f05f10, type: 2}
 --- !u!114 &4534137772703931834
 MonoBehaviour:
   m_ObjectHideFlags: 0

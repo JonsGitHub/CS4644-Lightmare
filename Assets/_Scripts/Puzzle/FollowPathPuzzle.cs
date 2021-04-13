@@ -9,6 +9,7 @@ public class FollowPathPuzzle : MonoBehaviour
     [SerializeField] private Transform _restartPoint;
     [SerializeField] private float _showDelay;
     [SerializeField] private GameObject _blocker;
+    [SerializeField] private FollowPathInterface _interface;
 
     private Tile[,] _potentialPoints;
 
@@ -23,7 +24,7 @@ public class FollowPathPuzzle : MonoBehaviour
     private int _choice = 0;
     private List<Vector2Int> _path => _pathes[_choice].List;
 
-    public List<(MeshRenderer, Color)> _currentPath = new List<(MeshRenderer, Color)>();
+    public HashSet<Tile> _currentPath = new HashSet<Tile>();
 
     public void Start()
     {
@@ -35,19 +36,6 @@ public class FollowPathPuzzle : MonoBehaviour
         FindPoints();
 
         _choice = Random.Range(0, _pathes.Count - 1);
-
-        //var total = 0;
-        //for (int i = 0; i < _dimensions.x; ++i)
-        //{
-        //    for (int j = 0; j < _dimensions.y; ++j)
-        //    {
-        //        if (_potentialPoints[i,j] != null)
-        //        {
-        //            total++;
-        //        }
-        //    }
-        //}
-        //Debug.Log(total);
     }
 
     public void ShowPath()
@@ -58,49 +46,50 @@ public class FollowPathPuzzle : MonoBehaviour
     private IEnumerator LightUpPath(float delay)
     {
         _blocker.SetActive(true);
-        GetComponentInChildren<FollowPathInterface>()?.Disable();
+        _interface.Disable();
 
-        Stack<(MeshRenderer, Color)> tiles = new Stack<(MeshRenderer, Color)>();
-        
-        foreach(var coord in _path)
+    #if UNITY_EDITOR
+        if (_potentialPoints == null)
+            yield return null;
+    #endif
+
+        for (int i = 0; i < _path.Count; ++i)
         {
-            MeshRenderer renderer = null;
-            if ((bool)_potentialPoints[coord.x, coord.y]?.TryGetComponent(out renderer))
+            if (i > 1)
             {
-                tiles.Push((renderer, renderer.material.color));
-
-                renderer.material.color = Color.green;
-                yield return new WaitForSeconds(delay);
+                _potentialPoints[_path[i - 2].x, _path[i - 2].y].FadeOutIndicator();
             }
+            _potentialPoints[_path[i].x, _path[i].y].FadeInIndicator();
+            yield return new WaitForSeconds(delay);
         }
+        _potentialPoints[_path[_path.Count - 2].x, _path[_path.Count - 2].y].FadeOutIndicator();
+        yield return new WaitForSeconds(delay);
 
-        while(tiles.Count > 0)
-        {
-            (var renderer, var originalColor) = tiles.Pop();
-            renderer.material.color = originalColor;
-        }
+        _potentialPoints[_path[_path.Count - 1].x, _path[_path.Count - 1].y].FadeOutIndicator();
+        yield return new WaitForSeconds(delay);
 
-        GetComponentInChildren<FollowPathInterface>()?.Enable();
+        _interface.Enable();
         _blocker.SetActive(false);
     }
 
-    public void StepOnTile(Tile tile, GameObject player)
+    public bool StepOnTile(Tile tile, GameObject player)
     {
-        var renderer = tile.gameObject.GetComponent<MeshRenderer>();
-        _currentPath.Add((renderer, renderer.material.color));
-        
         if (_path.Contains(new Vector2Int(tile.X, tile.Y)))
         {
-            renderer.material.color = Color.green;
+            if (_currentPath.Add(tile) && _currentPath.Count == _path.Count)
+            {
+                _interface.Disable();
+            }
+            return true;
         }
         else
         {
-            renderer.material.color = Color.red;
             PlayerController _player;
             if (player.TryGetComponent(out _player))
             {
                 StartCoroutine(SendPlayerBack(_player));
             }
+            return false;
         }
     }
 

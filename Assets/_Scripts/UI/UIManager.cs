@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private GameObject PauseMenu = default;
 	[SerializeField] private GameObject SettingsMenu = default;
-	[SerializeField] private GameObject InGameScreen = default;
 
 	[SerializeField] private UIDialogueManager _dialogueController = default;
 	[SerializeField] private UIInteractionManager _interactionPanel = default;
@@ -41,7 +40,6 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
 
 	[Header("Interaction Events")]
-	//[SerializeField] private VoidEventChannelSO _onInteractionEndedEvent = default; //TODO: Do we need?
 	[SerializeField] private InteractionUIEventChannelSO _setInteractionEvent = default;
 	[SerializeField] private BoolEventChannelSO _requestUpdateInteraction = default;
 
@@ -52,13 +50,11 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private GameSceneSO[] _menuToLoad = default;
 	[SerializeField] private LoadEventChannelSO _loadMenu = default;
 
+	[Header("Broadcasting on")]
+	[SerializeField] private ScreenStateEventChannelSO _screenEventChannel;
+
 	private List<Ui3D> Uis = new List<Ui3D>();
 	private Stack<GameObject> ViewStack = new Stack<GameObject>();
-
-    private void Awake()
-    {
-		InGameScreen.SetActive(false);
-	}
 
 	private void OnEnable()
 	{
@@ -137,7 +133,7 @@ public class UIManager : MonoBehaviour
 
 	private void GatherPlayerInformation(Transform transform)
     {
-		InGameScreen.SetActive(true);
+		_screenEventChannel?.RaiseEvent(ScreenState.Game);
 
 		var playerDamageable = _playerTransformAnchor.Transform.GetComponent<Damageable>();
 		_playerHealthBar.MaxHealth = playerDamageable.MaxHealth;
