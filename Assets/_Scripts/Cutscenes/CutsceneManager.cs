@@ -12,6 +12,9 @@ public class CutsceneManager : MonoBehaviour
 	[SerializeField] private DialogueLineChannelSO _playDialogueEvent = default;
 	[SerializeField] private VoidEventChannelSO _pauseTimelineEvent = default;
 
+	[Header("Broadcasting on")]
+	[SerializeField] private ScreenStateEventChannelSO _screenEventChannel;
+
 	private CutsceneController _activeCutscene;
 	private bool _isPaused;
 
@@ -30,21 +33,15 @@ public class CutsceneManager : MonoBehaviour
 	{
 		if (_playCutsceneEvent != null)
 		{
-
 			_playCutsceneEvent.OnEventRaised += PlayCutscene;
-
 		}
 		if (_playDialogueEvent != null)
 		{
-
 			_playDialogueEvent.OnEventRaised += PlayDialogueFromClip;
-
 		}
 		if (_pauseTimelineEvent != null)
 		{
-
 			_pauseTimelineEvent.OnEventRaised += PauseTimeline;
-
 		}
 	}
 	void PlayCutscene(CutsceneController activeCutscene)
@@ -57,6 +54,8 @@ public class CutsceneManager : MonoBehaviour
 		_isPaused = false;
 		_activeCutscene.Director.Play();
 		_activeCutscene.Director.stopped += HandleDirectorStopped;
+
+		_screenEventChannel?.RaiseEvent(ScreenState.Cutscene);
 	}
 
 	void CutsceneEnded()
@@ -66,6 +65,7 @@ public class CutsceneManager : MonoBehaviour
 
 		_activeCutscene.CleanUp(); // Clean up the cutscene after playing.
 
+		_screenEventChannel?.RaiseEvent(ScreenState.EndCutscene);
 		_inputReader.EnableGameplayInput();
 		_dialogueManager.DialogueEndedAndCloseDialogueUI();
 	}

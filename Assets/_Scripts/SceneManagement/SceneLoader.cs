@@ -38,7 +38,7 @@ public class SceneLoader : MonoBehaviour
 	private SceneInstance _gameplayManagerSceneInstance = new SceneInstance();
 
 	private float currentLoadTime = 0;
-	private const float MinLoadTime = 2;
+	private const float MinLoadTime = 5;
 	
 	private void OnEnable()
 	{
