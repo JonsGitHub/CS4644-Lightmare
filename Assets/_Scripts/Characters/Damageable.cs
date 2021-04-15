@@ -63,9 +63,13 @@ public class Damageable : MonoBehaviour
 			healthbar.Health = _currentHealth;
 
 		if (_playerDamagedEvent)
-        {
 			_playerDamagedEvent.RaiseEvent(_currentHealth);
-        }
+
+		if (TryGetComponent(out Aggressor aggressor))
+		{
+			// TODO: Find a better way to associate an attack with the attacker
+			aggressor.Attacked(GameObject.FindGameObjectWithTag("Player")); // Since friendly fire is off
+		}
 
 		GetHit = true;
 		if (_currentHealth <= 0)
@@ -85,12 +89,8 @@ public class Damageable : MonoBehaviour
 	private void OnDestroy()
 	{
 		if (_3dUIChannelEvent && healthbar)
-		{
 			_3dUIChannelEvent.RaiseEvent(healthbar, true);
-		}
 		if (_destroyedChannelEvent)
-        {
 			_destroyedChannelEvent.RaiseEvent(true);
-        }
 	}
 }

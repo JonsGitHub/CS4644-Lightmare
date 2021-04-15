@@ -8,6 +8,9 @@ public class Aggressor : MonoBehaviour
 
 	public void OnAlertTriggerChange(bool entered, GameObject who)
 	{
+		if (isPlayerInAlertZone)
+			return; // Attacked outside of alert zone so ignore entering
+
 		isPlayerInAlertZone = entered;
 
 		if (entered && who.TryGetComponent(out Damageable d))
@@ -27,6 +30,19 @@ public class Aggressor : MonoBehaviour
 
 		//No need to set the target. If we did, we would get currentTarget to null even if
 		//a target exited the Attack zone (inner) but stayed in the Alert zone (outer).
+	}
+
+	public void Attacked(GameObject who)
+    {
+		if (isPlayerInAlertZone)
+			return;
+
+		isPlayerInAlertZone = true;	
+		if (who.TryGetComponent(out Damageable damageable))
+        {
+			currentTarget = damageable;
+			currentTarget.OnDie += OnTargetDead;
+		}
 	}
 
 	private void OnTargetDead()

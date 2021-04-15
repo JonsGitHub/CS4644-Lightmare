@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 464974}
   - component: {fileID: 3339794}
   - component: {fileID: 2371986}
+  - component: {fileID: 3918269768290992694}
   m_Layer: 0
   m_Name: Flower-2-Yellow
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126406}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.086, y: 0, z: -7.907}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,3 +80,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!205 &3918269768290992694
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126406}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.2290631, y: 0.29522803, z: -0.06849477}
+  m_Size: 0.58384186
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.02170595
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2371986}
+  m_Enabled: 1

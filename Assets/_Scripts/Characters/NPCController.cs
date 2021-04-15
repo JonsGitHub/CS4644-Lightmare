@@ -39,7 +39,15 @@ public class NPCController : MonoBehaviour
 			_channel.OnEventRaised += Respond;
 	}
 
-	private void OnDestroy()
+    private void OnDisable()
+    {
+		if (_3dUIChannelEvent && label)
+		{
+			_3dUIChannelEvent.RaiseEvent(label, true);
+		}
+	}
+
+    private void OnDestroy()
 	{
 		if (_3dUIChannelEvent && label)
 		{

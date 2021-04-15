@@ -565,7 +565,11 @@ MonoBehaviour:
   _spawnRate: 4
   _spawnRadius: 3
   _maxEnemy: 2
-  _entity: {fileID: 6113378936606230397, guid: 68cd6605b5b6885409bce537b11aece1, type: 3}
+  _entityReference:
+    m_AssetGUID: ae7dfecf65f5a6149808d928f0153ab5
+    m_SubObjectName: 
+    m_SubObjectType: 
+  _overrideName: Slime
 --- !u!1 &427929467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,8 +1187,10 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _playOnStart: 0
+  _playOnSceneStart: 0
   _playOnce: 0
+  _reposition: {fileID: 0}
+  _sceneReadyEventChannel: {fileID: 0}
   _playCutsceneEvent: {fileID: 11400000, guid: a75f2f1125429c64c94ab5314e78deaa, type: 2}
 --- !u!1 &772605273
 GameObject:

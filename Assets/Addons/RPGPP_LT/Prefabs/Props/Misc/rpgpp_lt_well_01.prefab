@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 33435424869549302}
   - component: {fileID: 23950719770064322}
   - component: {fileID: 3783509160085945935}
-  m_Layer: 0
+  - component: {fileID: 1802024393281285501}
+  m_Layer: 9
   m_Name: rpgpp_lt_well_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4792142742180158
 Transform:
@@ -94,3 +95,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 54708add4b909204cb861ed2bd2cfcdf, type: 3}
+--- !u!205 &1802024393281285501
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649361158825916}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.1599729, y: 1.8448812, z: -0.024289846}
+  m_Size: 3.705351
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.04855198
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23950719770064322}
+  m_Enabled: 1

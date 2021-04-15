@@ -16,8 +16,7 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 3c4f47d3b547fdc488fa50b64d157e8d, type: 2}
   m_Metadata:
-    m_Items:
-    - id: 0
+    m_Items: []
   m_TableData:
   - m_Id: 12970364928
     m_Localized: "These darn neighbors\u2026they hear about ONE precious gem and
@@ -124,8 +123,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 18983589253120
-    m_Localized: You here for the crystal as well? I'd stay away, it's unsettling
-      the guests...
+    m_Localized: You here for the crystal as well? I'd stay away, ever since that
+      thing arrived things have been weird...
     m_Metadata:
       m_Items: []
   - m_Id: 19213621661696
@@ -172,11 +171,10 @@ MonoBehaviour:
     m_Localized: We have other features in the works and levels but we don't want
       to give it all away.
     m_Metadata:
-      m_Items:
-      - id: 0
+      m_Items: []
+  - m_Id: 1378415402803200
+    m_Localized: I had the strangest dream...really gotta lay off the hooch....
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
-    00000000:
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 001058a31ca10000
