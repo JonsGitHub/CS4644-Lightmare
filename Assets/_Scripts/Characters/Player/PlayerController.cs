@@ -113,7 +113,6 @@ public class PlayerController : MonoBehaviour
                 _closestEnemyTransform.isSet = false;
             }
         }
-
         RecalculateMovement();
     }
 

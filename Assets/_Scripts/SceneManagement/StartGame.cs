@@ -10,6 +10,14 @@ public class StartGame : MonoBehaviour
 	public GameSceneSO[] locationsToLoad;
 	public bool showLoadScreen;
 
+	public void OnContinueButtonPress()
+    {
+		PlayerData.Load(); // Load in previous player data if it exists
+
+		// Should load last scene played
+		//onPlayButtonPress.RaiseEvent(locationsToLoad, showLoadScreen);
+	}
+
 	public void OnPlayButtonPress()
 	{
 		onPlayButtonPress.RaiseEvent(locationsToLoad, showLoadScreen);

@@ -666,7 +666,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &158304176
 BoxCollider:
@@ -891,7 +890,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &176291342
 BoxCollider:
@@ -1189,7 +1187,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &203019468
 BoxCollider:
@@ -1499,7 +1496,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &249126970
 BoxCollider:
@@ -2329,7 +2325,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &473893834
 BoxCollider:
@@ -2618,7 +2613,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &542450122
 BoxCollider:
@@ -2729,7 +2723,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &620229357
 BoxCollider:
@@ -3315,7 +3308,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &798336915
 BoxCollider:
@@ -3649,7 +3641,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &863874836
 BoxCollider:
@@ -3790,7 +3781,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &899126900
 BoxCollider:
@@ -4166,7 +4156,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &971072029
 BoxCollider:
@@ -5235,7 +5224,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1147054067
 BoxCollider:
@@ -5729,7 +5717,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1180208063
 BoxCollider:
@@ -5840,7 +5827,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1204055498
 BoxCollider:
@@ -6074,7 +6060,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1230477924
 BoxCollider:
@@ -11248,7 +11233,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1290069175
 BoxCollider:
@@ -11359,7 +11343,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1316837823
 BoxCollider:
@@ -11470,7 +11453,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1321985479
 BoxCollider:
@@ -12125,7 +12107,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1608739082
 BoxCollider:
@@ -12452,41 +12433,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c79a3b4ce7b8e643bfbfaaba6950502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dimensions: {x: 5, y: 5}
-  _startPoint: {x: 0, y: 2}
   _restartPoint: {fileID: 1104816607}
   _showDelay: 0.4
   _blocker: {fileID: 2117936068}
   _interface: {fileID: 0}
   _pathes:
-  - List:
-    - {x: 0, y: 2}
-    - {x: 1, y: 2}
-    - {x: 1, y: 1}
-    - {x: 1, y: 0}
-    - {x: 2, y: 0}
-    - {x: 3, y: 0}
-    - {x: 3, y: 1}
-    - {x: 3, y: 2}
-    - {x: 4, y: 2}
-  - List:
-    - {x: 0, y: 2}
-    - {x: 1, y: 2}
-    - {x: 1, y: 3}
-    - {x: 1, y: 4}
-    - {x: 2, y: 4}
-    - {x: 3, y: 4}
-    - {x: 3, y: 3}
-    - {x: 3, y: 2}
-    - {x: 4, y: 2}
-  - List:
-    - {x: 0, y: 2}
-    - {x: 1, y: 2}
-    - {x: 1, y: 1}
-    - {x: 2, y: 1}
-    - {x: 3, y: 1}
-    - {x: 3, y: 2}
-    - {x: 4, y: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1716002260
 GameObject:
   m_ObjectHideFlags: 0
@@ -12628,7 +12582,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1758571042
 BoxCollider:
@@ -12739,7 +12692,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1819451950
 BoxCollider:
@@ -12850,7 +12802,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!23 &1843065534
 MeshRenderer:
@@ -17989,7 +17940,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1918616522
 BoxCollider:
@@ -18980,7 +18930,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &2065891518
 BoxCollider:
@@ -19457,7 +19406,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &2146497330
 BoxCollider:

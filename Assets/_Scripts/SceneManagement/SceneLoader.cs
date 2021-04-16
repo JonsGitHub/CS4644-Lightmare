@@ -106,6 +106,13 @@ public class SceneLoader : MonoBehaviour
 	/// </summary>
 	private void UnloadPreviousScenes()
 	{
+		var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Damageable>();
+		if (player)
+        {
+			PlayerData.SetHealth(player.CurrentHealth);
+			PlayerData.Save();
+        }
+		
 		var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
 		if (controller)
 		{

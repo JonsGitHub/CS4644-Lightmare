@@ -18,10 +18,12 @@ public class IsSlidingCondition : Condition
 
 	protected override bool Statement()
 	{
-		if (_player.lastHit == null)
-			return false;
+		return false;
 
-		float currentSlope = Vector3.Angle(Vector3.up, _player.lastHit.normal);
-		return (currentSlope >= _characterController.slopeLimit);
+		//if (_player.lastHit == null)
+		//	return false;
+
+		//float currentSlope = Vector3.Angle(Vector3.up, _player.lastHit.normal);
+		//return (currentSlope >= _characterController.slopeLimit);
 	}
 }

@@ -12,13 +12,20 @@ public class FollowPathPuzzle : MonoBehaviour
     public List<GameObject> _pathes;
 
     private int _choice = 0;
+    private bool _isSolved = false;
+
     private GameObject _path => _pathes[_choice];
 
     public HashSet<Tile> _currentPath = new HashSet<Tile>();
 
+    public bool IsSolved => _isSolved;
+    public int Choice => _choice;
+
     public void Awake()
     {
-        foreach(var path in _pathes)
+        _isSolved = false;
+
+        foreach (var path in _pathes)
             path.SetActive(false);
     }
 
@@ -27,6 +34,24 @@ public class FollowPathPuzzle : MonoBehaviour
         _blocker.SetActive(true);
         _choice = Random.Range(0, _pathes.Count - 1);
         _path.SetActive(true);
+    }
+
+    public void SolvePath(int choice)
+    {
+        foreach (var path in _pathes)
+            path.SetActive(false);
+
+        _isSolved = true;
+        _choice = choice;
+        _blocker.SetActive(false);
+
+        // Puzzle is solved no need to show the path any longer - instead should now show the covered graveyard state.
+        GameObject.Find("Graveyard").GetComponent<Animator>().Play("NormalState");
+        GameObject.Find("GraveyardClosingCutsceneTrigger").SetActive(false);
+
+        GameObject.Find("NPC_Isaac_ROOTED").SetActive(false);
+        GameObject.Find("NPC_Dog_ROOTED").SetActive(false);
+        GameObject.Find("GraveyardCutsceneTrigger").SetActive(false);
     }
 
     public void ShowPath()
@@ -61,6 +86,7 @@ public class FollowPathPuzzle : MonoBehaviour
         if (_currentPath.Add(tile) && _currentPath.Count == _path.transform.childCount)
         {
             _interface.Disable();
+            _isSolved = true;
         }
     }
 

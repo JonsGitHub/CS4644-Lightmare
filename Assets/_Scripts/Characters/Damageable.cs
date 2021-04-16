@@ -55,6 +55,14 @@ public class Damageable : MonoBehaviour
 		}
 	}
 
+	public void SetHealth(int health)
+    {
+		_currentHealth = health;
+
+		if (_playerDamagedEvent)
+			_playerDamagedEvent.RaiseEvent(_currentHealth);
+	}
+
     public void ReceiveAnAttack(int damage)
 	{
 		_currentHealth -= damage;
@@ -79,7 +87,7 @@ public class Damageable : MonoBehaviour
 			{
 				OnDie.Invoke();
 			}
-			else
+			else if (!TryGetComponent(out StateMachine.StateMachine machine)) // Destroy it if it most likely won't have a statemachine to perform cleanup
             {
 				Destroy(gameObject);
             }

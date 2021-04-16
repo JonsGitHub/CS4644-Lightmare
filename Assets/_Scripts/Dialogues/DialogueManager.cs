@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
 	//	[SerializeField] private ChoiceBox _choiceBox; // TODO: Demonstration purpose only. Remove or adjust later.
 
 	[SerializeField] private InputReader _inputReader = default;
+	[SerializeField] private CutsceneManager _cutsceneManager = default;
+
 	private int _counter = 0;
 	private bool _reachedEndOfDialogue { get => _counter >= _currentDialogue.DialogueLines.Count; }
 	
@@ -149,7 +151,14 @@ public class DialogueManager : MonoBehaviour
 			_endDialogue.RaiseEvent(_currentDialogue);
 		if (_closeDialogueUIEvent != null)
 			_closeDialogueUIEvent.RaiseEvent();
+
 		_inputReader.advanceDialogueEvent -= OnAdvance;
-		_inputReader.EnableGameplayInput();
+
+
+		if (!_cutsceneManager.IsCutscenePlaying)
+        {
+			Debug.Log("Re enabling Gameplay input");
+			_inputReader.EnableGameplayInput();
+        }
 	}
 }

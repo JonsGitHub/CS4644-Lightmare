@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dying
   m_EditorClassIdentifier: 
   _actions:
-  - {fileID: 11400000, guid: f109966e8a84b2b47bc573b149d51f7a, type: 2}
+  - {fileID: 11400000, guid: 9682f1324cbdce545bc21eff164dd9db, type: 2}
   - {fileID: 11400000, guid: 67b9d32eee9327447afe5f21a87cd69e, type: 2}
   - {fileID: 11400000, guid: b496f9ef5d4d53b4d8c91250c40f9126, type: 2}

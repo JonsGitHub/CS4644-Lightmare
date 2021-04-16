@@ -79,6 +79,10 @@ public class SpawnSystem : MonoBehaviour
 
 		_playerTransformAnchor.Transform = playerInstance.transform;
 		_playerInstantiatedChannel.RaiseEvent(lookAtTransform); // The CameraSystem will pick this up to frame the player
+
+		// Set Player Health to saved health
+		if (PlayerData.CurrentHealth != 0)
+			playerInstance.GetComponent<Damageable>()?.SetHealth(PlayerData.CurrentHealth);
 	}
 
 	private Transform GetSpawnLocation(int index, Transform[] spawnLocations)

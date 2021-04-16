@@ -17,8 +17,9 @@ public class CutsceneManager : MonoBehaviour
 
 	private CutsceneController _activeCutscene;
 	private bool _isPaused;
+	private bool _isPlaying;
 
-	bool IsCutscenePlaying => _activeCutscene.Director.playableGraph.GetRootPlayable(0).GetSpeed() != 0d;
+	public bool IsCutscenePlaying => _isPlaying;
 
 	private void OnEnable()
 	{
@@ -29,6 +30,7 @@ public class CutsceneManager : MonoBehaviour
 	{
 		_inputReader.advanceDialogueEvent -= OnAdvance;
 	}
+
 	private void Start()
 	{
 		if (_playCutsceneEvent != null)
@@ -44,8 +46,10 @@ public class CutsceneManager : MonoBehaviour
 			_pauseTimelineEvent.OnEventRaised += PauseTimeline;
 		}
 	}
+
 	void PlayCutscene(CutsceneController activeCutscene)
 	{
+		_isPlaying = true;
 		_inputReader.EnableDialogueInput();
 
 		_activeCutscene = activeCutscene;
@@ -60,6 +64,7 @@ public class CutsceneManager : MonoBehaviour
 
 	void CutsceneEnded()
 	{
+
 		if (_activeCutscene != null)
 			_activeCutscene.Director.stopped -= HandleDirectorStopped;
 
@@ -68,6 +73,8 @@ public class CutsceneManager : MonoBehaviour
 		_screenEventChannel?.RaiseEvent(ScreenState.EndCutscene);
 		_inputReader.EnableGameplayInput();
 		_dialogueManager.DialogueEndedAndCloseDialogueUI();
+		
+		_isPlaying = false;
 	}
 
 	private void HandleDirectorStopped(PlayableDirector director) => CutsceneEnded();

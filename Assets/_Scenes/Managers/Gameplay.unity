@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
+  _cutsceneManager: {fileID: 766906347}
   _audioConfig: {fileID: 11400000, guid: 8a59dcf0ac5aeaa439cef52b24d78d36, type: 2}
   _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
   _openUIDialogueEvent: {fileID: 11400000, guid: 4969c4e8aa8d1bd42a832aa49d6b3dcf,
@@ -1237,7 +1238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1383441727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3390,7 +3391,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1547494553243450154}
   SettingsMenu: {fileID: 8103206826956033434}
-  InGameScreen: {fileID: 3121504612491520394}
   _dialogueController: {fileID: 1383441730}
   _interactionPanel: {fileID: 6801858167747782733}
   _inputReader: {fileID: 11400000, guid: 6cab75fbfb2afce478881a78a241246d, type: 2}
