@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1117607736
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1117607737}
-  m_Layer: 12
-  m_Name: LabelPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1117607737
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117607736}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.92, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8194031122799487833}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7462797231790559708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1807428610, guid: 68cd6605b5b6885409bce537b11aece1, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1596004274998901381, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
@@ -175,7 +145,7 @@ PrefabInstance:
         type: 3}
       propertyPath: LabelPosition
       value: 
-      objectReference: {fileID: 1117607737}
+      objectReference: {fileID: 0}
     - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: LabelTextColor.b
@@ -252,7 +222,7 @@ PrefabInstance:
     - target: {fileID: 6113378936606230397, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: m_Name
-      value: Slime
+      value: SlimeCritter_Green
       objectReference: {fileID: 0}
     - target: {fileID: 6113378936606230397, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
@@ -551,12 +521,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68cd6605b5b6885409bce537b11aece1, type: 3}
---- !u!4 &8194031122799487833 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1596004274998901381, guid: 68cd6605b5b6885409bce537b11aece1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7462797231790559708}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3694705734833936036 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6113378936606230392, guid: 68cd6605b5b6885409bce537b11aece1,

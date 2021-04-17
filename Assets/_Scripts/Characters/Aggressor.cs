@@ -8,7 +8,7 @@ public class Aggressor : MonoBehaviour
 
 	public void OnAlertTriggerChange(bool entered, GameObject who)
 	{
-		if (isPlayerInAlertZone)
+		if (entered && isPlayerInAlertZone)
 			return; // Attacked outside of alert zone so ignore entering
 
 		isPlayerInAlertZone = entered;
@@ -34,7 +34,7 @@ public class Aggressor : MonoBehaviour
 
 	public void Attacked(GameObject who)
     {
-		if (isPlayerInAlertZone)
+		if (who == null || isPlayerInAlertZone)
 			return;
 
 		isPlayerInAlertZone = true;	

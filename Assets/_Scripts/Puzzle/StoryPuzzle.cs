@@ -9,6 +9,7 @@ public class StoryPuzzle : MonoBehaviour
 
     [Header("Broadcasting on channels")]
     [SerializeField] private BoolEventChannelSO _unlockingChannel = default;
+    [SerializeField] private VoidEventChannelSO _failedChannel = default;
 
     [System.Serializable]
     public class Story
@@ -20,19 +21,50 @@ public class StoryPuzzle : MonoBehaviour
     public List<Story> _stories;
 
     private int _choice = 0;
+    private int _seed = 0;
+    private bool _solved = false;
     private List<string> _story => _stories[_choice].List;
 
     private List<string> _currentSelection = new List<string>();
+
+    public int Choice => _choice;
+    public int Seed => _seed;
+    public bool Solved => _solved;
 
     void Start()
     {
         _storyColumns = GetComponentsInChildren<StoryColumn>().ToList();
         Assert.IsTrue(_storyColumns.Count == 4);
 
-        _choice = Random.Range(0, _stories.Count - 1);
+        _choice = Random.Range(0, _stories.Count);
 
         // Setup break up story onto columns
         SetupPuzzle();
+    }
+
+    public void SolvePuzzle(int choice, int seed)
+    {
+        _solved = true;
+        _choice = choice;
+        SetupPuzzle(seed);
+
+        for (int i = 0; i < 4; ++i)
+        {
+            foreach (var col in _storyColumns)
+            {
+                if (col.Text.Equals(_story[i]))
+                {
+                    col.SetNumber(i);
+                    break;
+                }
+            }
+        }
+
+        // Puzzle is solved no need to show the path any longer - instead should now show the covered graveyard state.
+        GetComponentInChildren<StoryResetColumn>()?.Disable(); // Disable resetting column
+        foreach (var col in _storyColumns)
+            col.tag = "Untagged";
+        _unlockingChannel.RaiseEvent(true);
     }
 
     public void ResetPuzzle()
@@ -58,13 +90,14 @@ public class StoryPuzzle : MonoBehaviour
 
                 // Disable all of the story columns
                 foreach (var col in _storyColumns)
-                {
                     col.tag = "Untagged";
-                }
+
+                _solved = true;
             }
             else
             {
                 // Incorrect
+                _failedChannel?.RaiseEvent();
                 ResetPuzzle();
                 return;
             }
@@ -72,14 +105,13 @@ public class StoryPuzzle : MonoBehaviour
         column.SetNumber(_currentSelection.Count);
     }
 
-    private void SetupPuzzle()
+    private void SetupPuzzle(int seed = -1)
     {
         List<string> _shuffled = new List<string>(_story); // Copy list
 
-        //TODO: keep track of correct order for later comparison?
-
         // Version of Fisher - Yates shuffle
-        var rng = new System.Random();
+        _seed = seed == -1 ? Random.Range(0, 1000000000) : seed;
+        var rng = new System.Random(_seed);
         int n = _shuffled.Count;
         while(n > 1)
         {

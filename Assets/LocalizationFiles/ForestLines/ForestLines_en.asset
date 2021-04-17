@@ -176,5 +176,21 @@ MonoBehaviour:
     m_Localized: I had the strangest dream...really gotta lay off the hooch....
     m_Metadata:
       m_Items: []
+  - m_Id: 1805940321423360
+    m_Localized: Help! The guests ar...are...RISING!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1806310565220352
+    m_Localized: Grrrr...Bark!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1806371063861248
+    m_Localized: Oh gods not Rufus!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1807864672292864
+    m_Localized: Thanks for saving us! We are forever in your debt.
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

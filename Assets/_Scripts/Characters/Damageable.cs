@@ -94,6 +94,20 @@ public class Damageable : MonoBehaviour
 		}
 	}
 
+	public void Kill()
+    {
+		_currentHealth = 0;
+
+		if (healthbar)
+			healthbar.Health = _currentHealth;
+
+		IsDead = true;
+		if (OnDie != null)
+		{
+			OnDie.Invoke();
+		}
+	}
+
 	private void OnDestroy()
 	{
 		if (_3dUIChannelEvent && healthbar)

@@ -92,59 +92,10 @@ public class DialogueManager : MonoBehaviour
 		}
 		else
 		{
-			//if (_currentDialogue.Choices.Count > 0)
-			//{
-			//	DisplayChoices(_currentDialogue.Choices);
-			//}
-			//else
-			//{
-				DialogueEndedAndCloseDialogueUI();
-			//}
+			DialogueEndedAndCloseDialogueUI();
 		}
 	}
 
-	//private void DisplayChoices(List<Choice> choices)
-	//{
-	//	_inputReader.advanceDialogueEvent -= OnAdvance;
-	//	if (_makeDialogueChoiceEvent != null)
-	//	{
-	//		_makeDialogueChoiceEvent.OnEventRaised += MakeDialogueChoice;
-	//	}
-
-	//	if (_showChoicesUIEvent != null)
-	//	{
-	//		_showChoicesUIEvent.RaiseEvent(choices);
-	//	}
-	//}
-
-	//private void MakeDialogueChoice(Choice choice)
-	//{
-
-	//	if (_makeDialogueChoiceEvent != null)
-	//	{
-	//		_makeDialogueChoiceEvent.OnEventRaised -= MakeDialogueChoice;
-	//	}
-	//	if (choice.ActionType == ChoiceActionType.continueWithStep)
-	//	{
-	//		if (_continueWithStep != null)
-	//			_continueWithStep.RaiseEvent();
-	//		if (choice.NextDialogue != null)
-	//			DisplayDialogueData(choice.NextDialogue);
-	//	}
-	//	else
-	//	{
-	//		if (choice.NextDialogue != null)
-	//			DisplayDialogueData(choice.NextDialogue);
-	//		else
-	//			DialogueEndedAndCloseDialogueUI();
-	//	}
-	//}
-
-	void DialogueEnded()
-	{
-		if (_endDialogue != null)
-			_endDialogue.RaiseEvent(_currentDialogue);
-	}
 	public void DialogueEndedAndCloseDialogueUI()
 	{
 		if (_endDialogue != null)
@@ -154,11 +105,7 @@ public class DialogueManager : MonoBehaviour
 
 		_inputReader.advanceDialogueEvent -= OnAdvance;
 
-
 		if (!_cutsceneManager.IsCutscenePlaying)
-        {
-			Debug.Log("Re enabling Gameplay input");
 			_inputReader.EnableGameplayInput();
-        }
 	}
 }

@@ -32,7 +32,7 @@ public class FollowPathPuzzle : MonoBehaviour
     public void Start()
     {
         _blocker.SetActive(true);
-        _choice = Random.Range(0, _pathes.Count - 1);
+        _choice = Random.Range(0, _pathes.Count);
         _path.SetActive(true);
     }
 

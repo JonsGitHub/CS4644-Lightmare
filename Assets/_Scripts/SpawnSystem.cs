@@ -67,7 +67,12 @@ public class SpawnSystem : MonoBehaviour
 		Transform spawnLocation = GetSpawnLocation(spawnIndex, _spawnLocations);
 		PlayerController playerInstance = InstantiatePlayer(_playerPrefab, spawnLocation);
 
-		var lookAtTransform = playerInstance.transform;
+        if (PlayerData.Triggered && !PlayerData.LastPosition.Equals(Vector3.negativeInfinity))
+        {
+            playerInstance.transform.position = PlayerData.LastPosition;
+        }
+
+        var lookAtTransform = playerInstance.transform;
 		foreach (Transform child in playerInstance.transform)
 		{
 			if (child.CompareTag("CameraTarget"))
