@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
@@ -6,6 +7,8 @@ public class Damageable : MonoBehaviour
 	[SerializeField] private HealthConfigSO _healthConfigSO;
 	[SerializeField] private GetHitEffectConfigSO _getHitEffectSO;
 	[SerializeField] private Renderer _mainMeshRenderer;
+	[SerializeField] private AssetReference _dropItemReference = null;
+	private GameObject _drop = null;
 
 	private int _currentHealth = default;
 
@@ -40,7 +43,9 @@ public class Damageable : MonoBehaviour
 		_currentHealth = _healthConfigSO.MaxHealth;
 	}
 
-    private void OnEnable()
+	private void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj) => _drop = obj.Result;
+
+	private void OnEnable()
     {
 		if (_createHealthBar)
 		{
@@ -53,9 +58,18 @@ public class Damageable : MonoBehaviour
 
 			_3dUIChannelEvent?.RaiseEvent(healthbar, false);
 		}
+
+		if (_dropItemReference.RuntimeKeyIsValid())
+			Addressables.LoadAssetAsync<GameObject>(_dropItemReference).Completed += OnLoadDone;
 	}
 
-	public void SetHealth(int health)
+    private void OnDisable()
+    {
+		if (_3dUIChannelEvent && healthbar)
+			_3dUIChannelEvent.RaiseEvent(healthbar, true);
+	}
+
+    public void SetHealth(int health)
     {
 		_currentHealth = health;
 
@@ -83,6 +97,11 @@ public class Damageable : MonoBehaviour
 		if (_currentHealth <= 0)
 		{
 			IsDead = true;
+			if (_drop)
+			{
+				Instantiate(_drop, transform.position, Quaternion.identity);
+			}
+
 			if (OnDie != null)
 			{
 				OnDie.Invoke();

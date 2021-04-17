@@ -47,11 +47,16 @@ public class FollowPathPuzzle : MonoBehaviour
 
         // Puzzle is solved no need to show the path any longer - instead should now show the covered graveyard state.
         GameObject.Find("Graveyard").GetComponent<Animator>().Play("NormalState");
-        GameObject.Find("GraveyardClosingCutsceneTrigger").SetActive(false);
+        GameObject.Find("GraveyardClosingCutsceneTrigger")?.SetActive(false);
 
-        GameObject.Find("NPC_Isaac_ROOTED").SetActive(false);
-        GameObject.Find("NPC_Dog_ROOTED").SetActive(false);
-        GameObject.Find("GraveyardCutsceneTrigger").SetActive(false);
+        GameObject.Find("NPC_Isaac_ROOTED")?.SetActive(false);
+        GameObject.Find("NPC_Dog_ROOTED")?.SetActive(false);
+        GameObject.Find("GraveyardCutsceneTrigger")?.SetActive(false);
+    }
+
+    public void SolveCurrent()
+    {
+        SolvePath(_choice);
     }
 
     public void ShowPath()

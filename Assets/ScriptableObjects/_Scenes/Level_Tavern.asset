@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f86caf1e52264b438ff60fc0601c4e4, type: 3}
+  m_Name: Level_Tavern
+  m_EditorClassIdentifier: 
+  _guid: 4531342b6ad5c73429fe1c7af42ec0e3
+  description: 
+  sceneType: 0
+  sceneReference:
+    m_AssetGUID: 5f99ce3ef685542469bbf1ac88209758
+    m_SubObjectName: 
+    m_SubObjectType: 
+  musicTrack: {fileID: 0}
+  locationName:
+    m_TableReference:
+      m_TableCollectionName: GUID:e3026e2d830d92a4eae09ac3fb51e2b6
+    m_TableEntryReference:
+      m_KeyId: 137151123456
+      m_Key: 
+    m_FallbackState: 0

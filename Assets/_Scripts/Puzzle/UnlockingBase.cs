@@ -4,9 +4,12 @@ public abstract class UnlockingBase : MonoBehaviour
 {
     [SerializeField] private int _totalLocks = default;
     private int _current = 0;
+    private bool _locked = true;
 
     [Header("Listening on channels")]
     [SerializeField] private BoolEventChannelSO _unlockingChannel = default;
+
+    [HideInInspector] public bool Locked => _locked;
 
     private void OnEnable()
     {
@@ -31,6 +34,7 @@ public abstract class UnlockingBase : MonoBehaviour
             _current++;
             if (_current == _totalLocks)
             {
+                _locked = false;
                 Unlock();
             }
         }
@@ -38,10 +42,20 @@ public abstract class UnlockingBase : MonoBehaviour
         {
             if (_current == _totalLocks)
             {
+                _locked = true;
                 Lock();
             }
             _current--;
         }
+    }
+
+    public void SetLockState(bool locked)
+    {
+        _locked = locked;
+        if (locked)
+            Lock();
+        else
+            Unlock();
     }
 
     public abstract void Lock();

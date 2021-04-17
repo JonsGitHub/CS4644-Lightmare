@@ -102,5 +102,9 @@ MonoBehaviour:
     m_Localized: Developers
     m_Metadata:
       m_Items: []
+  - m_Id: 9264021108166656
+    m_Localized: Little Girl
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

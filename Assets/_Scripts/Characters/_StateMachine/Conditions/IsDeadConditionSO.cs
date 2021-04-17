@@ -14,11 +14,12 @@ public class IsDeadCondition : Condition
 
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
-		_damageable = stateMachine.GetComponent<Damageable>();
+		if (stateMachine.TryGetComponent(out Damageable damageable))
+			_damageable = damageable;
 	}
 
 	protected override bool Statement()
 	{
-		return _damageable.IsDead;
+		return _damageable ? _damageable.IsDead : false;
 	}
 }

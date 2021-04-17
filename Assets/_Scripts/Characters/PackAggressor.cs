@@ -2,7 +2,7 @@
 
 public class PackAggressor : Aggressor
 {
-	[HideInInspector] public TransformEventChannelSO _packEventChannel = default;
+	[SerializeField] public TransformEventChannelSO _packEventChannel = default;
 
     private void OnEnable()
     {
@@ -15,6 +15,9 @@ public class PackAggressor : Aggressor
 		if (_packEventChannel)
 			_packEventChannel.OnEventRaised -= TargetEnemy;
 	}
+
+	public override void FoundTarget() { _packEventChannel.RaiseEvent(currentTarget.transform); }
+
 
 	public void TargetEnemy(Transform transform) => Attacked(transform.gameObject);
 }

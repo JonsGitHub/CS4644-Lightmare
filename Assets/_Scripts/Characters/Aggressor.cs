@@ -6,21 +6,26 @@ public class Aggressor : MonoBehaviour
 	[HideInInspector] public bool isPlayerInAttackZone;
 	public Damageable currentTarget; //The StateMachine evaluates its health when needed
 
+	public virtual void FoundTarget() { }
+
 	public void OnAlertTriggerChange(bool entered, GameObject who)
 	{
 		if (entered && isPlayerInAlertZone)
 			return; // Attacked outside of alert zone so ignore entering
 
 		isPlayerInAlertZone = entered;
-
-		if (entered && who.TryGetComponent(out Damageable d))
-		{
-			currentTarget = d;
-			currentTarget.OnDie += OnTargetDead;
-		}
-		else
-		{
-			currentTarget = null;
+		if (who.TryGetComponent(out Damageable d))
+        {
+			if (entered)
+			{
+				currentTarget = d;
+				currentTarget.OnDie += OnTargetDead;
+				FoundTarget();
+			}
+			else
+			{
+				currentTarget = null;
+			}
 		}
 	}
 
@@ -42,6 +47,7 @@ public class Aggressor : MonoBehaviour
         {
 			currentTarget = damageable;
 			currentTarget.OnDie += OnTargetDead;
+			FoundTarget();
 		}
 	}
 

@@ -20,16 +20,18 @@ public class GetHitFlashingEffectAction : StateAction
 
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
-		Damageable attackableEntity = stateMachine.GetComponent<Damageable>();
-		GetHitEffectConfigSO getHitEffectConfig = attackableEntity.GetHitEffectConfig;
+		if (stateMachine.TryGetComponent(out Damageable attackableEntity))
+        {
+			GetHitEffectConfigSO getHitEffectConfig = attackableEntity.GetHitEffectConfig;
 
-		// Take the last one if many.
-		_material = attackableEntity.MainMeshRenderer.materials[attackableEntity.MainMeshRenderer.materials.Length - 1];
-		_getHitFlashingDuration = getHitEffectConfig.GetHitFlashingDuration;
-		_getHitFlashingSpeed = getHitEffectConfig.GetHitFlashingSpeed;
-		_baseTintColor = _material.GetColor("_MainColor");
-		_innerFlashingTime = getHitEffectConfig.GetHitFlashingDuration;
-		_flashingColor = getHitEffectConfig.GetHitFlashingColor;
+			// Take the last one if many.
+			_material = attackableEntity.MainMeshRenderer.materials[attackableEntity.MainMeshRenderer.materials.Length - 1];
+			_getHitFlashingDuration = getHitEffectConfig.GetHitFlashingDuration;
+			_getHitFlashingSpeed = getHitEffectConfig.GetHitFlashingSpeed;
+			_baseTintColor = _material.GetColor("_MainColor");
+			_innerFlashingTime = getHitEffectConfig.GetHitFlashingDuration;
+			_flashingColor = getHitEffectConfig.GetHitFlashingColor;
+		}
 	}
 
 	public override void OnUpdate()
@@ -44,7 +46,7 @@ public class GetHitFlashingEffectAction : StateAction
 
 	public override void OnStateExit()
 	{
-		_material.SetColor("_MainColor", _baseTintColor);
+		_material?.SetColor("_MainColor", _baseTintColor);
 	}
 
 	public void ApplyHitEffect()
@@ -52,7 +54,7 @@ public class GetHitFlashingEffectAction : StateAction
 		if (_innerFlashingTime > 0)
 		{
 			Color tintingColor = computeGetHitTintingColor();
-			_material.SetColor("_MainColor", tintingColor);
+			_material?.SetColor("_MainColor", tintingColor);
 			_innerFlashingTime -= Time.deltaTime;
 		}
 	}

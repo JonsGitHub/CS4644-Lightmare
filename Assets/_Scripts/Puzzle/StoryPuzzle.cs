@@ -93,6 +93,8 @@ public class StoryPuzzle : MonoBehaviour
                     col.tag = "Untagged";
 
                 _solved = true;
+
+                GameObject.Find("ZombieSpawner").GetComponentInChildren<Spawner>().StopSpawning(true);
             }
             else
             {

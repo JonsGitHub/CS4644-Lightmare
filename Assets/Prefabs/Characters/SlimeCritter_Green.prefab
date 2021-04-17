@@ -145,7 +145,7 @@ PrefabInstance:
         type: 3}
       propertyPath: LabelPosition
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7462797229986561502}
     - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: LabelTextColor.b
@@ -533,3 +533,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db30928b603fdc48be427b32ba4d0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7462797229986561502 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1807428610, guid: 68cd6605b5b6885409bce537b11aece1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7462797231790559708}
+  m_PrefabAsset: {fileID: 0}
