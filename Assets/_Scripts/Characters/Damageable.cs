@@ -69,16 +69,24 @@ public class Damageable : MonoBehaviour
 			_3dUIChannelEvent.RaiseEvent(healthbar, true);
 	}
 
+	public void ResetHealth() => SetHealth(_healthConfigSO.MaxHealth);
+
     public void SetHealth(int health)
     {
 		_currentHealth = health;
 
 		if (_playerDamagedEvent)
 			_playerDamagedEvent.RaiseEvent(_currentHealth);
+
+		if (healthbar)
+			healthbar.Health = _currentHealth;
 	}
 
     public void ReceiveAnAttack(int damage)
 	{
+		if (IsDead)
+			return;
+
 		_currentHealth -= damage;
 		
 		if (healthbar)

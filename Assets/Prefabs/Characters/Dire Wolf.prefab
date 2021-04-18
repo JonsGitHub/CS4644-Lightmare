@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 180890217536711246}
   - component: {fileID: 180890217536711242}
   - component: {fileID: 180890217536711243}
+  - component: {fileID: 647751783227772227}
   m_Layer: 12
   m_Name: Dire Wolf
   m_TagString: Enemy
@@ -232,6 +233,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCollider: {fileID: 180890216354145153}
+--- !u!65 &647751783227772227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180890217536711283}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.2364824, z: 1.9862646}
+  m_Center: {x: 0.00000011927315, y: 0.9416574, z: -0.05407029}
 --- !u!1 &180890217701941929
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,17 +446,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d41fa487452943346aa508d22f223095,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.03
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d41fa487452943346aa508d22f223095,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.03
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d41fa487452943346aa508d22f223095,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.03
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d41fa487452943346aa508d22f223095,
         type: 3}

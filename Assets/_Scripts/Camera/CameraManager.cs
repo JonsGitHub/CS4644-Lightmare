@@ -44,9 +44,11 @@ public class CameraManager : MonoBehaviour
 
 		for (var i = 0; i < 3; ++i)
 		{
-			DefaultOrbitRingValues[(int)_state][i] = freeLookVCam.m_Orbits[i].m_Radius;
 			DefaultOrbitRingHeights[(int)_state][i] = freeLookVCam.m_Orbits[i].m_Height;
 		}
+
+		// Hard-code regulard orbit values
+		DefaultOrbitRingValues[(int)CameraState.Follow] = new Vector3(6, 12, 6);
 
 		// Hard-code aiming orbit values
 		DefaultOrbitRingValues[(int)CameraState.Aiming] = new Vector3(0.5f, 1.5f, 0.75f);

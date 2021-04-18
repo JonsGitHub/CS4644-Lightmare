@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Aggressor : MonoBehaviour
 {
 	[HideInInspector] public bool isPlayerInAlertZone;
 	[HideInInspector] public bool isPlayerInAttackZone;
-	public Damageable currentTarget; //The StateMachine evaluates its health when needed
+	public Damageable currentTarget; //The StateMachine evaluates its health when needed\
+	
+	private bool resetHealth = false;
 
 	public virtual void FoundTarget() { }
 
@@ -18,6 +21,8 @@ public class Aggressor : MonoBehaviour
         {
 			if (entered)
 			{
+				resetHealth = false;
+
 				currentTarget = d;
 				currentTarget.OnDie += OnTargetDead;
 				FoundTarget();
@@ -25,9 +30,22 @@ public class Aggressor : MonoBehaviour
 			else
 			{
 				currentTarget = null;
+				if (TryGetComponent(out Damageable damageable))
+                {
+					resetHealth = true;
+					StartCoroutine(ResetHealthDelayed(damageable));
+                }
 			}
 		}
 	}
+
+	private IEnumerator ResetHealthDelayed(Damageable damageable, float delay = 3f)
+    {
+		yield return new WaitForSeconds(delay);
+
+		if (resetHealth)
+			damageable.ResetHealth();
+    }
 
 	public void OnAttackTriggerChange(bool entered, GameObject who)
 	{
@@ -45,6 +63,8 @@ public class Aggressor : MonoBehaviour
 		isPlayerInAlertZone = true;	
 		if (who.TryGetComponent(out Damageable damageable))
         {
+			resetHealth = false;
+
 			currentTarget = damageable;
 			currentTarget.OnDie += OnTargetDead;
 			FoundTarget();

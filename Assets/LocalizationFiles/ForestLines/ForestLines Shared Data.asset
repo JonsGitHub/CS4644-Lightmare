@@ -175,6 +175,18 @@ MonoBehaviour:
     m_Key: Little_Girl_Line_1
     m_Metadata:
       m_Items: []
+  - m_Id: 2578772353617920
+    m_Key: Light_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2580221368209408
+    m_Key: Deer_Hunter_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2580355514634240
+    m_Key: Deer_Hunter_Line_2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
