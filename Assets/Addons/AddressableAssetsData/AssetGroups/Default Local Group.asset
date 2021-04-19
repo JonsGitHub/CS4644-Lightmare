@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 9e2b06f82430cc949b5bd3be5b0f46fc
+    m_Address: Assets/_Scenes/Levels/Level_Ocean.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 69251d1ea849110449486e1b0ae23f70, type: 2}
   m_SchemaSet:
