@@ -20,14 +20,20 @@ public class ForestSceneController : SceneController
     [SerializeField] private ZombieAttackManager _zombieAttackManager = default;
     [SerializeField] private Animator _graveyardAnimator = default;
 
+    [SerializeField] private GameObject _hunter = default;
     [SerializeField] private UnlockingBase _slimeDoor = default;
     [SerializeField] private GameObject _preSlimes = default;
     [SerializeField] private GameObject _boss = default;
 
     [SerializeField] private GameObject _missingGirl = default;
 
+    [SerializeField] private GameObject _deer = default;
+
     public override void Load(object data)
     {
+        _missingGirl.SetActive(!PlayerData.HasCrystal(PlayerData.Crystal.WolfCrystal));
+        _deer.SetActive(!PlayerData.HasCrystal(PlayerData.Crystal.DeerCrystal));
+
         if (data == null)
             return;
         
@@ -61,21 +67,14 @@ public class ForestSceneController : SceneController
             if (PlayerData.HasCrystal(PlayerData.Crystal.SlimeCrystal))
             {
                 _boss.SetActive(false);
+                _hunter.SetActive(false);
             }
         }
         else
         {
+            _hunter.SetActive(true);
             _preSlimes.SetActive(true);
             _slimeDoor.SetLockState(true);
-        }
-
-        if (PlayerData.HasCrystal(PlayerData.Crystal.WolfCrystal))
-        {
-            _missingGirl.SetActive(false);
-        }
-        else
-        {
-            _missingGirl.SetActive(true);
         }
     }
 

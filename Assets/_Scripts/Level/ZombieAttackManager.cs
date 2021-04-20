@@ -54,7 +54,7 @@ public class ZombieAttackManager : MonoBehaviour
         _zombieSpawner.gameObject.SetActive(true);
         _zombieSpawner.StartSpawning();
 
-        StartCoroutine(EndAttackDelay(12, EndAttack));
+        StartCoroutine(EndAttackDelay(60, EndAttack));
     }
 
     public void EndAttack()
