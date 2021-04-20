@@ -19,7 +19,7 @@ MonoBehaviour:
     m_AssetGUID: b4c38ecebbf771347aa53c004a613177
     m_SubObjectName: 
     m_SubObjectType: 
-  musicTrack: {fileID: 0}
+  musicTrack: {fileID: 11400000, guid: 4adec3f9a826e6345b6e51dfa15f7699, type: 2}
   locationName:
     m_TableReference:
       m_TableCollectionName: GUID:e3026e2d830d92a4eae09ac3fb51e2b6

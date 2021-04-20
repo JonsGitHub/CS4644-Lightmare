@@ -10,6 +10,7 @@ public class CutsceneTrigger : MonoBehaviour
 	[SerializeField] private LayerMask _layers = default;
 	[SerializeField] private bool _playOnSceneStart = default;
 	[SerializeField] private bool _playOnce = default;
+	[SerializeField] private Transform _reposition = default;
 
 	[Header("Listening on channels")]
 	[SerializeField] private VoidEventChannelSO _sceneReadyEventChannel = default;
@@ -45,6 +46,16 @@ public class CutsceneTrigger : MonoBehaviour
 
 	private void PlayCutScene()
     {
+		if (_reposition != null)
+        {
+			var _player = GameObject.FindObjectOfType<PlayerController>();
+
+			_player.GetComponent<CharacterController>().enabled = false;
+			_player.transform.position = _reposition.position;
+			_player.transform.rotation = _reposition.rotation;
+			_player.GetComponent<CharacterController>().enabled = true;
+		}
+		
 		_playCutsceneEvent?.RaiseEvent(_playableCutscene);
 
 		if (_playOnce)

@@ -16,6 +16,8 @@ public class EditorColdStartup : MonoBehaviour
 
 	private void Start()
 	{
+		PlayerData.Load();
+
 		if (!SceneManager.GetSceneByName(_persistentManagersSO.sceneReference.editorAsset.name).isLoaded)
 		{
 			_persistentManagersSO.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed += LoadEventChannel;

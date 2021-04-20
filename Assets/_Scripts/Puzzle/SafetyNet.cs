@@ -1,16 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 public class SafetyNet : MonoBehaviour
 {
-    [SerializeField] private List<Transform> SafePosition;
+    [Serializable]
+    public struct SafetyPoint
+    {
+        public Transform Position;
+        public GameObject Trigger;
+    }
+
+    [SerializeField] private List<SafetyPoint> SafePosition;
 
     private Transform _currentCheckpoint;
 
+    private int _index;
+
+    public int CurrentIndex => _index;
+
     private void Awake()
     {
-        _currentCheckpoint = SafePosition.First();
+        _currentCheckpoint = SafePosition.First().Position;
     }
 
     public void Respawn(bool state, GameObject obj)
@@ -32,6 +44,18 @@ public class SafetyNet : MonoBehaviour
 
     public void SetCheckpoint(int index)
     {
-        _currentCheckpoint = SafePosition.ElementAtOrDefault(index);
+        _index = index;
+        _currentCheckpoint = SafePosition.ElementAtOrDefault(index).Position;
+
+        var current = index;
+        while (current > 0)
+        {
+            var point = SafePosition.ElementAt(index);
+            if (point.Trigger != null)
+            {
+                Destroy(point.Trigger);
+            }
+            current--;
+        }
     }
 }

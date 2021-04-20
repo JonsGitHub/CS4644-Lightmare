@@ -18,14 +18,14 @@ public class AudioManager : MonoBehaviour
 
 	[Header("Audio control")]
 	[SerializeField] private AudioMixer audioMixer = default;
-	[Range(0f, 1f)]
-	[SerializeField] private float _masterVolume = 1f;
-	[Range(0f, 1f)]
-	[SerializeField] private float _musicVolume = 1f;
-	[Range(0f, 1f)]
-	[SerializeField] private float _voiceVolume = 1f;
-	[Range(0f, 1f)]
-	[SerializeField] private float _sfxVolume = 1f;
+	//[Range(0f, 1f)]
+	//[SerializeField] private float _masterVolume = 1f;
+	//[Range(0f, 1f)]
+	//[SerializeField] private float _musicVolume = 1f;
+	//[Range(0f, 1f)]
+	//[SerializeField] private float _voiceVolume = 1f;
+	//[Range(0f, 1f)]
+	//[SerializeField] private float _sfxVolume = 1f;
 
 	private SoundEmitterVault _soundEmitterVault;
 	private SoundEmitter _musicSoundEmitter;
@@ -73,10 +73,14 @@ public class AudioManager : MonoBehaviour
 	{
 		if (Application.isPlaying)
 		{
-			SetGroupVolume("MasterVolume", _masterVolume);
-			SetGroupVolume("MusicVolume", _musicVolume);
-			SetGroupVolume("SFXVolume", _sfxVolume);
-			SetGroupVolume("VoiceVolume", _voiceVolume);
+			SetGroupVolume("MasterVolume", Settings.Instance.MasterVolume / 10.0f);
+			SetGroupVolume("MusicVolume", Settings.Instance.MusicVolume / 10.0f);
+			SetGroupVolume("VoiceVolume", Settings.Instance.DialogueVolume / 10.0f);
+			SetGroupVolume("SFXVolume", Settings.Instance.SFXVolume / 10.0f);
+			//SetGroupVolume("MasterVolume", _masterVolume);
+			//SetGroupVolume("MusicVolume", _musicVolume);
+			//SetGroupVolume("SFXVolume", _sfxVolume);
+			//SetGroupVolume("VoiceVolume", _voiceVolume);
 		}
 	}
 

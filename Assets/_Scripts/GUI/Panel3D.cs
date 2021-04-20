@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// A 3d panel UI.
@@ -8,7 +9,7 @@ public class Panel3D : Ui3D
 {
     private string _text;
     private TextMeshProUGUI _textBox;
-
+    
     /// <summary>
     /// Gets or sets the text of the panel
     /// </summary>
