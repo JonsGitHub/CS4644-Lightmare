@@ -23,7 +23,7 @@ public static class PlayerData
 
         public short crystalFlags; // Potential for 16 crystals
 
-        public Vector3 playerPosition;
+        public Vector3 playerPosition = Vector3.negativeInfinity;
 
         public SceneName lastScene;
     }
@@ -51,7 +51,7 @@ public static class PlayerData
             case "Level_Tutorial":
                 _data.lastScene = SceneName.Tutorial;
                 break;
-            case "Level_TutorialSub":
+            case "Level_TutorialSub": // Can't really save in it but just in case
                 _data.lastScene = SceneName.TutorialSub;
                 break;
             case "Level_Forest":
@@ -76,7 +76,9 @@ public static class PlayerData
     private static bool _loaded = false;
     private static bool _continueTrigger = false;
 
+    public static bool Exists() => File.Exists(Application.persistentDataPath + "/Player.dat");
     public static void ContinueFlag() => _continueTrigger = true;
+    
     public static bool Triggered
     {
         get

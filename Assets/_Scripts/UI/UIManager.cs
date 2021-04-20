@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.UI;
 
+public enum GameScreen
+{
+	Settings, NoticeBoard, CrystalAppendix
+}
+
 public class UIManager : MonoBehaviour
 {
 	private const float _lerpSpeed = 0.23f;
@@ -13,6 +18,8 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private GameObject PauseMenu = default;
 	[SerializeField] private GameObject SettingsMenu = default;
+	[SerializeField] private GameObject NoticeBoard = default;
+	[SerializeField] private GameObject CrystalAppendix = default;
 
 	[SerializeField] private UIDialogueManager _dialogueController = default;
 	[SerializeField] private UIInteractionManager _interactionPanel = default;
@@ -38,6 +45,7 @@ public class UIManager : MonoBehaviour
 
 	[Header("Visual Indicators Events")]
 	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
+	[SerializeField] private GameScreenEventChannelSO _gameScreenEvent = default;
 
 	[Header("Interaction Events")]
 	[SerializeField] private InteractionUIEventChannelSO _setInteractionEvent = default;
@@ -90,6 +98,10 @@ public class UIManager : MonoBehaviour
         {
 			_requestUpdateInteraction.OnEventRaised += UpdateInteraction;
         }
+		if (_gameScreenEvent)
+        {
+			_gameScreenEvent.OnEventRaised += UpdateScreen;
+        }
 
 		_inputReader.pauseEvent += Pause;
 		_inputReader.menuUnpauseEvent += Unpause;
@@ -127,6 +139,11 @@ public class UIManager : MonoBehaviour
 		{
 			_requestUpdateInteraction.OnEventRaised -= UpdateInteraction;
 		}
+		if (_gameScreenEvent)
+		{
+			_gameScreenEvent.OnEventRaised -= UpdateScreen;
+		}
+
 		_inputReader.pauseEvent -= Pause;
 		_inputReader.menuUnpauseEvent -= Unpause;
 	}
@@ -171,6 +188,26 @@ public class UIManager : MonoBehaviour
 		_interactionPanel.gameObject.SetActive(state);
     }
 
+	private void UpdateScreen(GameScreen screen)
+	{
+		Time.timeScale = 0;
+		_inputReader.EnableMenuInput();
+		_inputReader.DisableMouseCameraControlInput();
+
+		switch (screen)
+        {
+			case GameScreen.NoticeBoard:
+				AddToViewStack(NoticeBoard);
+				break;
+			case GameScreen.CrystalAppendix:
+				AddToViewStack(CrystalAppendix);
+				break;
+			case GameScreen.Settings:
+				AddToViewStack(SettingsMenu);
+				break;
+		}
+	}
+
 	public void AddToViewStack(GameObject layer)
     {
 		// Set the top of the viewstack to inactive if it exists
@@ -188,7 +225,7 @@ public class UIManager : MonoBehaviour
 
 		var obj = ViewStack.Pop();
 		obj.SetActive(false);
-		if (obj == PauseMenu)
+		if (ViewStack.Count == 0)
         {
 			_inputReader.EnableGameplayInput();
 			_inputReader.EnableMouseCameraControlInput();
@@ -220,6 +257,11 @@ public class UIManager : MonoBehaviour
 	{
 		AddToViewStack(SettingsMenu);
 	}
+
+	public void OnAppendixClicked()
+    {
+		AddToViewStack(CrystalAppendix);
+    }
 
 	/// <summary>
 	/// Last update called every frame

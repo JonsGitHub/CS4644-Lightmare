@@ -21,18 +21,21 @@ public class MausoleumSceneController : SceneController
 
     public override void Load(object data)
     {
+        if (PlayerData.HasCrystal(PlayerData.Crystal.Forest))
+        {
+            _fragment.SetActive(false);
+            _fragmentTrigger.SetActive(false);
+        }
+
+        if (data == null)
+            return;
+
         var mausoleumData = (MausoleumSceneData)data;
 
         if (mausoleumData.puzzleSolved)
         {
             _barrier.SetActive(false);
             _storyPuzzle.SolvePuzzle(mausoleumData.puzzleChoice, mausoleumData.puzzleSeed);
-        }
-
-        if (PlayerData.HasCrystal(PlayerData.Crystal.Forest))
-        {
-            _fragment.SetActive(false);
-            _fragmentTrigger.SetActive(false);
         }
     }
 

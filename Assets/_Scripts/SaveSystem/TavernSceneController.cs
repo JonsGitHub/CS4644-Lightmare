@@ -15,8 +15,6 @@ class TavernSceneController : SceneController
 
     public override void Load(object data)
     {
-        var tavernData = (TavernSceneData)data;
-
         if (PlayerData.HasCrystal(PlayerData.Crystal.DeerCrystal))
         {
             _hunter.SetActive(false);
@@ -25,6 +23,11 @@ class TavernSceneController : SceneController
         {
             _hunter.SetActive(true);
         }
+        
+        if (data == null)
+            return;
+        
+        var tavernData = (TavernSceneData)data;
     }
 
     public override SceneData Save()

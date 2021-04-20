@@ -106,8 +106,10 @@ public class SceneLoader : MonoBehaviour
 	/// </summary>
 	private void UnloadPreviousScenes()
 	{
-		if (!SceneManager.GetActiveScene().name.Contains("Manager") && !SceneManager.GetActiveScene().name.Contains("Gameplay"))
+		var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
+		if (controller && !SceneManager.GetActiveScene().name.Contains("Manager"))
         {
+			// Save Player base data
 			PlayerData.SetLastScene(SceneManager.GetActiveScene().name.Replace(' ', '_'));
 			var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Damageable>();
 			if (player)
@@ -120,16 +122,13 @@ public class SceneLoader : MonoBehaviour
 			{
 				PlayerData.SetLastPosition(Vector3.negativeInfinity);
 			}
-
-			var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
-			if (controller)
-			{
-				var formatter = new UnityBinaryFormatter();
-				var file = File.OpenWrite(CurrentSceneFilePath);
-				var data = controller.Save();
-				formatter.Serialize(file, data);
-				file.Close();
-			}
+			
+			// Save Scene Data
+			var formatter = new UnityBinaryFormatter();
+			var file = File.OpenWrite(CurrentSceneFilePath);
+			var data = controller.Save();
+			formatter.Serialize(file, data);
+			file.Close();
 		}
 
 		for (int i = 0; i < _currentlyLoadedScenes.Length; i++)
@@ -212,15 +211,21 @@ public class SceneLoader : MonoBehaviour
 
         // Load Saved Data for this scene if it exists
         var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
-        if (controller && File.Exists(CurrentSceneFilePath))
+        if (controller)
         {
-            Debug.Log("Loading Data at: " + CurrentSceneFilePath);
-
-            var formatter = new UnityBinaryFormatter();
-            var file = File.OpenRead(CurrentSceneFilePath);
-            controller.Load(formatter.Deserialize(file));
-            file.Close();
-        }
+			if (File.Exists(CurrentSceneFilePath))
+            {
+				Debug.Log("Loading Data at: " + CurrentSceneFilePath);
+				var formatter = new UnityBinaryFormatter();
+				var file = File.OpenRead(CurrentSceneFilePath);
+				controller.Load(formatter.Deserialize(file));
+				file.Close();
+			}
+			else
+            {
+				controller.Load(null);
+			}
+		}
 
         LightProbes.TetrahedralizeAsync();
 

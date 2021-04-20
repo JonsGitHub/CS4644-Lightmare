@@ -28,6 +28,9 @@ public class ForestSceneController : SceneController
 
     public override void Load(object data)
     {
+        if (data == null)
+            return;
+        
         var forestData = (ForestSceneData)data;
 
         if (forestData.puzzleSolved)

@@ -133,6 +133,10 @@ public class Damageable : MonoBehaviour
 		{
 			OnDie.Invoke();
 		}
+		else if (!TryGetComponent(out StateMachine.StateMachine machine)) // Destroy it if it most likely won't have a statemachine to perform cleanup
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	private void OnDestroy()
