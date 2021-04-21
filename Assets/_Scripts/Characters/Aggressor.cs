@@ -10,7 +10,7 @@ public class Aggressor : MonoBehaviour
 	private bool resetHealth = false;
 
 	public virtual void FoundTarget() { }
-
+    
 	public void OnAlertTriggerChange(bool entered, GameObject who)
 	{
 		if (entered && isPlayerInAlertZone)
