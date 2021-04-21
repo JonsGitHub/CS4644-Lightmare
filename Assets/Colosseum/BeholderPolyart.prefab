@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 159309325269193698}
   - component: {fileID: 5392940091138852370}
   - component: {fileID: 3653783210327711280}
+  - component: {fileID: -2235561766052608229}
   m_Layer: 12
   m_Name: BeholderPolyart
   m_TagString: Untagged
@@ -480,6 +481,19 @@ MonoBehaviour:
   projSpeed: 20
   projectile: {fileID: 7210089555795634793, guid: 492c34586eb226c459971a5e0ae0eee5,
     type: 3}
+--- !u!114 &-2235561766052608229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024067717268208947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f0b36f9e1bf1444828f5c53ed06645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCollider: {fileID: 4024067717268208947}
 --- !u!1 &4024067717268208949
 GameObject:
   m_ObjectHideFlags: 0

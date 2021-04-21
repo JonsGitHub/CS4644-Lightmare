@@ -16,7 +16,7 @@ public class RangedEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float fireRate = Random.Range(1.0f, 2.0f);
+        float fireRate = Random.Range(3.0f, 4.0f);
         InvokeRepeating("Shoot", 2, fireRate);
     }
 
@@ -34,7 +34,7 @@ public class RangedEnemy : MonoBehaviour
         if (_playerTransform.isSet)
         {
             Vector3 adjustHeight = new Vector3(0, 1.5f, 0);
-            Transform bulletTrans = Instantiate(projectile, transform.position + adjustHeight, transform.rotation);
+            Transform bulletTrans = Instantiate(projectile, transform.position + adjustHeight + transform.forward, transform.rotation);
             Vector3 adjustAim = new Vector3(0, 1, 0);
             Vector3 shootDir = ((_playerTransform.Transform.position + adjustAim) - transform.position).normalized;
             bulletTrans.GetComponent<Bullet>().Setup(shootDir);

@@ -35,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
 
     private float searchCountdown = 1.0f;
 
-    public SpawnState state = SpawnState.COUNTING; 
+    public SpawnState state = SpawnState.COUNTING;
 
     void Start()
     {

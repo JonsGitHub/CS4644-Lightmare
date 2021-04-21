@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
+    [SerializeField] private AttackConfigSO _attackConfigSO;
+
+    public AttackConfigSO AttackConfig => _attackConfigSO;
     private Vector3 shootDir;
     public void Setup(Vector3 dir)
     {
@@ -16,12 +20,19 @@ public class Bullet : MonoBehaviour
         transform.position += shootDir * 20.0f * Time.deltaTime;
     }
 
-    void OnTriggerEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 10)
+        // Avoid friendly fire!
+        if (other.gameObject.layer != 12)
         {
-            Debug.Log("Destroy");
-            Destroy(this.gameObject);
+            if (other.TryGetComponent(out Damageable damageableComp))
+            {
+                if (!damageableComp.GetHit)
+                {
+                    damageableComp.ReceiveAnAttack(_attackConfigSO.AttackStrength);
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 }
