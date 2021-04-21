@@ -20,12 +20,16 @@ public class SkyboxAO : MonoBehaviour
 
     private float difference;
 
+    private bool _flatlined = false;
+
     private void Awake()
     {
         difference = _outerRadius - _innerRadius;
         intensityDifference = Mathf.Abs(_endIntensity - _startIntensity);
         bottomIntensity = Mathf.Min(_startIntensity, _endIntensity);
         Assert.IsTrue(difference > 0);
+
+        _flatlined = false;
 
         _blendedSkybox.SetFloat("_Blend", 0);
         DynamicGI.UpdateEnvironment();
@@ -56,12 +60,17 @@ public class SkyboxAO : MonoBehaviour
             var distance = Vector3.Distance(transform.position, _player.position) - _innerRadius;
             var endRatio = distance < 0 ? 0 : distance / difference;
 
+            if (!_flatlined)
+            {
+                _blendedSkybox.SetFloat("_Blend", Mathf.Clamp01(1 - endRatio));
+                _light.intensity = (intensityDifference * endRatio) + bottomIntensity;
+                DynamicGI.UpdateEnvironment();
+            }
+            
             if (endRatio == 0)
-                return;
-
-            _blendedSkybox.SetFloat("_Blend", Mathf.Clamp01(1 - endRatio));
-            _light.intensity = (intensityDifference * endRatio) + bottomIntensity;
-            DynamicGI.UpdateEnvironment();
+                _flatlined = true;
+            else
+                _flatlined = false;
         }
     }
 }

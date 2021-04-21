@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 992484dd7205d4044887a601cda6b1fc
+    m_Address: Assets/_Scenes/Managers/Gameplay.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 992484dd7205d4044887a601cda6b1fc, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 992484dd7205d4044887a601cda6b1fc, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

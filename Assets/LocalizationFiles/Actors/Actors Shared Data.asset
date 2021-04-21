@@ -103,6 +103,10 @@ MonoBehaviour:
     m_Key: LittleGirl
     m_Metadata:
       m_Items: []
+  - m_Id: 10391212101472256
+    m_Key: Barkeep
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
