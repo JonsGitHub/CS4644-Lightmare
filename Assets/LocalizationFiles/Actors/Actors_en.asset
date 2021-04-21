@@ -106,5 +106,9 @@ MonoBehaviour:
     m_Localized: Little Girl
     m_Metadata:
       m_Items: []
+  - m_Id: 10391212101472256
+    m_Localized: Ally
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
