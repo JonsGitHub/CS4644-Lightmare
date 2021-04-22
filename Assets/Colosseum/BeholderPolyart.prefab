@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &299415443425206671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7318889149591170892}
+  m_Layer: 12
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7318889149591170892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299415443425206671}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4024067717268300051}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4024067717268208929
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +416,7 @@ GameObject:
   - component: {fileID: -2235561766052608229}
   m_Layer: 12
   m_Name: BeholderPolyart
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,6 +434,7 @@ Transform:
   m_Children:
   - {fileID: 4024067717268300049}
   - {fileID: 4024067717268300045}
+  - {fileID: 7318889149591170892}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -437,8 +468,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.303937
+  m_Center: {x: 0, y: 1.4608502, z: 0}
 --- !u!114 &5392940091138852370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f6a7033e390c940b58d0e2d10f6cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthConfigSO: {fileID: 11400000, guid: 9877126f8aaa0fe4daad182e0112ee02, type: 2}
+  _healthConfigSO: {fileID: 11400000, guid: 27dc191af96dedc4ca90e0ea019e8062, type: 2}
   _getHitEffectSO: {fileID: 11400000, guid: 29fd4b4ddcec0104cbb10d591de73d5f, type: 2}
   _mainMeshRenderer: {fileID: 4024067717256704051}
   _dropItemReference:
@@ -481,6 +512,7 @@ MonoBehaviour:
   projSpeed: 20
   projectile: {fileID: 7210089555795634793, guid: 492c34586eb226c459971a5e0ae0eee5,
     type: 3}
+  firePoint: {fileID: 7318889149591170892}
 --- !u!114 &-2235561766052608229
 MonoBehaviour:
   m_ObjectHideFlags: 0

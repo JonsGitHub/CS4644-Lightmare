@@ -14,6 +14,7 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private Button _continueButton;
     [SerializeField] private GameObject _newGamePopup;
+    [SerializeField] private GameObject _settingsMenu;
 
     // Should use an O(1) lookup table but that currently doesn't work in the inspector
     // This works as a workaround for now.
@@ -67,6 +68,16 @@ public class MainMenuController : MonoBehaviour
 
         var lastLocation = _scenes.Find(x => x._sceneName.Equals(PlayerData.LastScene))._location;
         _loadLocationChannel.RaiseEvent(lastLocation, true);
+    }
+
+    public void OnSettingsPress()
+    {
+        _settingsMenu.SetActive(true);
+    }
+
+    public void OnSettingBackPressed()
+    {
+        _settingsMenu.SetActive(false);
     }
 
     private void OnEnable()

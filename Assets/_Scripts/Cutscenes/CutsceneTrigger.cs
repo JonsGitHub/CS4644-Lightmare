@@ -48,14 +48,15 @@ public class CutsceneTrigger : MonoBehaviour
     {
 		if (_reposition != null)
         {
-			var _player = GameObject.FindObjectOfType<PlayerController>();
-
-			_player.GetComponent<CharacterController>().enabled = false;
-			_player.transform.position = _reposition.position;
-			_player.transform.rotation = _reposition.rotation;
-			_player.GetComponent<CharacterController>().enabled = true;
+			var _player = FindObjectOfType<PlayerController>();
+			if (_player)
+			{
+				_player.GetComponent<CharacterController>().enabled = false;
+				_player.transform.position = _reposition.position;
+				_player.transform.rotation = _reposition.rotation;
+				_player.GetComponent<CharacterController>().enabled = true;
+			}
 		}
-		
 		_playCutsceneEvent?.RaiseEvent(_playableCutscene);
 
 		if (_playOnce)

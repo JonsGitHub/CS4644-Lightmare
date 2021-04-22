@@ -1958,7 +1958,6 @@ GameObject:
   - component: {fileID: 7113761253139723423}
   - component: {fileID: 3772051659839598309}
   - component: {fileID: 7292332020748374905}
-  - component: {fileID: 9051544635035396826}
   m_Layer: 0
   m_Name: RangedTest
   m_TagString: Untagged
@@ -2017,18 +2016,6 @@ MonoBehaviour:
   projSpeed: 20
   projectile: {fileID: 4537337808384730410, guid: 9bfe0e3cfe52f2f46aaee75401b02301,
     type: 3}
---- !u!114 &9051544635035396826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7634437580354022949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a41675d824e8dd4688b1f53db67dea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7654711903620631007
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,9 +16,9 @@ MonoBehaviour:
   - Actor: {fileID: 11400000, guid: 65a1f985cc5d2e946ac5f63174554839, type: 2}
     Line:
       m_TableReference:
-        m_TableCollectionName: GUID:0eda7bab8b77c2c4383d387c6de64ffa
+        m_TableCollectionName: GUID:da645145571a8ad42b3681484ce6dc60
       m_TableEntryReference:
-        m_KeyId: 25536872448
+        m_KeyId: 6603411456
         m_Key: 
       m_FallbackState: 0
     Audio: {fileID: 0}

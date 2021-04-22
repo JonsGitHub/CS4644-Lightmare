@@ -599,7 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _template:
     _dialogueDataSO: {fileID: 11400000, guid: 573b99be4f4ca1349be5befdf5847ab4, type: 2}
-    _pauseWhenClipEnds: 0
+    _pauseWhenClipEnds: 1
     _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
     PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
       type: 2}

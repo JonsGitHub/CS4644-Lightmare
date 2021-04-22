@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameScreen
@@ -225,6 +226,12 @@ public class UIManager : MonoBehaviour
 
 		var obj = ViewStack.Pop();
 		obj.SetActive(false);
+
+		if (obj == SettingsMenu)
+        {
+			Settings.Instance.Save();
+		}
+
 		if (ViewStack.Count == 0)
         {
 			_inputReader.EnableGameplayInput();
@@ -244,6 +251,20 @@ public class UIManager : MonoBehaviour
 	/// </summary>
 	public void OnSaveAndExitClicked()
 	{
+		// Save Player base data
+		PlayerData.SetLastScene(SceneManager.GetActiveScene().name.Replace(' ', '_'));
+		var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Damageable>();
+		if (player)
+		{
+			PlayerData.SetLastPosition(player.transform.position);
+			PlayerData.SetHealth(player.CurrentHealth);
+			PlayerData.Save();
+		}
+		else
+		{
+			PlayerData.SetLastPosition(Vector3.negativeInfinity);
+		}
+
 		Time.timeScale = 1;
 		_inputReader.EnableMenuInput();
 		ViewStack.Pop().SetActive(false); // Set Pause Menu to inactive

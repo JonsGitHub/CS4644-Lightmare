@@ -785,6 +785,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa8140ff90f53840a8f251031e60322, type: 3}
+--- !u!1 &72699649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4231953415425472788, guid: 3fa8140ff90f53840a8f251031e60322,
+    type: 3}
+  m_PrefabInstance: {fileID: 72699648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &72699650
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72699649}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7605922883598949385, guid: bbbedeb4726701a489d2a935e96c8113, type: 3}
 --- !u!1001 &73824312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2117,34 +2137,13 @@ GameObject:
   - component: {fileID: 172425899}
   - component: {fileID: 172425898}
   - component: {fileID: 172425897}
-  - component: {fileID: 172425896}
   m_Layer: 10
   m_Name: NPC_Drunk_ROOTED
-  m_TagString: NPC
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &172425896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172425895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df0da2249295a94a89729b0106a04f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actor: {fileID: 11400000, guid: e927f35a40aa5e44a808caad99f8a761, type: 2}
-  _defaultDialogue: {fileID: 11400000, guid: 080668b5c726fff44aa68ff14b316d75, type: 2}
-  _questAnchor: {fileID: 11400000, guid: 7316c6986fe2cd0469d5dca5a935a4e7, type: 2}
-  _interactionEvent: {fileID: 11400000, guid: 1a618272f102d514bbfd391b385bfcd2, type: 2}
-  _winDialogueEvent: {fileID: 11400000, guid: b75517cc9e2da2941a4bfb3c6d95da7e, type: 2}
-  _loseDialogueEvent: {fileID: 11400000, guid: 2a9bcaae15244c143acd9fea84005aab, type: 2}
-  _startDialogueEvent: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60,
-    type: 2}
 --- !u!136 &172425897
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14310,12 +14309,12 @@ PrefabInstance:
     - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710677
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000001183722
+      value: 0.0000011838642
       objectReference: {fileID: 0}
     - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
@@ -14325,7 +14324,7 @@ PrefabInstance:
     - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000011837219
+      value: -0.0000011838642
       objectReference: {fileID: 0}
     - target: {fileID: 4184016652547918068, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}

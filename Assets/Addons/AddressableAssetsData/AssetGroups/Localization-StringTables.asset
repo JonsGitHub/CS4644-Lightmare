@@ -274,8 +274,15 @@ MonoBehaviour:
     - Locale-en
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 3006539e913937a4094e9970107533a6
-    m_Address: New StringTableCollection_en
+  - m_GUID: d989811f33e20874b8aa860d2172cd30
+    m_Address: OceanLines_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e9544031365497945b1f28bdd63ff80f
+    m_Address: ColosseumLines_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

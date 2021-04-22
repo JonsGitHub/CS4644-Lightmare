@@ -3,12 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using UnityEngine;
+using UnityEngine.Assertions;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
+    [SerializeField] private BoolEventChannelSO _unlockingChannel = default;
+
+    [SerializeField] private TextMeshProUGUI _waveCounter = default;
+    [SerializeField] private TextMeshProUGUI _enemiesCounter = default;
+
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
-    [System.Serializable]
+    [Serializable]
     public class Wave
     {
         public string name;
@@ -21,6 +28,8 @@ public class WaveSpawner : MonoBehaviour
         public int hardCount;
         public int bossCount;
         public float rate;
+
+        public int TotalEnemiesCount => easyCount + mediumCount + hardCount + bossCount;
     }
 
     public Wave[] waves;
@@ -37,21 +46,21 @@ public class WaveSpawner : MonoBehaviour
 
     public SpawnState state = SpawnState.COUNTING;
 
+    private bool _finished = false;
+
+    public bool Finished => _finished;
+
+    public void FlagFinished() => _finished = true;
+
     void Start()
     {
         waveCountdown = timeBetweenWaves;
-        if (groundSpawnPoints.Length == 0)
-        {
-            Debug.Log("No Ground Spawn Points");
-        }
-        if (rangedSpawnPoints.Length == 0)
-        {
-            Debug.Log("No Ground Spawn Points");
-        }
-        else
-        {
-            availablePoints = new List<Transform>(rangedSpawnPoints);
-        }
+
+        Assert.IsTrue(groundSpawnPoints.Length != 0);
+        Assert.IsTrue(rangedSpawnPoints.Length != 0);
+        availablePoints = new List<Transform>(rangedSpawnPoints);
+
+        _waveCounter.text = "Starting Wave";
     }
 
     void Update()
@@ -86,15 +95,22 @@ public class WaveSpawner : MonoBehaviour
 
     void StartNextWave()
     {
-        Debug.Log("Wave Completed");
+        //Debug.Log("Wave Completed");
+
+        _waveCounter.text = "Starting Next Wave";
+        _enemiesCounter.text = "";
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
         if (nextWave + 1 > waves.Length - 1)
         {
-            //nextWave = 0;
-            Debug.Log("ALL WAVES COMPLETE!");
+            _waveCounter.gameObject.SetActive(false);
+            _enemiesCounter.gameObject.SetActive(false);
+
+            _finished = true;
+            _unlockingChannel?.RaiseEvent(true);
+            Destroy(gameObject);
         }
         else
         {
@@ -102,23 +118,27 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    // Perhaps tie into the on death trigger of enemies instead of polling count.
     bool EnemyIsAlive()
     {
         searchCountdown -= Time.deltaTime;
         if (searchCountdown <= 0.0f)
         {
             searchCountdown = 1.0f;
-            if (GameObject.FindGameObjectWithTag("Enemy") == null)
-            {
+            var enemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            
+            _enemiesCounter.text = "Enemies Remaining:\n" + enemiesCount;
+            if (enemiesCount == 0)
                 return false;
-            }
         }
-
         return true;
     }
 
     IEnumerator SpawnWave(Wave _wave)
     {
+        _waveCounter.text = "Wave: " + (nextWave + 1);
+        _enemiesCounter.text = "Enemies Remaining:\n" + _wave.TotalEnemiesCount;
+
         state = SpawnState.SPAWNING;
         availablePoints = new List<Transform>(rangedSpawnPoints);
 
@@ -158,7 +178,7 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy(Transform _enemy)
     {
         // Enemy
-        Debug.Log("Spawning Enemy: " + _enemy.name);
+        //Debug.Log("Spawning Enemy: " + _enemy.name);
         Transform _sp = groundSpawnPoints[Random.Range(0, groundSpawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);
     }
@@ -166,7 +186,7 @@ public class WaveSpawner : MonoBehaviour
     void SpawnRangedEnemy(Transform _enemy)
     {
         // Enemy
-        Debug.Log("Spawning Enemy: " + _enemy.name);
+        //Debug.Log("Spawning Enemy: " + _enemy.name);
         int point = Random.Range(0, availablePoints.Count);
         Transform _sp = availablePoints[point];
         Instantiate(_enemy, _sp.position, _sp.rotation);
