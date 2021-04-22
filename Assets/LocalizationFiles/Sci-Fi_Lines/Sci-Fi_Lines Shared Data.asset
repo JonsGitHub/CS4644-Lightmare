@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Sci-Fi_Lines Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Sci-Fi_Lines
+  m_TableCollectionNameGuidString: 4391968ea14c840448b4f03ec4d817b0
+  m_Entries:
+  - m_Id: 29082247168
+    m_Key: NeilsLine1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2347827716096
+    m_Key: Neil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52956933120000
+    m_Key: AlansLine1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53359347228672
+    m_Key: AlansLine2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54807338409984
+    m_Key: AlansLine3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55334415622144
+    m_Key: AlansLine4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55846770827264
+    m_Key: AlansLine5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56163545636864
+    m_Key: AlansLine6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60801288232960
+    m_Key: Alan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65472090333184
+    m_Key: Buzz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65498682220544
+    m_Key: BuzzLine1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69762838159360
+    m_Key: Shepard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69806324703232
+    m_Key: ShepardLine1
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1618945594171
