@@ -33,11 +33,11 @@ public class TutorialSceneController : SceneController
 
     public override void Load(object data)
     {
-        // Since they are continuing - we are just going to assume they have seen the cutscene before
-        _openingCutsceneTrigger.SetActive(false);
-
         if (data == null)
             return;
+        
+        // Since they are continuing - we are just going to assume they have seen the cutscene before
+        _openingCutsceneTrigger.SetActive(false);
 
         var tutorialData = (TutorialSceneData)data;
         if (tutorialData._solvedPuzzle)

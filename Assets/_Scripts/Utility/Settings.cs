@@ -124,7 +124,7 @@ public sealed class Settings
         public bool InvertedYAxis { get; set; } = true;
         public bool InvertedXAxis { get; set; } = false;
         public int MasterVolume { get; set; } = 10;
-        public int MusicVolume { get; set; } = 8;
+        public int MusicVolume { get; set; } = 7;
         public int DialogueVolume { get; set; } = 10;
         public int SFXVolume { get; set; } = 10;
 

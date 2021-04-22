@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OutputAudioMixerGroup: {fileID: -3915763419663501350, guid: f6a1b46726b2de84eb3661a589a9daa0,
     type: 2}
-  _priorityLevel: 194
+  _priorityLevel: 128
   Mute: 0
-  Volume: 0.5
+  Volume: 0.3
   Pitch: 1
   PanStereo: 0
   ReverbZoneMix: 1
   SpatialBlend: 0
   RolloffMode: 0
   MinDistance: 1
-  MaxDistance: 100
+  MaxDistance: 300
   Spread: 0
   DopplerLevel: 0
   BypassEffects: 0

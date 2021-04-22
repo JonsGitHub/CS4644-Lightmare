@@ -109,20 +109,6 @@ public class SceneLoader : MonoBehaviour
 		var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
 		if (controller && !SceneManager.GetActiveScene().name.Contains("Manager"))
         {
-			// Save Player base data
-			PlayerData.SetLastScene(SceneManager.GetActiveScene().name.Replace(' ', '_'));
-			var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Damageable>();
-			if (player)
-			{
-				PlayerData.SetLastPosition(player.transform.position);
-				PlayerData.SetHealth(player.CurrentHealth);
-				PlayerData.Save();
-			}
-			else
-			{
-				PlayerData.SetLastPosition(Vector3.negativeInfinity);
-			}
-			
 			// Save Scene Data
 			var formatter = new UnityBinaryFormatter();
 			var file = File.OpenWrite(CurrentSceneFilePath);

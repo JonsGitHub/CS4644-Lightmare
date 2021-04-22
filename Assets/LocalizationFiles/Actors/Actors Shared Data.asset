@@ -107,6 +107,10 @@ MonoBehaviour:
     m_Key: Barkeep
     m_Metadata:
       m_Items: []
+  - m_Id: 10693585797648384
+    m_Key: Malady
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

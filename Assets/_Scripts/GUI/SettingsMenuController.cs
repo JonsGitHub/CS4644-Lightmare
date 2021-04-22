@@ -10,8 +10,6 @@ public class SettingsMenuController : MonoBehaviour
     [SerializeField] private GameObject _graphicsPage;
     [SerializeField] private GameObject _audioPage;
 
-    private AudioManager _audioManager;
-
     private Toggle _highGraphics;
     private Toggle _mediumGraphics;
     private Toggle _lowGraphics;
@@ -25,8 +23,6 @@ public class SettingsMenuController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _audioManager = FindObjectOfType<AudioManager>();
-
         _controlsPage.transform.Find("Mouse_Sensitivity").GetComponentInChildren<Slider>().value = Settings.Instance.MouseSensitivity;
         _controlsPage.transform.Find("Scroll_Sensitivity").GetComponentInChildren<Slider>().value = Settings.Instance.ScrollSensitivity;
         _controlsPage.transform.Find("Invert_YAxis").GetComponentInChildren<Toggle>().isOn = Settings.Instance.InvertedYAxis;
@@ -135,25 +131,21 @@ public class SettingsMenuController : MonoBehaviour
     public void OnMasterVolumeValueChanged(float value)
     {
         Settings.Instance.MasterVolume = (int)value;
-        _audioManager?.SetGroupVolume("MasterVolume", value / 10.0f);
     }
 
     public void OnMusicVolumeValueChanged(float value)
     {
         Settings.Instance.MusicVolume = (int)value;
-        _audioManager?.SetGroupVolume("MusicVolume", value / 10.0f);
     }
 
     public void OnDialogueVolumeValueChanged(float value)
     {
         Settings.Instance.DialogueVolume = (int)value;
-        _audioManager?.SetGroupVolume("VoiceVolume", value / 10.0f);
     }
 
     public void OnSFXVolumeValueChanged(float value)
     {
         Settings.Instance.SFXVolume = (int)value;
-        _audioManager?.SetGroupVolume("SFXVolume", value / 10.0f);
     }
 
     public void OnHighToggleValueChanged(bool value)

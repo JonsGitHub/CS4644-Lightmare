@@ -38,6 +38,19 @@ public class SoundEmitter : MonoBehaviour
 		}
 	}
 
+	public void FadeVoiceIn(AudioClip musicClip, AudioConfigurationSO settings, float duration, float startTime = 0f)
+    {
+		PlayAudioClip(musicClip, settings, false);
+		_audioSource.volume = 0f;
+
+		//Start the clip at the same time the previous one left, if length allows
+		//TODO: find a better way to sync fading voices
+		if (startTime <= _audioSource.clip.length)
+			_audioSource.time = startTime;
+
+		_audioSource.DOFade(1f, duration);
+	}
+
 	public void FadeMusicIn(AudioClip musicClip, AudioConfigurationSO settings, float duration, float startTime = 0f)
 	{
 		PlayAudioClip(musicClip, settings, true);
@@ -53,6 +66,13 @@ public class SoundEmitter : MonoBehaviour
 
 	public float FadeMusicOut(float duration)
 	{
+		_audioSource.DOFade(0f, duration).onComplete += OnFadeOutComplete;
+
+		return _audioSource.time;
+	}
+
+	public float FadeVoiceOut(float duration)
+    {
 		_audioSource.DOFade(0f, duration).onComplete += OnFadeOutComplete;
 
 		return _audioSource.time;

@@ -12,6 +12,7 @@ public enum SceneName
     Tavern,
     Colosseum,
     Scifi,
+    Ocean,
 }
 
 public static class PlayerData
@@ -62,6 +63,12 @@ public static class PlayerData
                 break;
             case "Level_Tavern":
                 _data.lastScene = SceneName.Tavern;
+                break;
+            case "Level_Colosseum":
+                _data.lastScene = SceneName.Colosseum;
+                break;
+            case "Level_Ocean":
+                _data.lastScene = SceneName.Ocean;
                 break;
         }
     }

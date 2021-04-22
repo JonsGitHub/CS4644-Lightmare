@@ -51,7 +51,14 @@ public class ForestSceneController : SceneController
             else
             {
                 _zombieAttackManager.FinishedAttack = forestData.zombieAttackFinished;
-                _zombieAttackManager.PostStep();
+                if (!forestData.zombieAttackFinished)
+                {
+                    _zombieAttackManager.PreStep();
+                }
+                else
+                {
+                    _zombieAttackManager.PostStep();
+                }
             }
         }
         else

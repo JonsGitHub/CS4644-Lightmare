@@ -80,6 +80,15 @@ public class ZombieAttackManager : MonoBehaviour
         _player.SetActive(false);
     }
 
+    public void PreStep()
+    {
+        _puzzleCharacters.SetActive(true);
+
+        _preCharacters.SetActive(false);
+        _postCharacters.SetActive(false);
+        _mausoleumExit.gameObject.SetActive(true);
+    }
+
     public void PostStep()
     {
         _puzzleCharacters.SetActive(false);

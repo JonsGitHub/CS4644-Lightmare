@@ -101,7 +101,25 @@ public class PlayerController : MonoBehaviour
             _enemies = _enemies.Where(x => x != null).ToList(); // Destroyed enemies need to removed somehow
             if (_enemies.Count > 1)
             {
-                _closestEnemyTransform.Transform = _enemies.OrderBy(x => Vector3.Distance(transform.position, x.transform.position)).First().transform;
+                var ordered = _enemies.OrderBy(x => Vector3.Distance(transform.position, x.transform.position));
+                Transform target = null;
+                int i = 0;
+                while (target == null)
+                {
+                    var temp = ordered.ElementAtOrDefault(i);
+                    if (temp == null)
+                    {
+                        _closestEnemyTransform.isSet = false;
+                        break;
+                    }
+                    if (temp.CurrentHealth > 0)
+                    {
+                        target = ordered.ElementAt(i).transform;
+                    }
+                    i++;
+                }
+                if (target != null)
+                    _closestEnemyTransform.Transform = target.transform;
                 // previous -> //_closestEnemyTransform.Transform = _enemies.OrderBy(x => x.transform.position).First().transform;
             }
             else if(_enemies.Count == 1)

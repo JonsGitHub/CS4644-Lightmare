@@ -97,8 +97,8 @@ public class CameraManager : MonoBehaviour
 		freeLookVCam.m_YAxis.m_InvertInput = Settings.Instance.InvertedYAxis;
 		freeLookVCam.m_XAxis.m_InvertInput = Settings.Instance.InvertedXAxis;
 
-		freeLookVCam.m_XAxis.m_MaxSpeed = 10000 * (Settings.Instance.MouseSensitivity / 10.0f);
-		freeLookVCam.m_YAxis.m_MaxSpeed = 100 * (Settings.Instance.MouseSensitivity / 10.0f);
+		freeLookVCam.m_XAxis.m_MaxSpeed = 5000 * (Settings.Instance.MouseSensitivity / 10.0f);
+		freeLookVCam.m_YAxis.m_MaxSpeed = 50 * (Settings.Instance.MouseSensitivity / 10.0f);
     }
 
 	private void OnEnableMouseControlCamera()
