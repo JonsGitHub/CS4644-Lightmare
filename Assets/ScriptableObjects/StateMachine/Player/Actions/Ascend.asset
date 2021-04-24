@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11215b97def6c6438d8fe89cc5a0bf3, type: 3}
   m_Name: Ascend
   m_EditorClassIdentifier: 
-  initialJumpForce: 6
+  initialJumpForce: 2

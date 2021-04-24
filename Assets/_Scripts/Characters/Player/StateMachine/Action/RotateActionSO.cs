@@ -33,8 +33,12 @@ public class RotateAction : StateAction
 
 		if (horizontalMovement.sqrMagnitude >= ROTATION_TRESHOLD)
 		{
+			var angles = _player._followTarget.transform.rotation;
+
 			float targetRotation = Mathf.Atan2(_player.movementVector.x, _player.movementVector.z) * Mathf.Rad2Deg;
 			_transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(_transform.eulerAngles.y, targetRotation, ref _turnSmoothSpeed, OriginSO.turnSmoothTime);
+			
+			_player._followTarget.transform.rotation = angles;
 		}
 	}
 }

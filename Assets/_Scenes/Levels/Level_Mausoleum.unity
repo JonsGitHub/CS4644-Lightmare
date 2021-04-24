@@ -615,11 +615,11 @@ PlayableDirector:
   m_ExposedReferences:
     m_References:
     - d13bab6a81fc6544fbc56b9c5828cd04: {fileID: 0}
-    - 308da6cb476fa7e4181d85e9e3bd2d70: {fileID: 1153808494}
+    - 308da6cb476fa7e4181d85e9e3bd2d70: {fileID: 0}
     - 724f733800c907b4192c94d3d47aa878: {fileID: 681877593}
     - 3b83a82e480571648a0f7c2f7a088565: {fileID: 0}
     - d7a2bcc783486fc479d9538cdb691b83: {fileID: 0}
-    - f99a3060f9f5392418bea7f0146c5a71: {fileID: 1153808494}
+    - f99a3060f9f5392418bea7f0146c5a71: {fileID: 0}
     - 89ec5d7cdcef34847a07cba441240e37: {fileID: 0}
     - 158fce121cc7f714fa93e7d86b391f97: {fileID: 0}
     - c2c103ec85c052a489ecf534290a9ef0: {fileID: 0}
@@ -18184,6 +18184,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 149406160, guid: 49f27070daca7274ea0de0e8804ffdcf, type: 3}
+      propertyPath: CameraDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299306191, guid: 49f27070daca7274ea0de0e8804ffdcf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 1286681309401528115, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -18421,18 +18429,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f27070daca7274ea0de0e8804ffdcf, type: 3}
---- !u!114 &1153808494 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4184016653104664733, guid: 49f27070daca7274ea0de0e8804ffdcf,
-    type: 3}
-  m_PrefabInstance: {fileID: 1153808493}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1153808495 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4184016653379499700, guid: 49f27070daca7274ea0de0e8804ffdcf,

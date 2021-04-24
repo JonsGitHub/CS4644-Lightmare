@@ -13,7 +13,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	public event UnityAction jumpCanceledEvent = delegate { };
 	
 	public event UnityAction attackEvent = delegate { };
-	public event UnityAction aimAttackEvent = delegate { };
+	public event UnityAction<bool> aimEvent = delegate { };
 	public event UnityAction attackEndedEvent = delegate { };
 
 	public event UnityAction interactEvent = delegate { }; // Used to talk, pickup objects, interact with tools like the cooking cauldron
@@ -72,16 +72,29 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 
 	public void OnAimAttack(InputAction.CallbackContext context)
 	{
-		switch (context.phase)
-		{
-			case InputActionPhase.Performed:
-				aimAttackEvent.Invoke();
-				break;
-			case InputActionPhase.Canceled:
-				attackEndedEvent.Invoke();
-				break;
-		}
+		//switch (context.phase)
+		//{
+		//	case InputActionPhase.Performed:
+		//		aimAttackEvent.Invoke();
+		//		break;
+		//	case InputActionPhase.Canceled:
+		//		attackEndedEvent.Invoke();
+		//		break;
+		//}
 	}
+
+	public void OnAim(InputAction.CallbackContext context)
+	{
+        switch (context.phase)
+        {
+            case InputActionPhase.Performed:
+                aimEvent.Invoke(true);
+                break;
+			case InputActionPhase.Canceled:
+				aimEvent.Invoke(false);
+				break;
+        }
+    }
 
 	public void OnOpenInventory(InputAction.CallbackContext context)
 	{
@@ -229,4 +242,6 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 	}
 
 	public bool LeftMouseDown() => Mouse.current.leftButton.isPressed;
+
+    
 }

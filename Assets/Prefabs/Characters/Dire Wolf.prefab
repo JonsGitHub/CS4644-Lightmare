@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 180890217701941926}
   - component: {fileID: 180890217701941927}
   - component: {fileID: 180890217701941924}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerZone_Alert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 180890218368161154}
   - component: {fileID: 180890218368161152}
   - component: {fileID: 180890218368161155}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerZone_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

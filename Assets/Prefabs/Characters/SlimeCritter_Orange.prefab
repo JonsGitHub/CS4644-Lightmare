@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 6113378935803106268}
   - component: {fileID: 6113378935803106267}
   - component: {fileID: 6113378935803106266}
-  m_Layer: 1
+  m_Layer: 2
   m_Name: TriggerZone_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 6113378936176005349}
   - component: {fileID: 6113378936176005348}
   - component: {fileID: 6113378936176005347}
-  m_Layer: 1
+  m_Layer: 2
   m_Name: TriggerZone_Alert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,6 +434,10 @@ MonoBehaviour:
   _healthConfigSO: {fileID: 11400000, guid: 5088c52f8daa3494a8e654ba3b86e133, type: 2}
   _getHitEffectSO: {fileID: 11400000, guid: 29fd4b4ddcec0104cbb10d591de73d5f, type: 2}
   _mainMeshRenderer: {fileID: 6113378936542655117}
+  _dropItemReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   _destroyedChannelEvent: {fileID: 0}
   _playerDamagedEvent: {fileID: 0}

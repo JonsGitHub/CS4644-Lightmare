@@ -37,6 +37,7 @@ public class Damageable : MonoBehaviour
 	public int MaxHealth => _healthConfigSO.MaxHealth;
 
 	public UnityAction OnDie;
+	public UnityAction<Damageable> OnKilled;
 
 	private void Awake()
 	{
@@ -105,6 +106,7 @@ public class Damageable : MonoBehaviour
 		if (_currentHealth <= 0)
 		{
 			IsDead = true;
+			OnKilled?.Invoke(this);
 			if (_drop)
 			{
 				Instantiate(_drop, transform.position, Quaternion.identity);
@@ -129,6 +131,7 @@ public class Damageable : MonoBehaviour
 			healthbar.Health = _currentHealth;
 
 		IsDead = true;
+		OnKilled?.Invoke(this);
 		if (OnDie != null)
 		{
 			OnDie.Invoke();
