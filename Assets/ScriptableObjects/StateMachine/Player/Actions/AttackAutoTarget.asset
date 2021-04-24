@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbdca7429a9ee84eb24dcd3b9cc93c6, type: 3}
   m_Name: AttackAutoTarget
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 31233
   autoTargetAnchor: {fileID: 11400000, guid: 58234f040023f044888e3c14646d5c2a, type: 2}
-  aimTargetAnchor: {fileID: 11400000, guid: 2b47ff5d8e894c74ab4c3e98bec678e1, type: 2}
