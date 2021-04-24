@@ -11,13 +11,7 @@ public class ProjectileAttacker : Attacker
 		InstantiateProjectile();
 	}
 
-	public override void DisableWeapon()
-	{
-	}
+	public override void DisableWeapon() { }
 
-	private void InstantiateProjectile()
-    {
-		var projectile = Instantiate(_projectile, _firePoint.position, Quaternion.identity);
-		projectile.Fire(Destination);
-	}
+	private void InstantiateProjectile() => Instantiate(_projectile, _firePoint.position, Quaternion.identity).Fire(Destination);
 }

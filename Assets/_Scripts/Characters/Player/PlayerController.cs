@@ -141,10 +141,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        lastHit = hit;
-    }
+    private void OnControllerColliderHit(ControllerColliderHit hit) => lastHit = hit;
 
     private void RecalculateMovement()
     {

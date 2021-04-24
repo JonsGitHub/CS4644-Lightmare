@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.VFX;
 
 public class ProjectileAttack : MonoBehaviour
 {
@@ -25,20 +24,23 @@ public class ProjectileAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        var contact = other.GetContact(0);
+
+        // Give damage to damageable if found
         if (other.gameObject.TryGetComponent(out Damageable damageable))
         {
             damageable.ReceiveAnAttack(_attackConfigSO.AttackStrength);
         }
+
+        // Add force at the collision contact point to give "impact"
+        other.rigidbody?.AddForceAtPosition(other.relativeVelocity * PushForce, contact.point);
         
-        other.rigidbody?.AddForceAtPosition(other.relativeVelocity * PushForce, other.GetContact(0).point);
-        
+        // Spawn hit impact effect if avaliable at contact point's normal
         if (_hitImpact)
         {
-            var rot = Quaternion.FromToRotation(Vector3.up, other.GetContact(0).normal);
-            var impact = Instantiate(_hitImpact, other.GetContact(0).point, rot);
-            Destroy(impact, 2);
+            var impact = Instantiate(_hitImpact, contact.point, Quaternion.FromToRotation(Vector3.up, contact.normal));
+            Destroy(impact, 2); // Clean up hit impact
         }
-
-        Destroy(gameObject);
+        Destroy(gameObject); // Clean up
     }
 }

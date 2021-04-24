@@ -136,7 +136,6 @@ public class CameraManager : MonoBehaviour
 		_followTarget.transform.localEulerAngles = angles;
 	}
 
-
 	private void OnCameraMove(Vector2 cameraMovement, bool isDeviceMouse)
 	{
 		if (Cursor.visible || _cameraMovementLock || _followTarget == null)
