@@ -127,6 +127,7 @@ MonoBehaviour:
   _swivelTransform: {fileID: 5626263357632690217}
   _modelTransform: {fileID: 2703352421984677008}
   _aimEventChannel: {fileID: 11400000, guid: bef0d3c4379d2ac4eb9c587038da1059, type: 2}
+  _followTarget: {fileID: 111020500025678895}
 --- !u!114 &111020498712096043
 MonoBehaviour:
   m_ObjectHideFlags: 0

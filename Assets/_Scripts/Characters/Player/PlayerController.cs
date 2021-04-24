@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,9 +9,6 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-	private const float _lerpSpeed = 0.43f;
-    private Vector3 _modelOffset = new Vector3(-0.63f, 0, 0);
-
     #region Public Properties
 
     [SerializeField] private InputReader _inputReader = default;
@@ -24,13 +20,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private TransformAnchor _cameraTransformAnchor = default;
     [SerializeField] private Transform _swivelTransform = default;
-    [SerializeField] private Transform _modelTransform = default;
-    [SerializeField] private BoolEventChannelSO _aimEventChannel = default;
 
     private Vector2 _previousMovementInput;
     private RaycastHit _prevHit;
-
-    private bool _justAimed;
 
     #endregion
 
@@ -49,6 +41,8 @@ public class PlayerController : MonoBehaviour
     public const float GRAVITY_COMEBACK_MULTIPLIER = .03f;
     public const float GRAVITY_DIVIDER = .6f;
     public const float AIR_RESISTANCE = 5f;
+
+    public Transform _followTarget;
 
     private List<Damageable> _enemies = new List<Damageable>();
 
@@ -72,11 +66,8 @@ public class PlayerController : MonoBehaviour
         _inputReader.moveEvent += OnMove;
         _inputReader.startedRunning += OnStartedRunning;
         _inputReader.stoppedRunning += OnStoppedRunning;
-        _inputReader.aimAttackEvent += OnAimAttack;
-        _inputReader.attackEndedEvent += OnAttackEnded;
-
-        if (_aimEventChannel)
-            _aimEventChannel.OnEventRaised += AimState;
+        _inputReader.aimEvent += OnAimAttack;
+        _inputReader.attackEvent += OnAttackEnded;
     }
 
     private void OnDisable()
@@ -87,16 +78,13 @@ public class PlayerController : MonoBehaviour
         _inputReader.moveEvent -= OnMove;
         _inputReader.startedRunning -= OnStartedRunning;
         _inputReader.stoppedRunning -= OnStoppedRunning;
-        _inputReader.aimAttackEvent -= OnAimAttack;
-        _inputReader.attackEndedEvent -= OnAttackEnded;
-
-        if (_aimEventChannel)
-            _aimEventChannel.OnEventRaised -= AimState;
+        _inputReader.aimEvent -= OnAimAttack;
+        _inputReader.attackEvent -= OnAttackEnded;
     }
 
     private void Update()
     {
-        if (!_justAimed)
+        if (!aimAttackInput)
         {
             _enemies = _enemies.Where(x => x != null).ToList(); // Destroyed enemies need to removed somehow
             if (_enemies.Count > 1)
@@ -120,7 +108,6 @@ public class PlayerController : MonoBehaviour
                 }
                 if (target != null)
                     _closestEnemyTransform.Transform = target.transform;
-                // previous -> //_closestEnemyTransform.Transform = _enemies.OrderBy(x => x.transform.position).First().transform;
             }
             else if(_enemies.Count == 1)
             {
@@ -183,39 +170,6 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("No gameplay camera in the scene. Movement orientation will not be correct.");
             movementInput = new Vector3(_previousMovementInput.x, 0f, _previousMovementInput.y);
         }
-
-        // This is used to set the speed to the maximum if holding the Shift key,
-        // to allow keyboard players to "run"
-        if (isRunning)
-        {
-            movementInput.Normalize();
-        }
-    }
-
-    private void AimState(bool state)
-    {
-        if (state)
-            StartCoroutine(LerpFollowPosition(_modelOffset));
-        else
-            StartCoroutine(LerpFollowPosition(Vector3.zero));
-    }
-
-    private IEnumerator LerpFollowPosition(Vector3 endPosition)
-    {
-        float timeElapsed = 0;
-        var startPosition = _modelTransform.localPosition;
-        while (timeElapsed < _lerpSpeed)
-        {
-            _modelTransform.localPosition = Vector3.Lerp(startPosition, endPosition, timeElapsed / _lerpSpeed);
-            timeElapsed += Time.deltaTime;
-
-            yield return null;
-        }
-        _modelTransform.localPosition = endPosition;
-
-        // Unlock aiming state and allow checking for nearest enemy auto aiming
-        _closestEnemyTransform.isSet = false;
-        _justAimed = false;
     }
 
     private void OnMove(Vector2 movement) => _previousMovementInput = movement;
@@ -228,16 +182,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnStartedRunning() => isRunning = true;
 
-    private void OnAttackEnded()
-    {
-        if (aimAttackInput)
-            _justAimed = true; // Lock to aiming target and prevent auto target locking to nearest enemy
+    private void OnAttackEnded() => attackInput = true;
 
-        // Triggered when player releases attack input.
-        attackInput = true;
-        aimAttackInput = false;
-    }
-
-    // Triggered when player holds attack input.
-    private void OnAimAttack() => aimAttackInput = true;
+    // Triggered when player holds right click.
+    private void OnAimAttack(bool state) => aimAttackInput = state;
 }

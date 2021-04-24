@@ -32,7 +32,6 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private IntEventChannelSO _playerHitChannel = default;
 
 	[SerializeField] private Image _reticleImage = default;
-	[SerializeField] private BoolEventChannelSO _aimEventChannel = default;
 
 	[Tooltip("The Distance of occlusion of UI3D Objects")]
 	[Range(0, 200)]
@@ -91,10 +90,6 @@ public class UIManager : MonoBehaviour
         {
 			_playerHitChannel.OnEventRaised += UpdatePlayerHealth;
         }
-		if (_aimEventChannel)
-        {
-			_aimEventChannel.OnEventRaised += AimState;
-        }
 		if (_requestUpdateInteraction)
         {
 			_requestUpdateInteraction.OnEventRaised += UpdateInteraction;
@@ -106,6 +101,7 @@ public class UIManager : MonoBehaviour
 
 		_inputReader.pauseEvent += Pause;
 		_inputReader.menuUnpauseEvent += Unpause;
+		_inputReader.aimEvent += OnAim;
 
 		_inputReader.EnableGameplayInput();
 	}
@@ -132,10 +128,6 @@ public class UIManager : MonoBehaviour
 		{
 			_playerHitChannel.OnEventRaised -= UpdatePlayerHealth;
 		}
-		if (_aimEventChannel)
-		{
-			_aimEventChannel.OnEventRaised -= AimState;
-		}
 		if (_requestUpdateInteraction)
 		{
 			_requestUpdateInteraction.OnEventRaised -= UpdateInteraction;
@@ -147,6 +139,7 @@ public class UIManager : MonoBehaviour
 
 		_inputReader.pauseEvent -= Pause;
 		_inputReader.menuUnpauseEvent -= Unpause;
+		_inputReader.aimEvent -= OnAim;
 	}
 
 	private void GatherPlayerInformation(Transform transform)
@@ -339,7 +332,7 @@ public class UIManager : MonoBehaviour
 		Time.timeScale = 0;
 	}
 
-	private void AimState(bool state)
+	private void OnAim(bool state)
 	{
 		if (state)
 		{

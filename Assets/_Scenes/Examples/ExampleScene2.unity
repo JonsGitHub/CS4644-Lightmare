@@ -428,6 +428,7 @@ MonoBehaviour:
   _playableCutscene: {fileID: 1011437640}
   _playOnStart: 0
   _playOnce: 0
+  _reposition: {fileID: 0}
   _playCutsceneEvent: {fileID: 11400000, guid: a75f2f1125429c64c94ab5314e78deaa, type: 2}
 --- !u!1 &97250912
 GameObject:
@@ -2432,6 +2433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unlockingChannel: {fileID: 0}
+  _failedChannel: {fileID: 0}
   _stories:
   - List:
     - The sun burned above oceans of sand.
@@ -18584,46 +18586,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99999136
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.004166549
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.000000017206233
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -7.1691236e-11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652547918067, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: MaxZoom
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652547918067, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: MinZoom
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652547918067, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: ZoomFactor
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4184016652547918068, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_RootOrder
@@ -18683,96 +18645,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CameraSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652638858791, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99948275
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652638858791, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.032160822
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652638858791, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000017331311
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652638858791, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -5.5767774e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652698127547, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653104664734, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653223849319, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999017
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653223849319, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.014023461
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653223849319, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1e-45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653223849319, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999017
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.014023464
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499703, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: field of view
-      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f27070daca7274ea0de0e8804ffdcf, type: 3}

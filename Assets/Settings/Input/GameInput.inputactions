@@ -46,14 +46,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "OpenInventory",
-                    "type": "Button",
-                    "id": "1b6ae4df-f5e6-42fc-92b6-3dcc2e126563",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "RotateCamera",
                     "type": "Value",
                     "id": "1c4a88b5-2474-4e49-8f10-f987bde2dee0",
@@ -78,9 +70,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "AimAttack",
+                    "name": "Aim",
                     "type": "Button",
-                    "id": "d6942229-bd8d-417a-81a6-22e6980cbbf7",
+                    "id": "8771b850-5e72-495f-8bb5-6f97583558c3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -287,20 +279,9 @@
                 },
                 {
                     "name": "",
-                    "id": "91ce58d8-88e1-4ade-945b-59c4f0939828",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardOrGamepad",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4c248131-d3fe-4545-b4dc-ba0690c01312",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
                     "action": "Attack",
@@ -348,28 +329,6 @@
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
                     "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "937b421c-9467-4b47-a1fd-445b9b44d5c9",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardOrGamepad",
-                    "action": "OpenInventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ceb892d5-04df-4ccf-8ef6-2a5124d4a2e7",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardOrGamepad",
-                    "action": "OpenInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -444,7 +403,7 @@
                     "id": "88e5a69d-cf1d-43ce-b5ab-9db67f819255",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "ScaleVector2(x=2,y=2)",
+                    "processors": "InvertVector2(invertX=false)",
                     "groups": "KeyboardOrGamepad",
                     "action": "RotateCamera",
                     "isComposite": false,
@@ -485,12 +444,12 @@
                 },
                 {
                     "name": "",
-                    "id": "4b35fe14-da59-4985-ad6b-2853be1b782f",
-                    "path": "<Mouse>/leftButton",
+                    "id": "e4df47e5-3a41-4012-a90d-bbf9aa3c7477",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "AimAttack",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
