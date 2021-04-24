@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3029060076030324909}
   - component: {fileID: 3029060076030324911}
   - component: {fileID: 6955594604790317669}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Magic_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6560603ac37b4dbdabcf9618a397c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitImpact: {fileID: 7862467576104440134, guid: 4cb3144e1d2b8a045b734367b47e5848,
+    type: 3}
   _attackConfigSO: {fileID: 11400000, guid: c95d3d09f25a89440aeb689bb457a593, type: 2}
   _projectileSpeed: 30
   _lifeSpan: 15
@@ -135,7 +137,7 @@ GameObject:
   - component: {fileID: 3029060076915023207}
   - component: {fileID: 3029060076915023209}
   - component: {fileID: 3029060076915023206}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4898,7 +4900,7 @@ GameObject:
   - component: {fileID: 3029060077419278719}
   - component: {fileID: 3029060077419278716}
   - component: {fileID: 3029060077419278717}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9651,7 +9653,7 @@ GameObject:
   - component: {fileID: 3200118890112335531}
   - component: {fileID: 8016951395471966941}
   - component: {fileID: 7564103574085185357}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cover_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

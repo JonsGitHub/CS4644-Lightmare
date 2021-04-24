@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     //These fields are read and manipulated by the StateMachine actions
     [NonSerialized] public bool jumpInput;
     [NonSerialized] public bool attackInput;
-    [NonSerialized] public bool aimAttackInput;
+    [NonSerialized] public bool aimInput;
     [NonSerialized] public Vector3 movementInput; //Initial input coming from the Protagonist script
     [NonSerialized] public Vector3 movementVector; //Final movement vector, manipulated by the StateMachine actions
 	[NonSerialized] public ControllerColliderHit lastHit;
@@ -48,14 +48,21 @@ public class PlayerController : MonoBehaviour
 
     public void DetectEnemy(bool enteredRange, GameObject enemy)
     {
-        if (enteredRange)
+        if (enteredRange && enemy.TryGetComponent(out Damageable damageable))
         {
-            _enemies.Add(enemy.GetComponent<Damageable>());
+            damageable.OnKilled += RemoveDetectedEnemy;
+            _enemies.Add(damageable);
         }
         else
         {
             _enemies.Remove(enemy.GetComponent<Damageable>());
         }
+    }
+
+    private void RemoveDetectedEnemy(Damageable damageable)
+    {
+        damageable.OnKilled -= RemoveDetectedEnemy;
+        _enemies.Remove(damageable);
     }
 
     private void OnEnable()
@@ -84,41 +91,31 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (!aimAttackInput)
+        RecalculateMovement();
+
+        if (!aimInput)
         {
-            _enemies = _enemies.Where(x => x != null).ToList(); // Destroyed enemies need to removed somehow
             if (_enemies.Count > 1)
             {
-                var ordered = _enemies.OrderBy(x => Vector3.Distance(transform.position, x.transform.position));
-                Transform target = null;
-                int i = 0;
-                while (target == null)
-                {
-                    var temp = ordered.ElementAtOrDefault(i);
-                    if (temp == null)
-                    {
-                        _closestEnemyTransform.isSet = false;
-                        break;
-                    }
-                    if (temp.CurrentHealth > 0)
-                    {
-                        target = ordered.ElementAt(i).transform;
-                    }
-                    i++;
-                }
+                var target = _enemies.OrderBy(x => Vector3.Distance(transform.position, x.transform.position)).FirstOrDefault();
                 if (target != null)
                     _closestEnemyTransform.Transform = target.transform;
             }
             else if(_enemies.Count == 1)
             {
-                _closestEnemyTransform.Transform = _enemies.First().transform;
+                var target = _enemies.FirstOrDefault();
+                if (target != null)
+                    _closestEnemyTransform.Transform = target.transform;
             }
             else
             {
-                _closestEnemyTransform.isSet = false;
+                _closestEnemyTransform.Transform = null;
             }
         }
-        RecalculateMovement();
+        else
+        {
+            _closestEnemyTransform.Transform = null;
+        }
     }
 
     private void FixedUpdate()
@@ -185,5 +182,5 @@ public class PlayerController : MonoBehaviour
     private void OnAttackEnded() => attackInput = true;
 
     // Triggered when player holds right click.
-    private void OnAimAttack(bool state) => aimAttackInput = state;
+    private void OnAimAttack(bool state) => aimInput = state;
 }

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.VFX;
 
 public class ProjectileAttack : MonoBehaviour
 {
+    [SerializeField] private GameObject _hitImpact;
     [SerializeField] private AttackConfigSO _attackConfigSO;
     [SerializeField] private float _projectileSpeed = 30;
     [SerializeField] private float _lifeSpan = 15;
@@ -27,7 +29,15 @@ public class ProjectileAttack : MonoBehaviour
         {
             damageable.ReceiveAnAttack(_attackConfigSO.AttackStrength);
         }
+        
         other.rigidbody?.AddForceAtPosition(other.relativeVelocity * PushForce, other.GetContact(0).point);
+        
+        if (_hitImpact)
+        {
+            var rot = Quaternion.FromToRotation(Vector3.up, other.GetContact(0).normal);
+            var impact = Instantiate(_hitImpact, other.GetContact(0).point, rot);
+            Destroy(impact, 2);
+        }
 
         Destroy(gameObject);
     }

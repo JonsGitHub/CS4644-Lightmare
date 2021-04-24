@@ -37,7 +37,7 @@ public class AttackAutoTargetAction : StateAction
 
 	private void RotateTowardsTarget()
     {
-		if (_player.aimAttackInput)
+		if (_player.aimInput)
         {
 			_ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
 			if (Physics.Raycast(_ray, out _hit, OriginSO.layerMask))

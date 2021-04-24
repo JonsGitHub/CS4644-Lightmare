@@ -126,8 +126,7 @@ MonoBehaviour:
   _cameraTransformAnchor: {fileID: 11400000, guid: a8dd4b8408f8b924892fa2e117409890,
     type: 2}
   _swivelTransform: {fileID: 5626263357632690217}
-  _modelTransform: {fileID: 2703352421984677008}
-  _aimEventChannel: {fileID: 11400000, guid: bef0d3c4379d2ac4eb9c587038da1059, type: 2}
+  _followTarget: {fileID: 0}
 --- !u!114 &111020498712096043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +228,10 @@ MonoBehaviour:
   _healthConfigSO: {fileID: 11400000, guid: feea38f35e4e84e47995f2bb5f7565ac, type: 2}
   _getHitEffectSO: {fileID: 11400000, guid: 6c8eda2391624f2429d64fe3b8b49508, type: 2}
   _mainMeshRenderer: {fileID: 160212353766574381}
+  _dropItemReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   _destroyedChannelEvent: {fileID: 0}
   _playerDamagedEvent: {fileID: 11400000, guid: bf6257b7532562442a183c9b704963bc,
@@ -5555,7 +5558,7 @@ GameObject:
   - component: {fileID: 1759319006280540840}
   - component: {fileID: 7659001077236571783}
   - component: {fileID: 1340079640637773450}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemyDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5631,7 +5634,7 @@ GameObject:
   - component: {fileID: 3715345838153465257}
   - component: {fileID: 5719592306185994659}
   - component: {fileID: 1356815012287093618}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: InteractionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}

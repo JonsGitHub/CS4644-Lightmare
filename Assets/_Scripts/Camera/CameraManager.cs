@@ -113,7 +113,7 @@ public class CameraManager : MonoBehaviour
 		{
 			return;
 		}
-		var speedMult = (Settings.Instance.MouseSensitivity / 10.0f);
+		var speedMult = (Settings.Instance.MouseSensitivity / 10.0f) * (_state.Equals(CameraState.Aiming) ? 0.5f : 1.0f);
 
 		//Rotate the Follow Target transform based on the input
 		_followTarget.transform.rotation *= Quaternion.AngleAxis(_previousLookMovement.x * speedMult, Settings.Instance.InvertedXAxis ? Vector3.down : Vector3.up);

@@ -17,6 +17,6 @@ public class IsAimAttacking : Condition
 
 	protected override bool Statement()
 	{
-		return _player.aimAttackInput;
+		return _player.aimInput;
 	}
 }
