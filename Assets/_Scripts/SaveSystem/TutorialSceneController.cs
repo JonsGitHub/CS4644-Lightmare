@@ -8,6 +8,7 @@ using UnityEngine;
 public class TutorialSceneData : SceneData
 {
     public int _currentCheckpoint;
+    public string _currentTransition;
     public bool _solvedPuzzle;
     public bool _solvedCombat;
 
@@ -22,6 +23,8 @@ public class TutorialSceneController : SceneController
     [SerializeField] private GameObject _oldManCutsceneTrigger;
     [SerializeField] private SafetyNet _safetyNet;
     [SerializeField] private MirrorGameplayController _mirror;
+    [SerializeField] private UnlockingDoor _mirrorUnlockingDoor;
+    [SerializeField] private UnlockingDoor _mirrorCombatDoor;
 
     [SerializeField] private UnlockingDoor _unlockingDoor;
     [SerializeField] private BoxCollider _basket;
@@ -44,12 +47,14 @@ public class TutorialSceneController : SceneController
         {
             _basket.enabled = false;
             _unlockingDoor.SetLockState(false);
+            _mirrorUnlockingDoor.SetLockState(false);
             _oldManCutsceneTrigger.SetActive(false);
         }
 
         if (tutorialData._solvedCombat)
         {
             _combatDoor.SetLockState(false);
+            _mirrorCombatDoor.SetLockState(false);
             _targetOne.Kill();
             _targetTwo.Kill();
             _targetThree.Kill();
@@ -62,28 +67,15 @@ public class TutorialSceneController : SceneController
         }
 
         _safetyNet.SetCheckpoint(tutorialData._currentCheckpoint);
-        switch (tutorialData._currentCheckpoint)
-        {
-            case 0:
-                _mirror.PlayTransition("Platforming");
-                break;
-            case 1:
-                _mirror.PlayTransition("Apple");
-                break;
-            case 2:
-                _mirror.PlayTransition("Combat");
-                break;
-            case 3:
-                _mirror.PlayTransition("Portal");
-                break;
-        }
+        _mirror.PlayTransition(tutorialData._currentTransition);
     }
 
     public override SceneData Save()
     {
         var data = new TutorialSceneData();
         data._currentCheckpoint = _safetyNet.CurrentIndex;
-        
+        data._currentTransition = _mirror.CurrentTransition;
+
         data._solvedPuzzle = !_unlockingDoor.Locked;
         data._solvedCombat = !_combatDoor.Locked;
 

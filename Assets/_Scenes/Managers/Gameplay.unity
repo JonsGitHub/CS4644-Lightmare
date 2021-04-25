@@ -3870,6 +3870,59 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &587015629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 587015630}
+  - component: {fileID: 587015631}
+  m_Layer: 5
+  m_Name: IndicatorScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &587015630
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587015629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1635074578}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &587015631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587015629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27961a1e59ab18e4caeb2f91fc7e618d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offScreenIndicator: {fileID: 1642590813400178657, guid: 5d76fd8104ba98d42a4706182d0db669,
+    type: 3}
+  _indicatorTransformEvent: {fileID: 11400000, guid: ae13809e6d55909419e74afefae1eaf8,
+    type: 2}
+  _screenPadding: 100
 --- !u!1 &590591227
 GameObject:
   m_ObjectHideFlags: 0
@@ -10659,6 +10712,7 @@ RectTransform:
   - {fileID: 3121504612491520394}
   - {fileID: 1978783362}
   - {fileID: 1493314424}
+  - {fileID: 587015630}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14117,7 +14171,6 @@ MonoBehaviour:
   _playerHealthBar: {fileID: 1087091593}
   _playerHitChannel: {fileID: 11400000, guid: bf6257b7532562442a183c9b704963bc, type: 2}
   _reticleImage: {fileID: 1493314425}
-  _aimEventChannel: {fileID: 11400000, guid: bef0d3c4379d2ac4eb9c587038da1059, type: 2}
   Ui3DOccludingDistance: 25
   _3dUiHolder: {fileID: 1781115982}
   _openUIDialogueEvent: {fileID: 11400000, guid: 4969c4e8aa8d1bd42a832aa49d6b3dcf,

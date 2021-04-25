@@ -10,7 +10,15 @@ public class MirrorGameplayController : MonoBehaviour
     [SerializeField] private List<VisualEffect> _visualEffects;
     [SerializeField] private GameObject _blockout;
 
-    public void PlayTransition(string name) => _animator.Play(name);
+    private string current;
+
+    public string CurrentTransition => current;
+
+    public void PlayTransition(string name)
+    {
+        current = name;
+        _animator.Play(name);
+    }
 
     public void SetMirrorWalkingState(int state) => _mirrorLight.SetBoolParameter("IsWalking", state == 1);
 

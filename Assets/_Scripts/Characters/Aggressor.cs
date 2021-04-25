@@ -5,7 +5,7 @@ public class Aggressor : MonoBehaviour
 {
 	[HideInInspector] public bool isPlayerInAlertZone;
 	[HideInInspector] public bool isPlayerInAttackZone;
-	public Damageable currentTarget; //The StateMachine evaluates its health when needed\
+	public Damageable currentTarget; //The StateMachine evaluates its health when needed
 	
 	private bool resetHealth = false;
 
@@ -26,6 +26,11 @@ public class Aggressor : MonoBehaviour
 				currentTarget = d;
 				currentTarget.OnDie += OnTargetDead;
 				FoundTarget();
+
+				if (who.TryGetComponent(out PlayerController _player))
+                {
+					_player.Targeted(transform, true);
+                }
 			}
 			else
 			{
@@ -34,7 +39,11 @@ public class Aggressor : MonoBehaviour
                 {
 					resetHealth = true;
 					StartCoroutine(ResetHealthDelayed(damageable));
-                }
+				}
+				if (who.TryGetComponent(out PlayerController _player))
+				{
+					_player.Targeted(transform, false);
+				}
 			}
 		}
 	}
@@ -68,6 +77,11 @@ public class Aggressor : MonoBehaviour
 			currentTarget = damageable;
 			currentTarget.OnDie += OnTargetDead;
 			FoundTarget();
+
+			if (who.TryGetComponent(out PlayerController _player))
+			{
+				_player.Targeted(transform, true);
+			}
 		}
 	}
 

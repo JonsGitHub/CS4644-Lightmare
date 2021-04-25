@@ -125,6 +125,8 @@ MonoBehaviour:
   _cameraTransformAnchor: {fileID: 11400000, guid: a8dd4b8408f8b924892fa2e117409890,
     type: 2}
   _swivelTransform: {fileID: 5626263357632690217}
+  _indicatorTransformEvent: {fileID: 11400000, guid: ae13809e6d55909419e74afefae1eaf8,
+    type: 2}
   _followTarget: {fileID: 111020500025678895}
 --- !u!114 &111020498712096043
 MonoBehaviour:

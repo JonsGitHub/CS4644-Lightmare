@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TransformAnchor _cameraTransformAnchor = default;
     [SerializeField] private Transform _swivelTransform = default;
 
+    [SerializeField] private IndicatorTransformEventChannelSO _indicatorTransformEvent;
+
     private Vector2 _previousMovementInput;
     private RaycastHit _prevHit;
 
@@ -59,8 +61,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Targeted(Transform transform, bool entered) => _indicatorTransformEvent?.RaiseEvent(transform, entered);
+
     private void RemoveDetectedEnemy(Damageable damageable)
     {
+        _indicatorTransformEvent?.RaiseEvent(damageable.transform, false);
+
         damageable.OnKilled -= RemoveDetectedEnemy;
         _enemies.Remove(damageable);
     }
@@ -95,6 +101,7 @@ public class PlayerController : MonoBehaviour
 
         if (!aimInput)
         {
+            _enemies.RemoveAll(x => x == null);
             if (_enemies.Count > 1)
             {
                 var target = _enemies.OrderBy(x => Vector3.Distance(transform.position, x.transform.position)).FirstOrDefault();
