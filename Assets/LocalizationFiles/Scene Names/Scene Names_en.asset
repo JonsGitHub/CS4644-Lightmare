@@ -46,5 +46,9 @@ MonoBehaviour:
     m_Localized: Ocean
     m_Metadata:
       m_Items: []
+  - m_Id: 4949631861002240
+    m_Localized: Boss
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

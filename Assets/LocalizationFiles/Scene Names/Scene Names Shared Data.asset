@@ -43,6 +43,10 @@ MonoBehaviour:
     m_Key: Level_Ocean
     m_Metadata:
       m_Items: []
+  - m_Id: 4949631861002240
+    m_Key: Level_Boss
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
