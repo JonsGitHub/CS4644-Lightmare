@@ -8,6 +8,7 @@ using UnityEngine;
 public class TutorialSceneData : SceneData
 {
     public int _currentCheckpoint;
+    public string _currentTransition;
     public bool _solvedPuzzle;
     public bool _solvedCombat;
 
@@ -62,28 +63,15 @@ public class TutorialSceneController : SceneController
         }
 
         _safetyNet.SetCheckpoint(tutorialData._currentCheckpoint);
-        switch (tutorialData._currentCheckpoint)
-        {
-            case 0:
-                _mirror.PlayTransition("Platforming");
-                break;
-            case 1:
-                _mirror.PlayTransition("Apple");
-                break;
-            case 2:
-                _mirror.PlayTransition("Combat");
-                break;
-            case 3:
-                _mirror.PlayTransition("Portal");
-                break;
-        }
+        _mirror.PlayTransition(tutorialData._currentTransition);
     }
 
     public override SceneData Save()
     {
         var data = new TutorialSceneData();
         data._currentCheckpoint = _safetyNet.CurrentIndex;
-        
+        data._currentTransition = _mirror.CurrentTransition;
+
         data._solvedPuzzle = !_unlockingDoor.Locked;
         data._solvedCombat = !_combatDoor.Locked;
 
