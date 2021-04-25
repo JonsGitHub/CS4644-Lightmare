@@ -23,6 +23,8 @@ public class TutorialSceneController : SceneController
     [SerializeField] private GameObject _oldManCutsceneTrigger;
     [SerializeField] private SafetyNet _safetyNet;
     [SerializeField] private MirrorGameplayController _mirror;
+    [SerializeField] private UnlockingDoor _mirrorUnlockingDoor;
+    [SerializeField] private UnlockingDoor _mirrorCombatDoor;
 
     [SerializeField] private UnlockingDoor _unlockingDoor;
     [SerializeField] private BoxCollider _basket;
@@ -45,12 +47,14 @@ public class TutorialSceneController : SceneController
         {
             _basket.enabled = false;
             _unlockingDoor.SetLockState(false);
+            _mirrorUnlockingDoor.SetLockState(false);
             _oldManCutsceneTrigger.SetActive(false);
         }
 
         if (tutorialData._solvedCombat)
         {
             _combatDoor.SetLockState(false);
+            _mirrorCombatDoor.SetLockState(false);
             _targetOne.Kill();
             _targetTwo.Kill();
             _targetThree.Kill();
