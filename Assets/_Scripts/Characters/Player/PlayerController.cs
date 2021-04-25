@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (!aimInput)
         {
+            _enemies = _enemies.Where(x => x != null).ToList();
             if (_enemies.Count > 1)
             {
                 var target = _enemies.OrderBy(x => Vector3.Distance(transform.position, x.transform.position)).FirstOrDefault();

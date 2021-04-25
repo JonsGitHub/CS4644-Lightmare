@@ -49,7 +49,7 @@ public class AttackAutoTargetAction : StateAction
 				projectileAttacker.Destination = _ray.GetPoint(1000);
             }
         }
-		else if (OriginSO.autoTargetAnchor.isSet)
+		else if (OriginSO.autoTargetAnchor.isSet && OriginSO.autoTargetAnchor.Transform != null)
         {
 			projectileAttacker.Destination = OriginSO.autoTargetAnchor.Transform.position;
         }

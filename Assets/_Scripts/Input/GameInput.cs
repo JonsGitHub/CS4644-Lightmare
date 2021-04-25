@@ -459,7 +459,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""e4df47e5-3a41-4012-a90d-bbf9aa3c7477"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
                     ""action"": ""Aim"",
