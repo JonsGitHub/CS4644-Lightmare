@@ -37,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LavaTexture:
-        m_Texture: {fileID: 2800000, guid: a019aba896d38614abcf239d8ad23f3e, type: 3}
+        m_Texture: {fileID: 2800000, guid: b6703d3b1c8c1b24893a4998bbf00e20, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -65,7 +65,7 @@ Material:
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FresnelPower: 3
+    - _FresnelPower: 2.3
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -73,7 +73,7 @@ Material:
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SimpleNoiseAmount: 0.7
+    - _SimpleNoiseAmount: 0.3
     - _SimpleNoiseScale: 50
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -82,7 +82,7 @@ Material:
     - _Surface: 0
     - _VoronoiAmount: 0.05
     - _VoronoiAngleOffset: 0.5
-    - _VoronoiScale: 20
+    - _VoronoiScale: 5
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -91,11 +91,11 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 31.999996, g: 9.080228, b: 5.193715, a: 1}
     - _LavaColor: {r: 9.068457, g: 4.1378584, b: 1.2404968, a: 1}
-    - _LavaNormalsSpeed: {r: 0, g: 0.005, b: 0, a: 0}
+    - _LavaNormalsSpeed: {r: 0, g: 0.01, b: 0, a: 0}
     - _LavaRemap: {r: 0, g: 0, b: 0, a: 0}
     - _LavaSpeed: {r: 0, g: 0.01, b: 0, a: 0}
     - _LavaTiling: {r: 6, g: 6, b: 0, a: 0}
-    - _SimpleNoiseSpeed: {r: -0.01, g: 0.05, b: 0, a: 0}
+    - _SimpleNoiseSpeed: {r: 0.01, g: 0.005, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _VoronoiSpeed: {r: 0, g: 0.005, b: 0, a: 0}
 --- !u!114 &7936010911627587606
