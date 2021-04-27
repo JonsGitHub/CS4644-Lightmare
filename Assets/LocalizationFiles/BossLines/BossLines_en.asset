@@ -50,5 +50,13 @@ MonoBehaviour:
     m_Localized: NOOO!
     m_Metadata:
       m_Items: []
+  - m_Id: 494231656861696
+    m_Localized: I am Light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 494290247094272
+    m_Localized: I am fading.
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
