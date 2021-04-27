@@ -53,7 +53,7 @@ public class IndicatorManager : MonoBehaviour
 
     private void RemoveTransform(Transform transform)
     {
-        var find = _tracked.Find(x => x.Target.gameObject == transform.gameObject);
+        var find = _tracked.Find(x => x.Target != null && x.Target.gameObject == transform.gameObject);
         if (find != null)
         {
             Destroy(find.Indicator);

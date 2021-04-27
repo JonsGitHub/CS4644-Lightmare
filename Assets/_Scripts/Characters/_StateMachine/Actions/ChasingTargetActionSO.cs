@@ -23,12 +23,18 @@ public class ChasingTargetAction : StateAction
 	private ChasingTargetActionSO _config;
 	private NavMeshAgent _agent;
 	private bool _isActiveAgent;
+	private float speed;
 
 	public override void Awake(StateMachine.StateMachine stateMachine)
 	{
 		_config = (ChasingTargetActionSO)OriginSO;
 		_agent = stateMachine.gameObject.GetComponent<NavMeshAgent>();
 		_isActiveAgent = _agent != null && _agent.isActiveAndEnabled && _agent.isOnNavMesh;
+		
+		if (stateMachine.TryGetComponent(out NPCController controller))
+        {
+			speed = controller.NPCMovementConfig.Speed != 0 ? controller.NPCMovementConfig.Speed : _config.ChasingSpeed;
+		}
 	}
 
 	public override void OnUpdate()
@@ -44,7 +50,7 @@ public class ChasingTargetAction : StateAction
 	{
 		if (_isActiveAgent)
 		{
-			_agent.speed = _config.ChasingSpeed;
+			_agent.speed = speed;
 		}
 	}
 }
