@@ -12,11 +12,11 @@ public class WaveDestroy : MonoBehaviour
             WaveSpawner _waveSpawner = spawner.GetComponent<WaveSpawner>();
             if (gameObject.layer == 12)
             {
-                _waveSpawner.DecrementEnemy();
+                _waveSpawner.DecrementEnemy(null);
             }
             else if (gameObject.layer == 10)
             {
-                _waveSpawner.RestartWaves();
+                _waveSpawner.RestartWaves(null);
             }
         }
     }

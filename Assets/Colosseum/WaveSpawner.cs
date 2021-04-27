@@ -9,6 +9,7 @@ using TMPro;
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private BoolEventChannelSO _unlockingChannel = default;
+    [SerializeField] private TransformEventChannelSO _frameObjectChannel = default;
 
     [SerializeField] private TextMeshProUGUI _waveCounter = default;
     [SerializeField] private TextMeshProUGUI _enemiesCounter = default;
@@ -63,15 +64,24 @@ public class WaveSpawner : MonoBehaviour
         availablePoints = new List<Transform>(rangedSpawnPoints);
 
         _waveCounter.text = "Starting Wave";
+    }
 
-        GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Damageable>().OnDie += RestartWaves;
+    private void OnEnable()
+    {
+        if (_frameObjectChannel != null)
+            _frameObjectChannel.OnEventRaised += RestartWaves;
+    }
+
+    private void OnDisable()
+    {
+        if (_frameObjectChannel != null)
+            _frameObjectChannel.OnEventRaised -= RestartWaves;
     }
 
     void Update()
     {
         if (_newGame)
         {
-            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Damageable>().OnDie += RestartWaves;
             _newGame = false;
         }
         if (state == SpawnState.WAITING)
@@ -150,13 +160,13 @@ public class WaveSpawner : MonoBehaviour
         return true;
     }
 
-    public void DecrementEnemy()
+    public void DecrementEnemy(Damageable script)
     {
         totalEnemiesCount--;
         _enemiesCounter.text = "Enemies Remaining:\n" + totalEnemiesCount;
     }
 
-    public void RestartWaves()
+    public void RestartWaves(Transform _player)
     {
         nextWave = 0;
 
@@ -226,7 +236,7 @@ public class WaveSpawner : MonoBehaviour
         //Debug.Log("Spawning Enemy: " + _enemy.name);
         Transform _sp = groundSpawnPoints[Random.Range(0, groundSpawnPoints.Length)];
         GameObject _e = Instantiate(_enemy, _sp.position, _sp.rotation) as GameObject;
-        _e.GetComponent<Damageable>().OnDie += DecrementEnemy;
+        _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
     }
 
     void SpawnRangedEnemy(GameObject _enemy)
@@ -236,7 +246,7 @@ public class WaveSpawner : MonoBehaviour
         int point = Random.Range(0, availablePoints.Count);
         Transform _sp = availablePoints[point];
         GameObject _e = Instantiate(_enemy, _sp.position, _sp.rotation) as GameObject;
-        _e.GetComponent<Damageable>().OnDie += DecrementEnemy;
+        _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
         availablePoints.RemoveAt(point);
     }
 }

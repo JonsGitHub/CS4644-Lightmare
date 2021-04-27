@@ -8,11 +8,11 @@ public class DecrementEvent : WaveBase
 
     public override void Lock()
     {
-        _spawner.DecrementEnemy();
+        _spawner.DecrementEnemy(null);
     }
 
     public override void Unlock()
     {
-        _spawner.DecrementEnemy();
+        _spawner.DecrementEnemy(null);
     }
 }

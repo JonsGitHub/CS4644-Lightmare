@@ -8,11 +8,11 @@ public class RestartWave : WaveBase
 
     public override void Lock()
     {
-        _spawner.RestartWaves();
+        _spawner.RestartWaves(null);
     }
 
     public override void Unlock()
     {
-        _spawner.RestartWaves();
+        _spawner.RestartWaves(null);
     }
 }
