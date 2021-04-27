@@ -26,5 +26,29 @@ MonoBehaviour:
     m_Localized: You wouldn't dare.
     m_Metadata:
       m_Items: []
+  - m_Id: 457187861729280
+    m_Localized: Righting my own transgressions.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457405852291072
+    m_Localized: Ha! Pitiful Light
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457514069528576
+    m_Localized: You think this is enough to entrap me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457598597337088
+    m_Localized: MEEE!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457650694787072
+    m_Localized: wait, what are you doing?!?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457769037074432
+    m_Localized: NOOO!
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

@@ -23,6 +23,30 @@ MonoBehaviour:
     m_Key: Tiny_Misfortune_Line_1
     m_Metadata:
       m_Items: []
+  - m_Id: 457187861729280
+    m_Key: End_Light_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457405852291072
+    m_Key: Tiny_Misfortune_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457514069528576
+    m_Key: Tiny_Misfortune_Line_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457598597337088
+    m_Key: Tiny_Misfortune_Line_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457650694787072
+    m_Key: Tiny_Misfortune_Line_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457769037074432
+    m_Key: Tiny_Misfortune_Line_6
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
