@@ -104,8 +104,8 @@ public class Damageable : MonoBehaviour
 
 		GetHit = true;
 		if (_currentHealth <= 0)
-		{
-			IsDead = true;
+        {
+            IsDead = true;
 			OnKilled?.Invoke(this);
 			if (_drop)
 			{
@@ -113,8 +113,8 @@ public class Damageable : MonoBehaviour
 			}
 
 			if (OnDie != null)
-			{
-				OnDie.Invoke();
+            {
+                OnDie.Invoke();
 			}
 			else if (!TryGetComponent(out StateMachine.StateMachine machine)) // Destroy it if it most likely won't have a statemachine to perform cleanup
             {

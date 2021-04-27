@@ -193,6 +193,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637,
         type: 2}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: _destroyedChannelEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 532131c2137e5364891e049b898d35f8,
+        type: 2}
     - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: Name

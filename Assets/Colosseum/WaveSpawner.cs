@@ -28,9 +28,9 @@ public class WaveSpawner : MonoBehaviour
         public int hardCount;
         public int bossCount;
         public float rate;
-
-        public int TotalEnemiesCount => easyCount + mediumCount + hardCount + bossCount;
     }
+
+    private int totalEnemiesCount;
 
     public Wave[] waves;
     private int nextWave = 0;
@@ -42,8 +42,6 @@ public class WaveSpawner : MonoBehaviour
     public float timeBetweenWaves = 5.0f;
     private float waveCountdown;
 
-    private float searchCountdown = 1.0f;
-
     public SpawnState state = SpawnState.COUNTING;
 
     private bool _finished = false;
@@ -54,6 +52,9 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        Wave _wave = waves[nextWave];
+        totalEnemiesCount = _wave.easyCount + _wave.mediumCount + _wave.hardCount + _wave.bossCount;
+
         waveCountdown = timeBetweenWaves;
 
         Assert.IsTrue(groundSpawnPoints.Length != 0);
@@ -89,6 +90,18 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
+            if (nextWave == 0)
+            {
+                _waveCounter.text = "First Wave in " + waveCountdown.ToString("0");
+            }
+            else if (nextWave + 1 == waves.Length)
+            {
+                _waveCounter.text = "Final Wave in " + waveCountdown.ToString("0");
+            }
+            else
+            {
+                _waveCounter.text = "Next Wave in " + waveCountdown.ToString("0");
+            }
             waveCountdown -= Time.deltaTime;
         }
     }
@@ -97,7 +110,6 @@ public class WaveSpawner : MonoBehaviour
     {
         //Debug.Log("Wave Completed");
 
-        _waveCounter.text = "Starting Next Wave";
         _enemiesCounter.text = "";
 
         state = SpawnState.COUNTING;
@@ -115,29 +127,52 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             nextWave++;
+            Wave _wave = waves[nextWave];
+            totalEnemiesCount = _wave.easyCount + _wave.mediumCount + _wave.hardCount + _wave.bossCount;
         }
     }
 
     // Perhaps tie into the on death trigger of enemies instead of polling count.
     bool EnemyIsAlive()
     {
-        searchCountdown -= Time.deltaTime;
-        if (searchCountdown <= 0.0f)
+        if (totalEnemiesCount == 0)
         {
-            searchCountdown = 1.0f;
-            var enemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-            
-            _enemiesCounter.text = "Enemies Remaining:\n" + enemiesCount;
-            if (enemiesCount == 0)
-                return false;
+            return false;
         }
         return true;
+    }
+
+    public void DecrementEnemy()
+    {
+        totalEnemiesCount--;
+        _enemiesCounter.text = "Enemies Remaining:\n" + totalEnemiesCount;
+    }
+
+    public void RestartWaves()
+    {
+        nextWave = 0;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+
+        Wave _wave = waves[nextWave];
+        totalEnemiesCount = _wave.easyCount + _wave.mediumCount + _wave.hardCount + _wave.bossCount;
+
+        _waveCounter.text = "Restarting Waves";
+        _enemiesCounter.text = null;
+
+        waveCountdown = timeBetweenWaves;
+
+        state = SpawnState.COUNTING;
     }
 
     IEnumerator SpawnWave(Wave _wave)
     {
         _waveCounter.text = "Wave: " + (nextWave + 1);
-        _enemiesCounter.text = "Enemies Remaining:\n" + _wave.TotalEnemiesCount;
+        _enemiesCounter.text = "Enemies Remaining:\n" + totalEnemiesCount;
 
         state = SpawnState.SPAWNING;
         availablePoints = new List<Transform>(rangedSpawnPoints);

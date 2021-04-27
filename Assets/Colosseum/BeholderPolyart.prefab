@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 5392940091138852370}
   - component: {fileID: 3653783210327711280}
   - component: {fileID: -2235561766052608229}
+  - component: {fileID: 7274106170615497610}
   m_Layer: 12
   m_Name: BeholderPolyart
   m_TagString: Enemy
@@ -490,7 +491,8 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
-  _destroyedChannelEvent: {fileID: 0}
+  _destroyedChannelEvent: {fileID: 11400000, guid: 532131c2137e5364891e049b898d35f8,
+    type: 2}
   _playerDamagedEvent: {fileID: 0}
   _createHealthBar: 1
   Name: Beholder
@@ -526,6 +528,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCollider: {fileID: 4024067717268208947}
+--- !u!114 &7274106170615497610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024067717268208947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71074688f43d9954a916021071b37d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4024067717268208949
 GameObject:
   m_ObjectHideFlags: 0
