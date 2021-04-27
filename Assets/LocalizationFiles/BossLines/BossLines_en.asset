@@ -22,5 +22,9 @@ MonoBehaviour:
     m_Localized: Help me....
     m_Metadata:
       m_Items: []
+  - m_Id: 374387871584256
+    m_Localized: You wouldn't dare.
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

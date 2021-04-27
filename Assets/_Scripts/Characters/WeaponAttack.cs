@@ -14,8 +14,6 @@ public class WeaponAttack : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		// Avoid friendly fire!
-		Debug.Log(other.name + "  From  " + gameObject.name);
-
 		if (!other.CompareTag(gameObject.tag))
 		{
 			if (other.TryGetComponent(out Damageable damageableComp))

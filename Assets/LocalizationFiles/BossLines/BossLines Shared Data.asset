@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: Helpless_Light_Line_1
     m_Metadata:
       m_Items: []
+  - m_Id: 374387871584256
+    m_Key: Tiny_Misfortune_Line_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
