@@ -19,10 +19,10 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform easyEnemy;
-        public Transform mediumEnemy;
-        public Transform hardEnemy;
-        public Transform bossEnemy;
+        public GameObject easyEnemy;
+        public GameObject mediumEnemy;
+        public GameObject hardEnemy;
+        public GameObject bossEnemy;
         public int easyCount;
         public int mediumCount;
         public int hardCount;
@@ -31,6 +31,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     private int totalEnemiesCount;
+    private bool _newGame = false;
 
     public Wave[] waves;
     private int nextWave = 0;
@@ -62,10 +63,17 @@ public class WaveSpawner : MonoBehaviour
         availablePoints = new List<Transform>(rangedSpawnPoints);
 
         _waveCounter.text = "Starting Wave";
+
+        GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Damageable>().OnDie += RestartWaves;
     }
 
     void Update()
     {
+        if (_newGame)
+        {
+            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Damageable>().OnDie += RestartWaves;
+            _newGame = false;
+        }
         if (state == SpawnState.WAITING)
         {
             // Check if enemies are still alive
@@ -167,6 +175,8 @@ public class WaveSpawner : MonoBehaviour
         waveCountdown = timeBetweenWaves;
 
         state = SpawnState.COUNTING;
+
+        _newGame = true;
     }
 
     IEnumerator SpawnWave(Wave _wave)
@@ -210,21 +220,23 @@ public class WaveSpawner : MonoBehaviour
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemy(GameObject _enemy)
     {
         // Enemy
         //Debug.Log("Spawning Enemy: " + _enemy.name);
         Transform _sp = groundSpawnPoints[Random.Range(0, groundSpawnPoints.Length)];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        GameObject _e = Instantiate(_enemy, _sp.position, _sp.rotation) as GameObject;
+        _e.GetComponent<Damageable>().OnDie += DecrementEnemy;
     }
 
-    void SpawnRangedEnemy(Transform _enemy)
+    void SpawnRangedEnemy(GameObject _enemy)
     {
         // Enemy
         //Debug.Log("Spawning Enemy: " + _enemy.name);
         int point = Random.Range(0, availablePoints.Count);
         Transform _sp = availablePoints[point];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        GameObject _e = Instantiate(_enemy, _sp.position, _sp.rotation) as GameObject;
+        _e.GetComponent<Damageable>().OnDie += DecrementEnemy;
         availablePoints.RemoveAt(point);
     }
 }

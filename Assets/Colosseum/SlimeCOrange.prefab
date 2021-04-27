@@ -228,7 +228,6 @@ GameObject:
   - component: {fileID: 9060798265596150577}
   - component: {fileID: 9060798265596150576}
   - component: {fileID: 9060798265596150579}
-  - component: {fileID: -5519824615664317866}
   m_Layer: 12
   m_Name: SlimeCOrange
   m_TagString: Enemy
@@ -381,9 +380,9 @@ MonoBehaviour:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
+  _wave: 1
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
-  _destroyedChannelEvent: {fileID: 11400000, guid: 532131c2137e5364891e049b898d35f8,
-    type: 2}
+  _destroyedChannelEvent: {fileID: 0}
   _playerDamagedEvent: {fileID: 0}
   _createHealthBar: 1
   Name: Slime
@@ -417,18 +416,6 @@ MonoBehaviour:
   _playerTransform: {fileID: 11400000, guid: bb65bb1ce94fefe4a841fba31a6f9162, type: 2}
   _propelFactor: 0.8
   _propelDuration: 0.2
---- !u!114 &-5519824615664317866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9060798265596150583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71074688f43d9954a916021071b37d88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9060798265601817192
 GameObject:
   m_ObjectHideFlags: 0

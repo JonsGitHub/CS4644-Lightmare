@@ -158,6 +158,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
+      propertyPath: _wave
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
+      propertyPath: _spawner
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113378936606230395, guid: 68cd6605b5b6885409bce537b11aece1,
+        type: 3}
       propertyPath: LabelPosition
       value: 
       objectReference: {fileID: 6749525117802806397}
@@ -197,8 +207,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _destroyedChannelEvent
       value: 
-      objectReference: {fileID: 11400000, guid: 532131c2137e5364891e049b898d35f8,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6113378936606230396, guid: 68cd6605b5b6885409bce537b11aece1,
         type: 3}
       propertyPath: Name

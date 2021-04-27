@@ -8,6 +8,7 @@ public class Damageable : MonoBehaviour
 	[SerializeField] private GetHitEffectConfigSO _getHitEffectSO;
 	[SerializeField] private Renderer _mainMeshRenderer;
 	[SerializeField] private AssetReference _dropItemReference = null;
+    [SerializeField] private bool _wave;
 	private GameObject _drop = null;
 
 	private int _currentHealth = default;
@@ -42,9 +43,9 @@ public class Damageable : MonoBehaviour
 	private void Awake()
 	{
 		_currentHealth = _healthConfigSO.MaxHealth;
-	}
+    }
 
-	private void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj) => _drop = obj.Result;
+    private void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj) => _drop = obj.Result;
 
 	private void OnEnable()
     {
@@ -62,7 +63,8 @@ public class Damageable : MonoBehaviour
 
 		if (_dropItemReference.RuntimeKeyIsValid())
 			Addressables.LoadAssetAsync<GameObject>(_dropItemReference).Completed += OnLoadDone;
-	}
+
+    }
 
     private void OnDisable()
     {
@@ -106,7 +108,10 @@ public class Damageable : MonoBehaviour
 		if (_currentHealth <= 0)
         {
             IsDead = true;
-			OnKilled?.Invoke(this);
+            if (!_wave)
+            {
+                OnKilled?.Invoke(this);
+            }
 			if (_drop)
 			{
 				Instantiate(_drop, transform.position, Quaternion.identity);
@@ -125,14 +130,17 @@ public class Damageable : MonoBehaviour
 
 	public void Kill()
     {
-		_currentHealth = 0;
+        _currentHealth = 0;
 
 		if (healthbar)
 			healthbar.Health = _currentHealth;
 
 		IsDead = true;
-		OnKilled?.Invoke(this);
-		if (OnDie != null)
+        if (!_wave)
+        {
+            OnKilled?.Invoke(this);
+        }
+        if (OnDie != null)
 		{
 			OnDie.Invoke();
 		}
