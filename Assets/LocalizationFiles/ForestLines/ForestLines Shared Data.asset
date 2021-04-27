@@ -195,6 +195,22 @@ MonoBehaviour:
     m_Key: Bar_Keep_Line_2
     m_Metadata:
       m_Items: []
+  - m_Id: 5592714982572032
+    m_Key: Opening_Line_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5592745122840576
+    m_Key: Opening_Line_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5592758620110848
+    m_Key: Opening_Line_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5595304105459712
+    m_Key: Opening_Line_4
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -216,5 +216,24 @@ MonoBehaviour:
     m_Localized: Man never shuts his hole...
     m_Metadata:
       m_Items: []
+  - m_Id: 5592714982572032
+    m_Localized: Light... Light!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5592745122840576
+    m_Localized: What? Where am I? Where did Light go?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5592758620110848
+    m_Localized: Did Light send me into a dream? This can't be. The feeling is foreign,
+      yet familiar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5595304105459712
+    m_Localized: So what am I to do? I guess my first step should be to understand
+      the innerworkings of this dream before I move forward. I should talk to the
+      others to get more information.
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
