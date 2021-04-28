@@ -428,6 +428,7 @@ MonoBehaviour:
   _playableCutscene: {fileID: 1011437640}
   _playOnStart: 0
   _playOnce: 0
+  _reposition: {fileID: 0}
   _playCutsceneEvent: {fileID: 11400000, guid: a75f2f1125429c64c94ab5314e78deaa, type: 2}
 --- !u!1 &97250912
 GameObject:
@@ -552,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9c83194999d1e45a8736c2450a531a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  _Id: 0
 --- !u!1 &115858538
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +667,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &158304176
 BoxCollider:
@@ -776,6 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a71dc3661a109d49973794dc9bc2310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   LabelPosition: {fileID: 1642158081}
   LabelTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -890,7 +891,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &176291342
 BoxCollider:
@@ -1188,7 +1188,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &203019468
 BoxCollider:
@@ -1498,7 +1497,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &249126970
 BoxCollider:
@@ -2298,7 +2296,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &473893834
 BoxCollider:
@@ -2376,7 +2373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &504693595
 Transform:
   m_ObjectHideFlags: 0
@@ -2405,6 +2402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bda4c90221ab8c4d84b52e88949f44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unlockingChannel: {fileID: 0}
+  _failedChannel: {fileID: 0}
   _stories:
   - List:
     - The sun burned above oceans of sand.
@@ -2531,6 +2530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a71dc3661a109d49973794dc9bc2310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   LabelPosition: {fileID: 2016970812}
   LabelTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2585,7 +2585,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &542450122
 BoxCollider:
@@ -2696,7 +2695,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &620229357
 BoxCollider:
@@ -3145,6 +3143,8 @@ MonoBehaviour:
   _unlockId: 1
   _requiredAmount: 2
   _unlockChannel: {fileID: 11400000, guid: aab5469fe8138f34b92680d8ba13111d, type: 2}
+  _incorrectEventChannel: {fileID: 0}
+  _currentAmount: 0
 --- !u!65 &748445093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3281,7 +3281,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &798336915
 BoxCollider:
@@ -3615,7 +3614,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &863874836
 BoxCollider:
@@ -3756,7 +3754,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &899126900
 BoxCollider:
@@ -3956,7 +3953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9c83194999d1e45a8736c2450a531a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  _Id: 1
 --- !u!54 &941601145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4132,7 +4129,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &971072029
 BoxCollider:
@@ -4586,6 +4582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a71dc3661a109d49973794dc9bc2310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   LabelPosition: {fileID: 123114019}
   LabelTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4699,6 +4696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a71dc3661a109d49973794dc9bc2310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   LabelPosition: {fileID: 929659628}
   LabelTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4846,6 +4844,8 @@ MonoBehaviour:
   _unlockId: 2
   _requiredAmount: 1
   _unlockChannel: {fileID: 11400000, guid: aab5469fe8138f34b92680d8ba13111d, type: 2}
+  _incorrectEventChannel: {fileID: 0}
+  _currentAmount: 0
 --- !u!65 &1078867425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5198,7 +5198,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1147054067
 BoxCollider:
@@ -5692,7 +5691,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1180208063
 BoxCollider:
@@ -5803,7 +5801,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1204055498
 BoxCollider:
@@ -6037,7 +6034,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1230477924
 BoxCollider:
@@ -11055,6 +11051,8 @@ MonoBehaviour:
   _unlockId: 0
   _requiredAmount: 1
   _unlockChannel: {fileID: 11400000, guid: aab5469fe8138f34b92680d8ba13111d, type: 2}
+  _incorrectEventChannel: {fileID: 0}
+  _currentAmount: 0
 --- !u!65 &1285093509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11210,7 +11208,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1290069175
 BoxCollider:
@@ -11321,7 +11318,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1316837823
 BoxCollider:
@@ -11432,7 +11428,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1321985479
 BoxCollider:
@@ -12087,7 +12082,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1608739082
 BoxCollider:
@@ -12381,7 +12375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1709169505
 Transform:
   m_ObjectHideFlags: 0
@@ -12414,41 +12408,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c79a3b4ce7b8e643bfbfaaba6950502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dimensions: {x: 5, y: 5}
-  _startPoint: {x: 0, y: 2}
   _restartPoint: {fileID: 1104816607}
   _showDelay: 0.4
   _blocker: {fileID: 2117936068}
   _interface: {fileID: 0}
   _pathes:
-  - List:
-    - {x: 0, y: 2}
-    - {x: 1, y: 2}
-    - {x: 1, y: 1}
-    - {x: 1, y: 0}
-    - {x: 2, y: 0}
-    - {x: 3, y: 0}
-    - {x: 3, y: 1}
-    - {x: 3, y: 2}
-    - {x: 4, y: 2}
-  - List:
-    - {x: 0, y: 2}
-    - {x: 1, y: 2}
-    - {x: 1, y: 3}
-    - {x: 1, y: 4}
-    - {x: 2, y: 4}
-    - {x: 3, y: 4}
-    - {x: 3, y: 3}
-    - {x: 3, y: 2}
-    - {x: 4, y: 2}
-  - List:
-    - {x: 0, y: 2}
-    - {x: 1, y: 2}
-    - {x: 1, y: 1}
-    - {x: 2, y: 1}
-    - {x: 3, y: 1}
-    - {x: 3, y: 2}
-    - {x: 4, y: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1716002260
 GameObject:
   m_ObjectHideFlags: 0
@@ -12590,7 +12557,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1758571042
 BoxCollider:
@@ -12701,7 +12667,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1819451950
 BoxCollider:
@@ -12812,7 +12777,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!23 &1843065534
 MeshRenderer:
@@ -17718,7 +17682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9c83194999d1e45a8736c2450a531a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  _Id: 1
 --- !u!54 &1908132555
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17951,7 +17915,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &1918616522
 BoxCollider:
@@ -18372,7 +18335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9c83194999d1e45a8736c2450a531a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 2
+  _Id: 2
 --- !u!54 &1962382471
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18596,45 +18559,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
+    - target: {fileID: 2748229076944697335, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99999136
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.004166569
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000017206231
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652448694606, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 7.1691576e-11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652547918067, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: MaxZoom
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652547918067, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: MinZoom
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652547918067, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: ZoomFactor
-      value: 3
+      propertyPath: m_Gain
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 4184016652547918068, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
@@ -18696,56 +18624,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 4184016652638858791, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99948275
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652638858791, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.032160822
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652638858791, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000017331311
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652638858791, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -5.5767774e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016652698127547, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653104664734, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653223849319, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999017
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653223849319, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.014023461
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653223849319, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1e-45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653223849319, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
     - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18754,37 +18632,17 @@ PrefabInstance:
     - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12
+      value: -6
       objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
+    - target: {fileID: 4820431139717432550, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999017
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.014023464
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184016653379499703, guid: 49f27070daca7274ea0de0e8804ffdcf,
-        type: 3}
-      propertyPath: field of view
-      value: 40
+      propertyPath: m_Gain
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f27070daca7274ea0de0e8804ffdcf, type: 3}
@@ -18942,7 +18800,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &2065891518
 BoxCollider:
@@ -19419,7 +19276,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
-  _renderer: {fileID: 0}
   _animator: {fileID: 0}
 --- !u!65 &2146497330
 BoxCollider:

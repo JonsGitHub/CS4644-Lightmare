@@ -61,6 +61,24 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: da645145571a8ad42b3681484ce6dc60
+    m_Address: OceanLines Shared Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: b783fcc2dfcd6f9429181ae459a42a2f
+    m_Address: ColosseumLines Shared Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f3d5106f6afcda14f8e6350ee13c6605
+    m_Address: BossLines Shared Data
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 4391968ea14c840448b4f03ec4d817b0
     m_Address: Sci-Fi_Lines Shared Data
     m_ReadOnly: 0

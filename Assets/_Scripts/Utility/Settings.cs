@@ -34,6 +34,9 @@ public sealed class Settings
         {
             data = new SettingsData();
         }
+        
+        Debug.Log("Setting Graphics Quality to Level: " + data.GraphicsQualityLevel);
+        QualitySettings.SetQualityLevel(data.GraphicsQualityLevel);
     }
 
     /// <summary>
@@ -80,6 +83,36 @@ public sealed class Settings
         set => data.InvertedYAxis = value;
     }
 
+    public int MasterVolume
+    {
+        get => data.MasterVolume;
+        set => data.MasterVolume = value;
+    }
+
+    public int MusicVolume
+    {
+        get => data.MusicVolume;
+        set => data.MusicVolume = value;
+    }
+
+    public int DialogueVolume
+    {
+        get => data.DialogueVolume;
+        set => data.DialogueVolume = value;
+    }
+
+    public int SFXVolume
+    {
+        get => data.SFXVolume;
+        set => data.SFXVolume = value;
+    }
+
+    public int GraphicsQualityLevel
+    {
+        get => data.GraphicsQualityLevel;
+        set => data.GraphicsQualityLevel = value;
+    }
+
     /// <summary>
     /// Private class representing setting data.
     /// </summary>
@@ -90,6 +123,12 @@ public sealed class Settings
         public int ScrollSensitivity { get; set; } = 2;
         public bool InvertedYAxis { get; set; } = true;
         public bool InvertedXAxis { get; set; } = false;
+        public int MasterVolume { get; set; } = 10;
+        public int MusicVolume { get; set; } = 7;
+        public int DialogueVolume { get; set; } = 10;
+        public int SFXVolume { get; set; } = 10;
+
+        public int GraphicsQualityLevel { get; set; } = 1;
     }
 
     /// <summary>

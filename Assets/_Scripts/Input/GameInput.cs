@@ -59,14 +59,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""OpenInventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""1b6ae4df-f5e6-42fc-92b6-3dcc2e126563"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""RotateCamera"",
                     ""type"": ""Value"",
                     ""id"": ""1c4a88b5-2474-4e49-8f10-f987bde2dee0"",
@@ -91,9 +83,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""AimAttack"",
+                    ""name"": ""Aim"",
                     ""type"": ""Button"",
-                    ""id"": ""d6942229-bd8d-417a-81a6-22e6980cbbf7"",
+                    ""id"": ""8771b850-5e72-495f-8bb5-6f97583558c3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -300,20 +292,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""91ce58d8-88e1-4ade-945b-59c4f0939828"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4c248131-d3fe-4545-b4dc-ba0690c01312"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
                     ""action"": ""Attack"",
@@ -361,28 +342,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
                     ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""937b421c-9467-4b47-a1fd-445b9b44d5c9"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""OpenInventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ceb892d5-04df-4ccf-8ef6-2a5124d4a2e7"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -457,7 +416,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""id"": ""88e5a69d-cf1d-43ce-b5ab-9db67f819255"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=2,y=2)"",
+                    ""processors"": ""InvertVector2(invertX=false)"",
                     ""groups"": ""KeyboardOrGamepad"",
                     ""action"": ""RotateCamera"",
                     ""isComposite"": false,
@@ -498,12 +457,12 @@ public class @GameInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4b35fe14-da59-4985-ad6b-2853be1b782f"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Hold"",
+                    ""id"": ""e4df47e5-3a41-4012-a90d-bbf9aa3c7477"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""AimAttack"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1207,11 +1166,10 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
-        m_Gameplay_OpenInventory = m_Gameplay.FindAction("OpenInventory", throwIfNotFound: true);
         m_Gameplay_RotateCamera = m_Gameplay.FindAction("RotateCamera", throwIfNotFound: true);
         m_Gameplay_Run = m_Gameplay.FindAction("Run", throwIfNotFound: true);
         m_Gameplay_Zoom = m_Gameplay.FindAction("Zoom", throwIfNotFound: true);
-        m_Gameplay_AimAttack = m_Gameplay.FindAction("AimAttack", throwIfNotFound: true);
+        m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
         // Menus
         m_Menus = asset.FindActionMap("Menus", throwIfNotFound: true);
         m_Menus_MoveSelection = m_Menus.FindAction("MoveSelection", throwIfNotFound: true);
@@ -1277,11 +1235,10 @@ public class @GameInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Pause;
-    private readonly InputAction m_Gameplay_OpenInventory;
     private readonly InputAction m_Gameplay_RotateCamera;
     private readonly InputAction m_Gameplay_Run;
     private readonly InputAction m_Gameplay_Zoom;
-    private readonly InputAction m_Gameplay_AimAttack;
+    private readonly InputAction m_Gameplay_Aim;
     public struct GameplayActions
     {
         private @GameInput m_Wrapper;
@@ -1291,11 +1248,10 @@ public class @GameInput : IInputActionCollection, IDisposable
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
-        public InputAction @OpenInventory => m_Wrapper.m_Gameplay_OpenInventory;
         public InputAction @RotateCamera => m_Wrapper.m_Gameplay_RotateCamera;
         public InputAction @Run => m_Wrapper.m_Gameplay_Run;
         public InputAction @Zoom => m_Wrapper.m_Gameplay_Zoom;
-        public InputAction @AimAttack => m_Wrapper.m_Gameplay_AimAttack;
+        public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1320,9 +1276,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                @OpenInventory.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenInventory;
-                @OpenInventory.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenInventory;
-                @OpenInventory.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenInventory;
                 @RotateCamera.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotateCamera;
                 @RotateCamera.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotateCamera;
                 @RotateCamera.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotateCamera;
@@ -1332,9 +1285,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Zoom.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
                 @Zoom.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
                 @Zoom.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
-                @AimAttack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAimAttack;
-                @AimAttack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAimAttack;
-                @AimAttack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAimAttack;
+                @Aim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -1354,9 +1307,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @OpenInventory.started += instance.OnOpenInventory;
-                @OpenInventory.performed += instance.OnOpenInventory;
-                @OpenInventory.canceled += instance.OnOpenInventory;
                 @RotateCamera.started += instance.OnRotateCamera;
                 @RotateCamera.performed += instance.OnRotateCamera;
                 @RotateCamera.canceled += instance.OnRotateCamera;
@@ -1366,9 +1316,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
-                @AimAttack.started += instance.OnAimAttack;
-                @AimAttack.performed += instance.OnAimAttack;
-                @AimAttack.canceled += instance.OnAimAttack;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -1495,11 +1445,10 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnOpenInventory(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
-        void OnAimAttack(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
     public interface IMenusActions
     {

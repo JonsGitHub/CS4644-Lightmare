@@ -107,8 +107,9 @@ public class SceneLoader : MonoBehaviour
 	private void UnloadPreviousScenes()
 	{
 		var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
-		if (controller)
-		{
+		if (controller && !SceneManager.GetActiveScene().name.Contains("Manager"))
+        {
+			// Save Scene Data
 			var formatter = new UnityBinaryFormatter();
 			var file = File.OpenWrite(CurrentSceneFilePath);
 			var data = controller.Save();
@@ -190,21 +191,27 @@ public class SceneLoader : MonoBehaviour
 	/// </summary>
 	private void SetActiveScene()
 	{
-		//All the scenes have been loaded, so we assume the first in the array is ready to become the active scene
+		// All the scenes have been loaded, so we assume the first in the array is ready to become the active scene
 		Scene s = ((SceneInstance)_loadingOperationHandles[0].Result).Scene;
 		SceneManager.SetActiveScene(s);
 
         // Load Saved Data for this scene if it exists
         var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
-        if (controller && File.Exists(CurrentSceneFilePath))
+        if (controller)
         {
-            Debug.Log("Loading Data at: " + CurrentSceneFilePath);
-
-            var formatter = new UnityBinaryFormatter();
-            var file = File.OpenRead(CurrentSceneFilePath);
-            controller.Load(formatter.Deserialize(file));
-            file.Close();
-        }
+			if (File.Exists(CurrentSceneFilePath))
+            {
+				Debug.Log("Loading Data at: " + CurrentSceneFilePath);
+				var formatter = new UnityBinaryFormatter();
+				var file = File.OpenRead(CurrentSceneFilePath);
+				controller.Load(formatter.Deserialize(file));
+				file.Close();
+			}
+			else
+            {
+				controller.Load(null);
+			}
+		}
 
         LightProbes.TetrahedralizeAsync();
 

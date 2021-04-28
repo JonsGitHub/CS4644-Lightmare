@@ -1,25 +1,60 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Aggressor : MonoBehaviour
 {
 	[HideInInspector] public bool isPlayerInAlertZone;
 	[HideInInspector] public bool isPlayerInAttackZone;
 	public Damageable currentTarget; //The StateMachine evaluates its health when needed
+	
+	private bool resetHealth = false;
 
+	public virtual void FoundTarget() { }
+    
 	public void OnAlertTriggerChange(bool entered, GameObject who)
 	{
-		isPlayerInAlertZone = entered;
+		if (entered && isPlayerInAlertZone)
+			return; // Attacked outside of alert zone so ignore entering
 
-		if (entered && who.TryGetComponent(out Damageable d))
-		{
-			currentTarget = d;
-			currentTarget.OnDie += OnTargetDead;
-		}
-		else
-		{
-			currentTarget = null;
+		isPlayerInAlertZone = entered;
+		if (who.TryGetComponent(out Damageable d))
+        {
+			if (entered)
+			{
+				resetHealth = false;
+
+				currentTarget = d;
+				currentTarget.OnDie += OnTargetDead;
+				FoundTarget();
+
+				if (who.TryGetComponent(out PlayerController _player))
+                {
+					_player.Targeted(transform, true);
+                }
+			}
+			else
+			{
+				currentTarget = null;
+				if (TryGetComponent(out Damageable damageable))
+                {
+					resetHealth = true;
+					StartCoroutine(ResetHealthDelayed(damageable));
+				}
+				if (who.TryGetComponent(out PlayerController _player))
+				{
+					_player.Targeted(transform, false);
+				}
+			}
 		}
 	}
+
+	private IEnumerator ResetHealthDelayed(Damageable damageable, float delay = 3f)
+    {
+		yield return new WaitForSeconds(delay);
+
+		if (resetHealth)
+			damageable.ResetHealth();
+    }
 
 	public void OnAttackTriggerChange(bool entered, GameObject who)
 	{
@@ -27,6 +62,27 @@ public class Aggressor : MonoBehaviour
 
 		//No need to set the target. If we did, we would get currentTarget to null even if
 		//a target exited the Attack zone (inner) but stayed in the Alert zone (outer).
+	}
+
+	public void Attacked(GameObject who)
+    {
+		if (who == null || isPlayerInAlertZone)
+			return;
+
+		isPlayerInAlertZone = true;	
+		if (who.TryGetComponent(out Damageable damageable))
+        {
+			resetHealth = false;
+
+			currentTarget = damageable;
+			currentTarget.OnDie += OnTargetDead;
+			FoundTarget();
+
+			if (who.TryGetComponent(out PlayerController _player))
+			{
+				_player.Targeted(transform, true);
+			}
+		}
 	}
 
 	private void OnTargetDead()

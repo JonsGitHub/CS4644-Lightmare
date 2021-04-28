@@ -7,6 +7,9 @@ public class HorizontalMoveActionSO : StateActionSO<HorizontalMoveAction>
 {
 	[Tooltip("Horizontal XZ plane speed multiplier")]
 	public float speed = 8f;
+
+	[Tooltip("Horizontal XZ plane run speed multiplier")]
+	public float runSpeed = 15f;
 }
 
 public class HorizontalMoveAction : StateAction
@@ -23,7 +26,12 @@ public class HorizontalMoveAction : StateAction
 
 	public override void OnUpdate()
 	{
-		_player.movementVector.x = _player.movementInput.x * OriginSO.speed;
-		_player.movementVector.z = _player.movementInput.z * OriginSO.speed;
+		_player.movementVector.x = _player.movementInput.x;
+		_player.movementVector.z = _player.movementInput.z;
+		
+		_player.movementVector.y = 0;
+		_player.movementVector.Normalize();
+
+		_player.movementVector *= _player.isRunning ? OriginSO.runSpeed : OriginSO.speed;
 	}
 }

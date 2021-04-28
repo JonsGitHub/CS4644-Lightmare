@@ -102,5 +102,17 @@ MonoBehaviour:
     m_Localized: Developers
     m_Metadata:
       m_Items: []
+  - m_Id: 9264021108166656
+    m_Localized: Little Girl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10391212101472256
+    m_Localized: Ally
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10693585797648384
+    m_Localized: Malady
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

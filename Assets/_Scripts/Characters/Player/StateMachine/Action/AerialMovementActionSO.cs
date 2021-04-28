@@ -34,13 +34,7 @@ public class AerialMovementAction : StateAction
     public override void OnUpdate()
 	{
 		Vector3 velocity = _player.movementVector;
-		Vector3 input = _player.movementInput;
-
-		// Can't maneuver backwards or perform a fast brake
-		if (Vector3.Dot(_initialInput, input) <= 0.05f)
-        {
-            input = Vector3.zero;
-        }
+		Vector3 input = (_initialInput + (_player.movementInput * 0.3f)).normalized; // Fight initial movement input for limited dominance 
 		
 		float speed = OriginSO.Speed;
 		float acceleration = OriginSO.Acceleration;

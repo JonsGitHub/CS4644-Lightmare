@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+public enum GameScreen
+{
+	Settings, NoticeBoard, CrystalAppendix
+}
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +19,8 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private GameObject PauseMenu = default;
 	[SerializeField] private GameObject SettingsMenu = default;
+	[SerializeField] private GameObject NoticeBoard = default;
+	[SerializeField] private GameObject CrystalAppendix = default;
 
 	[SerializeField] private UIDialogueManager _dialogueController = default;
 	[SerializeField] private UIInteractionManager _interactionPanel = default;
@@ -21,10 +29,9 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
 	[SerializeField] private HealthBar3D _playerHealthBar = default;
-	[SerializeField] private IntEventChannelSO _playerHitChannel = default;
+	[SerializeField] private FloatEventChannelSO _playerHitChannel = default;
 
 	[SerializeField] private Image _reticleImage = default;
-	[SerializeField] private BoolEventChannelSO _aimEventChannel = default;
 
 	[Tooltip("The Distance of occlusion of UI3D Objects")]
 	[Range(0, 200)]
@@ -38,6 +45,7 @@ public class UIManager : MonoBehaviour
 
 	[Header("Visual Indicators Events")]
 	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
+	[SerializeField] private GameScreenEventChannelSO _gameScreenEvent = default;
 
 	[Header("Interaction Events")]
 	[SerializeField] private InteractionUIEventChannelSO _setInteractionEvent = default;
@@ -82,17 +90,18 @@ public class UIManager : MonoBehaviour
         {
 			_playerHitChannel.OnEventRaised += UpdatePlayerHealth;
         }
-		if (_aimEventChannel)
-        {
-			_aimEventChannel.OnEventRaised += AimState;
-        }
 		if (_requestUpdateInteraction)
         {
 			_requestUpdateInteraction.OnEventRaised += UpdateInteraction;
         }
+		if (_gameScreenEvent)
+        {
+			_gameScreenEvent.OnEventRaised += UpdateScreen;
+        }
 
 		_inputReader.pauseEvent += Pause;
 		_inputReader.menuUnpauseEvent += Unpause;
+		_inputReader.aimEvent += OnAim;
 
 		_inputReader.EnableGameplayInput();
 	}
@@ -119,16 +128,18 @@ public class UIManager : MonoBehaviour
 		{
 			_playerHitChannel.OnEventRaised -= UpdatePlayerHealth;
 		}
-		if (_aimEventChannel)
-		{
-			_aimEventChannel.OnEventRaised -= AimState;
-		}
 		if (_requestUpdateInteraction)
 		{
 			_requestUpdateInteraction.OnEventRaised -= UpdateInteraction;
 		}
+		if (_gameScreenEvent)
+		{
+			_gameScreenEvent.OnEventRaised -= UpdateScreen;
+		}
+
 		_inputReader.pauseEvent -= Pause;
 		_inputReader.menuUnpauseEvent -= Unpause;
+		_inputReader.aimEvent -= OnAim;
 	}
 
 	private void GatherPlayerInformation(Transform transform)
@@ -145,10 +156,7 @@ public class UIManager : MonoBehaviour
 		CloseUIDialogue();
 	}
 
-	private void UpdatePlayerHealth(int current)
-    {
-		_playerHealthBar.Health = current;
-    }
+	private void UpdatePlayerHealth(float current) => _playerHealthBar.Health = current;
 
 	public void OpenUIDialogue(LocalizedString dialogueLine, ActorSO actor)
 	{
@@ -171,6 +179,26 @@ public class UIManager : MonoBehaviour
 		_interactionPanel.gameObject.SetActive(state);
     }
 
+	private void UpdateScreen(GameScreen screen)
+	{
+		Time.timeScale = 0;
+		_inputReader.EnableMenuInput();
+		_inputReader.DisableMouseCameraControlInput();
+
+		switch (screen)
+        {
+			case GameScreen.NoticeBoard:
+				AddToViewStack(NoticeBoard);
+				break;
+			case GameScreen.CrystalAppendix:
+				AddToViewStack(CrystalAppendix);
+				break;
+			case GameScreen.Settings:
+				AddToViewStack(SettingsMenu);
+				break;
+		}
+	}
+
 	public void AddToViewStack(GameObject layer)
     {
 		// Set the top of the viewstack to inactive if it exists
@@ -188,7 +216,13 @@ public class UIManager : MonoBehaviour
 
 		var obj = ViewStack.Pop();
 		obj.SetActive(false);
-		if (obj == PauseMenu)
+
+		if (obj == SettingsMenu)
+        {
+			Settings.Instance.Save();
+		}
+
+		if (ViewStack.Count == 0)
         {
 			_inputReader.EnableGameplayInput();
 			_inputReader.EnableMouseCameraControlInput();
@@ -207,6 +241,20 @@ public class UIManager : MonoBehaviour
 	/// </summary>
 	public void OnSaveAndExitClicked()
 	{
+		// Save Player base data
+		PlayerData.SetLastScene(SceneManager.GetActiveScene().name.Replace(' ', '_'));
+		var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Damageable>();
+		if (player)
+		{
+			PlayerData.SetLastPosition(player.transform.position);
+			PlayerData.SetHealth(player.CurrentHealth);
+			PlayerData.Save();
+		}
+		else
+		{
+			PlayerData.SetLastPosition(Vector3.negativeInfinity);
+		}
+
 		Time.timeScale = 1;
 		_inputReader.EnableMenuInput();
 		ViewStack.Pop().SetActive(false); // Set Pause Menu to inactive
@@ -220,6 +268,11 @@ public class UIManager : MonoBehaviour
 	{
 		AddToViewStack(SettingsMenu);
 	}
+
+	public void OnAppendixClicked()
+    {
+		AddToViewStack(CrystalAppendix);
+    }
 
 	/// <summary>
 	/// Last update called every frame
@@ -276,7 +329,7 @@ public class UIManager : MonoBehaviour
 		Time.timeScale = 0;
 	}
 
-	private void AimState(bool state)
+	private void OnAim(bool state)
 	{
 		if (state)
 		{

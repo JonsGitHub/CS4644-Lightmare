@@ -25,6 +25,9 @@ class ExampleScene1Controller : SceneController
     /// <inheritdoc/>
     public override void Load(object data)
     {
+        if (data == null)
+            return;
+
         var testData = (ExampleScene1Data)data;
 
         var cube1 = GameObject.Find("Cube_1").transform;

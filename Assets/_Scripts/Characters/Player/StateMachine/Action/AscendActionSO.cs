@@ -26,16 +26,11 @@ public class AscendAction : StateAction
 	
 	public override void OnUpdate()
 	{
-		_gravityContributionMultiplier += PlayerController.GRAVITY_COMEBACK_MULTIPLIER;
-		_gravityContributionMultiplier *= PlayerController.GRAVITY_DIVIDER; //Reduce the gravity effect
-		_verticalMovement += Physics.gravity.y * PlayerController.GRAVITY_MULTIPLIER * Time.deltaTime * _gravityContributionMultiplier;
-		//Note that even if it's added, the above value is negative due to Physics.gravity.y
-
-		_player.movementVector.y = _verticalMovement;
+		_player.movementVector.y += Physics.gravity.y * Time.deltaTime;
 	}
 	
 	public override void OnStateEnter()
 	{
-		_verticalMovement = OriginSO.initialJumpForce;
+		_player.movementVector.y += Mathf.Sqrt(OriginSO.initialJumpForce * -PlayerController.GRAVITY_MULTIPLIER * Physics.gravity.y);
 	}
 }

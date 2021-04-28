@@ -18,6 +18,8 @@ public class StoryColumn : InterfaceBase
     [SerializeField] private Transform NumberLabelPosition = default;
     [SerializeField] private Color NumberTextColor = Color.black;
 
+    public string Text => label ? label.Text : "";
+
     public override void Interact()
     {
         if (!numberLabel || numberLabel.Text.Equals(""))

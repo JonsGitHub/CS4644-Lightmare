@@ -41,8 +41,8 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 5e669cd66ed24974a86bbb5cb9837ade
-    m_Address: Assets/_Scenes/Levels/Level_Colosseum.unity
+  - m_GUID: 9e2b06f82430cc949b5bd3be5b0f46fc
+    m_Address: Assets/_Scenes/Levels/Level_Ocean.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -53,18 +53,24 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 82629644050ceae428edb914afa701cb
-    m_Address: Assets/_Scenes/Examples/ExampleScene2.unity
+  - m_GUID: 5f99ce3ef685542469bbf1ac88209758
+    m_Address: Assets/_Scenes/Levels/Level_Tavern.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: 82629644050ceae428edb914afa701cb, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: 82629644050ceae428edb914afa701cb, type: 3}
-  - m_GUID: fb6f0de1fdb53d041a1b0826177fc4af
-    m_Address: Assets/_Scenes/Examples/ExampleScene1.unity
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 60c08d518c9ba70409214405afafda0a
+    m_Address: Assets/_Scenes/Levels/Colosseum.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: fb6f0de1fdb53d041a1b0826177fc4af, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: fb6f0de1fdb53d041a1b0826177fc4af, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 09d07bac7068cc04c9f1218a833ae7f3
+    m_Address: Assets/_Scenes/Levels/Level_Boss.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 09d07bac7068cc04c9f1218a833ae7f3, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 09d07bac7068cc04c9f1218a833ae7f3, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

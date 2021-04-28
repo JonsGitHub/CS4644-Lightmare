@@ -21,6 +21,10 @@ public class WeaponAttack : MonoBehaviour
 				if (!damageableComp.GetHit)
 					damageableComp.ReceiveAnAttack(_attackConfigSO.AttackStrength);
 			}
+			else if (other.gameObject.TryGetComponent(out DamageablePart part))
+			{
+				part.ReceiveAnAttack(_attackConfigSO.AttackStrength);
+			}
 		}
 	}
 }

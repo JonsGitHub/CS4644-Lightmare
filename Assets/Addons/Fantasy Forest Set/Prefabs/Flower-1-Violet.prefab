@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 475376}
   - component: {fileID: 3366242}
   - component: {fileID: 2326442}
+  - component: {fileID: 3725550591737567555}
   m_Layer: 0
   m_Name: Flower-1-Violet
   m_TagString: Untagged
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103452}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: -1.13, y: 0, z: -11.02}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3366242
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -79,3 +80,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!205 &3725550591737567555
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103452}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.0005080998, y: 0.33720726, z: -0.027800143}
+  m_Size: 0.67442214
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.019688684
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2326442}
+  m_Enabled: 1

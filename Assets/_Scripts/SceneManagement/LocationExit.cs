@@ -4,7 +4,7 @@
 /// This class goes on a trigger which, when entered, sends the player to another Location
 /// </summary>
 
-public class LocationExit : MonoBehaviour
+public class LocationExit : InterfaceBase
 {
 	[Header("Loading settings")]
 	[SerializeField] private GameSceneSO[] _locationsToLoad = default;
@@ -18,21 +18,23 @@ public class LocationExit : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
-		{
-			UpdatePathTaken();
-			_locationExitLoadChannel.RaiseEvent(_locationsToLoad, _showLoadScreen);
-		}
+			LoadLocation();
+	}
+
+
+	public void ManualTrigger() => LoadLocation();
+
+	public override void Interact() => LoadLocation();
+
+	private void LoadLocation()
+    {
+		UpdatePathTaken();
+		_locationExitLoadChannel.RaiseEvent(_locationsToLoad, _showLoadScreen);
 	}
 
 	private void UpdatePathTaken()
 	{
 		if (_pathTaken != null)
 			_pathTaken.Path = _exitPath;
-	}
-
-	public void ManualTrigger()
-    {
-		UpdatePathTaken();
-		_locationExitLoadChannel.RaiseEvent(_locationsToLoad, _showLoadScreen);
 	}
 }

@@ -4,11 +4,18 @@ using System.Collections;
 
 public class CameraManager : MonoBehaviour
 {
-	private const float _lerpSpeed = 0.43f;
+	private const float LerpSpeed = 0.05f;
+
+	private const float MinZoom = 2f;
+	private const float MaxZoom = 12f;
+
+	private const float ZoomDifference = MaxZoom - MinZoom;
 
 	public InputReader inputReader;
 	public Camera mainCamera;
-	public CinemachineFreeLook freeLookVCam;
+	public CinemachineVirtualCamera aimCam;
+	public CinemachineVirtualCamera followCam;
+	private Cinemachine3rdPersonFollow follow3rdPerson;
 
 	[SerializeField] private TransformAnchor _cameraTransformAnchor = default;
 
@@ -18,39 +25,33 @@ public class CameraManager : MonoBehaviour
     }
 
 	private CameraState _state = CameraState.Follow;
-    private Vector3[] DefaultOrbitRingValues;
-    private Vector3[] DefaultOrbitRingHeights;
     private float CurrentScroll = 1.0f;
+	private Vector2 _previousLookMovement;
 
-    [Header("Listening on channels")]
+	[Header("Listening on channels")]
 	[Tooltip("The CameraManager listens to this event, fired by objects in any scene, to adapt camera position")]
 	[SerializeField] private TransformEventChannelSO _frameObjectChannel = default;
-	[SerializeField] private BoolEventChannelSO _aimEventChannel = default;
 	[SerializeField] private BoolEventChannelSO _interactionDisplayEventChannel= default;
 
 	private bool _cameraMovementLock = false;
 	private bool _zoomLock = false;
-	
+
+	private Transform _followTarget =  null;
+
 	public void SetupProtagonistVirtualCamera(Transform target)
 	{
-		freeLookVCam.Follow = target;
-		freeLookVCam.LookAt = target;
+		_followTarget = target;
+
+		followCam.Follow = target;
+		aimCam.Follow = target;
 	}
 
     private void Awake()
     {
-		DefaultOrbitRingValues = new Vector3[2];
-		DefaultOrbitRingHeights = new Vector3[2];
+		follow3rdPerson = followCam.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
 
-		for (var i = 0; i < 3; ++i)
-		{
-			DefaultOrbitRingValues[(int)_state][i] = freeLookVCam.m_Orbits[i].m_Radius;
-			DefaultOrbitRingHeights[(int)_state][i] = freeLookVCam.m_Orbits[i].m_Height;
-		}
-
-		// Hard-code aiming orbit values
-		DefaultOrbitRingValues[(int)CameraState.Aiming] = new Vector3(0.5f, 1.5f, 0.75f);
-		DefaultOrbitRingHeights[(int)CameraState.Aiming] = new Vector3(1, 0, -1);
+		followCam.gameObject.SetActive(true);
+		aimCam.gameObject.SetActive(false);
 	}
 
 	private void OnEnable()
@@ -59,11 +60,10 @@ public class CameraManager : MonoBehaviour
 		inputReader.enableMouseControlCameraEvent += OnEnableMouseControlCamera;
 		inputReader.disableMouseControlCameraEvent += OnDisableMouseControlCamera;
 		inputReader.scrollEvent += OnZoom;
+		inputReader.aimEvent += OnAim;
 
 		if (_frameObjectChannel != null)
 			_frameObjectChannel.OnEventRaised += OnFrameObjectEvent;
-		if (_aimEventChannel)
-			_aimEventChannel.OnEventRaised += AimState;
 		if (_interactionDisplayEventChannel)
 			_interactionDisplayEventChannel.OnEventRaised += BlockZooming;
 
@@ -77,27 +77,14 @@ public class CameraManager : MonoBehaviour
 		inputReader.cameraMoveEvent -= OnCameraMove;
 		inputReader.enableMouseControlCameraEvent -= OnEnableMouseControlCamera;
 		inputReader.disableMouseControlCameraEvent -= OnDisableMouseControlCamera;
-		inputReader.scrollEvent += OnZoom;
+		inputReader.scrollEvent -= OnZoom;
+		inputReader.aimEvent -= OnAim;
 
 		if (_frameObjectChannel != null)
 			_frameObjectChannel.OnEventRaised -= OnFrameObjectEvent;
-		if (_aimEventChannel)
-			_aimEventChannel.OnEventRaised -= AimState;
 		if (_interactionDisplayEventChannel)
 			_interactionDisplayEventChannel.OnEventRaised += BlockZooming;
 	}
-
-	/// <summary>
-	/// Last update called every frame
-	/// </summary>
-	private void LateUpdate()
-	{
-		freeLookVCam.m_YAxis.m_InvertInput = Settings.Instance.InvertedYAxis;
-		freeLookVCam.m_XAxis.m_InvertInput = Settings.Instance.InvertedXAxis;
-
-		freeLookVCam.m_XAxis.m_MaxSpeed = 10000 * (Settings.Instance.MouseSensitivity / 10.0f);
-		freeLookVCam.m_YAxis.m_MaxSpeed = 100 * (Settings.Instance.MouseSensitivity / 10.0f);
-    }
 
 	private void OnEnableMouseControlCamera()
 	{
@@ -118,77 +105,88 @@ public class CameraManager : MonoBehaviour
 	{
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
+	}
 
-		// when mouse control is disabled, the input needs to be cleared
-		// or the last frame's input will 'stick' until the action is invoked again
-		freeLookVCam.m_XAxis.m_InputAxisValue = 0;
-		freeLookVCam.m_YAxis.m_InputAxisValue = 0;
+    private void Update()
+    {
+		if (Cursor.visible || _cameraMovementLock || _followTarget == null)
+		{
+			return;
+		}
+		var speedMult = (Settings.Instance.MouseSensitivity / 10.0f) * (_state.Equals(CameraState.Aiming) ? 0.5f : 1.0f);
+
+		//Rotate the Follow Target transform based on the input
+		_followTarget.transform.rotation *= Quaternion.AngleAxis(_previousLookMovement.x * speedMult, Settings.Instance.InvertedXAxis ? Vector3.down : Vector3.up);
+		_followTarget.transform.rotation *= Quaternion.AngleAxis(_previousLookMovement.y * speedMult, Settings.Instance.InvertedYAxis ? Vector3.right : Vector3.left);
+
+		var angles = _followTarget.transform.localEulerAngles;
+		angles.z = 0;
+
+		var angle = _followTarget.transform.localEulerAngles.x;
+
+        //Clamp the Up/Down rotation
+        if (angle > 180 && angle < 315)
+        {
+            angles.x = 315;
+        }
+        else if (angle < 180 && angle > 60)
+		{
+			angles.x = 60;
+		}
+		_followTarget.transform.localEulerAngles = angles;
 	}
 
 	private void OnCameraMove(Vector2 cameraMovement, bool isDeviceMouse)
 	{
-		if (Cursor.visible || _cameraMovementLock)
+		if (Cursor.visible || _cameraMovementLock || _followTarget == null)
+		{
 			return;
-
-		var speedMult = (Settings.Instance.MouseSensitivity / 10.0f);
-		freeLookVCam.m_XAxis.m_InputAxisValue = cameraMovement.x * Time.smoothDeltaTime * speedMult;
-		freeLookVCam.m_YAxis.m_InputAxisValue = cameraMovement.y * Time.smoothDeltaTime * speedMult;
+		}
+		_previousLookMovement = cameraMovement;
 	}
 
-	private void OnZoom(float axis)
+	private void OnAim(bool state)
     {
-		if (_state.Equals(CameraState.Aiming) || _zoomLock)
-			return;
-
-		//TODO: Add smoothing to zoom control 
-		CurrentScroll = Mathf.Clamp(CurrentScroll - ((Settings.Instance.ScrollSensitivity / 100.0f) * axis), 0.3f, 1.0f);
-		for (var i = 0; i < 3; ++i)
+		if (state)
         {
-			freeLookVCam.m_Orbits[i].m_Radius = DefaultOrbitRingValues[(int)_state][i] * CurrentScroll;
+			_state = CameraState.Aiming;
+			aimCam.gameObject.SetActive(true);
+			followCam.gameObject.SetActive(false);
+        }
+		else
+        {
+			_state = CameraState.Follow;
+			followCam.gameObject.SetActive(true);
+			aimCam.gameObject.SetActive(false);
         }
     }
 
 	private void BlockZooming(bool state) => _zoomLock = state;
 
 	private void OnFrameObjectEvent(Transform value) => SetupProtagonistVirtualCamera(value);
+	
+	private void OnZoom(float axis)
+    {
+		if (_state.Equals(CameraState.Aiming) || _zoomLock)
+			return;
 
-	private void AimState(bool state)
-	{
-		if (state)
-		{
-			_state = CameraState.Aiming;
-			StartCoroutine(LerpOrbit(DefaultOrbitRingValues[(int)_state], DefaultOrbitRingHeights[(int)_state]));
-		}
-		else
-        {
-			_state = CameraState.Follow;
-			StartCoroutine(LerpOrbit(DefaultOrbitRingValues[(int)_state] * CurrentScroll, DefaultOrbitRingHeights[(int)_state]));
-		}
-	}
+		//TODO: Add smoothing to zoom control 
+		CurrentScroll = Mathf.Clamp01(CurrentScroll - ((Settings.Instance.ScrollSensitivity / 100.0f) * axis));
 
-	IEnumerator LerpOrbit(Vector3 endRadius, Vector3 endHeights)
+		var endZoom = (ZoomDifference * CurrentScroll) + MinZoom;
+		StartCoroutine(LerpZoom(follow3rdPerson.CameraDistance, endZoom));
+    }
+
+	private IEnumerator LerpZoom(float start, float end)
 	{
 		float timeElapsed = 0;
-		var startRadius = new Vector3(freeLookVCam.m_Orbits[0].m_Radius, freeLookVCam.m_Orbits[1].m_Radius, freeLookVCam.m_Orbits[2].m_Radius);
-		var startHeight = new Vector3(freeLookVCam.m_Orbits[0].m_Height, freeLookVCam.m_Orbits[1].m_Height, freeLookVCam.m_Orbits[2].m_Height);
-		while (timeElapsed < _lerpSpeed)
+		while (timeElapsed < LerpSpeed)
 		{
-			var nextRadius = Vector3.Lerp(startRadius, endRadius, timeElapsed / _lerpSpeed);
-			var nextHeight = Vector3.Lerp(startHeight, endHeights, timeElapsed / _lerpSpeed);
-			
-			for (int i = 0; i < 3; ++i)
-            {
-				freeLookVCam.m_Orbits[i].m_Radius = nextRadius[i];
-				freeLookVCam.m_Orbits[i].m_Height = nextHeight[i];
-			}
+			follow3rdPerson.CameraDistance = Mathf.Lerp(start, end, timeElapsed / LerpSpeed);
 			timeElapsed += Time.deltaTime;
+
 			yield return null;
 		}
-
-		for (int i = 0; i < 3; ++i)
-		{
-			freeLookVCam.m_Orbits[i].m_Radius = endRadius[i];
-			freeLookVCam.m_Orbits[i].m_Height = endHeights[i];
-		}
+		follow3rdPerson.CameraDistance = end;
 	}
 }

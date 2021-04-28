@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
@@ -18,14 +19,14 @@ public class AudioManager : MonoBehaviour
 
 	[Header("Audio control")]
 	[SerializeField] private AudioMixer audioMixer = default;
-	[Range(0f, 1f)]
-	[SerializeField] private float _masterVolume = 1f;
-	[Range(0f, 1f)]
-	[SerializeField] private float _musicVolume = 1f;
-	[Range(0f, 1f)]
-	[SerializeField] private float _voiceVolume = 1f;
-	[Range(0f, 1f)]
-	[SerializeField] private float _sfxVolume = 1f;
+	//[Range(0f, 1f)]
+	//[SerializeField] private float _masterVolume = 1f;
+	//[Range(0f, 1f)]
+	//[SerializeField] private float _musicVolume = 1f;
+	//[Range(0f, 1f)]
+	//[SerializeField] private float _voiceVolume = 1f;
+	//[Range(0f, 1f)]
+	//[SerializeField] private float _sfxVolume = 1f;
 
 	private SoundEmitterVault _soundEmitterVault;
 	private SoundEmitter _musicSoundEmitter;
@@ -73,18 +74,33 @@ public class AudioManager : MonoBehaviour
 	{
 		if (Application.isPlaying)
 		{
-			SetGroupVolume("MasterVolume", _masterVolume);
-			SetGroupVolume("MusicVolume", _musicVolume);
-			SetGroupVolume("SFXVolume", _sfxVolume);
-			SetGroupVolume("VoiceVolume", _voiceVolume);
+			SetGroupVolume("MasterVolume", Settings.Instance.MasterVolume / 10.0f);
+			SetGroupVolume("MusicVolume", Settings.Instance.MusicVolume / 10.0f);
+			SetGroupVolume("VoiceVolume", Settings.Instance.DialogueVolume / 10.0f);
+			SetGroupVolume("SFXVolume", Settings.Instance.SFXVolume / 10.0f);
+			//SetGroupVolume("MasterVolume", _masterVolume);
+			//SetGroupVolume("MusicVolume", _musicVolume);
+			//SetGroupVolume("SFXVolume", _sfxVolume);
+			//SetGroupVolume("VoiceVolume", _voiceVolume);
 		}
 	}
 
-	public void SetGroupVolume(string parameterName, float normalizedVolume)
+    private void LateUpdate()
+    {
+		if (Application.isPlaying)
+		{
+			SetGroupVolume("MasterVolume", Convert.ToSingle(Settings.Instance.MasterVolume) / 10.0f);
+			SetGroupVolume("MusicVolume", Convert.ToSingle(Settings.Instance.MusicVolume) / 10.0f);
+			SetGroupVolume("VoiceVolume", Convert.ToSingle(Settings.Instance.DialogueVolume) / 10.0f);
+			SetGroupVolume("SFXVolume", Convert.ToSingle(Settings.Instance.SFXVolume) / 10.0f);
+		}
+	}
+
+    public void SetGroupVolume(string parameterName, float normalizedVolume)
 	{
 		bool volumeSet = audioMixer.SetFloat(parameterName, NormalizedToMixerValue(normalizedVolume));
 		if (!volumeSet)
-			Debug.LogError("The AudioMixer parameter was not found");
+			Debug.Log("The AudioMixer parameter was not found");
 	}
 
 	public float GetGroupVolume(string parameterName)
@@ -116,17 +132,24 @@ public class AudioManager : MonoBehaviour
 
 	private AudioCueKey PlayVoiceTrack(AudioCueSO audioCue, AudioConfigurationSO audioConfiguration, Vector3 positionInSpace)
 	{
+		float fadeDuration = 0.2f;
+		float startTime = 0f;
+
 		if (_voiceSoundEmitter != null && _voiceSoundEmitter.IsPlaying())
 		{
 			AudioClip songToPlay = audioCue.GetClips()[0];
 			if (_voiceSoundEmitter.GetClip() == songToPlay)
 				return AudioCueKey.Invalid;
 
-			_voiceSoundEmitter.Stop();
+			startTime = _voiceSoundEmitter.FadeVoiceOut(fadeDuration);
 		}
 
 		_voiceSoundEmitter = _pool.Request();
-		_voiceSoundEmitter.PlayAudioClip(audioCue.GetClips()[0], audioConfiguration, false, positionInSpace);
+		while (_voiceSoundEmitter.IsPlaying())
+		{
+			_voiceSoundEmitter = _pool.Request();
+		}
+		_voiceSoundEmitter.FadeVoiceIn(audioCue.GetClips()[0], audioConfiguration, 0.1f, startTime);
 		_voiceSoundEmitter.OnSoundFinishedPlaying += StopAndCleanEmitter;
 
 		return AudioCueKey.Invalid; //No need to return a valid key for music
@@ -159,6 +182,10 @@ public class AudioManager : MonoBehaviour
 		}
 
 		_musicSoundEmitter = _pool.Request();
+		while (_musicSoundEmitter.IsPlaying())
+        {
+			_musicSoundEmitter = _pool.Request();
+		}
 		_musicSoundEmitter.FadeMusicIn(audioCue.GetClips()[0], audioConfiguration, 1f, startTime);
 		_musicSoundEmitter.OnSoundFinishedPlaying += StopMusicEmitter;
 
@@ -188,6 +215,11 @@ public class AudioManager : MonoBehaviour
 		for (int i = 0; i < nOfClips; i++)
 		{
 			soundEmitterArray[i] = _pool.Request();
+			while (soundEmitterArray[i].IsPlaying())
+			{
+				soundEmitterArray[i] = _pool.Request();
+			}
+
 			if (soundEmitterArray[i] != null)
 			{
 				soundEmitterArray[i].PlayAudioClip(clipsToPlay[i], settings, audioCue.looping, position);

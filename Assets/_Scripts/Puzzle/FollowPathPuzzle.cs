@@ -4,112 +4,114 @@ using UnityEngine;
 
 public class FollowPathPuzzle : MonoBehaviour
 {
-    [SerializeField] private Vector2Int _dimensions;
-    [SerializeField] private Vector2Int _startPoint;
     [SerializeField] private Transform _restartPoint;
     [SerializeField] private float _showDelay;
     [SerializeField] private GameObject _blocker;
     [SerializeField] private FollowPathInterface _interface;
 
-    private Tile[,] _potentialPoints;
-
-    [System.Serializable]
-    public class Point
-    {
-        public List<Vector2Int> List = new List<Vector2Int>();
-    }
-
-    public List<Point> _pathes;
+    public List<GameObject> _pathes;
 
     private int _choice = 0;
-    private List<Vector2Int> _path => _pathes[_choice].List;
+    private bool _isSolved = false;
+
+    private GameObject _path => _pathes[_choice];
 
     public HashSet<Tile> _currentPath = new HashSet<Tile>();
 
+    public bool IsSolved => _isSolved;
+    public int Choice => _choice;
+
+    public void Awake()
+    {
+        _isSolved = false;
+
+        foreach (var path in _pathes)
+            path.SetActive(false);
+    }
+
     public void Start()
     {
-        _potentialPoints = new Tile[_dimensions.x, _dimensions.y];
-
         _blocker.SetActive(true);
+        _choice = Random.Range(0, _pathes.Count);
+        _path.SetActive(true);
+    }
 
-        // Find all potential points based on children
-        FindPoints();
+    public void SolvePath(int choice)
+    {
+        foreach (var path in _pathes)
+            path.SetActive(false);
 
-        _choice = Random.Range(0, _pathes.Count - 1);
+        _isSolved = true;
+        _choice = choice;
+        _blocker.SetActive(false);
+
+        // Puzzle is solved no need to show the path any longer - instead should now show the covered graveyard state.
+        GameObject.Find("Graveyard").GetComponent<Animator>().Play("NormalState");
+        GameObject.Find("GraveyardClosingCutsceneTrigger")?.SetActive(false);
+
+        GameObject.Find("NPC_Isaac_ROOTED")?.SetActive(false);
+        GameObject.Find("NPC_Dog_ROOTED")?.SetActive(false);
+        GameObject.Find("GraveyardCutsceneTrigger")?.SetActive(false);
+    }
+
+    public void SolveCurrent()
+    {
+        SolvePath(_choice);
     }
 
     public void ShowPath()
     {
-        StartCoroutine(LightUpPath(_showDelay));
+        StartCoroutine(ShowPathCoroutine(_showDelay));
     }
 
-    private IEnumerator LightUpPath(float delay)
+    private IEnumerator ShowPathCoroutine(float delay)
     {
         _blocker.SetActive(true);
         _interface.Disable();
 
-    #if UNITY_EDITOR
-        if (_potentialPoints == null)
-            yield return null;
-    #endif
-
-        for (int i = 0; i < _path.Count; ++i)
+        foreach (Transform child in _path.transform)
         {
-            if (i > 1)
-            {
-                _potentialPoints[_path[i - 2].x, _path[i - 2].y].FadeOutIndicator();
-            }
-            _potentialPoints[_path[i].x, _path[i].y].FadeInIndicator();
+            child.GetComponent<Tile>()?.FadeInIndicator();
             yield return new WaitForSeconds(delay);
         }
-        _potentialPoints[_path[_path.Count - 2].x, _path[_path.Count - 2].y].FadeOutIndicator();
+
         yield return new WaitForSeconds(delay);
 
-        _potentialPoints[_path[_path.Count - 1].x, _path[_path.Count - 1].y].FadeOutIndicator();
-        yield return new WaitForSeconds(delay);
+        foreach (Transform child in _path.transform)
+        {
+            child.GetComponent<Tile>()?.FadeOutIndicator();
+        }
 
         _interface.Enable();
         _blocker.SetActive(false);
     }
 
-    public bool StepOnTile(Tile tile, GameObject player)
+    public void StepOnTile(Tile tile)
     {
-        if (_path.Contains(new Vector2Int(tile.X, tile.Y)))
+        if (_currentPath.Add(tile) && _currentPath.Count == _path.transform.childCount)
         {
-            if (_currentPath.Add(tile) && _currentPath.Count == _path.Count)
-            {
-                _interface.Disable();
-            }
-            return true;
-        }
-        else
-        {
-            PlayerController _player;
-            if (player.TryGetComponent(out _player))
-            {
-                StartCoroutine(SendPlayerBack(_player));
-            }
-            return false;
+            _interface.Disable();
+            _isSolved = true;
         }
     }
 
-    private IEnumerator SendPlayerBack(PlayerController _player)
+    // Called by abyss zone trigger
+    public void SendPlayBack(bool entered, GameObject obj)
     {
-        yield return new WaitForSeconds(0.1f);
-
-        // Prevent application of movement to interrupt teleport
-        _player.GetComponent<CharacterController>().enabled = false;
-        yield return new WaitForSeconds(0.75f); // Pause for a second to make the player fully appreciate how wrong they are
-        _player.transform.position = _restartPoint.position;
-        _player.transform.rotation = _restartPoint.rotation;
-        _player.GetComponent<CharacterController>().enabled = true;
-    }
-
-    private void FindPoints()
-    {
-        foreach(Tile tile in transform.GetComponentsInChildren<Tile>())
+        PlayerController _player;
+        if (entered && obj.TryGetComponent(out _player))
         {
-            _potentialPoints[tile.X, tile.Y] = tile;
+            _player.GetComponent<CharacterController>().enabled = false;
+            _player.transform.position = _restartPoint.position;
+            _player.transform.rotation = _restartPoint.rotation;
+            _player.GetComponent<CharacterController>().enabled = true;
+
+            // Reset all the tiles back to hidden
+            foreach (var tile in _currentPath)
+            {
+                tile.FadeOutIndicator();
+            }
+            _currentPath.Clear();
         }
     }
 }
