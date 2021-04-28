@@ -30,6 +30,156 @@ Transform:
   m_Father: {fileID: 4024067717268300051}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2929950901199211320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7484418428659396351}
+  - component: {fileID: 8997105941126216135}
+  - component: {fileID: 4846124975779982588}
+  m_Layer: 1
+  m_Name: TriggerZone_Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7484418428659396351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929950901199211320}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.98056793, y: -4.044018, z: 14.24124}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 4024067717268300051}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8997105941126216135
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929950901199211320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 50
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4846124975779982588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929950901199211320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e6af1e0e04d9449954f8248697e321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enterZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 431082592022046219}
+        m_MethodName: OnAttackTriggerChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _layers:
+    serializedVersion: 2
+    m_Bits: 1024
+  _destroyOnEnter: 0
+--- !u!1 &3555592633912644460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8041520505330924126}
+  - component: {fileID: 5145619272117031493}
+  - component: {fileID: 4111129573138768357}
+  m_Layer: 1
+  m_Name: TriggerZone_Alert
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8041520505330924126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555592633912644460}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.98056793, y: -4.044018, z: 14.24124}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 4024067717268300051}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5145619272117031493
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555592633912644460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 50
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4111129573138768357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555592633912644460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e6af1e0e04d9449954f8248697e321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enterZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 431082592022046219}
+        m_MethodName: OnAlertTriggerChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _layers:
+    serializedVersion: 2
+    m_Bits: 1024
+  _destroyOnEnter: 0
 --- !u!1 &4024067717268208929
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +564,7 @@ GameObject:
   - component: {fileID: 5392940091138852370}
   - component: {fileID: 3653783210327711280}
   - component: {fileID: -2235561766052608229}
+  - component: {fileID: 431082592022046219}
   m_Layer: 12
   m_Name: BeholderPolyart
   m_TagString: Enemy
@@ -435,6 +586,8 @@ Transform:
   - {fileID: 4024067717268300049}
   - {fileID: 4024067717268300045}
   - {fileID: 7318889149591170892}
+  - {fileID: 8041520505330924126}
+  - {fileID: 7484418428659396351}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -527,6 +680,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCollider: {fileID: 4024067717268208947}
+--- !u!114 &431082592022046219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024067717268208947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db30928b603fdc48be427b32ba4d0f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInAlertZone: 0
+  isPlayerInAttackZone: 0
+  currentTarget: {fileID: 0}
 --- !u!1 &4024067717268208949
 GameObject:
   m_ObjectHideFlags: 0

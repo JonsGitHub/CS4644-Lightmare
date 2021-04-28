@@ -20,13 +20,17 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name;
-        public GameObject easyEnemy;
-        public GameObject mediumEnemy;
-        public GameObject hardEnemy;
+        public GameObject gSlime;
+        public GameObject beholder;
+        public GameObject oSlime;
+        public GameObject wolf;
+        public GameObject zombie;
         public GameObject bossEnemy;
-        public int easyCount;
-        public int mediumCount;
-        public int hardCount;
+        public int gSlimeCount;
+        public int beholderCount;
+        public int oSlimeCount;
+        public int wolfCount;
+        public int zombieCount;
         public int bossCount;
         public float rate;
     }
@@ -55,7 +59,8 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         Wave _wave = waves[nextWave];
-        totalEnemiesCount = _wave.easyCount + _wave.mediumCount + _wave.hardCount + _wave.bossCount;
+        totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
+            _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
 
         waveCountdown = timeBetweenWaves;
 
@@ -146,7 +151,8 @@ public class WaveSpawner : MonoBehaviour
         {
             nextWave++;
             Wave _wave = waves[nextWave];
-            totalEnemiesCount = _wave.easyCount + _wave.mediumCount + _wave.hardCount + _wave.bossCount;
+            totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
+                _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
         }
     }
 
@@ -177,7 +183,8 @@ public class WaveSpawner : MonoBehaviour
         }
 
         Wave _wave = waves[nextWave];
-        totalEnemiesCount = _wave.easyCount + _wave.mediumCount + _wave.hardCount + _wave.bossCount;
+        totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
+            _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
 
         _waveCounter.text = "Restarting Waves";
         _enemiesCounter.text = null;
@@ -197,24 +204,38 @@ public class WaveSpawner : MonoBehaviour
         state = SpawnState.SPAWNING;
         availablePoints = new List<Transform>(rangedSpawnPoints);
 
-        //Spawn easy enemy
-        for (int i = 0; i < _wave.easyCount; i++)
+        //Spawn green slimes enemy
+        for (int i = 0; i < _wave.gSlimeCount; i++)
         {
-            SpawnEnemy(_wave.easyEnemy);
+            SpawnEnemy(_wave.gSlime);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
-        //Spawn medium enemy
-        for (int i = 0; i < _wave.mediumCount; i++)
+        //Spawn wolf enemy
+        for (int i = 0; i < _wave.wolfCount; i++)
         {
-            SpawnRangedEnemy(_wave.mediumEnemy);
+            SpawnEnemy(_wave.wolf);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
-        //Spawn hard enemy
-        for (int i = 0; i < _wave.hardCount; i++)
+        //Spawn beholder enemy
+        for (int i = 0; i < _wave.beholderCount; i++)
         {
-            SpawnEnemy(_wave.hardEnemy);
+            SpawnRangedEnemy(_wave.beholder);
+            yield return new WaitForSeconds(1f / _wave.rate);
+        }
+
+        //Spawn orange slime enemy
+        for (int i = 0; i < _wave.oSlimeCount; i++)
+        {
+            SpawnEnemy(_wave.oSlime);
+            yield return new WaitForSeconds(1f / _wave.rate);
+        }
+
+        //Spawn zombie enemy
+        for (int i = 0; i < _wave.zombieCount; i++)
+        {
+            SpawnEnemy(_wave.zombie);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
