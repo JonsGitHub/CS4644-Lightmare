@@ -48,6 +48,8 @@ public class WaveSpawner : MonoBehaviour
     public float timeBetweenWaves = 5.0f;
     private float waveCountdown;
 
+    private PlayerController _player;
+
     public SpawnState state = SpawnState.COUNTING;
 
     private bool _finished = false;
@@ -75,6 +77,8 @@ public class WaveSpawner : MonoBehaviour
     {
         if (_frameObjectChannel != null)
             _frameObjectChannel.OnEventRaised += RestartWaves;
+
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnDisable()
@@ -172,9 +176,11 @@ public class WaveSpawner : MonoBehaviour
         _enemiesCounter.text = "Enemies Remaining:\n" + totalEnemiesCount;
     }
 
-    public void RestartWaves(Transform _player)
+    public void RestartWaves(Transform transform)
     {
         nextWave = 0;
+
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
@@ -254,20 +260,24 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy(GameObject _enemy)
     {
         // Enemy
-        //Debug.Log("Spawning Enemy: " + _enemy.name);
-        Transform _sp = groundSpawnPoints[Random.Range(0, groundSpawnPoints.Length)];
-        GameObject _e = Instantiate(_enemy, _sp.position, _sp.rotation) as GameObject;
+        var _sp = groundSpawnPoints[Random.Range(0, groundSpawnPoints.Length)];
+        var _e = Instantiate(_enemy, _sp.position, _sp.rotation);
         _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
+
+        if (_e.TryGetComponent(out Aggressor aggressor) && _player != null)
+            aggressor.Attacked(_player.gameObject);
     }
 
     void SpawnRangedEnemy(GameObject _enemy)
     {
         // Enemy
-        //Debug.Log("Spawning Enemy: " + _enemy.name);
         int point = Random.Range(0, availablePoints.Count);
-        Transform _sp = availablePoints[point];
-        GameObject _e = Instantiate(_enemy, _sp.position, _sp.rotation) as GameObject;
-        _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
+        var _sp = availablePoints[point];
         availablePoints.RemoveAt(point);
+        var _e = Instantiate(_enemy, _sp.position, _sp.rotation);
+        _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
+
+        if (_e.TryGetComponent(out Aggressor aggressor) && _player != null)
+            aggressor.Attacked(_player.gameObject);
     }
 }
