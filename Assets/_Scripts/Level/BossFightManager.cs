@@ -15,10 +15,17 @@ public class BossFightManager : MonoBehaviour
 
     [SerializeField] private TransformEventChannelSO _playerRespawning;
 
+    [SerializeField] private AudioCueEventChannelSO _playMusicOn = default;
+    [SerializeField] private AudioConfigurationSO _audioConfig = default;
+
+    [SerializeField] private AudioCueSO _fightTrack;
+
     private bool _startedFight = false;
 
     private void OnEnable()
     {
+        _playMusicOn.RaisePlayEvent(_fightTrack, _audioConfig);
+
         if (_playerRespawning)
             _playerRespawning.OnEventRaised += RestartFight;
 
@@ -37,6 +44,9 @@ public class BossFightManager : MonoBehaviour
     {
         if (_startedFight)
         {
+            attacking = false;
+            _tendrilsLocator.Clear();
+
             StartFight();
         }
     }
