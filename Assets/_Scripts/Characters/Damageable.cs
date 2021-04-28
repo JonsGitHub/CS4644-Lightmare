@@ -8,7 +8,6 @@ public class Damageable : MonoBehaviour
 	[SerializeField] private GetHitEffectConfigSO _getHitEffectSO;
 	[SerializeField] private Renderer _mainMeshRenderer;
 	[SerializeField] private AssetReference _dropItemReference = null;
-    [SerializeField] private bool _wave;
 	private GameObject _drop = null;
 
 	private float _currentHealth = default;
