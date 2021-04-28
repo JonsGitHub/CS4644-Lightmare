@@ -5,7 +5,6 @@ public class MenuExit : MonoBehaviour
 	[Header("Loading settings")]
 	[SerializeField] private InputReader _inputReader;
 	[SerializeField] private MenuSO[] _menuToLoad = default;
-	[SerializeField] private bool _showLoadScreen = default;
 
 	[Header("Broadcasting on")]
 	[SerializeField] private LoadEventChannelSO _loadMenuChannel = default;
