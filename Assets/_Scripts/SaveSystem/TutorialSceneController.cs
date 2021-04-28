@@ -12,9 +12,9 @@ public class TutorialSceneData : SceneData
     public bool _solvedPuzzle;
     public bool _solvedCombat;
 
-    public int _targetOneHealth;
-    public int _targetTwoHealth;
-    public int _targetThreeHealth;
+    public float _targetOneHealth;
+    public float _targetTwoHealth;
+    public float _targetThreeHealth;
 }
 
 public class TutorialSceneController : SceneController

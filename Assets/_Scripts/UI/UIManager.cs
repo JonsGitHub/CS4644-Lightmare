@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
 	[SerializeField] private HealthBar3D _playerHealthBar = default;
-	[SerializeField] private IntEventChannelSO _playerHitChannel = default;
+	[SerializeField] private FloatEventChannelSO _playerHitChannel = default;
 
 	[SerializeField] private Image _reticleImage = default;
 
@@ -156,10 +156,7 @@ public class UIManager : MonoBehaviour
 		CloseUIDialogue();
 	}
 
-	private void UpdatePlayerHealth(int current)
-    {
-		_playerHealthBar.Health = current;
-    }
+	private void UpdatePlayerHealth(float current) => _playerHealthBar.Health = current;
 
 	public void OpenUIDialogue(LocalizedString dialogueLine, ActorSO actor)
 	{

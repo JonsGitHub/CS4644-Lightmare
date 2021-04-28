@@ -20,7 +20,7 @@ public static class PlayerData
     [Serializable]
     protected class PlayerDataContainer
     {
-        public int playerHealth;
+        public float playerHealth;
 
         public short crystalFlags; // Potential for 16 crystals
 
@@ -42,8 +42,8 @@ public static class PlayerData
         OceanCrystal = 6,
     }
 
-    public static int CurrentHealth => _data.playerHealth;
-    public static void SetHealth(int health) => _data.playerHealth = health;
+    public static float CurrentHealth => _data.playerHealth;
+    public static void SetHealth(float health) => _data.playerHealth = health;
     public static void SetLastPosition(Vector3 position) => _data.playerPosition = position;
     public static void SetLastScene(string name)
     {

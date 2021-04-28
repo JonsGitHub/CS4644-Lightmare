@@ -10,14 +10,14 @@ public class Damageable : MonoBehaviour
 	[SerializeField] private AssetReference _dropItemReference = null;
 	private GameObject _drop = null;
 
-	private int _currentHealth = default;
+	private float _currentHealth = default;
 
 	[Header("Broadcasting on channels")]
 	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
     [SerializeField] private BoolEventChannelSO _destroyedChannelEvent = default;
 
 	[Tooltip("Used primarily for communication between player and canvas.")]
-	[SerializeField] private IntEventChannelSO _playerDamagedEvent = default;
+	[SerializeField] private FloatEventChannelSO _playerDamagedEvent = default;
 
 	private HealthBar3D healthbar;
 
@@ -33,7 +33,7 @@ public class Damageable : MonoBehaviour
 	public GetHitEffectConfigSO GetHitEffectConfig => _getHitEffectSO;
 	public Renderer MainMeshRenderer => _mainMeshRenderer;
 
-	public int CurrentHealth => _currentHealth;
+	public float CurrentHealth => _currentHealth;
 	public int MaxHealth => _healthConfigSO.MaxHealth;
 
 	public UnityAction OnDie;
@@ -72,7 +72,7 @@ public class Damageable : MonoBehaviour
 
 	public void ResetHealth() => SetHealth(_healthConfigSO.MaxHealth);
 
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
 		_currentHealth = health;
 
@@ -83,7 +83,7 @@ public class Damageable : MonoBehaviour
 			healthbar.Health = _currentHealth;
 	}
 
-    public void ReceiveAnAttack(int damage)
+    public void ReceiveAnAttack(float damage)
 	{
 		if (IsDead)
 			return;
@@ -92,7 +92,7 @@ public class Damageable : MonoBehaviour
 		
 		if (healthbar)
 			healthbar.Health = _currentHealth;
-
+		
 		if (_playerDamagedEvent)
 			_playerDamagedEvent.RaiseEvent(_currentHealth);
 
@@ -129,6 +129,9 @@ public class Damageable : MonoBehaviour
 
 		if (healthbar)
 			healthbar.Health = _currentHealth;
+
+		if (_playerDamagedEvent)
+			_playerDamagedEvent.RaiseEvent(_currentHealth);
 
 		IsDead = true;
 		OnKilled?.Invoke(this);
