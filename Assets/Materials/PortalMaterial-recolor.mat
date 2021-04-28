@@ -86,13 +86,13 @@ Material:
     - _Speed: 0.1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TwirlStrength: 5
-    - _VoronoiPower: 1
+    - _TwirlStrength: 10
+    - _VoronoiPower: 0.35
     - _VoronoiScale: 10
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 25.960495, g: 1.3470069, b: 1.3470069, a: 1}
+    - _Color: {r: 21.361254, g: 0.83769625, b: 0.75392663, a: 0.03137255}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
