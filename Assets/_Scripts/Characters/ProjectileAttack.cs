@@ -31,6 +31,10 @@ public class ProjectileAttack : MonoBehaviour
         {
             damageable.ReceiveAnAttack(_attackConfigSO.AttackStrength);
         }
+        else if (other.gameObject.TryGetComponent(out DamageablePart part))
+        {
+            part.ReceiveAnAttack(_attackConfigSO.AttackStrength);
+        }
 
         // Add force at the collision contact point to give "impact"
         other.rigidbody?.AddForceAtPosition(other.relativeVelocity * PushForce, contact.point);

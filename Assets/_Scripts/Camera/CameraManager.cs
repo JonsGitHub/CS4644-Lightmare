@@ -124,14 +124,14 @@ public class CameraManager : MonoBehaviour
 
 		var angle = _followTarget.transform.localEulerAngles.x;
 
-		//Clamp the Up/Down rotation
-		if (angle > 180 && angle < 340)
+        //Clamp the Up/Down rotation
+        if (angle > 180 && angle < 315)
+        {
+            angles.x = 315;
+        }
+        else if (angle < 180 && angle > 60)
 		{
-			angles.x = 340;
-		}
-		else if (angle < 180 && angle > 40)
-		{
-			angles.x = 40;
+			angles.x = 60;
 		}
 		_followTarget.transform.localEulerAngles = angles;
 	}
