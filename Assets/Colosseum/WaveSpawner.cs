@@ -112,7 +112,7 @@ public class WaveSpawner : MonoBehaviour
             if (state != SpawnState.SPAWNING)
             {
                 // Start spawning wave
-                StartCoroutine(SpawnWave(waves[nextWave]));
+                StartCoroutine("SpawnWave");
             }
         }
         else
@@ -178,6 +178,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void RestartWaves(Transform transform)
     {
+        StopCoroutine("SpawnWave");
         nextWave = 0;
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -202,14 +203,16 @@ public class WaveSpawner : MonoBehaviour
         _newGame = true;
     }
 
-    IEnumerator SpawnWave(Wave _wave)
+    IEnumerator SpawnWave()
     {
+        Wave _wave = waves[nextWave];
+
         _waveCounter.text = "Wave: " + (nextWave + 1);
         _enemiesCounter.text = "Enemies Remaining:\n" + totalEnemiesCount;
 
         state = SpawnState.SPAWNING;
         availablePoints = new List<Transform>(rangedSpawnPoints);
-
+        
         //Spawn green slimes enemy
         for (int i = 0; i < _wave.gSlimeCount; i++)
         {
