@@ -21,20 +21,14 @@ MonoBehaviour:
     m_Address: Assets/ScriptableObjects/SceneData
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 102900000, guid: 84cbcc505f7e5eb44b523cbcc4766284, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 84cbcc505f7e5eb44b523cbcc4766284, type: 3}
   - m_GUID: 35fa9d167b3dfb344bc20f118438318c
     m_Address: Assets/ScriptableObjects/Audio
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: f6a1b46726b2de84eb3661a589a9daa0
-    m_Address: Assets/Settings/Audio/DefaultAudioMixer.mixer
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 24100000, guid: f6a1b46726b2de84eb3661a589a9daa0, type: 2}
-    m_TargetAsset: {fileID: 24100000, guid: f6a1b46726b2de84eb3661a589a9daa0, type: 2}
+    m_MainAsset: {fileID: 102900000, guid: 35fa9d167b3dfb344bc20f118438318c, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 35fa9d167b3dfb344bc20f118438318c, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bffab80dc16c4464b92b2e97b6a1964c, type: 2}
   m_SchemaSet:

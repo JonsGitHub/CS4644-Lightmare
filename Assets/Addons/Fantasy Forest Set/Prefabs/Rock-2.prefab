@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 478986}
   - component: {fileID: 3317780}
   - component: {fileID: 2361940}
-  - component: {fileID: 6048871042470991147}
   m_Layer: 0
   m_Name: Rock-2
   m_TagString: Untagged
@@ -27,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129970}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,22 +79,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!205 &6048871042470991147
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129970}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.018264532, y: 0.37533918, z: -0.02388531}
-  m_Size: 0.87890685
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.017765246
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2361940}
-  m_Enabled: 1

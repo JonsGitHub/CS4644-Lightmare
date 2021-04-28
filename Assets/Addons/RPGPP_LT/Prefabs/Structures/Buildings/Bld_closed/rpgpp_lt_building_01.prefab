@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 33150919666518030}
   - component: {fileID: 23959816328617694}
   - component: {fileID: 2667292315714708794}
-  - component: {fileID: 8548368900891561291}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: rpgpp_lt_building_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4003897846794392
 Transform:
@@ -95,22 +94,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: af5390e2a0373984db3740f21c0ec034, type: 3}
---- !u!205 &8548368900891561291
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640908652775104}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.092457294, y: 3.8487768, z: -0.48990536}
-  m_Size: 13.362833
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.054838337
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 23959816328617694}
-  m_Enabled: 1

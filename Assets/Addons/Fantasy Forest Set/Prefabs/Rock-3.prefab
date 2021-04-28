@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 468508}
   - component: {fileID: 3321164}
   - component: {fileID: 2352404}
-  - component: {fileID: 5794069708406249930}
-  - component: {fileID: 4421343358952735013}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Rock-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107716}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,35 +79,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!205 &5794069708406249930
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107716}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.054235935, y: 0.3117425, z: -0.064760506}
-  m_Size: 1.1885296
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.017765246
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2352404}
-  m_Enabled: 1
---- !u!65 &4421343358952735013
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107716}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.1504992, y: 0.6658018, z: 1.1885291}
-  m_Center: {x: -0.05423691, y: 0.31174138, z: -0.064724214}
