@@ -78,7 +78,7 @@ public class WaveSpawner : MonoBehaviour
         if (_frameObjectChannel != null)
             _frameObjectChannel.OnEventRaised += RestartWaves;
 
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        _player = FindObjectOfType<PlayerController>();
     }
 
     private void OnDisable()
@@ -181,7 +181,7 @@ public class WaveSpawner : MonoBehaviour
         StopCoroutine("SpawnWave");
         nextWave = 0;
 
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        _player = FindObjectOfType<PlayerController>();
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
@@ -268,7 +268,7 @@ public class WaveSpawner : MonoBehaviour
         _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
 
         if (_e.TryGetComponent(out Aggressor aggressor) && _player != null)
-            aggressor.Attacked(_player.gameObject);
+            aggressor.Attacked(_player?.gameObject);
     }
 
     void SpawnRangedEnemy(GameObject _enemy)
@@ -281,6 +281,6 @@ public class WaveSpawner : MonoBehaviour
         _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
 
         if (_e.TryGetComponent(out Aggressor aggressor) && _player != null)
-            aggressor.Attacked(_player.gameObject);
+            aggressor.Attacked(_player?.gameObject);
     }
 }

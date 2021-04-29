@@ -65,7 +65,7 @@ public class BossFightManager : MonoBehaviour
     {
         _startedFight = true;
 
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Damageable>().OnDie += OnPlayerDeath;
+        FindObjectOfType<PlayerController>().GetComponent<Damageable>().OnDie += OnPlayerDeath;
 
         foreach(var point in GameObject.FindGameObjectsWithTag("SpawnLocation"))
         {

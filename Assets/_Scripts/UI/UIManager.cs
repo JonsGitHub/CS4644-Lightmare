@@ -243,7 +243,7 @@ public class UIManager : MonoBehaviour
 	{
 		// Save Player base data
 		PlayerData.SetLastScene(SceneManager.GetActiveScene().name.Replace(' ', '_'));
-		var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Damageable>();
+		var player = FindObjectOfType<PlayerController>()?.GetComponent<Damageable>();
 		if (player)
 		{
 			PlayerData.SetLastPosition(player.transform.position);

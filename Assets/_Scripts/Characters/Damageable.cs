@@ -100,7 +100,7 @@ public class Damageable : MonoBehaviour
 		if (TryGetComponent(out Aggressor aggressor))
 		{
 			// TODO: Find a better way to associate an attack with the attacker
-			aggressor.Attacked(GameObject.FindGameObjectWithTag("Player")); // Since friendly fire is off
+			aggressor.Attacked(FindObjectOfType<PlayerController>()?.gameObject); // Since friendly fire is off
 		}
 
 		GetHit = true;
