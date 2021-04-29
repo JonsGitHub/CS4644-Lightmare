@@ -29,7 +29,7 @@ TagManager:
   - LayerMask
   - SeeThrough
   - PartialSeeThrough
-  - 
+  - NoPlayer
   - 
   - 
   - 
