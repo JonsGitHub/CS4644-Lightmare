@@ -42,9 +42,9 @@ public class Damageable : MonoBehaviour
 	private void Awake()
 	{
 		_currentHealth = _healthConfigSO.MaxHealth;
-	}
+    }
 
-	private void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj) => _drop = obj.Result;
+    private void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj) => _drop = obj.Result;
 
 	private void OnEnable()
     {
@@ -62,7 +62,8 @@ public class Damageable : MonoBehaviour
 
 		if (_dropItemReference.RuntimeKeyIsValid())
 			Addressables.LoadAssetAsync<GameObject>(_dropItemReference).Completed += OnLoadDone;
-	}
+
+    }
 
     private void OnDisable()
     {
@@ -99,22 +100,22 @@ public class Damageable : MonoBehaviour
 		if (TryGetComponent(out Aggressor aggressor))
 		{
 			// TODO: Find a better way to associate an attack with the attacker
-			aggressor.Attacked(GameObject.FindGameObjectWithTag("Player")); // Since friendly fire is off
+			aggressor.Attacked(FindObjectOfType<PlayerController>()?.gameObject); // Since friendly fire is off
 		}
 
 		GetHit = true;
 		if (_currentHealth <= 0)
-		{
-			IsDead = true;
-			OnKilled?.Invoke(this);
+        {
+            IsDead = true;
+            OnKilled?.Invoke(this);
 			if (_drop)
 			{
 				Instantiate(_drop, transform.position, Quaternion.identity);
 			}
 
 			if (OnDie != null)
-			{
-				OnDie.Invoke();
+            {
+                OnDie.Invoke();
 			}
 			else if (!TryGetComponent(out StateMachine.StateMachine machine)) // Destroy it if it most likely won't have a statemachine to perform cleanup
             {
@@ -125,7 +126,7 @@ public class Damageable : MonoBehaviour
 
 	public void Kill()
     {
-		_currentHealth = 0;
+        _currentHealth = 0;
 
 		if (healthbar)
 			healthbar.Health = _currentHealth;
@@ -134,8 +135,8 @@ public class Damageable : MonoBehaviour
 			_playerDamagedEvent.RaiseEvent(_currentHealth);
 
 		IsDead = true;
-		OnKilled?.Invoke(this);
-		if (OnDie != null)
+        OnKilled?.Invoke(this);
+        if (OnDie != null)
 		{
 			OnDie.Invoke();
 		}

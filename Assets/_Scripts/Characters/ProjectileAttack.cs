@@ -24,6 +24,9 @@ public class ProjectileAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (tag.Equals(other.gameObject.tag))
+            return;
+
         var contact = other.GetContact(0);
 
         // Give damage to damageable if found

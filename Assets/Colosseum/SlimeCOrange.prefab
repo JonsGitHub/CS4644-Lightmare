@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 9060798264793028502}
   - component: {fileID: 9060798264793028497}
   - component: {fileID: 9060798264793028496}
-  m_Layer: 1
+  m_Layer: 2
   m_Name: TriggerZone_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 9060798265216259247}
   - component: {fileID: 9060798265216259246}
   - component: {fileID: 9060798265216259241}
-  m_Layer: 1
+  m_Layer: 2
   m_Name: TriggerZone_Alert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e674f0e2661e7bf44a944d844a8b9111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _npcMovementConfig: {fileID: 11400000, guid: 1a575350aa81afa4cb6195e90f618c59, type: 2}
+  _npcMovementConfig: {fileID: 11400000, guid: 9348fc515428d414486103465f0647a7, type: 2}
   _channel: {fileID: 11400000, guid: 0113a096983be924caf0a18b80ab8c5b, type: 2}
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   _createLabel: 0
@@ -373,13 +373,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f6a7033e390c940b58d0e2d10f6cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthConfigSO: {fileID: 11400000, guid: 2b79ad39a6684f84095aa7045e99459d, type: 2}
+  _healthConfigSO: {fileID: 11400000, guid: 9877126f8aaa0fe4daad182e0112ee02, type: 2}
   _getHitEffectSO: {fileID: 11400000, guid: 29fd4b4ddcec0104cbb10d591de73d5f, type: 2}
   _mainMeshRenderer: {fileID: 9060798265664632519}
   _dropItemReference:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
+  _wave: 1
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   _destroyedChannelEvent: {fileID: 0}
   _playerDamagedEvent: {fileID: 0}

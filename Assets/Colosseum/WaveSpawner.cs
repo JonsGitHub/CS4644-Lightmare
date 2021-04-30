@@ -9,6 +9,7 @@ using TMPro;
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private BoolEventChannelSO _unlockingChannel = default;
+    [SerializeField] private TransformEventChannelSO _frameObjectChannel = default;
 
     [SerializeField] private TextMeshProUGUI _waveCounter = default;
     [SerializeField] private TextMeshProUGUI _enemiesCounter = default;
@@ -19,18 +20,23 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform easyEnemy;
-        public Transform mediumEnemy;
-        public Transform hardEnemy;
-        public Transform bossEnemy;
-        public int easyCount;
-        public int mediumCount;
-        public int hardCount;
+        public GameObject gSlime;
+        public GameObject beholder;
+        public GameObject oSlime;
+        public GameObject wolf;
+        public GameObject zombie;
+        public GameObject bossEnemy;
+        public int gSlimeCount;
+        public int beholderCount;
+        public int oSlimeCount;
+        public int wolfCount;
+        public int zombieCount;
         public int bossCount;
         public float rate;
-
-        public int TotalEnemiesCount => easyCount + mediumCount + hardCount + bossCount;
     }
+
+    private int totalEnemiesCount;
+    private bool _newGame = false;
 
     public Wave[] waves;
     private int nextWave = 0;
@@ -42,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
     public float timeBetweenWaves = 5.0f;
     private float waveCountdown;
 
-    private float searchCountdown = 1.0f;
+    private PlayerController _player;
 
     public SpawnState state = SpawnState.COUNTING;
 
@@ -54,6 +60,10 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        Wave _wave = waves[nextWave];
+        totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
+            _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
+
         waveCountdown = timeBetweenWaves;
 
         Assert.IsTrue(groundSpawnPoints.Length != 0);
@@ -63,8 +73,26 @@ public class WaveSpawner : MonoBehaviour
         _waveCounter.text = "Starting Wave";
     }
 
+    private void OnEnable()
+    {
+        if (_frameObjectChannel != null)
+            _frameObjectChannel.OnEventRaised += RestartWaves;
+
+        _player = FindObjectOfType<PlayerController>();
+    }
+
+    private void OnDisable()
+    {
+        if (_frameObjectChannel != null)
+            _frameObjectChannel.OnEventRaised -= RestartWaves;
+    }
+
     void Update()
     {
+        if (_newGame)
+        {
+            _newGame = false;
+        }
         if (state == SpawnState.WAITING)
         {
             // Check if enemies are still alive
@@ -84,11 +112,23 @@ public class WaveSpawner : MonoBehaviour
             if (state != SpawnState.SPAWNING)
             {
                 // Start spawning wave
-                StartCoroutine(SpawnWave(waves[nextWave]));
+                StartCoroutine("SpawnWave");
             }
         }
         else
         {
+            if (nextWave == 0)
+            {
+                _waveCounter.text = "First Wave in " + waveCountdown.ToString("0");
+            }
+            else if (nextWave + 1 == waves.Length)
+            {
+                _waveCounter.text = "Final Wave in " + waveCountdown.ToString("0");
+            }
+            else
+            {
+                _waveCounter.text = "Next Wave in " + waveCountdown.ToString("0");
+            }
             waveCountdown -= Time.deltaTime;
         }
     }
@@ -97,7 +137,6 @@ public class WaveSpawner : MonoBehaviour
     {
         //Debug.Log("Wave Completed");
 
-        _waveCounter.text = "Starting Next Wave";
         _enemiesCounter.text = "";
 
         state = SpawnState.COUNTING;
@@ -115,51 +154,97 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             nextWave++;
+            Wave _wave = waves[nextWave];
+            totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
+                _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
         }
     }
 
     // Perhaps tie into the on death trigger of enemies instead of polling count.
     bool EnemyIsAlive()
     {
-        searchCountdown -= Time.deltaTime;
-        if (searchCountdown <= 0.0f)
+        if (totalEnemiesCount == 0)
         {
-            searchCountdown = 1.0f;
-            var enemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-            
-            _enemiesCounter.text = "Enemies Remaining:\n" + enemiesCount;
-            if (enemiesCount == 0)
-                return false;
+            return false;
         }
         return true;
     }
 
-    IEnumerator SpawnWave(Wave _wave)
+    public void DecrementEnemy(Damageable script)
     {
+        totalEnemiesCount--;
+        _enemiesCounter.text = "Enemies Remaining:\n" + totalEnemiesCount;
+    }
+
+    public void RestartWaves(Transform transform)
+    {
+        StopCoroutine("SpawnWave");
+        nextWave = 0;
+
+        _player = FindObjectOfType<PlayerController>();
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+
+        Wave _wave = waves[nextWave];
+        totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
+            _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
+
+        _waveCounter.text = "Restarting Waves";
+        _enemiesCounter.text = null;
+
+        waveCountdown = timeBetweenWaves;
+
+        state = SpawnState.COUNTING;
+
+        _newGame = true;
+    }
+
+    IEnumerator SpawnWave()
+    {
+        Wave _wave = waves[nextWave];
+
         _waveCounter.text = "Wave: " + (nextWave + 1);
-        _enemiesCounter.text = "Enemies Remaining:\n" + _wave.TotalEnemiesCount;
+        _enemiesCounter.text = "Enemies Remaining:\n" + totalEnemiesCount;
 
         state = SpawnState.SPAWNING;
         availablePoints = new List<Transform>(rangedSpawnPoints);
-
-        //Spawn easy enemy
-        for (int i = 0; i < _wave.easyCount; i++)
+        
+        //Spawn green slimes enemy
+        for (int i = 0; i < _wave.gSlimeCount; i++)
         {
-            SpawnEnemy(_wave.easyEnemy);
+            SpawnEnemy(_wave.gSlime);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
-        //Spawn medium enemy
-        for (int i = 0; i < _wave.mediumCount; i++)
+        //Spawn wolf enemy
+        for (int i = 0; i < _wave.wolfCount; i++)
         {
-            SpawnRangedEnemy(_wave.mediumEnemy);
+            SpawnEnemy(_wave.wolf);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
-        //Spawn hard enemy
-        for (int i = 0; i < _wave.hardCount; i++)
+        //Spawn beholder enemy
+        for (int i = 0; i < _wave.beholderCount; i++)
         {
-            SpawnEnemy(_wave.hardEnemy);
+            SpawnRangedEnemy(_wave.beholder);
+            yield return new WaitForSeconds(1f / _wave.rate);
+        }
+
+        //Spawn orange slime enemy
+        for (int i = 0; i < _wave.oSlimeCount; i++)
+        {
+            SpawnEnemy(_wave.oSlime);
+            yield return new WaitForSeconds(1f / _wave.rate);
+        }
+
+        //Spawn zombie enemy
+        for (int i = 0; i < _wave.zombieCount; i++)
+        {
+            SpawnEnemy(_wave.zombie);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
@@ -175,21 +260,27 @@ public class WaveSpawner : MonoBehaviour
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemy(GameObject _enemy)
     {
         // Enemy
-        //Debug.Log("Spawning Enemy: " + _enemy.name);
-        Transform _sp = groundSpawnPoints[Random.Range(0, groundSpawnPoints.Length)];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        var _sp = groundSpawnPoints[Random.Range(0, groundSpawnPoints.Length)];
+        var _e = Instantiate(_enemy, _sp.position, _sp.rotation);
+        _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
+
+        if (_e.TryGetComponent(out Aggressor aggressor) && _player != null)
+            aggressor.Attacked(_player?.gameObject);
     }
 
-    void SpawnRangedEnemy(Transform _enemy)
+    void SpawnRangedEnemy(GameObject _enemy)
     {
         // Enemy
-        //Debug.Log("Spawning Enemy: " + _enemy.name);
         int point = Random.Range(0, availablePoints.Count);
-        Transform _sp = availablePoints[point];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        var _sp = availablePoints[point];
         availablePoints.RemoveAt(point);
+        var _e = Instantiate(_enemy, _sp.position, _sp.rotation);
+        _e.GetComponent<Damageable>().OnKilled += DecrementEnemy;
+
+        if (_e.TryGetComponent(out Aggressor aggressor) && _player != null)
+            aggressor.Attacked(_player?.gameObject);
     }
 }
