@@ -25,7 +25,10 @@ public class ProjectileAttack : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (tag.Equals(other.gameObject.tag))
+        {
+            Destroy(gameObject); // Clean up
             return;
+        }
 
         var contact = other.GetContact(0);
 
