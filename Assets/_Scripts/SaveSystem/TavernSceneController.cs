@@ -2,7 +2,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Scene Data relevant to Forest Scene
+/// Scene Data relevant to Tavern Scene
 /// </summary>
 [Serializable]
 public class TavernSceneData : SceneData

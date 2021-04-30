@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Sci-Fi_Lines_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 4391968ea14c840448b4f03ec4d817b0, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 29082247168
+    m_Localized: Thank goodness you're here, traveler! Some aliens are destroying
+      our ship, and we need someone to take them down, as well as find all the spare
+      ship parts! Talk to Alan in the main warp drive area just ahead.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2347827716096
+    m_Localized: Neil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52956933120000
+    m_Localized: 'Thanks for getting here so quickly traveler! We don''t have much
+      time to talk, so here''s the situation: Aliens have boarded the ship, and if
+      we don''t repair it quick, we''re as good as gone. We''re going to need a few
+      things:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53359347228672
+    m_Localized: First, we'll need a head gasket. Ours was totally wrecked when they
+      boarded, and it's unsalvageable.  You can find one in the rightmost room back
+      the way you came in. However, last I heard, the door was jammed so you'll need
+      to find another way in.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54807338409984
+    m_Localized: Second, we'll need a new set of navigation chips to guide us out
+      of this mess. You can find them in the navigation area of the ship. They're
+      really little, so be sure to keep your eye out for them. Be careful though,
+      there have been reports of hostiles all over that area. I think that's where
+      they came in from.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55334415622144
+    m_Localized: Third, we'll need a new dark matter fuel injector. It's still in
+      development, but it's our only hope at getting out at this point. You can find
+      it in Research and Development, just past the security gate. We haven't heard
+      anything from the guys over there, so again, be careful.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55846770827264
+    m_Localized: Finally, we'll need some dark matter from the cargo bay so we can
+      get out of here. The catwalk to get into the cargo bay was destroyed in the
+      assault, so you'll have to get a little creative to find this part.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56163545636864
+    m_Localized: You might find some survivors around the ship, so if you do, ask
+      them for further instructions, as they'll probably know better than me. Bring
+      the parts back to me as you find them, place them on the platform in front
+      of me, and I'll install them. Good luck, traveler!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60801288232960
+    m_Localized: Alan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65472090333184
+    m_Localized: Buzz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65498682220544
+    m_Localized: Oh God! Why is it jammed?! No, no, no, there's got to be a way in...
+      Wait! I remember! There's another entrance through R&D! Please hurry, traveler!
+      Otherwise, I'm not gonna make it out of here alive...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69762838159360
+    m_Localized: Shepard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69806324703232
+    m_Localized: I hope you know what you're doing, traveler. It's very dangerous
+      up ahead. On your right, you'll find the cargo hold. On your left, you'll find
+      research and security. Straight ahead is systems. If I were you, I'd turn back
+      and make your peace with our failures. Be wary, traveler.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

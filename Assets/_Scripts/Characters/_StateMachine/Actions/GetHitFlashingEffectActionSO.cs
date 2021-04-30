@@ -28,7 +28,10 @@ public class GetHitFlashingEffectAction : StateAction
 			_material = attackableEntity.MainMeshRenderer.materials[attackableEntity.MainMeshRenderer.materials.Length - 1];
 			_getHitFlashingDuration = getHitEffectConfig.GetHitFlashingDuration;
 			_getHitFlashingSpeed = getHitEffectConfig.GetHitFlashingSpeed;
-			_baseTintColor = _material.GetColor("_MainColor");
+			if (_material.HasProperty("_MainColor"))
+            {
+				_baseTintColor = _material.GetColor("_MainColor");
+            }
 			_innerFlashingTime = getHitEffectConfig.GetHitFlashingDuration;
 			_flashingColor = getHitEffectConfig.GetHitFlashingColor;
 		}
@@ -46,12 +49,13 @@ public class GetHitFlashingEffectAction : StateAction
 
 	public override void OnStateExit()
 	{
-		_material?.SetColor("_MainColor", _baseTintColor);
+		if (_material.HasProperty("_MainColor"))
+			_material?.SetColor("_MainColor", _baseTintColor);
 	}
 
 	public void ApplyHitEffect()
 	{
-		if (_innerFlashingTime > 0)
+		if (_innerFlashingTime > 0 && _material.HasProperty("_MainColor"))
 		{
 			Color tintingColor = computeGetHitTintingColor();
 			_material?.SetColor("_MainColor", tintingColor);

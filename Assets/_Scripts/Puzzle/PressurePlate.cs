@@ -13,11 +13,11 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Key key;
-        if (other.TryGetComponent(out key))
+        if (other.TryGetComponent(out Key key))
         {
             if (key.ID == _unlockId)
             {
+                key.Assign(this);
                 _currentAmount++;
                 if (_currentAmount == _requiredAmount)
                 {
@@ -34,14 +34,21 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Key key;
-        if (other.TryGetComponent(out key) && key.ID == _unlockId)
+        if (other.TryGetComponent(out Key key) && key.ID == _unlockId)
         {
-            if (_currentAmount == _requiredAmount)
-            {
-                _unlockChannel.RaiseEvent(false);
-            }
-            _currentAmount--;
+            key.Clear();
+            Decreased();
         }
+    }
+
+    public void Decrease() => Decreased();
+
+    private void Decreased()
+    {
+        if (_currentAmount == _requiredAmount)
+        {
+            _unlockChannel.RaiseEvent(false);
+        }
+        _currentAmount--;
     }
 }
