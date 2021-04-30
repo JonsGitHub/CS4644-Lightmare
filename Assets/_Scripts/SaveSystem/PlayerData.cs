@@ -68,6 +68,9 @@ public static class PlayerData
             case "Level_Colosseum":
                 _data.lastScene = SceneName.Colosseum;
                 break;
+            case "Level_Sci-fi":
+                _data.lastScene = SceneName.Scifi;
+                break;
             case "Level_Ocean":
                 _data.lastScene = SceneName.Ocean;
                 break;

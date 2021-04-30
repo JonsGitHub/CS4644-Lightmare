@@ -82,9 +82,11 @@ public class Damageable : MonoBehaviour
 
 		if (healthbar)
 			healthbar.Health = _currentHealth;
+
+		CheckHealth();
 	}
 
-    public void ReceiveAnAttack(float damage)
+	public void ReceiveAnAttack(float damage)
 	{
 		if (IsDead)
 			return;
@@ -104,23 +106,28 @@ public class Damageable : MonoBehaviour
 		}
 
 		GetHit = true;
+		CheckHealth();
+	}
+
+	private void CheckHealth()
+    {
 		if (_currentHealth <= 0)
-        {
-            IsDead = true;
-            OnKilled?.Invoke(this);
+		{
+			IsDead = true;
+			OnKilled?.Invoke(this);
 			if (_drop)
 			{
 				Instantiate(_drop, transform.position, Quaternion.identity);
 			}
 
 			if (OnDie != null)
-            {
-                OnDie.Invoke();
+			{
+				OnDie.Invoke();
 			}
 			else if (!TryGetComponent(out StateMachine.StateMachine machine)) // Destroy it if it most likely won't have a statemachine to perform cleanup
-            {
+			{
 				Destroy(gameObject);
-            }
+			}
 		}
 	}
 

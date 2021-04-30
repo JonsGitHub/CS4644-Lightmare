@@ -17,6 +17,8 @@ public class AttackAutoTargetAction : StateAction
 	private Ray _ray;
 	private RaycastHit _hit;
 
+	private Vector3 heightOffset = new Vector3(0, 1, 0);
+
 	protected new AttackAutoTargetActionSO OriginSO => (AttackAutoTargetActionSO)base.OriginSO;
 
 	public override void Awake(StateMachine.StateMachine stateMachine)
@@ -51,7 +53,7 @@ public class AttackAutoTargetAction : StateAction
         }
 		else if (OriginSO.autoTargetAnchor.isSet && OriginSO.autoTargetAnchor.Transform != null)
         {
-			projectileAttacker.Destination = OriginSO.autoTargetAnchor.Transform.position;
+			projectileAttacker.Destination = OriginSO.autoTargetAnchor.Transform.position + heightOffset;
         }
 		else
         {

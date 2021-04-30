@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6172719683642589108}
   m_Layer: 12
   m_Name: AttackSphere
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6172719683642589111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.065, z: 0.157}
+  m_LocalPosition: {x: 0, y: 1.065, z: 0.508}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1682331367566157073}
@@ -73,7 +73,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6172719683642589108
 MonoBehaviour:
@@ -98,7 +98,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1682331367566157073}
   - component: {fileID: 6172719683697006800}
-  - component: {fileID: 6172719683697006801}
   - component: {fileID: 6172719683697006802}
   - component: {fileID: 6172719683697006803}
   - component: {fileID: 6172719683697006828}
@@ -106,6 +105,7 @@ GameObject:
   - component: {fileID: 6172719683697006831}
   - component: {fileID: 6172719683697006830}
   - component: {fileID: 6172719683697006829}
+  - component: {fileID: 360841125269069466}
   m_Layer: 12
   m_Name: Grunk
   m_TagString: Enemy
@@ -142,7 +142,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6172719683697006825}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4d4e7cd8d87d98a46870cedb702d5e22, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 2b2c59923c4cd8e43a45f2417c1cfa9e, type: 3}
   m_Controller: {fileID: 9100000, guid: 593357e39b8aa45c08f17ce26275dd29, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -152,19 +152,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &6172719683697006801
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6172719683697006825}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.35
-  m_Center: {x: 0, y: 0.32, z: 0}
 --- !u!195 &6172719683697006802
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -199,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f85d58a66880046b0e1efa39898655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionTableSO: {fileID: 11400000, guid: 7effda12618af0c49b062faaa6891385, type: 2}
+  _transitionTableSO: {fileID: 11400000, guid: 4c152dde1ab6b4bd485df99c807c4566, type: 2}
   _debugger:
     debugTransitions: 0
     appendConditionsInfo: 1
@@ -293,6 +280,20 @@ MonoBehaviour:
   _playerTransform: {fileID: 11400000, guid: bb65bb1ce94fefe4a841fba31a6f9162, type: 2}
   _propelFactor: 0.8
   _propelDuration: 0.2
+--- !u!136 &360841125269069466
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172719683697006825}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.8419342
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9166081, z: 0}
 --- !u!1 &6172719684106260338
 GameObject:
   m_ObjectHideFlags: 0
