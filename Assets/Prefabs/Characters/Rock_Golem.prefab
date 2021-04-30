@@ -1,25 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!135 &4305775173079538466
+--- !u!1 &1074937023858426455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4306050783052273326}
+  - component: {fileID: 222848520301133436}
+  - component: {fileID: 2227730549353671403}
+  m_Layer: 12
+  m_Name: AttackSphere
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4306050783052273326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074937023858426455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4825748501736824837}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &222848520301133436
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955271550389889152}
+  m_GameObject: {fileID: 1074937023858426455}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 16.2
   m_Center: {x: -11.3, y: -0.37, z: 5.1}
---- !u!114 &4305775173079538465
+--- !u!114 &2227730549353671403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955271550389889152}
+  m_GameObject: {fileID: 1074937023858426455}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f517e6ac4518ae48a4ff2f72b1b0bf8, type: 3}
@@ -230,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f0b36f9e1bf1444828f5c53ed06645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackCollider: {fileID: 1955271550389889152}
+  _attackCollider: {fileID: 1074937023858426455}
 --- !u!114 &4305775172130969386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,9 +614,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4305775173079538470}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1955271550389889152 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2369925473404760998, guid: c2bafbe3be56e924fbd3c27088ceee7c,
+--- !u!4 &4825748501736824837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -488166647517955293, guid: c2bafbe3be56e924fbd3c27088ceee7c,
     type: 3}
   m_PrefabInstance: {fileID: 4305775173079538470}
   m_PrefabAsset: {fileID: 0}

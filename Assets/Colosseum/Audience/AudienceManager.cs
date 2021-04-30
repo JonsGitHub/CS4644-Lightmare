@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudienceManager : MonoBehaviour
 {
-    [SerializeField] private TransformAnchor _playerTransform;
+    //[SerializeField] private TransformAnchor _playerTransform;
     private Animation anim;
     private float animCountdown;
 
@@ -13,7 +13,7 @@ public class AudienceManager : MonoBehaviour
         anim = gameObject.GetComponent<Animation>();
         animCountdown = Random.Range(0.0f, 30.0f);
     }
-    // Update is called once per frame
+
     void Update()
     {
         animCountdown -= Time.deltaTime;
@@ -46,10 +46,10 @@ public class AudienceManager : MonoBehaviour
                 }
             }
         }
-        if (_playerTransform.isSet)
-        {
-            Vector3 rot = new Vector3(_playerTransform.Transform.position.x, transform.position.y, _playerTransform.Transform.position.z);
-            transform.LookAt(rot);
-        }
+        //if (_playerTransform.isSet && _playerTransform.Transform != null)
+        //{
+        //    Vector3 rot = new Vector3(_playerTransform.Transform.position.x, transform.position.y, _playerTransform.Transform.position.z);
+        //    transform.LookAt(rot);
+        //}
     }
 }

@@ -47427,6 +47427,9 @@ MonoBehaviour:
   - _sceneName: 7
     _location:
     - {fileID: 11400000, guid: 2b74b4ad377f0ce4ebed5c6381ab5205, type: 2}
+  - _sceneName: 8
+    _location:
+    - {fileID: 11400000, guid: b7a9992a138b7f44790ab46a13167aa0, type: 2}
 --- !u!1 &1376813655
 GameObject:
   m_ObjectHideFlags: 0

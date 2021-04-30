@@ -47,4 +47,6 @@ public class MausoleumSceneController : SceneController
         data.puzzleSolved   = _storyPuzzle.Solved;
         return data;
     }
+
+    public override bool SavePosition() => true;
 }

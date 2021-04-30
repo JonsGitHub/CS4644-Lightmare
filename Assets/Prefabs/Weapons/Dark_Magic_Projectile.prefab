@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitImpact: {fileID: 7862467576104440134, guid: 4cb3144e1d2b8a045b734367b47e5848,
     type: 3}
-  _attackConfigSO: {fileID: 11400000, guid: c95d3d09f25a89440aeb689bb457a593, type: 2}
+  _attackConfigSO: {fileID: 11400000, guid: 1074ec6d08e8d9642b8962eca1cad698, type: 2}
   _projectileSpeed: 30
   _lifeSpan: 15
   PushForce: 2

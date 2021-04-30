@@ -24,6 +24,7 @@ public class MaladyController : MonoBehaviour
     private bool _inProjectileRange = false;
 
     private int _currentMinionCount = 0;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -31,10 +32,27 @@ public class MaladyController : MonoBehaviour
         _damageable = GetComponent<Damageable>();
     }
 
+    private HealthBar3D HealthBar
+    {
+        get
+        {
+            if (_healthBar == null)
+            {
+                _healthBar = GameObject.Find("Boss_HealthBar")?.GetComponent<HealthBar3D>();
+                
+                if (_healthBar)
+                    _healthBar.MaxHealth = _damageable.MaxHealth;
+            }
+            return _healthBar;
+        }
+    }
+
     private void OnEnable()
     {
+        // Not the best way but eh
+        _title = GameObject.Find("Boss_Title");
+
         Target = FindObjectOfType<PlayerController>()?.transform;
-        _healthBar.MaxHealth = _damageable.MaxHealth;
 
         _damageable.OnDie += OnMaladyDeath;
 
@@ -154,7 +172,8 @@ public class MaladyController : MonoBehaviour
 
     private void LateUpdate()
     {
-        _healthBar.Health = _damageable.CurrentHealth;
+        if (HealthBar)
+            HealthBar.Health = _damageable.CurrentHealth;
     }
 
     private void OnMaladyDeath()
@@ -165,13 +184,16 @@ public class MaladyController : MonoBehaviour
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
+            if (enemy == gameObject)
+                continue;
+
             Destroy(enemy);
         }
 
         FindObjectOfType<WaveSpawner>()?.FlagFinished(); // Flag the waves as done
 
         _title.SetActive(false);
-        _healthBar.SetActive(false);
+        HealthBar?.SetActive(false);
 
         Destroy(gameObject, 6);
     }

@@ -246,7 +246,15 @@ public class UIManager : MonoBehaviour
 		var player = FindObjectOfType<PlayerController>()?.GetComponent<Damageable>();
 		if (player)
 		{
-			PlayerData.SetLastPosition(player.transform.position);
+			var sceneController = FindObjectOfType<SceneController>();
+			if (sceneController && sceneController.SavePosition())
+			{
+				PlayerData.SetLastPosition(player.transform.position);
+			}
+			else
+            {
+				PlayerData.SetLastPosition(Vector3.negativeInfinity);
+			}
 			PlayerData.SetHealth(player.CurrentHealth);
 			PlayerData.Save();
 		}

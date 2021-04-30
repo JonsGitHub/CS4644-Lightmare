@@ -16,7 +16,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _enemiesCounter = default;
     [SerializeField] private GameObject _bossHealthBar = default;
     [SerializeField] private GameObject _bossTitle = default;
-
+    [SerializeField] private Animator _maladyEntrance = default;
+    [SerializeField] private GameObject _maladyProp = default;
+ 
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
     [Serializable]
@@ -59,7 +61,11 @@ public class WaveSpawner : MonoBehaviour
 
     public bool Finished => _finished;
 
-    public void FlagFinished() => _finished = true;
+    public void FlagFinished()
+    {
+        _maladyEntrance.SetBool("IsFighting", true);
+        _finished = true;
+    }
 
     void Start()
     {
@@ -120,6 +126,8 @@ public class WaveSpawner : MonoBehaviour
                     _finalwaveChannel?.RaiseEvent(true);
                     nextWave++;
                     _waveCounter.text = "";
+                    _maladyEntrance.SetBool("IsFighting", true);
+
                     return;
                 }
                 else 
@@ -204,10 +212,13 @@ public class WaveSpawner : MonoBehaviour
         totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
             _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
 
+        _finalwaveChannel?.RaiseEvent(false);
+        _maladyEntrance.SetBool("IsFighting", false);
         _bossHealthBar.SetActive(false);
         _bossTitle.SetActive(false);
         _waveCounter.text = "Restarting Waves";
         _enemiesCounter.text = null;
+        _maladyProp.SetActive(true);
 
         waveCountdown = timeBetweenWaves;
 
