@@ -17,7 +17,7 @@ public class LocationExit : InterfaceBase
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player"))
+		if (other.TryGetComponent(out PlayerController player))
 			LoadLocation();
 	}
 

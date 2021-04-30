@@ -35,4 +35,6 @@ class TavernSceneController : SceneController
         var data = new TavernSceneData();
         return data;
     }
+
+    public override bool SavePosition() => true;
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6955594604790317669}
   m_Layer: 2
   m_Name: Magic_Projectile
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

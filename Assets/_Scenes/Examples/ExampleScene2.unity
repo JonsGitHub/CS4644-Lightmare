@@ -3144,7 +3144,6 @@ MonoBehaviour:
   _requiredAmount: 2
   _unlockChannel: {fileID: 11400000, guid: aab5469fe8138f34b92680d8ba13111d, type: 2}
   _incorrectEventChannel: {fileID: 0}
-  _currentAmount: 0
 --- !u!65 &748445093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4845,7 +4844,6 @@ MonoBehaviour:
   _requiredAmount: 1
   _unlockChannel: {fileID: 11400000, guid: aab5469fe8138f34b92680d8ba13111d, type: 2}
   _incorrectEventChannel: {fileID: 0}
-  _currentAmount: 0
 --- !u!65 &1078867425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11052,7 +11050,6 @@ MonoBehaviour:
   _requiredAmount: 1
   _unlockChannel: {fileID: 11400000, guid: aab5469fe8138f34b92680d8ba13111d, type: 2}
   _incorrectEventChannel: {fileID: 0}
-  _currentAmount: 0
 --- !u!65 &1285093509
 BoxCollider:
   m_ObjectHideFlags: 0

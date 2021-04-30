@@ -85,4 +85,6 @@ public class TutorialSceneController : SceneController
 
         return data;
     }
+
+    public override bool SavePosition() => true;
 }

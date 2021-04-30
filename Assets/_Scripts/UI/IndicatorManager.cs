@@ -74,7 +74,7 @@ public class IndicatorManager : MonoBehaviour
             }
 
             var screenPosition = Camera.main.WorldToScreenPoint(indicator.Target.position);
-            
+
             if (screenPosition.z >= 0 && screenPosition.x >= 0 && screenPosition.x <= Screen.width
                                      && screenPosition.y >= 0 && screenPosition.y <= Screen.height)
             {
@@ -85,14 +85,14 @@ public class IndicatorManager : MonoBehaviour
             {
                 if (screenPosition.z < 0) // behind the camera
                     screenPosition *= -1;
-                
+
                 screenPosition -= screenCenter;
                 var indicatorAngle = Vector3.SignedAngle(Vector3.up, screenPosition, Vector3.forward);
 
                 // Calculate vector to determine which border axis intersects first
                 float divX = ((Screen.width * 0.5f) - _screenPadding) / Mathf.Abs(screenPosition.x);
                 float divY = ((Screen.height * 0.5f) - _screenPadding) / Mathf.Abs(screenPosition.y);
-                
+
                 // x-border first - put x-one to border and adjust y-one accordingly
                 if (divX < divY)
                 {

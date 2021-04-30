@@ -39,14 +39,14 @@ public class SkyboxAO : MonoBehaviour
     {
         if (entered)
         {
-            if (obj.CompareTag("Player"))
+            if (obj.TryGetComponent(out PlayerController player))
             {
                 _player = obj.transform;
             }
         }
         else
         {
-            if (obj.CompareTag("Player"))
+            if (obj.TryGetComponent(out PlayerController player))
             {
                 _player = null;
             }

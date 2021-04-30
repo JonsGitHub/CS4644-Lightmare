@@ -96,4 +96,6 @@ public class ForestSceneController : SceneController
 
         return data;
     }
+
+    public override bool SavePosition() => true;
 }
