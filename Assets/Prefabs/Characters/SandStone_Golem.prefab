@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e674f0e2661e7bf44a944d844a8b9111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _npcMovementConfig: {fileID: 11400000, guid: 0c45b386561b1584db81205197ac2687, type: 2}
+  _npcMovementConfig: {fileID: 11400000, guid: 06d02907d16730b4391a932e2c2cffc0, type: 2}
   _channel: {fileID: 11400000, guid: 0113a096983be924caf0a18b80ab8c5b, type: 2}
   _3dUIChannelEvent: {fileID: 11400000, guid: 52227dae366e9a3448f95c64f7439637, type: 2}
   _createLabel: 0

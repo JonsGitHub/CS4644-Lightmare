@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MaladyMovementConfig
   m_EditorClassIdentifier: 
   _stopDuration: 0
-  _speed: 5
+  _speed: 4.25
   _fromSpawningPoint: 1
   _customCenter: {x: 0, y: 0, z: 0}
   _radius: 0
