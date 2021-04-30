@@ -13,6 +13,7 @@ public enum SceneName
     Colosseum,
     Scifi,
     Ocean,
+    Boss
 }
 
 public static class PlayerData
@@ -69,6 +70,9 @@ public static class PlayerData
                 break;
             case "Level_Ocean":
                 _data.lastScene = SceneName.Ocean;
+                break;
+            case "Level_Boss":
+                _data.lastScene = SceneName.Boss;
                 break;
         }
     }

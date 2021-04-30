@@ -8,12 +8,17 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    [SerializeField] private BoolEventChannelSO _unlockingChannel = default;
+    //[SerializeField] private BoolEventChannelSO _unlockingChannel = default;
+    [SerializeField] private BoolEventChannelSO _finalwaveChannel = default;
     [SerializeField] private TransformEventChannelSO _frameObjectChannel = default;
 
     [SerializeField] private TextMeshProUGUI _waveCounter = default;
     [SerializeField] private TextMeshProUGUI _enemiesCounter = default;
-
+    [SerializeField] private GameObject _bossHealthBar = default;
+    [SerializeField] private GameObject _bossTitle = default;
+    [SerializeField] private Animator _maladyEntrance = default;
+    [SerializeField] private GameObject _maladyProp = default;
+ 
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
     [Serializable]
@@ -56,7 +61,11 @@ public class WaveSpawner : MonoBehaviour
 
     public bool Finished => _finished;
 
-    public void FlagFinished() => _finished = true;
+    public void FlagFinished()
+    {
+        _maladyEntrance.SetBool("IsFighting", true);
+        _finished = true;
+    }
 
     void Start()
     {
@@ -111,8 +120,21 @@ public class WaveSpawner : MonoBehaviour
         {
             if (state != SpawnState.SPAWNING)
             {
-                // Start spawning wave
-                StartCoroutine("SpawnWave");
+                if (nextWave == 4)
+                {
+                    state = SpawnState.SPAWNING; // Freeze on spawning state
+                    _finalwaveChannel?.RaiseEvent(true);
+                    nextWave++;
+                    _waveCounter.text = "";
+                    _maladyEntrance.SetBool("IsFighting", true);
+
+                    return;
+                }
+                else 
+                {
+                    // Start spawning wave
+                    StartCoroutine("SpawnWave");
+                }
             }
         }
         else
@@ -135,29 +157,27 @@ public class WaveSpawner : MonoBehaviour
 
     void StartNextWave()
     {
-        //Debug.Log("Wave Completed");
-
         _enemiesCounter.text = "";
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
-        if (nextWave + 1 > waves.Length - 1)
-        {
-            _waveCounter.gameObject.SetActive(false);
-            _enemiesCounter.gameObject.SetActive(false);
+        //if (nextWave + 1 > waves.Length - 1)
+        //{
+        //    _waveCounter.gameObject.SetActive(false);
+        //    _enemiesCounter.gameObject.SetActive(false);
 
-            _finished = true;
-            _unlockingChannel?.RaiseEvent(true);
-            Destroy(gameObject);
-        }
-        else
-        {
+        //    _finished = true;
+        //    _unlockingChannel?.RaiseEvent(true);
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
             nextWave++;
             Wave _wave = waves[nextWave];
             totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
                 _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
-        }
+        //}
     }
 
     // Perhaps tie into the on death trigger of enemies instead of polling count.
@@ -183,8 +203,7 @@ public class WaveSpawner : MonoBehaviour
 
         _player = FindObjectOfType<PlayerController>();
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             Destroy(enemy);
         }
@@ -193,8 +212,13 @@ public class WaveSpawner : MonoBehaviour
         totalEnemiesCount = _wave.gSlimeCount + _wave.beholderCount +
             _wave.oSlimeCount + _wave.wolfCount + _wave.zombieCount + _wave.bossCount;
 
+        _finalwaveChannel?.RaiseEvent(false);
+        _maladyEntrance.SetBool("IsFighting", false);
+        _bossHealthBar.SetActive(false);
+        _bossTitle.SetActive(false);
         _waveCounter.text = "Restarting Waves";
         _enemiesCounter.text = null;
+        _maladyProp.SetActive(true);
 
         waveCountdown = timeBetweenWaves;
 

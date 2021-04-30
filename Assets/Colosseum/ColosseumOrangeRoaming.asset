@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ColosseumOrangeRoaming
   m_EditorClassIdentifier: 
   _stopDuration: 5.5
-  _speed: 5.5
+  _speed: 3
   _fromSpawningPoint: 1
   _customCenter: {x: 0, y: 0, z: 0}
   _radius: 3

@@ -26,7 +26,8 @@ public class SpotSpawner : Spawner
         if (_prefab == null) // Asset isn't ready yet
             return;
 
-        var newEnemy = Instantiate(_prefab, GetPositionAroundPoint(transform.position), Quaternion.identity);
+        var spot = GetPositionAroundPoint(transform.position);
+        var newEnemy = Instantiate(_prefab, spot.position, spot.rotation);
         newEnemy.transform.SetParent(transform); // Keep the Scene tree clean
 
         if (_overrideName != null && _overrideName.Length > 0)
@@ -34,10 +35,10 @@ public class SpotSpawner : Spawner
     }
 
     // Compute a random target position around the starting position.
-    private Vector3 GetPositionAroundPoint(Vector3 position)
+    private Transform GetPositionAroundPoint(Vector3 position)
     {
         if (_spawnSpots.Count == 0)
-            return Vector3.zero;
-        return _spawnSpots.ElementAt(Random.Range(0, _spawnSpots.Count)).position;
+            return null;
+        return _spawnSpots.ElementAt(Random.Range(0, _spawnSpots.Count));
     }
 }

@@ -24,4 +24,6 @@ public abstract class SceneController : MonoBehaviour
     /// </summary>
     /// <returns>The current scene state's data</returns>
     public abstract SceneData Save();
+
+    public abstract bool SavePosition();
 }
