@@ -16,13 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a7bae5f88e2e24365bdf768f42df85c5
-  m_SerializeEntries:
-  - m_GUID: cc3c3a65d116ad24b8e16398cddc4609
-    m_Address: Assets/Prefabs/Characters/Rock_Golem.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 69251d1ea849110449486e1b0ae23f70, type: 2}
   m_SchemaSet:
