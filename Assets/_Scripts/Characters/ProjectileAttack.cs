@@ -24,12 +24,22 @@ public class ProjectileAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (tag.Equals(other.gameObject.tag))
+        {
+            Destroy(gameObject); // Clean up
+            return;
+        }
+
         var contact = other.GetContact(0);
 
         // Give damage to damageable if found
         if (other.gameObject.TryGetComponent(out Damageable damageable))
         {
             damageable.ReceiveAnAttack(_attackConfigSO.AttackStrength);
+        }
+        else if (other.gameObject.TryGetComponent(out DamageablePart part))
+        {
+            part.ReceiveAnAttack(_attackConfigSO.AttackStrength);
         }
 
         // Add force at the collision contact point to give "impact"

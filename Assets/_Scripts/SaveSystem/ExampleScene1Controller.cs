@@ -50,4 +50,6 @@ class ExampleScene1Controller : SceneController
         test.Box1Scale = cube1.localScale;
         return test;
     }
+
+    public override bool SavePosition() => true;
 }

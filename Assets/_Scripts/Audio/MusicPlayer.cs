@@ -6,6 +6,7 @@ public class MusicPlayer : MonoBehaviour
 	[SerializeField] private AudioCueEventChannelSO _playMusicOn = default;
 	[SerializeField] private GameSceneSO _thisSceneSO = default;
 	[SerializeField] private AudioConfigurationSO _audioConfig = default;
+	[SerializeField] private bool _playOnce = false;
 
 	private void OnEnable()
 	{
@@ -17,8 +18,16 @@ public class MusicPlayer : MonoBehaviour
 		_onSceneReady.OnEventRaised -= PlayMusic;
 	}
 
+	private bool _played = false;
+
 	private void PlayMusic()
 	{
-		_playMusicOn.RaisePlayEvent(_thisSceneSO.musicTrack, _audioConfig);
+		if (!_played)
+			_playMusicOn.RaisePlayEvent(_thisSceneSO.musicTrack, _audioConfig);
+		
+		if (_playOnce)
+        {
+			_played = true;
+		}
 	}
 }

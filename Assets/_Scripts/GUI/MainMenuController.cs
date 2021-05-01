@@ -15,6 +15,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button _continueButton;
     [SerializeField] private GameObject _newGamePopup;
     [SerializeField] private GameObject _settingsMenu;
+    [SerializeField] private GameObject _creditsPage;
 
     // Should use an O(1) lookup table but that currently doesn't work in the inspector
     // This works as a workaround for now.
@@ -29,12 +30,6 @@ public class MainMenuController : MonoBehaviour
 
     public void OnNewGamePress()
     {
-        // If player data exists then caution the user that 
-        // it will delete all previous save data
-
-        // If yes then delete the playerdata
-        // else just cancel
-
         if (_dataExists)
         {
             _newGamePopup.SetActive(true);
@@ -44,7 +39,6 @@ public class MainMenuController : MonoBehaviour
             // No previous data so just start a new game
             StartNewGame();
         }
-
     }
 
     public void StartNewGame()
@@ -59,6 +53,16 @@ public class MainMenuController : MonoBehaviour
     public void CancelNewGame()
     {
         _newGamePopup.SetActive(false);
+    }
+
+    public void OnCreditsPressed()
+    {
+        _creditsPage?.SetActive(true);
+    }
+
+    public void CloseCreditsPage()
+    {
+        _creditsPage?.SetActive(false);
     }
 
     public void OnContinuePress()

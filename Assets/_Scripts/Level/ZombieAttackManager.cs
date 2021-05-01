@@ -71,7 +71,7 @@ public class ZombieAttackManager : MonoBehaviour
         _ended = true;
         _zombieSpawner.StopSpawning();
 
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = FindObjectOfType<PlayerController>().gameObject;
         _player.GetComponent<Damageable>().OnDie -= EndAttack;
         
         // Start the ending cutscene now

@@ -10,14 +10,14 @@ public class Damageable : MonoBehaviour
 	[SerializeField] private AssetReference _dropItemReference = null;
 	private GameObject _drop = null;
 
-	private int _currentHealth = default;
+	private float _currentHealth = default;
 
 	[Header("Broadcasting on channels")]
 	[SerializeField] private UI3DEventChannelSO _3dUIChannelEvent = default;
     [SerializeField] private BoolEventChannelSO _destroyedChannelEvent = default;
 
 	[Tooltip("Used primarily for communication between player and canvas.")]
-	[SerializeField] private IntEventChannelSO _playerDamagedEvent = default;
+	[SerializeField] private FloatEventChannelSO _playerDamagedEvent = default;
 
 	private HealthBar3D healthbar;
 
@@ -33,7 +33,7 @@ public class Damageable : MonoBehaviour
 	public GetHitEffectConfigSO GetHitEffectConfig => _getHitEffectSO;
 	public Renderer MainMeshRenderer => _mainMeshRenderer;
 
-	public int CurrentHealth => _currentHealth;
+	public float CurrentHealth => _currentHealth;
 	public int MaxHealth => _healthConfigSO.MaxHealth;
 
 	public UnityAction OnDie;
@@ -42,9 +42,9 @@ public class Damageable : MonoBehaviour
 	private void Awake()
 	{
 		_currentHealth = _healthConfigSO.MaxHealth;
-	}
+    }
 
-	private void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj) => _drop = obj.Result;
+    private void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj) => _drop = obj.Result;
 
 	private void OnEnable()
     {
@@ -62,7 +62,8 @@ public class Damageable : MonoBehaviour
 
 		if (_dropItemReference.RuntimeKeyIsValid())
 			Addressables.LoadAssetAsync<GameObject>(_dropItemReference).Completed += OnLoadDone;
-	}
+
+    }
 
     private void OnDisable()
     {
@@ -72,7 +73,7 @@ public class Damageable : MonoBehaviour
 
 	public void ResetHealth() => SetHealth(_healthConfigSO.MaxHealth);
 
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
 		_currentHealth = health;
 
@@ -81,9 +82,11 @@ public class Damageable : MonoBehaviour
 
 		if (healthbar)
 			healthbar.Health = _currentHealth;
+
+		CheckHealth();
 	}
 
-    public void ReceiveAnAttack(int damage)
+	public void ReceiveAnAttack(float damage)
 	{
 		if (IsDead)
 			return;
@@ -92,17 +95,22 @@ public class Damageable : MonoBehaviour
 		
 		if (healthbar)
 			healthbar.Health = _currentHealth;
-
+		
 		if (_playerDamagedEvent)
 			_playerDamagedEvent.RaiseEvent(_currentHealth);
 
 		if (TryGetComponent(out Aggressor aggressor))
 		{
 			// TODO: Find a better way to associate an attack with the attacker
-			aggressor.Attacked(GameObject.FindGameObjectWithTag("Player")); // Since friendly fire is off
+			aggressor.Attacked(FindObjectOfType<PlayerController>()?.gameObject); // Since friendly fire is off
 		}
 
 		GetHit = true;
+		CheckHealth();
+	}
+
+	private void CheckHealth()
+    {
 		if (_currentHealth <= 0)
 		{
 			IsDead = true;
@@ -117,22 +125,25 @@ public class Damageable : MonoBehaviour
 				OnDie.Invoke();
 			}
 			else if (!TryGetComponent(out StateMachine.StateMachine machine)) // Destroy it if it most likely won't have a statemachine to perform cleanup
-            {
+			{
 				Destroy(gameObject);
-            }
+			}
 		}
 	}
 
 	public void Kill()
     {
-		_currentHealth = 0;
+        _currentHealth = 0;
 
 		if (healthbar)
 			healthbar.Health = _currentHealth;
 
+		if (_playerDamagedEvent)
+			_playerDamagedEvent.RaiseEvent(_currentHealth);
+
 		IsDead = true;
-		OnKilled?.Invoke(this);
-		if (OnDie != null)
+        OnKilled?.Invoke(this);
+        if (OnDie != null)
 		{
 			OnDie.Invoke();
 		}

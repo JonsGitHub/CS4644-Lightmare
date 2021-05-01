@@ -2,3 +2,6 @@
 183_Sea_of_Moving_Ice.wav filter=lfs diff=lfs merge=lfs -text
 236_Defiled_Temple.wav filter=lfs diff=lfs merge=lfs -text
 238_Mind_Flayer_Chamber.wav filter=lfs diff=lfs merge=lfs -text
+187_Endgame.wav filter=lfs diff=lfs merge=lfs -text
+191_Dying_World.wav filter=lfs diff=lfs merge=lfs -text
+156_Star_Freighter.wav filter=lfs diff=lfs merge=lfs -text

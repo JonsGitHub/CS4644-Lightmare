@@ -13,6 +13,7 @@ public enum SceneName
     Colosseum,
     Scifi,
     Ocean,
+    Boss
 }
 
 public static class PlayerData
@@ -20,7 +21,7 @@ public static class PlayerData
     [Serializable]
     protected class PlayerDataContainer
     {
-        public int playerHealth;
+        public float playerHealth;
 
         public short crystalFlags; // Potential for 16 crystals
 
@@ -42,8 +43,8 @@ public static class PlayerData
         OceanCrystal = 6,
     }
 
-    public static int CurrentHealth => _data.playerHealth;
-    public static void SetHealth(int health) => _data.playerHealth = health;
+    public static float CurrentHealth => _data.playerHealth;
+    public static void SetHealth(float health) => _data.playerHealth = health;
     public static void SetLastPosition(Vector3 position) => _data.playerPosition = position;
     public static void SetLastScene(string name)
     {
@@ -67,8 +68,14 @@ public static class PlayerData
             case "Level_Colosseum":
                 _data.lastScene = SceneName.Colosseum;
                 break;
+            case "Level_Sci-fi":
+                _data.lastScene = SceneName.Scifi;
+                break;
             case "Level_Ocean":
                 _data.lastScene = SceneName.Ocean;
+                break;
+            case "Level_Boss":
+                _data.lastScene = SceneName.Boss;
                 break;
         }
     }

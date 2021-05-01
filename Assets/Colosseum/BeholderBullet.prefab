@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7653075329957073393}
   m_Layer: 0
   m_Name: BeholderBullet
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2958551849043254700, guid: 7d8f130dd5f2dff46919a0d5e17a7639, type: 3}
+  - {fileID: 2100000, guid: 3c991bf009ef3d74ba6f30c17b0a1920, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

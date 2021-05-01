@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private TransformAnchor _playerTransformAnchor = default;
 	[SerializeField] private HealthBar3D _playerHealthBar = default;
-	[SerializeField] private IntEventChannelSO _playerHitChannel = default;
+	[SerializeField] private FloatEventChannelSO _playerHitChannel = default;
 
 	[SerializeField] private Image _reticleImage = default;
 
@@ -158,10 +158,7 @@ public class UIManager : MonoBehaviour
 		CloseUIDialogue();
 	}
 
-	private void UpdatePlayerHealth(int current)
-    {
-		_playerHealthBar.Health = current;
-    }
+	private void UpdatePlayerHealth(float current) => _playerHealthBar.Health = current;
 
 	public void OpenUIDialogue(LocalizedString dialogueLine, ActorSO actor)
 	{
@@ -249,10 +246,18 @@ public class UIManager : MonoBehaviour
 	{
 		// Save Player base data
 		PlayerData.SetLastScene(SceneManager.GetActiveScene().name.Replace(' ', '_'));
-		var player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Damageable>();
+		var player = FindObjectOfType<PlayerController>()?.GetComponent<Damageable>();
 		if (player)
 		{
-			PlayerData.SetLastPosition(player.transform.position);
+			var sceneController = FindObjectOfType<SceneController>();
+			if (sceneController && sceneController.SavePosition())
+			{
+				PlayerData.SetLastPosition(player.transform.position);
+			}
+			else
+            {
+				PlayerData.SetLastPosition(Vector3.negativeInfinity);
+			}
 			PlayerData.SetHealth(player.CurrentHealth);
 			PlayerData.Save();
 		}

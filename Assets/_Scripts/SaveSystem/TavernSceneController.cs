@@ -2,7 +2,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Scene Data relevant to Forest Scene
+/// Scene Data relevant to Tavern Scene
 /// </summary>
 [Serializable]
 public class TavernSceneData : SceneData
@@ -35,4 +35,6 @@ class TavernSceneController : SceneController
         var data = new TavernSceneData();
         return data;
     }
+
+    public override bool SavePosition() => true;
 }

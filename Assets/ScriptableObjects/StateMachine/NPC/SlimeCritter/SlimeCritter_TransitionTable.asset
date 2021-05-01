@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: SlimeCritter_TransitionTable
   m_EditorClassIdentifier: 
   _transitions:
+  - FromState: {fileID: 11400000, guid: fb10b77f99ee46e43be2a6a4c2a6d753, type: 2}
+    ToState: {fileID: 11400000, guid: e569e7e771ad5b944ad58db97fb829e6, type: 2}
+    Conditions:
+    - ExpectedResult: 0
+      Condition: {fileID: 11400000, guid: 649540233ae31bb4dbfa4e6a213d6449, type: 2}
+      Operator: 0
   - FromState: {fileID: 11400000, guid: d32e1a802bee9794c9c4455386763c51, type: 2}
     ToState: {fileID: 11400000, guid: fb10b77f99ee46e43be2a6a4c2a6d753, type: 2}
     Conditions:
@@ -30,12 +36,6 @@ MonoBehaviour:
       Operator: 0
     - ExpectedResult: 0
       Condition: {fileID: 11400000, guid: 98ae61f2d1f4ff346bbcbed2070033b8, type: 2}
-      Operator: 0
-  - FromState: {fileID: 11400000, guid: fb10b77f99ee46e43be2a6a4c2a6d753, type: 2}
-    ToState: {fileID: 11400000, guid: e569e7e771ad5b944ad58db97fb829e6, type: 2}
-    Conditions:
-    - ExpectedResult: 0
-      Condition: {fileID: 11400000, guid: 649540233ae31bb4dbfa4e6a213d6449, type: 2}
       Operator: 0
   - FromState: {fileID: 11400000, guid: fb10b77f99ee46e43be2a6a4c2a6d753, type: 2}
     ToState: {fileID: 11400000, guid: 925b73653381b824eb3a047f0368cc37, type: 2}

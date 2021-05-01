@@ -89,7 +89,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: FreeLook__VCam
+    m_DisplayName: Follow_Camera
   - m_Version: 1
     m_Start: 0.3333333333333333
     m_ClipIn: 0
