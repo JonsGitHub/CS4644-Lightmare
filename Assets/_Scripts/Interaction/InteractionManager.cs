@@ -93,6 +93,10 @@ public class InteractionManager : MonoBehaviour
 		{
 			case InteractionType.Grab:
 				grabbed = _potentialInteractions.Selected.interactableObject;
+				if (grabbed.TryGetComponent(out Key key))
+                {
+					key.ForcefullyRemoved();
+                }
 				RemovePotentialInteraction(_potentialInteractions.Selected.interactableObject);
 				_potentialInteractions.IsGrabbing = true;
 				RequestUpdateUI(true);
