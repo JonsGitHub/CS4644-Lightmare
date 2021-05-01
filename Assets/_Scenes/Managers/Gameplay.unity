@@ -5454,6 +5454,8 @@ MonoBehaviour:
   _playDialogueEvent: {fileID: 11400000, guid: 5380f815402db2b40a30d917560277e6, type: 2}
   _pauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
     type: 2}
+  _unpauseTimelineEvent: {fileID: 11400000, guid: 6a3953797791eff499e2decf73ae12f9,
+    type: 2}
   _screenEventChannel: {fileID: 11400000, guid: 3c656eff72df84f469ef52e4bf21ab6c,
     type: 2}
 --- !u!1 &804131563
@@ -14264,6 +14266,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1bc05286dbd714643a444661efca4dfc, type: 2}
   _loadMenu: {fileID: 11400000, guid: 6a62cdf6a877a954ea66b66afbde8799, type: 2}
   _screenEventChannel: {fileID: 11400000, guid: 3c656eff72df84f469ef52e4bf21ab6c,
+    type: 2}
+  _pauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
+    type: 2}
+  _unpauseTimelineEvent: {fileID: 11400000, guid: 6a3953797791eff499e2decf73ae12f9,
     type: 2}
 --- !u!224 &4005492980511655012
 RectTransform:
