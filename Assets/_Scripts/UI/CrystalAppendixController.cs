@@ -82,7 +82,7 @@ public class CrystalAppendixController : MonoBehaviour
             if (PlayerData.HasCrystal((PlayerData.Crystal)i))
             {
                 _buttons[i].GetComponent<Button>().interactable = true;
-                _buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = ((PlayerData.Crystal)i).ToString();
+                _buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = ConvertToString((PlayerData.Crystal)i);
             }
             else
             {
@@ -99,5 +99,27 @@ public class CrystalAppendixController : MonoBehaviour
             _aboutField.text = description.About;
             _descriptionField.text = description.Description;
         }
+    }
+
+    private string ConvertToString(PlayerData.Crystal crystal)
+    {
+        switch(crystal)
+        {
+            case PlayerData.Crystal.ColosseumCrystal:
+                return "Colosseum";
+            case PlayerData.Crystal.DeerCrystal:
+                return "Deer";
+            case PlayerData.Crystal.Forest:
+                return "Forest";
+            case PlayerData.Crystal.OceanCrystal:
+                return "Ocean";
+            case PlayerData.Crystal.SciFiCrystal:
+                return "Space";
+            case PlayerData.Crystal.SlimeCrystal:
+                return "Slime";
+            case PlayerData.Crystal.WolfCrystal:
+                return "Wolf";
+        }
+        return "";
     }
 }
