@@ -197,7 +197,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2578772353617920
-    m_Localized: When face with despair, true character shines bright.
+    m_Localized: When faced with despair, true character shines bright.
     m_Metadata:
       m_Items: []
   - m_Id: 2580221368209408
@@ -213,7 +213,26 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3366130493689856
-    m_Localized: Man never shuts his hole...
+    m_Localized: Man is never quiet...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5592714982572032
+    m_Localized: Light... Light!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5592745122840576
+    m_Localized: "What? Where am I\u2026 Where is Light?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5592758620110848
+    m_Localized: "Am I in a dream? This can\u2019t be. The feeling is foreign, yet
+      familiar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5595304105459712
+    m_Localized: "What am I to do? How does one fulfill the role of Light?... I believe
+      my first actions should be to interact with the residents of this dream to
+      understand it\u2019s innerworkings."
     m_Metadata:
       m_Items: []
   references:

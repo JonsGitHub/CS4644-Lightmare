@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8433418936532592090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087808f16a96ac041ad4ef50abccb1d6, type: 3}
+  m_Name: DialogueClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  _template:
+    _dialogueDataSO: {fileID: 11400000, guid: 9c601a8879ee0834faaa7cb42dea2809, type: 2}
+    _pauseWhenClipEnds: 1
+    _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
+    PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
+      type: 2}
+  StartDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
+  PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804, type: 2}
 --- !u!114 &-8121863185805843779
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,7 +85,7 @@ MonoBehaviour:
   m_Name: DialogueClip(Clone)(Clone)
   m_EditorClassIdentifier: 
   _template:
-    _dialogueDataSO: {fileID: 11400000, guid: d632e165d52833e45b7baa4ab0430855, type: 2}
+    _dialogueDataSO: {fileID: 11400000, guid: d9351e5085c17cd4988ad0d712068925, type: 2}
     _pauseWhenClipEnds: 1
     _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
     PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
@@ -270,27 +290,63 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: FreeLook__VCam
+    m_DisplayName: Follow_Camera
   - m_Version: 1
     m_Start: 1.0166666666666666
     m_ClipIn: 0
     m_Asset: {fileID: 6121821202865955579}
-    m_Duration: 5
+    m_Duration: 3.283333333333333
     m_TimeScale: 1
     m_ParentTrack: {fileID: 518333849239235591}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0.9833333333333334
-    m_BlendOutDuration: 1.0166666666666666
+    m_BlendOutDuration: 0.8166666666666664
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -305,25 +361,61 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CameraShot_1
   - m_Version: 1
-    m_Start: 5
+    m_Start: 3.4833333333333334
     m_ClipIn: 0
     m_Asset: {fileID: -46130449000718417}
-    m_Duration: 5
+    m_Duration: 2.2
     m_TimeScale: 1
     m_ParentTrack: {fileID: 518333849239235591}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 1.0166666666666666
-    m_BlendOutDuration: 1
+    m_BlendInDuration: 0.8166666666666664
+    m_BlendOutDuration: 0.6333333333333337
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -338,25 +430,61 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CameraShot_2
   - m_Version: 1
-    m_Start: 9
+    m_Start: 5.05
     m_ClipIn: 0
     m_Asset: {fileID: -7868941113880444603}
-    m_Duration: 5
+    m_Duration: 2.45
     m_TimeScale: 1
     m_ParentTrack: {fileID: 518333849239235591}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 1
-    m_BlendOutDuration: 1
+    m_BlendInDuration: 0.6333333333333337
+    m_BlendOutDuration: 1.1333333333333337
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -371,25 +499,61 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CameraShot_3
   - m_Version: 1
-    m_Start: 13
+    m_Start: 6.366666666666666
     m_ClipIn: 0
     m_Asset: {fileID: 391552995938709871}
-    m_Duration: 5
+    m_Duration: 4.283333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: 518333849239235591}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 1
-    m_BlendOutDuration: 3.0500000000000007
+    m_BlendInDuration: 1.1333333333333337
+    m_BlendOutDuration: 1.700000000000001
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -404,19 +568,37 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CameraShot_4
   - m_Version: 1
-    m_Start: 14.95
+    m_Start: 8.95
     m_ClipIn: 0
     m_Asset: {fileID: -8052338037267193013}
-    m_Duration: 5
+    m_Duration: 5.049999999999999
     m_TimeScale: 1
     m_ParentTrack: {fileID: 518333849239235591}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 3.0500000000000007
+    m_BlendInDuration: 1.700000000000001
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -478,10 +660,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 18.433333333333334
+    m_Start: 11.25
     m_ClipIn: 0
     m_Asset: {fileID: -8121863185805843779}
-    m_Duration: 0.1999999999999993
+    m_Duration: 0.2333333333333325
     m_TimeScale: 1
     m_ParentTrack: {fileID: 760076606052272214}
     m_EaseInDuration: 0
@@ -547,7 +729,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: DialogueClip
   - m_Version: 1
-    m_Start: 18.733333333333334
+    m_Start: 11.733333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -6750936168575065098}
     m_Duration: 0.1999999999999993
@@ -616,9 +798,147 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: DialogueClip
   - m_Version: 1
-    m_Start: 19.033333333333335
+    m_Start: 12.183333333333334
     m_ClipIn: 0
     m_Asset: {fileID: 5589248505776530652}
+    m_Duration: 0.1999999999999993
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 760076606052272214}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: DialogueClip
+  - m_Version: 1
+    m_Start: 12.683333333333334
+    m_ClipIn: 0
+    m_Asset: {fileID: 5454210436834958734}
+    m_Duration: 0.1999999999999993
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 760076606052272214}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: DialogueClip
+  - m_Version: 1
+    m_Start: 13.25
+    m_ClipIn: 0
+    m_Asset: {fileID: -8433418936532592090}
     m_Duration: 0.1999999999999993
     m_TimeScale: 1
     m_ParentTrack: {fileID: 760076606052272214}
@@ -949,7 +1269,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 19.533333333333335
+    m_Start: 13.583333333333334
     m_ClipIn: 0
     m_Asset: {fileID: -3777806581573349816}
     m_Duration: 0.4166666666666643
@@ -1020,6 +1340,26 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   m_PostPlaybackState: 3
+--- !u!114 &5454210436834958734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087808f16a96ac041ad4ef50abccb1d6, type: 3}
+  m_Name: DialogueClip(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  _template:
+    _dialogueDataSO: {fileID: 11400000, guid: 8edcdbfe737a9e442a44209dc7b4696f, type: 2}
+    _pauseWhenClipEnds: 1
+    _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
+    PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,
+      type: 2}
+  StartDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
+  PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804, type: 2}
 --- !u!114 &5589248505776530652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1033,7 +1373,7 @@ MonoBehaviour:
   m_Name: DialogueClip(Clone)(Clone)
   m_EditorClassIdentifier: 
   _template:
-    _dialogueDataSO: {fileID: 11400000, guid: 8787531c54252af41acd8c8addf4e3cd, type: 2}
+    _dialogueDataSO: {fileID: 11400000, guid: 67eac030fefefb24683352b1bc32e511, type: 2}
     _pauseWhenClipEnds: 1
     _startDialogue: {fileID: 11400000, guid: c3cf199e74f712c4daf2684f48d4ef60, type: 2}
     PauseTimelineEvent: {fileID: 11400000, guid: 8e7f1e3253db2074faab39eff4648804,

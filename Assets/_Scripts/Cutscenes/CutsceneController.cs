@@ -6,6 +6,7 @@ public class CutsceneController : MonoBehaviour
     [SerializeField] private PlayableDirector _director;
 
     public PlayableDirector Director => _director;
+    public bool FreeMovement = false;
 
     private void Awake()
     {

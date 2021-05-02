@@ -149,7 +149,7 @@ public class AudioManager : MonoBehaviour
 		{
 			_voiceSoundEmitter = _pool.Request();
 		}
-		_voiceSoundEmitter.FadeVoiceIn(audioCue.GetClips()[0], audioConfiguration, 0.1f, startTime);
+		_voiceSoundEmitter.FadeVoiceIn(audioCue.GetClips()[0], audioConfiguration, 0.1f, 0);
 		_voiceSoundEmitter.OnSoundFinishedPlaying += StopAndCleanEmitter;
 
 		return AudioCueKey.Invalid; //No need to return a valid key for music
@@ -186,7 +186,7 @@ public class AudioManager : MonoBehaviour
         {
 			_musicSoundEmitter = _pool.Request();
 		}
-		_musicSoundEmitter.FadeMusicIn(audioCue.GetClips()[0], audioConfiguration, 1f, startTime);
+		_musicSoundEmitter.FadeMusicIn(audioCue.GetClips()[0], audioConfiguration, 1f, 0);
 		_musicSoundEmitter.OnSoundFinishedPlaying += StopMusicEmitter;
 
 		return AudioCueKey.Invalid; //No need to return a valid key for music

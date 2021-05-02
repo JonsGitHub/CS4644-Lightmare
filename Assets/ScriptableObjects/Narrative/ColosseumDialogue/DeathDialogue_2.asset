@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d479c7edfe59d1449046411ea27361d, type: 3}
-  m_Name: ClosingDialogue_1
+  m_Name: DeathDialogue_2
   m_EditorClassIdentifier: 
   _dialogueLines:
   - Actor: {fileID: 11400000, guid: a8f8f4889b44b4c4aac6c1c68362ed2d, type: 2}
@@ -18,7 +18,7 @@ MonoBehaviour:
       m_TableReference:
         m_TableCollectionName: GUID:b783fcc2dfcd6f9429181ae459a42a2f
       m_TableEntryReference:
-        m_KeyId: 5322862759936
+        m_KeyId: 3680744343343104
         m_Key: 
       m_FallbackState: 0
     Audio: {fileID: 0}

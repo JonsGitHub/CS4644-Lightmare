@@ -11,6 +11,7 @@ public class CutsceneManager : MonoBehaviour
 	[SerializeField] private PlayCutsceneChannelSO _playCutsceneEvent = default;
 	[SerializeField] private DialogueLineChannelSO _playDialogueEvent = default;
 	[SerializeField] private VoidEventChannelSO _pauseTimelineEvent = default;
+	[SerializeField] private VoidEventChannelSO _unpauseTimelineEvent = default;
 
 	[Header("Broadcasting on")]
 	[SerializeField] private ScreenStateEventChannelSO _screenEventChannel;
@@ -45,12 +46,18 @@ public class CutsceneManager : MonoBehaviour
 		{
 			_pauseTimelineEvent.OnEventRaised += PauseTimeline;
 		}
+		if (_unpauseTimelineEvent != null)
+        {
+			_unpauseTimelineEvent.OnEventRaised += ResumeTimeline;
+        }
 	}
 
 	void PlayCutscene(CutsceneController activeCutscene)
 	{
 		_isPlaying = true;
-		_inputReader.EnableDialogueInput();
+
+		if (!activeCutscene.FreeMovement)
+			_inputReader.EnableDialogueInput();
 
 		_activeCutscene = activeCutscene;
 		_activeCutscene.StartUp(); // Prepare the cutscene before playing.
@@ -64,7 +71,6 @@ public class CutsceneManager : MonoBehaviour
 
 	void CutsceneEnded()
 	{
-
 		if (_activeCutscene != null)
 			_activeCutscene.Director.stopped -= HandleDirectorStopped;
 
@@ -98,13 +104,19 @@ public class CutsceneManager : MonoBehaviour
 	/// </summary>
 	void PauseTimeline()
 	{
-		_isPaused = true;
-		_activeCutscene.Director.playableGraph.GetRootPlayable(0).SetSpeed(0);
+		if (_isPlaying)
+        {
+			_isPaused = true;
+			_activeCutscene.Director.playableGraph.GetRootPlayable(0).SetSpeed(0);
+        }
 	}
 
 	void ResumeTimeline()
 	{
-		_isPaused = false;
-		_activeCutscene.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
+		if (_isPlaying)
+		{
+			_isPaused = false;
+			_activeCutscene.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
+		}
 	}
 }

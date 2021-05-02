@@ -17,7 +17,7 @@ public class DialogueBehaviour : PlayableBehaviour
 	[HideInInspector] public DialogueDataChannelSO _startDialogue = default;
 	//[HideInInspector] public DialogueLineChannelSO PlayDialogueEvent;
 	[HideInInspector] public VoidEventChannelSO PauseTimelineEvent;
-
+	private VoidEventChannelSO _closeDialogueUIEvent = default;
 	private bool _dialoguePlayed;
 
 	/// <summary>
@@ -44,6 +44,11 @@ public class DialogueBehaviour : PlayableBehaviour
 				{
 					Debug.LogWarning("This clip contains no DialogueLine");
 				}
+			}
+
+			if (playable.GetGraph().IsDone() && PauseTimelineEvent.GetType().Equals(_closeDialogueUIEvent))
+            {
+				_closeDialogueUIEvent.RaiseEvent();
 			}
 		}
 	}

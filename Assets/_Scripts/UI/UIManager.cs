@@ -60,6 +60,8 @@ public class UIManager : MonoBehaviour
 
 	[Header("Broadcasting on")]
 	[SerializeField] private ScreenStateEventChannelSO _screenEventChannel;
+	[SerializeField] private VoidEventChannelSO _pauseTimelineEvent = default;
+	[SerializeField] private VoidEventChannelSO _unpauseTimelineEvent = default;
 
 	private List<Ui3D> Uis = new List<Ui3D>();
 	private Stack<GameObject> ViewStack = new Stack<GameObject>();
@@ -227,6 +229,7 @@ public class UIManager : MonoBehaviour
 			_inputReader.EnableGameplayInput();
 			_inputReader.EnableMouseCameraControlInput();
 			Time.timeScale = 1;
+			_unpauseTimelineEvent.RaiseEvent();
 			return;
 		}
 
@@ -333,6 +336,7 @@ public class UIManager : MonoBehaviour
 	private void Pause()
 	{
 		_inputReader.EnableMenuInput();
+		_pauseTimelineEvent.RaiseEvent();
 		AddToViewStack(PauseMenu);
 		Time.timeScale = 0;
 	}
