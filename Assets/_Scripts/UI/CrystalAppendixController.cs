@@ -26,49 +26,49 @@ public class CrystalAppendixController : MonoBehaviour
                 PlayerData.Crystal.SlimeCrystal, new CrystalDescription()
                 {
                     About = "Found: In the forest dream from slaying King Slime",
-                    Description = "Message: [here]"
+                    Description = "Message: For them I take up arms."
                 }
             },
             {
                 PlayerData.Crystal.Forest, new CrystalDescription()
                 {
                     About = "Found: In the forest dream's ancient crypts",
-                    Description = "Message: [here]"
+                    Description = "Message: They cast me out like a plague."
                 }
             },
             {
                 PlayerData.Crystal.DeerCrystal, new CrystalDescription()
                 {
                     About = "Found: In the forest dream from hunting the crystal deer",
-                    Description = "Message: [here]"
+                    Description = "Message: Forsaken like yesterday's milk"
                 }
             },
             {
                 PlayerData.Crystal.WolfCrystal, new CrystalDescription()
                 {
                     About = "Found: In the forest dream from saving the missing girl",
-                    Description = "Message: [here]"
+                    Description = "Message: I shall show them."
                 }
             },
             {
                 PlayerData.Crystal.SciFiCrystal, new CrystalDescription()
                 {
                     About = "Found: In the space dream from helping fix the ship",
-                    Description = "Message: [here]"
+                    Description = "Message: I didn't want to be the way that I am."
                 }
             },
             {
                 PlayerData.Crystal.OceanCrystal, new CrystalDescription()
                 {
                     About = "Found: In the broken dream from self reflection",
-                    Description = "Message: [here]"
+                    Description = "Message: I only mean to put things back to what they once were."
                 }
             },
             {
                 PlayerData.Crystal.ColosseumCrystal, new CrystalDescription()
                 {
                     About = "Found: In the colosseum dream from defeating Malady",
-                    Description = "Message: [here]"
+                    Description = "Message: Not this helpless lost land."
                 }
             }
         };

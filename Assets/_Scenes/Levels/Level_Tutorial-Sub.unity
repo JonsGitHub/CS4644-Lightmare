@@ -7541,7 +7541,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281026612}
-  m_LocalRotation: {x: 0.0021272073, y: -0.9738346, z: 0.009123143, w: 0.22706515}
+  m_LocalRotation: {x: 0.0021272015, y: -0.9738346, z: 0.009123138, w: 0.2270651}
   m_LocalPosition: {x: 15.123178, y: 2.8485615, z: -0.414958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -57619,7 +57619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1691506988
 Transform:
   m_ObjectHideFlags: 0
@@ -62701,6 +62701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _director: {fileID: 1772576665}
+  FreeMovement: 0
 --- !u!320 &1772576665
 PlayableDirector:
   m_ObjectHideFlags: 0

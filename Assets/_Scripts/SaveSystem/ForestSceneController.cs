@@ -16,6 +16,7 @@ public class ForestSceneData : SceneData
 
 public class ForestSceneController : SceneController
 {
+    [SerializeField] private GameObject _openingTrigger;
     [SerializeField] private FollowPathPuzzle _followPath = default;
     [SerializeField] private ZombieAttackManager _zombieAttackManager = default;
     [SerializeField] private Animator _graveyardAnimator = default;
@@ -36,9 +37,11 @@ public class ForestSceneController : SceneController
 
         if (data == null)
             return;
-        
-        var forestData = (ForestSceneData)data;
 
+        // Has data so has been in forest at least once
+        _openingTrigger.SetActive(false);
+
+        var forestData = (ForestSceneData)data;
         if (forestData.puzzleSolved)
         {
             _graveyardAnimator.Play("NormalState");

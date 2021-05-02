@@ -18,23 +18,24 @@ public class MausoleumSceneController : SceneController
     [SerializeField] private GameObject _fragment;
     [SerializeField] private GameObject _fragmentTrigger;
     [SerializeField] private GameObject _barrier;
+    [SerializeField] private GameObject _wall;
 
     public override void Load(object data)
     {
         if (PlayerData.HasCrystal(PlayerData.Crystal.Forest))
         {
             _fragment.SetActive(false);
-            _fragmentTrigger.SetActive(false);
+            Destroy(_fragmentTrigger);
         }
 
         if (data == null)
             return;
 
         var mausoleumData = (MausoleumSceneData)data;
-
         if (mausoleumData.puzzleSolved)
         {
             _barrier.SetActive(false);
+            _wall.SetActive(false);
             _storyPuzzle.SolvePuzzle(mausoleumData.puzzleChoice, mausoleumData.puzzleSeed);
         }
     }

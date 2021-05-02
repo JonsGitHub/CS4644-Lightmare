@@ -85,6 +85,12 @@ public class DialogueManager : MonoBehaviour
 
 	private void OnAdvance()
 	{
+		if (_currentDialogue == null)
+        {
+			_inputReader.advanceDialogueEvent -= OnAdvance;
+			return;
+        }
+
 		_counter++;
 
 		if (_currentDialogue?.DialogueLines.Last().Audio is AudioCueSO audio)
