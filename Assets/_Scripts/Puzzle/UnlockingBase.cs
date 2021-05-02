@@ -46,6 +46,7 @@ public abstract class UnlockingBase : MonoBehaviour
                 Lock();
             }
             _current--;
+            if (_current < 0) { _current = 0; }
         }
     }
 

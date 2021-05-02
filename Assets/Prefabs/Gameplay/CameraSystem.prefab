@@ -58,10 +58,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.03, y: 0.03, z: 0.03}
-  ShoulderOffset: {x: 0, y: 0, z: 0}
+  ShoulderOffset: {x: 0.35, y: 0.2, z: 0}
   VerticalArmLength: 0
   CameraSide: 1
-  CameraDistance: 6
+  CameraDistance: 8
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 2560
@@ -255,7 +255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299306190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: 0.35, y: 0.2, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 149406159}
@@ -476,12 +476,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4184016653379499705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: 0.35, y: 0.2, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4184016652547918068}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 32.866, y: 0, z: 0}
 --- !u!20 &4184016653379499703
 Camera:
   m_ObjectHideFlags: 0

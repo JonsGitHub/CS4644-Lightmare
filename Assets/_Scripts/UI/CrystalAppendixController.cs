@@ -49,6 +49,27 @@ public class CrystalAppendixController : MonoBehaviour
                     About = "Found: In the forest dream from saving the missing girl",
                     Description = "Message: [here]"
                 }
+            },
+            {
+                PlayerData.Crystal.SciFiCrystal, new CrystalDescription()
+                {
+                    About = "Found: In the space dream from helping fix the ship",
+                    Description = "Message: [here]"
+                }
+            },
+            {
+                PlayerData.Crystal.OceanCrystal, new CrystalDescription()
+                {
+                    About = "Found: In the broken dream from self reflection",
+                    Description = "Message: [here]"
+                }
+            },
+            {
+                PlayerData.Crystal.ColosseumCrystal, new CrystalDescription()
+                {
+                    About = "Found: In the colosseum dream from defeating Malady",
+                    Description = "Message: [here]"
+                }
             }
         };
     }

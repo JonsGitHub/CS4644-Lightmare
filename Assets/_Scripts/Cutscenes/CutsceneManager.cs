@@ -104,7 +104,7 @@ public class CutsceneManager : MonoBehaviour
 	/// </summary>
 	void PauseTimeline()
 	{
-		if (_isPlaying)
+		if (_isPlaying && (_dialogueManager.PlayingDialogue || _activeCutscene.FreeMovement))
         {
 			_isPaused = true;
 			_activeCutscene.Director.playableGraph.GetRootPlayable(0).SetSpeed(0);

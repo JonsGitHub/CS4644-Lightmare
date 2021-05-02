@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65958859fb8d0bd45ae0ba4f01fa4cd1, type: 3}
   m_Name: Timer_GrunkFaint
   m_EditorClassIdentifier: 
-  timerLength: 2.5
+  timerLength: 0.2

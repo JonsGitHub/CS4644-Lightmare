@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class IndicatorManager : MonoBehaviour
 {
@@ -7,13 +8,14 @@ public class IndicatorManager : MonoBehaviour
     [SerializeField] private IndicatorTransformEventChannelSO _indicatorTransformEvent;
     [SerializeField] private float _screenPadding;
 
-    private class EnemyIndicator
+    [Serializable]
+    public class EnemyIndicator
     {
         public GameObject Indicator;
         public Transform Target;
     }
 
-    private List<EnemyIndicator> _tracked = new List<EnemyIndicator>();
+    public List<EnemyIndicator> _tracked = new List<EnemyIndicator>();
 
     private void OnEnable()
     {
@@ -65,11 +67,13 @@ public class IndicatorManager : MonoBehaviour
     {
         var screenCenter = new Vector3(Screen.width, Screen.height, 0) / 2.0f;
 
-        foreach (var indicator in _tracked)
+        for(int i = _tracked.Count - 1; i >= 0; --i)
         {
+            var indicator = _tracked[i];
             if (indicator.Target == null)
             {
-                indicator.Indicator.SetActive(false);
+                Destroy(indicator.Indicator);
+                _tracked.RemoveAt(i);
                 continue;
             }
 

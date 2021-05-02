@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
 	[SerializeField] private CutsceneManager _cutsceneManager = default;
 
 	private int _counter = 0;
-	private bool _reachedEndOfDialogue { get => _counter >= _currentDialogue.DialogueLines.Count; }
+	private bool _reachedEndOfDialogue { get => _counter >= _currentDialogue?.DialogueLines.Count; }
 	
 	[Header("Voice Audio Fields")]
 	[SerializeField] private AudioConfigurationSO _audioConfig = default;
@@ -31,6 +31,8 @@ public class DialogueManager : MonoBehaviour
 
 	private DialogueDataSO _currentDialogue = default;
 
+	public bool PlayingDialogue => _currentDialogue != null;
+
 	private void Start()
 	{
 		if (_startDialogue != null)
@@ -46,8 +48,11 @@ public class DialogueManager : MonoBehaviour
 	public void DisplayDialogueData(DialogueDataSO dialogueDataSO)
 	{
 		BeginDialogueData(dialogueDataSO);
-		var current = _currentDialogue.DialogueLines[_counter];
-		DisplayDialogueLine(current.Line, current.Actor, current.Audio);
+		if (_currentDialogue != null)
+        {
+			var current = _currentDialogue.DialogueLines[_counter];
+			DisplayDialogueLine(current.Line, current.Actor, current.Audio);
+        }
 	}
 
 	/// <summary>
@@ -82,8 +87,8 @@ public class DialogueManager : MonoBehaviour
 	{
 		_counter++;
 
-		if (_voiceEventChannel != null && _currentDialogue.DialogueLines.Last().Audio is AudioCueSO audio)
-			_voiceEventChannel.RaiseStopEvent(AudioCueKey.Invalid);
+		if (_currentDialogue?.DialogueLines.Last().Audio is AudioCueSO audio)
+			_voiceEventChannel?.RaiseStopEvent(AudioCueKey.Invalid);
 
 		if (!_reachedEndOfDialogue)
 		{
@@ -107,5 +112,7 @@ public class DialogueManager : MonoBehaviour
 
 		if (!_cutsceneManager.IsCutscenePlaying)
 			_inputReader.EnableGameplayInput();
+
+		_currentDialogue = null;
 	}
 }

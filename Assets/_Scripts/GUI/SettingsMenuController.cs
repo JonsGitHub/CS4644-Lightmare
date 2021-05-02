@@ -21,7 +21,7 @@ public class SettingsMenuController : MonoBehaviour
     /// <summary>
     /// Awake called before Start of class
     /// </summary>
-    private void Awake()
+    private void OnEnable()
     {
         _controlsPage.transform.Find("Mouse_Sensitivity").GetComponentInChildren<Slider>().value = Settings.Instance.MouseSensitivity;
         _controlsPage.transform.Find("Scroll_Sensitivity").GetComponentInChildren<Slider>().value = Settings.Instance.ScrollSensitivity;

@@ -87,7 +87,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -1.46, y: 31.7, z: -76.1}
+        value: {x: -1.46, y: 15.3, z: -76.1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.41666666
+        value: {x: -1.46, y: 15.3, z: -76.1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -96,7 +105,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.43333334
-        value: {x: -1.46, y: 31.7, z: -76.1}
+        value: {x: -1.46, y: 15.3, z: -76.1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -105,7 +114,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.5
-        value: {x: -1.46, y: 31.7, z: -76.1}
+        value: {x: -1.46, y: 15.3, z: -76.1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -3232,7 +3241,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 31.7
+        value: 15.3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.41666666
+        value: 15.3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3241,7 +3259,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.43333334
-        value: 31.7
+        value: 15.3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3250,7 +3268,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 31.7
+        value: 15.3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -5751,7 +5769,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Locked_Misfortune/Shadowling/Mesh/Armature/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm
+    path: MirrorLight (1)
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5761,7 +5779,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Locked_Misfortune/Shadowling/Mesh/Armature/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm
+    path: MirrorLight (1)
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5771,7 +5789,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Locked_Misfortune/Shadowling/Mesh/Armature/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm
+    path: MirrorLight (1)
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5871,7 +5889,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: MirrorLight (1)
+    path: Locked_Misfortune/Shadowling/Mesh/Armature/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5881,7 +5899,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: MirrorLight (1)
+    path: Locked_Misfortune/Shadowling/Mesh/Armature/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5891,7 +5909,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: MirrorLight (1)
+    path: Locked_Misfortune/Shadowling/Mesh/Armature/mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

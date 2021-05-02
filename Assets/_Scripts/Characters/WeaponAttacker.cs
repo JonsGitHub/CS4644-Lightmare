@@ -6,11 +6,11 @@ public class WeaponAttacker : Attacker
 
 	public override void EnableWeapon()
 	{
-		_attackCollider.SetActive(true);
+		_attackCollider?.SetActive(true);
 	}
 
 	public override void DisableWeapon()
 	{
-		_attackCollider.SetActive(false);
+		_attackCollider?.SetActive(false);
 	}
 }

@@ -50,6 +50,8 @@ public class CameraManager : MonoBehaviour
     {
 		follow3rdPerson = followCam.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
 
+		CurrentScroll = follow3rdPerson.CameraDistance / (MaxZoom - MinZoom);
+
 		followCam.gameObject.SetActive(true);
 		aimCam.gameObject.SetActive(false);
 	}

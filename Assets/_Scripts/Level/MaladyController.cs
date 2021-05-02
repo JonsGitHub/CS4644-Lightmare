@@ -54,7 +54,9 @@ public class MaladyController : MonoBehaviour
         // Not the best way but eh
         _title = GameObject.Find("Boss_Title");
 
-        Target = FindObjectOfType<PlayerController>()?.transform;
+        var _player = FindObjectOfType<PlayerController>();
+        _player?.Targeted(transform, true);
+        Target = _player?.transform;
 
         _damageable.OnDie += OnMaladyDeath;
 
@@ -180,6 +182,8 @@ public class MaladyController : MonoBehaviour
 
     private void OnMaladyDeath()
     {
+        Target.GetComponent<PlayerController>()?.Targeted(transform, false);
+
         _isDead = true;
         _agent.isStopped = true;
         _animator.SetTrigger("IsDead");

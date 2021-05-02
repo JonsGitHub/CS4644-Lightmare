@@ -18186,7 +18186,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 149406160, guid: 49f27070daca7274ea0de0e8804ffdcf, type: 3}
       propertyPath: CameraDistance
-      value: 3
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 1299306191, guid: 49f27070daca7274ea0de0e8804ffdcf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19063,7 +19063,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.24333334
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 42d86e4317bf5324685e5a9e8f2f5a72, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d7b0dea5d399e68488d1b8ba0c137338, type: 2}
 --- !u!1 &1339001491
 GameObject:
   m_ObjectHideFlags: 0

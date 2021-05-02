@@ -109,6 +109,14 @@ public class SceneLoader : MonoBehaviour
 		var controller = GameObject.FindGameObjectWithTag("SceneController")?.GetComponent<SceneController>();
 		if (controller && !SceneManager.GetActiveScene().name.Contains("Manager"))
         {
+			// Save players health
+			var player = FindObjectOfType<PlayerController>()?.GetComponent<Damageable>();
+			if (player)
+			{
+				PlayerData.SetHealth(player.CurrentHealth);
+				PlayerData.Save();
+			}
+
 			// Save Scene Data
 			var formatter = new UnityBinaryFormatter();
 			var file = File.OpenWrite(CurrentSceneFilePath);

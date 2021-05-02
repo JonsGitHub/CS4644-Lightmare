@@ -127,7 +127,6 @@ public class WaveSpawner : MonoBehaviour
                     nextWave++;
                     _waveCounter.text = "";
                     _maladyEntrance.SetBool("IsFighting", true);
-
                     return;
                 }
                 else 

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Killed
   m_EditorClassIdentifier: 
   _actions:
+  - {fileID: 11400000, guid: cd2eb4b9933bcd64388b56a944f077e1, type: 2}
   - {fileID: 11400000, guid: beb77a01e9a9da640a580c9eda091b1d, type: 2}
   - {fileID: 11400000, guid: d79dbe63fc17f3b44ab3e033824f64c7, type: 2}
