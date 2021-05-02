@@ -25,50 +25,50 @@ public class CrystalAppendixController : MonoBehaviour
             {
                 PlayerData.Crystal.SlimeCrystal, new CrystalDescription()
                 {
-                    About = "Found: In the forest dream from slaying King Slime",
-                    Description = "Message: For them I take up arms."
+                    About = "In the forest dream from slaying King Slime",
+                    Description = "As guardians, we cannot exist together. We create a cosmic fissure that allows Misfortune to corrupt the dreams of those we protect."
                 }
             },
             {
                 PlayerData.Crystal.Forest, new CrystalDescription()
                 {
-                    About = "Found: In the forest dream's ancient crypts",
-                    Description = "Message: They cast me out like a plague."
+                    About = "In the forest dream's ancient crypts",
+                    Description = "Misfortune. The spawn of darkness. The origin of Nightmares. A bane to the existence of dreamers and Light alike."
                 }
             },
             {
                 PlayerData.Crystal.DeerCrystal, new CrystalDescription()
                 {
-                    About = "Found: In the forest dream from hunting the crystal deer",
-                    Description = "Message: Forsaken like yesterday's milk"
+                    About = "In the forest dream from hunting the crystal deer",
+                    Description = "There is no true understanding to Misfortune's purpose. We are ingrained with the knowledge of his damage and his belief in the shadows."
                 }
             },
             {
                 PlayerData.Crystal.WolfCrystal, new CrystalDescription()
                 {
-                    About = "Found: In the forest dream from saving the missing girl",
-                    Description = "Message: I shall show them."
+                    About = "In the forest dream from saving the missing girl",
+                    Description = "Banished to a realm devoid of hope, he plots and schemes his return to infect other worlds with his suffering."
                 }
             },
             {
                 PlayerData.Crystal.SciFiCrystal, new CrystalDescription()
                 {
-                    About = "Found: In the space dream from helping fix the ship",
-                    Description = "Message: I didn't want to be the way that I am."
+                    About = "In the space dream from helping fix the ship",
+                    Description = "Misfortune yearns for a bleak future. The indignant pain he has faced since origin times has been built up."
                 }
             },
             {
                 PlayerData.Crystal.OceanCrystal, new CrystalDescription()
                 {
-                    About = "Found: In the broken dream from self reflection",
-                    Description = "Message: I only mean to put things back to what they once were."
+                    About = "In the broken dream from self reflection",
+                    Description = "While Light are meant to keep Misfortune from entering the dreamscape, he still finds a way. The festering of evil is bubbling over, and soon a shadowy tomb is all the will be left of our world."
                 }
             },
             {
                 PlayerData.Crystal.ColosseumCrystal, new CrystalDescription()
                 {
-                    About = "Found: In the colosseum dream from defeating Malady",
-                    Description = "Message: Not this helpless lost land."
+                    About = "In the colosseum dream from defeating Malady",
+                    Description = "Where Misfortune comes from still remains a mystery. How Misfortune comes certainly isn't."
                 }
             }
         };

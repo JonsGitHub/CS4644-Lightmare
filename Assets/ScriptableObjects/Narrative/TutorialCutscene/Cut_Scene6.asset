@@ -21,5 +21,5 @@ MonoBehaviour:
         m_KeyId: 216826122240
         m_Key: 
       m_FallbackState: 0
-    Audio: {fileID: 0}
+    Audio: {fileID: 11400000, guid: e5fe5aaf871b09a4997c34db3ccbff9c, type: 2}
   _dialogueType: 0
