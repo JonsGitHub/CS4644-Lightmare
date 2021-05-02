@@ -2177,10 +2177,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 1.9833333333333334
+    m_Start: 105.85
     m_ClipIn: 0
     m_Asset: {fileID: -1533386082600821000}
-    m_Duration: 42.4999999999995
+    m_Duration: 14.650000000000027
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3789374452525965049}
     m_EaseInDuration: 0
@@ -5166,7 +5166,7 @@ MonoBehaviour:
     m_DisplayName: Active
   m_Markers:
     m_Objects: []
-  m_PostPlaybackState: 3
+  m_PostPlaybackState: 1
 --- !u!114 &2542952777124049191
 MonoBehaviour:
   m_ObjectHideFlags: 1

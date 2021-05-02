@@ -46,7 +46,6 @@ public class DialogueBehaviour : PlayableBehaviour
 				}
 			}
 
-			Debug.Log(PauseTimelineEvent.GetType());
 			if (playable.GetGraph().IsDone() && PauseTimelineEvent.GetType().Equals(_closeDialogueUIEvent))
             {
 				_closeDialogueUIEvent.RaiseEvent();

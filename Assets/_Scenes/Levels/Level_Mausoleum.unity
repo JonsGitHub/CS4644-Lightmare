@@ -575,6 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _director: {fileID: 58746171}
+  FreeMovement: 0
 --- !u!320 &58746171
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -16502,22 +16503,20 @@ MonoBehaviour:
   _failedChannel: {fileID: 11400000, guid: 4521221f9e1d23540a4d30ebde4c2c9e, type: 2}
   _stories:
   - List:
-    - The sun burned above oceans of sand.
-    - but in the sand was Stone, strong and true.
-    - Fairel hewed the Stone, and build - as great as any thaig in the deep.
-    - And with his sons' help, he ensured the thaig prospered and grew.
+    - The sun's mirror becomes renewed, masking itself into the darkness of night.
+    - Each night, it slowly fills with silver, revealing its nature casting the umbra
+      aside
+    - The darkening crescent, that had once enveloped this mirror is now fading away
+      into the void
+    - Now shining bright, it becomes the beacon against the stars, the sun of the
+      night.
   - List:
-    - Fairel, Paragon, fled from the strife his brilliance created,
-    - The strife that destroyed thaigs, sundered houses, from weapons that clan used
-      against clan.
-    - His own clan and his two sons followed Fairel to the pitiless surface,
-    - The surface where they would hide from the war that took their home.
-  - List:
-    - This is the tale of Fairel, Paragon among Paragons, father of two sons,
-    - who, against their father's wishes, fought from foolish words and foolish pride.
-    - For pride these halls were made -- to honor a father's deeds, and grieve his
-      loss.
-    - And for loss these halls were made, to honor a brother mourned.
+    - The hour of twilight has just ended and the beginning starts at the horizon.
+    - As the spotlight that casts away the night comes into center-stage, life blooms.
+    - Toward its finishing act, do the colors shift from blues to hued reds, on queue
+      for the soliloquy of night.
+    - The curtains fall to prompt the end of the golden hours, as the silver crescendos
+      into the climactic end of a single cycle. It is the hour of darkness.
 --- !u!1001 &750274969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17288,6 +17287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _removeInteraction: {fileID: 0}
+  _collectedEventChannel: {fileID: 0}
 --- !u!95 &915658247
 Animator:
   serializedVersion: 3
@@ -18385,7 +18385,7 @@ PrefabInstance:
     - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.002030945
       objectReference: {fileID: 0}
     - target: {fileID: 4184016653379499702, guid: 49f27070daca7274ea0de0e8804ffdcf,
         type: 3}

@@ -515,6 +515,7 @@ MonoBehaviour:
   _projectileAttacker: {fileID: 1155395510}
   _healthBar: {fileID: 0}
   _title: {fileID: 0}
+  _finishedChannel: {fileID: 11400000, guid: a2005da5c1f06ee45be561f2942c8cf7, type: 2}
   _spawnPoints:
   - {fileID: 1950665395}
   - {fileID: 2078857093}

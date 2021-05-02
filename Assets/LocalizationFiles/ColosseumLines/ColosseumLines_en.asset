@@ -19,21 +19,53 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 65126535168
-    m_Localized: Welcome one, welcome all
+    m_Localized: "Let\u2019s not rush so quickly, your presence demands entertainment."
     m_Metadata:
       m_Items: []
   - m_Id: 146126934016
-    m_Localized: You foolish little Light, you don't realize the true extents to
-      what you have done - do you?
+    m_Localized: 'Stand there and look pretty. I shall commence the event... '
     m_Metadata:
       m_Items: []
   - m_Id: 358480351232
-    m_Localized: No matter, you won't survive long enough to regret it. My cuties
-      are positively starving!
+    m_Localized: "Welcome everyone and all to today\u2019s grand event! Let\u2019s
+      watch this Light\u2019s final set."
     m_Metadata:
       m_Items: []
   - m_Id: 5322862759936
-    m_Localized: You'll regret that...
+    m_Localized: Go forth, my beautiful creations. Display my generosity by making
+      this a swift fight.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3680429523079168
+    m_Localized: Hah, wait, who am I kidding, let this be a drawn out torture as
+      you snuff this Light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3680472372088832
+    m_Localized: "How dare you insult me with such insufferable behavior. I was so
+      kind to make your defeat a long one\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3680538113609728
+    m_Localized: "Yet you spit on my face and don\u2019t allow it. You\u2019re perpetuating
+      lies, stop lying to yourself and just give in."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3680580480274432
+    m_Localized: "But so be it. I\u2019ve had enough of these games. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3680671295344640
+    m_Localized: You have already hurt my pride enough, I will make quick work of
+      you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3680707815149568
+    m_Localized: "I-I-im-impos-sible\u2026 \u201CSuch power, so ugly."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3680744343343104
+    m_Localized: "You\u2019ve brought Misfortune upon yourself."
     m_Metadata:
       m_Items: []
   references:

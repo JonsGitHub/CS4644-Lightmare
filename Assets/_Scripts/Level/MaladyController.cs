@@ -13,6 +13,8 @@ public class MaladyController : MonoBehaviour
     [SerializeField] private HealthBar3D _healthBar;
     [SerializeField] private GameObject _title;
 
+    [SerializeField] private BoolEventChannelSO _finishedChannel = default;
+
     public List<Transform> _spawnPoints = new List<Transform>();
 
     public Transform Target;
@@ -181,6 +183,8 @@ public class MaladyController : MonoBehaviour
         _isDead = true;
         _agent.isStopped = true;
         _animator.SetTrigger("IsDead");
+
+        _finishedChannel.RaiseEvent(true);
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
