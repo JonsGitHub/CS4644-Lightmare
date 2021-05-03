@@ -28,7 +28,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 358480351232
     m_Localized: "Welcome everyone and all to today\u2019s grand event! Let\u2019s
-      watch this Light\u2019s final set."
+      watch this, Light\u2019s final set."
     m_Metadata:
       m_Items: []
   - m_Id: 5322862759936
@@ -56,12 +56,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3680671295344640
-    m_Localized: You have already hurt my pride enough, I will make quick work of
-      you.
+    m_Localized: You have already hurt my pride enough. I, Malady, Spawn of Misfortune,
+      will make quick work of you.
     m_Metadata:
       m_Items: []
   - m_Id: 3680707815149568
-    m_Localized: "I-I-im-impos-sible\u2026 \u201CSuch power, so ugly."
+    m_Localized: "I-I-im-impos-sible\u2026 Such power, so ugly."
     m_Metadata:
       m_Items: []
   - m_Id: 3680744343343104
